@@ -53,7 +53,7 @@ function Profile () {
 
             { posts ? <div className="my-posts-container">
                 {posts.map((post) => (
-                    <PostModal post={post}/>
+                    <PostModal post={post} user={user}/>
                 ))}
             </div> : <div>You don't have any posts yet!</div>}
         </>
