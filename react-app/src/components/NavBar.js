@@ -2,8 +2,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { useSelector } from 'react-redux';
+import AddPostModal from './AddPostModal';
 
 const NavBar = () => {
+  const userId = useSelector((state) => state.session?.user?.id)
+
   return (
     <nav>
       <ul>
@@ -27,11 +31,18 @@ const NavBar = () => {
             Users
           </NavLink>
         </li>
-        <li>
+        { userId ? <li>
           <NavLink to='/profile' exact={true} activeClassName='active'>
             Profile
           </NavLink>
         </li>
+        : ''}
+        { userId ? 
+
+            <AddPostModal />
+
+
+        : ''}
         <li>
           <LogoutButton />
         </li>

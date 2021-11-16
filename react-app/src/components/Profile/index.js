@@ -6,8 +6,8 @@ import './Profile.css'
 function Profile () {
     const user = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.myPosts))
-    const [imageUrl, setImageUrl] = useState('')
-    const [body, setBody] = useState('')
+    // const [imageUrl, setImageUrl] = useState('')
+    // const [body, setBody] = useState('')
 
 
     const dispatch = useDispatch()
@@ -23,25 +23,25 @@ function Profile () {
         return count
     }
 
-    const createPost = (e) => {
-        e.preventDefault()
+    // const createPost = (e) => {
+    //     e.preventDefault()
 
-        const payload = {
-            userId : user?.id,
-            body,
-            imageUrl
-        }
-        dispatch(createOnePost(payload))
-        setBody('')
-        setImageUrl('')
-    }
+    //     const payload = {
+    //         userId : user?.id,
+    //         body,
+    //         imageUrl
+    //     }
+    //     dispatch(createOnePost(payload))
+    //     setBody('')
+    //     setImageUrl('')
+    // }
     return (
         <>
-            <form onSubmit={createPost}>
+            {/* <form onSubmit={createPost}>
                 <input value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="imageUrl"></input>
                 <input value={body} onChange={(e) => setBody(e.target.value)}type="text" placeholder="content"></input>
                 <button type="submit">Create Post</button>
-            </form>
+            </form> */}
             <div className="my-profile-container">
                 <div className="profile-picture" style={{backgroundImage: `url(${user?.avatar})`}}></div>
                 <div className="my-profile-content">
