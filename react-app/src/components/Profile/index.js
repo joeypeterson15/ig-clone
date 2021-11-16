@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getMyPosts, createOnePost } from '../../store/post';
+import { getMyPosts } from '../../store/post';
+import PostModal from '../PostModal/PostModal';
 import './Profile.css'
 
 function Profile () {
     const user = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.myPosts))
-    // const [imageUrl, setImageUrl] = useState('')
-    // const [body, setBody] = useState('')
-
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -23,25 +21,8 @@ function Profile () {
         return count
     }
 
-    // const createPost = (e) => {
-    //     e.preventDefault()
-
-    //     const payload = {
-    //         userId : user?.id,
-    //         body,
-    //         imageUrl
-    //     }
-    //     dispatch(createOnePost(payload))
-    //     setBody('')
-    //     setImageUrl('')
-    // }
     return (
         <>
-            {/* <form onSubmit={createPost}>
-                <input value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="imageUrl"></input>
-                <input value={body} onChange={(e) => setBody(e.target.value)}type="text" placeholder="content"></input>
-                <button type="submit">Create Post</button>
-            </form> */}
             <div className="my-profile-container">
                 <div className="profile-picture" style={{backgroundImage: `url(${user?.avatar})`}}></div>
                 <div className="my-profile-content">
@@ -60,12 +41,19 @@ function Profile () {
                 </div>
             </div>
 
-            { posts ? <div className="my-posts-container">
+
+            {/* { posts ? <div className="my-posts-container">
                 {posts.map((post) => (
                     <div key={post.id}>
                         <img className="post-image" src={post.imageUrl}></img>
                         <div>{post.body}</div>
                     </div>
+                ))}
+            </div> : <div>You don't have any posts yet!</div>} */}
+
+            { posts ? <div className="my-posts-container">
+                {posts.map((post) => (
+                    <PostModal post={post}/>
                 ))}
             </div> : <div>You don't have any posts yet!</div>}
         </>
