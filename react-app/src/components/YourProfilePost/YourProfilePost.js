@@ -17,7 +17,7 @@ import { getUser } from '../../store/user';
 import { Link } from 'react-router-dom';
 import "../Post/Post.css"
 
-function YourPost () {
+function YourProfilePost () {
 
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
@@ -99,14 +99,14 @@ function YourPost () {
 
     return (
         <div className="post-outer-container">
-            <div onClick={() => history.push('/explore')}>exit</div>
+            <div onClick={() => history.push(`/p/${user?.id}`)}>exit</div>
             <div className="post-modal-container">
                         <div className="left-image">
                             <img className="image-modal" src={post?.imageUrl}></img>
                         </div>
                         <div className="post-modal-right">
                             <div className="upper-right-modal">
-                                <Link to={`/p/${post?.userId}`}>{user?.username}</Link>
+                                <Link to={`/p/${user?.id}`}>{user?.username}</Link>
 
                                 {/* <div onClick={openMenu} >edit</div>
                                     {showMenu && (
@@ -162,4 +162,4 @@ function YourPost () {
     )
 }
 
-export default YourPost
+export default YourProfilePost

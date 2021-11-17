@@ -1,21 +1,24 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getMyPosts } from '../../store/post';
-import PostModal from '../PostModal/PostModal';
 import { Link } from 'react-router-dom';
-import './Profile.css'
+import { useParams } from 'react-router'
+import { getUser } from '../../store/user';
+import { getUserPosts } from '../../store/userPost';
+import '../Profile/Profile.css'
 
-function Profile () {
 
-    
+function UserProfile () {
 
-    const user = useSelector((state) => state.session?.user)
-    const posts = useSelector((state) => Object.values(state.myPosts))
+    const params = useParams()
+    const {userId} = params
 
+    const user = useSelector((state) => Object.values(state.user)[0])
+    const posts = useSelector((state) => Object.values(state.userPosts))
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getMyPosts(user?.id))
+        dispatch(getUser(userId))
+        dispatch(getUserPosts(userId))
     }, [dispatch])
 
     const countPosts = () => {
@@ -46,25 +49,9 @@ function Profile () {
                 </div>
             </div>
 
-
-            {/* { posts ? <div className="my-posts-container">
-                {posts.map((post) => (
-                    <div key={post.id}>
-                        <img className="post-image" src={post.imageUrl}></img>
-                        <div>{post.body}</div>
-                    </div>
-                ))}
-            </div> : <div>You don't have any posts yet!</div>} */}
-
-            {/* { posts ? <div className="my-posts-container">
-                {posts.map((post) => (
-                    <PostModal post={post} user={user}/>
-                ))}
-            </div> : <div>You don't have any posts yet!</div>} */}
-
             { posts ? <div className="my-posts-container">
                 {posts.map((post) => (
-                    <Link to={`/${post.id}`}>
+                    <Link to={`/p/${userId}/${post.id}`}>
                         <div key={post.id}>
                             <img className="post-image" src={post.imageUrl}></img>
                             {/* <div>{post.body}</div> */}
@@ -76,4 +63,4 @@ function Profile () {
     )
 }
 
-export default Profile;
+export default UserProfile;
