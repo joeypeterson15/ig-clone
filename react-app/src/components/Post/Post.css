@@ -37,3 +37,8 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
+.comment-edit-div {
+    display: flex;
+    justify-content: space-between;
+}

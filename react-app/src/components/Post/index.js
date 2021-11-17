@@ -9,6 +9,8 @@ import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
+
+import DeleteCommentModal from '../DeleteCommentModal';
 import "./Post.css"
 
 function Post () {
@@ -120,7 +122,13 @@ function Post () {
                             <div className="bottom-right-comments">
                                 {comments ?
                                 comments.map((comment) => (
-                                    <div>{comment.content}</div>
+                                    <div className='comment-edit-div'>
+                                        <div>{comment.content}</div>
+                                        {comment.userId === user?.id ?
+                                        <DeleteCommentModal comment={comment}/> : ''}
+                                    </div>
+
+
                                 )) :
                                 <div>There are currently no comments for this post</div>}
                             </div>
