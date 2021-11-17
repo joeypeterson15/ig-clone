@@ -8,7 +8,7 @@ def seed_posts():
         body="Had so much fun"
     )
     post2 = Post(
-        userId=2,
+        userId=1,
         imageUrl="https://i.ibb.co/4RtZknX/concert-fire-event-post.jpg",
         body="this was the best concert I've ever been to!"
     )
@@ -18,12 +18,12 @@ def seed_posts():
         body="me and all my friends"
     )
     post4 = Post(
-        userId=2,
+        userId=1,
         imageUrl="https://i.ibb.co/j4gfzbY/forest-walk-post.jpg",
         body="Feeling very relaxed right now"
     )
     post5 = Post(
-        userId=3,
+        userId=1,
         imageUrl="https://i.ibb.co/b2GqtC4/galaxy-post.jpg",
         body="How cool is this"
     )

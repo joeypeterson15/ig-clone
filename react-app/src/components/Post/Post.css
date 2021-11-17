@@ -1,0 +1,34 @@
+.post-outer-container {
+    background-color: grey;
+    height: 800px;
+    width: 100%;
+}
+
+.post-modal-container {
+    margin-left: 30%;
+    display: flex;
+    background-color: red;
+    width: 50rem;
+    /* padding-left: 20%; */
+}
+
+.image-modal {
+    width: 30rem;
+    height: 30rem;
+    /* margin-left: 20%; */
+}
+
+.upper-right-modal {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.middle-right-modal {
+    display: flex;
+    padding-bottom: 1rem;
+}
+
+.edit-post-dropdown {
+    z-index: 10;
+}
