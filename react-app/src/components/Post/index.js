@@ -3,10 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
-import { getMyPosts } from '../../store/post';
+
 
 import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
+import { getLikes } from '../../store/like';
+import { createOneLike } from '../../store/like';
 import "./Post.css"
 
 function Post () {
@@ -21,12 +23,14 @@ function Post () {
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
     const post = useSelector((state) => state.myPosts[postId])
+    const likes = useSelector((state) => Object.values(state.likes))
 
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getComments(postId))
+        dispatch(getLikes(postId))
     }, [dispatch])
 
 
@@ -64,6 +68,27 @@ function Post () {
         dispatch(getComments(postId))
     }
 
+    const countLikes = () => {
+        let count = 0;
+        for (let i = 0; i < likes.length; i++) {
+            count ++;
+        }
+        if (count === 1) {
+            return '1 like'
+        }
+        return `${count} likes`
+    }
+
+    const createLike = (e) => {
+        e.preventDefault()
+        const payload = {
+            userId : user?.id,
+            postId,
+            username : user?.username
+        }
+        dispatch(createOneLike(payload))
+    }
+
     return (
         <div className="post-outer-container">
             <div onClick={() => history.push('/profile')}>exit</div>
@@ -98,10 +123,20 @@ function Post () {
                                     <div>{comment.content}</div>
                                 )) :
                                 <div>There are currently no comments for this post</div>}
+                            </div>
+                            <div className="likes-right-div">
+                                {countLikes()}
+                                <form onSubmit={createLike}>
+                                    <button type="submit">like this post</button>
+                                </form>
+                            </div>
+                            <div className="create-comment-right">
+
                                 <form onSubmit={createComment}>
                                     <input value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                                     <button type='submit'>post</button>
                                 </form>
+
                             </div>
                         </div>
                     </div>
