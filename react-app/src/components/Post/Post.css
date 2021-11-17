@@ -32,3 +32,8 @@
 .edit-post-dropdown {
     z-index: 10;
 }
+
+.likes-right-div {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
