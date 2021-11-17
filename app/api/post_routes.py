@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Post, User, db
+from app.models import Post, User, db, Comment
 from app.forms import addPostForm
 
 post_routes = Blueprint('posts', __name__)
@@ -27,6 +27,9 @@ def create_post():
 @post_routes.route('/<int:postId>', methods=['DELETE'])
 def delete_my_post(postId):
     post = Post.query.get(postId)
+    comments = Comment.query.filter(Comment.postId == postId).all()
+    [db.session.delete(comment) for comment in comments]
+    # db.session.delete(comments)
     db.session.delete(post)
     db.session.commit()
     return {'postId' : postId}

@@ -1,28 +1,31 @@
 import { useHistory } from 'react-router-dom';
-import { Redirect } from 'react-router';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
 import { getMyPosts } from '../../store/post';
-import { Modal } from '../../context/Modal';
+
 import { deleteOnePost } from '../../store/post';
+import { getComments } from '../../store/comment';
 import "./Post.css"
 
 function Post () {
 
+    let history = useHistory()
+
     const params = useParams()
     const {postId} = params
+
     const [showMenu, setShowMenu] = useState(false);
-    const [showModal, setShowModal] = useState(true);
-    const [isDeleted, setIsDeleted] = useState(false)
     const user = useSelector((state) => state.session?.user)
-    let history = useHistory()
+    const comments = useSelector((state) => Object.values(state.comments))
 
 
     const post = useSelector((state) => state.myPosts[postId])
     const dispatch = useDispatch()
+
     useEffect(() => {
-        dispatch(getMyPosts(user?.id))
+        dispatch(getComments(postId))
     }, [dispatch])
 
 
@@ -76,10 +79,17 @@ function Post () {
                                     {post?.body}
                                 </div>
                             </div>
+                            <div className="bottom-right-comments">
+                                {comments ?
+                                comments.map((comment) => (
+                                    <div>{comment.content}</div>
+                                )) :
+                                <div>There are currently no comments for this post</div>}
+                            </div>
                         </div>
                     </div>
 
-                    {/* {isDeleted ? <Redirect to="/profile"/> : ''} */}
+
 
 
         </div>
