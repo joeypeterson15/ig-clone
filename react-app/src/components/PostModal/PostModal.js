@@ -7,18 +7,18 @@ function PostModal ({ post, user }) {
     const [showModal, setShowModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
+    const closeMenu = () => {
+        setShowMenu(false);
+    };
 
     useEffect(() => {
         if (!showMenu) return;
 
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
 
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu, showModal]);
+    }, [showMenu]);
 
     const openMenu = () => {
       if (showMenu) return;
@@ -42,15 +42,15 @@ function PostModal ({ post, user }) {
                     <div className="post-modal-right">
                         <div className="upper-right-modal">
                             <div>{user?.username}</div>
-                            <div>
-                            <button onClick={openMenu}>edit</button>
+
+                            <div onClick={showMenu === false ? openMenu : closeMenu} >edit</div>
                                 {showMenu && (
-                                    <ul className="profile-dropdown">
+                                    <ul className="edit-post-dropdown">
                                     <li>{user.username}</li>
                                     <li>{user.email}</li>
                                     </ul>
                                 )}
-                            </div>
+
                         </div>
                         <div className="middle-right-modal">
                             <div>

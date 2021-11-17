@@ -23,3 +23,10 @@ def create_post():
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
+
+@post_routes.route('/<int:postId>', methods=['DELETE'])
+def delete_my_post(postId):
+    post = Post.query.get(postId)
+    db.session.delete(post)
+    db.session.commit()
+    return {'postId' : postId}

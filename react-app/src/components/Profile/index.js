@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getMyPosts } from '../../store/post';
 import PostModal from '../PostModal/PostModal';
+import { Link } from 'react-router-dom';
 import './Profile.css'
 
 function Profile () {
@@ -51,9 +52,20 @@ function Profile () {
                 ))}
             </div> : <div>You don't have any posts yet!</div>} */}
 
-            { posts ? <div className="my-posts-container">
+            {/* { posts ? <div className="my-posts-container">
                 {posts.map((post) => (
                     <PostModal post={post} user={user}/>
+                ))}
+            </div> : <div>You don't have any posts yet!</div>} */}
+
+            { posts ? <div className="my-posts-container">
+                {posts.map((post) => (
+                    <Link to={`/${post.id}`}>
+                        <div key={post.id}>
+                            <img className="post-image" src={post.imageUrl}></img>
+                            {/* <div>{post.body}</div> */}
+                        </div>
+                    </Link>
                 ))}
             </div> : <div>You don't have any posts yet!</div>}
         </>

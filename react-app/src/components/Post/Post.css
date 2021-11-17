@@ -1,4 +1,11 @@
+.post-outer-container {
+    background-color: grey;
+    height: 800px;
+    width: 100%;
+}
+
 .post-modal-container {
+    margin-left: 30%;
     display: flex;
     background-color: red;
     width: 50rem;
