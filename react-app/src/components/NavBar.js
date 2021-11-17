@@ -31,13 +31,18 @@ const NavBar = () => {
             Users
           </NavLink>
         </li>
+        <li>
+          <NavLink to='/explore' exact={true} activeClassName='active'>
+            Explore
+          </NavLink>
+        </li>
         { userId ? <li>
           <NavLink to='/profile' exact={true} activeClassName='active'>
             Profile
           </NavLink>
         </li>
         : ''}
-        { userId ? 
+        { userId ?
 
             <AddPostModal />
 

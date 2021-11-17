@@ -10,6 +10,13 @@ def get_my_posts(id):
     posts = Post.query.filter(Post.userId == id).all()
     return {'posts': [post.to_dict() for post in posts]}
 
+
+@post_routes.route('/all/<int:id>')
+def get_all_posts(id):
+    posts = Post.query.filter(Post.userId != id).all()
+    return {'posts': [post.to_dict() for post in posts]}
+
+
 @post_routes.route('/', methods=['POST'])
 def create_post():
     form = addPostForm()
@@ -23,6 +30,7 @@ def create_post():
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
+
 
 @post_routes.route('/<int:postId>', methods=['DELETE'])
 def delete_my_post(postId):

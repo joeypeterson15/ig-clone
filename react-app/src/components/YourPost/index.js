@@ -11,9 +11,11 @@ import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
 
 import DeleteCommentModal from '../DeleteCommentModal';
-import "./Post.css"
 
-function Post () {
+import { getUser } from '../../store/user';
+import "../Post/Post.css"
+
+function YourPost () {
 
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
@@ -22,15 +24,17 @@ function Post () {
     const params = useParams()
     const {postId} = params
 
-    const user = useSelector((state) => state.session?.user)
+    const user = useSelector((state) => Object.values(state.user)[0])
+    console.log(user, 'HELLOOOOOO')
     const comments = useSelector((state) => Object.values(state.comments))
-    const post = useSelector((state) => state.myPosts[postId])
+    const post = useSelector((state) => state.allPosts[postId])
     const likes = useSelector((state) => Object.values(state.likes))
 
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(getUser(post?.userId))
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
     }, [dispatch])
@@ -93,7 +97,7 @@ function Post () {
 
     return (
         <div className="post-outer-container">
-            <div onClick={() => history.push('/profile')}>exit</div>
+            <div onClick={() => history.push('/explore')}>exit</div>
             <div className="post-modal-container">
                         <div className="left-image">
                             <img className="image-modal" src={post?.imageUrl}></img>
@@ -102,13 +106,13 @@ function Post () {
                             <div className="upper-right-modal">
                                 <div>{user?.username}</div>
 
-                                <div onClick={openMenu} >edit</div>
+                                {/* <div onClick={openMenu} >edit</div>
                                     {showMenu && (
                                         <ul className="edit-post-dropdown">
                                         <li></li>
                                         <button onClick={deletePost}>delete post</button>
                                         </ul>
-                                    )}
+                                    )} */}
 
                             </div>
                             <div className="middle-right-modal">
@@ -156,4 +160,4 @@ function Post () {
     )
 }
 
-export default Post
+export default YourPost
