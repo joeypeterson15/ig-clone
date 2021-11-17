@@ -6,22 +6,23 @@ import { useState, useEffect} from 'react';
 import { getMyPosts } from '../../store/post';
 
 import { deleteOnePost } from '../../store/post';
-import { getComments } from '../../store/comment';
+import { getComments, createOneComment } from '../../store/comment';
 import "./Post.css"
 
 function Post () {
 
     let history = useHistory()
+    const [showMenu, setShowMenu] = useState(false);
+    const [content, setContent] = useState('')
 
     const params = useParams()
     const {postId} = params
 
-    const [showMenu, setShowMenu] = useState(false);
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
-
-
     const post = useSelector((state) => state.myPosts[postId])
+
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -49,6 +50,18 @@ function Post () {
     const deletePost = () => {
         dispatch(deleteOnePost(postId))
         history.push('/profile')
+    }
+
+    const createComment = (e) => {
+        e.preventDefault()
+        const payload = {
+            content,
+            postId,
+            userId: user?.id
+        }
+        setContent('')
+        dispatch(createOneComment(payload))
+        dispatch(getComments(postId))
     }
 
     return (
@@ -85,6 +98,10 @@ function Post () {
                                     <div>{comment.content}</div>
                                 )) :
                                 <div>There are currently no comments for this post</div>}
+                                <form onSubmit={createComment}>
+                                    <input value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
+                                    <button type='submit'>post</button>
+                                </form>
                             </div>
                         </div>
                     </div>
