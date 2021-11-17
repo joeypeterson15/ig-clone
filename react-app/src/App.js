@@ -10,6 +10,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Profile from './components/Profile';
 import Post from './components/Post';
+import Explore from './components/Explore';
+import YourPost from './components/YourPost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +47,14 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
          <NavBar />
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/explore' exact={true} >
+          <NavBar />
+          <Explore />
+        </ProtectedRoute>
+        <ProtectedRoute path='/explore/:postId' exact={true} >
+          <NavBar />
+          <YourPost />
         </ProtectedRoute>
         <ProtectedRoute path='/profile' exact={true} >
           <NavBar />
