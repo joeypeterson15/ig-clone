@@ -14,6 +14,9 @@ from .api.likes_routes import likes_routes
 from .api.all_post_routes import all_post_routes
 from .api.get_user_route import get_user_routes
 from .api.user_post_routes import user_post_routes
+from .api.follow_routes import follow_routes
+from .api.main_post_routes import main_post_routes
+
 
 from .seeds import seed_commands
 
@@ -43,6 +46,8 @@ app.register_blueprint(likes_routes, url_prefix='/api/likes')
 app.register_blueprint(all_post_routes, url_prefix='/api/allposts')
 app.register_blueprint(get_user_routes, url_prefix='/api/postuser')
 app.register_blueprint(user_post_routes, url_prefix='/api/userposts')
+app.register_blueprint(follow_routes, url_prefix='/api/follows')
+app.register_blueprint(main_post_routes, url_prefix='/api/main')
 db.init_app(app)
 Migrate(app, db)
 

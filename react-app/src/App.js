@@ -14,6 +14,7 @@ import Explore from './components/Explore';
 import YourPost from './components/YourPost';
 import UserProfile from './components/UserProfile';
 import YourProfilePost from './components/YourProfilePost/YourProfilePost';
+import MainFeed from './components/MainFeed';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -75,6 +76,7 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <h1>My Home Page</h1>
+          <MainFeed />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
