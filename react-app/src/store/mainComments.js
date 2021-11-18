@@ -1,6 +1,7 @@
-const LOAD = 'comments/LOAD'
-const ADD = 'comments/ADD'
-const DELETE = 'comments/DELETE'
+const LOAD = 'mainComments/LOAD'
+const ADD = 'mainComments/ADD'
+const DELETE = 'mainComments/DELETE'
+
 
 const loadComments = comments => ({
     type: LOAD,
@@ -19,7 +20,9 @@ const removeOneComment = commentId => ({
 
 
 
-export const getComments = (postId) => async dispatch => {
+
+
+export const getMainFeedComments = (postId) => async dispatch => {
     const response = await fetch(`/api/comments/${postId}`)
 
     if (response.ok) {
@@ -28,7 +31,7 @@ export const getComments = (postId) => async dispatch => {
     }
 }
 
-export const createOneComment = (payload) => async dispatch => {
+export const createMainFeedComment = (payload) => async dispatch => {
     const response = await fetch(`/api/comments/`, {
         method: 'POST',
         headers: {
@@ -44,7 +47,7 @@ export const createOneComment = (payload) => async dispatch => {
     }
 }
 
-export const deleteOneComment = (commentId) => async dispatch => {
+export const deleteMainFeedComment = (commentId) => async dispatch => {
     const response = await fetch(`/api/comments/delete/${commentId}`, {
         method: 'DELETE',
         // headers: {
@@ -63,7 +66,7 @@ const initialState = {
     // list: []
 }
 
-const commentsReducer = (state = initialState, action) => {
+const mainCommentsReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
             const allComments = {};
@@ -72,9 +75,16 @@ const commentsReducer = (state = initialState, action) => {
             });
             return {
                 ...allComments,
-                // ...state,
+                ...state,
             }
+
+
+            // const newState = {...state}
+            // const postId = Object.keys(action.comments.comments)[0]
+            // newState[postId] = action.channels[postId]
+            // return newState
         }
+
         case ADD: {
             const newState = {
                 ...state,
@@ -92,4 +102,4 @@ const commentsReducer = (state = initialState, action) => {
         }
     }
 
-export default commentsReducer
+export default mainCommentsReducer

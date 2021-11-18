@@ -7,7 +7,7 @@ import './Profile.css'
 
 function Profile () {
 
-    
+
 
     const user = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.myPosts))
@@ -65,7 +65,7 @@ function Profile () {
             { posts ? <div className="my-posts-container">
                 {posts.map((post) => (
                     <Link to={`/${post.id}`}>
-                        <div key={post.id}>
+                        <div className="post-image-div" key={post.id}>
                             <img className="post-image" src={post.imageUrl}></img>
                             {/* <div>{post.body}</div> */}
                         </div>

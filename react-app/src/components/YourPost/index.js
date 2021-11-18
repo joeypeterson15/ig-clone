@@ -9,6 +9,7 @@ import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
+import { deleteMyLike } from '../../store/like';
 
 import DeleteCommentModal from '../DeleteCommentModal';
 
@@ -42,6 +43,8 @@ function YourPost () {
         dispatch(getLikes(postId))
 
     }, [dispatch])
+
+
     const isLiked = () => {
         if (likes) {
             for (let i = 0; i < likes.length; i++){
@@ -109,6 +112,10 @@ function YourPost () {
         dispatch(createOneLike(payload))
     }
 
+    const deleteLike = () => {
+        dispatch(deleteMyLike(user?.id, post?.id))
+    }
+
     return (
         <div className="post-outer-container">
             <div onClick={() => history.push('/explore')}>exit</div>
@@ -150,15 +157,24 @@ function YourPost () {
                                 )) :
                                 <div>There are currently no comments for this post</div>}
                             </div>
+
                             <div className="likes-right-div">
                                 <div>
-                                    {!isLiked() ? <form onSubmit={createLike}>
+                                    {!isLiked()
+                                    ?
+                                    <form onSubmit={createLike}>
                                         <button type="submit">like this post</button>
-                                    </form> : <button>unlike</button>}
+                                    </form>
+                                    :
+                                    <div>
+                                        <button onClick={deleteLike}>unlike</button>
+                                    </div>
+                                    }
 
                                 </div>
                                 {countLikes()}
                             </div>
+
                             <div className="create-comment-right">
 
                                 <form onSubmit={createComment}>
