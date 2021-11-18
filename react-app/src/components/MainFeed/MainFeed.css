@@ -1,0 +1,18 @@
+.main-feed-outer-container {
+    background-color: rgb(241, 241, 241);
+}
+
+
+.main-feed-posts {
+    background-color: white;
+    margin-left: 28%;
+    margin-bottom: 10rem;
+    width: 40rem;
+    height: 50rem;
+    border: 0.5px solid rgba(155, 155, 155, 0.4);
+}
+
+.main-feed-image {
+    width: 40rem;
+    height: 45rem;
+}

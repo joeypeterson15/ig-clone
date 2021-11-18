@@ -1,6 +1,4 @@
-const LOAD = 'allPosts/LOAD'
-const ADD = 'posts/ADD'
-const DELETE = 'posts/DELETE'
+const LOAD = 'userPosts/LOAD'
 
 
 
@@ -10,8 +8,8 @@ const load = posts => ({
 })
 
 
-export const getAllPosts = (userId) => async dispatch => {
-    const response = await fetch(`/api/allposts/${userId}`)
+export const getUserPosts = (userId) => async dispatch => {
+    const response = await fetch(`/api/userposts/${userId}`)
     if (response.ok) {
         const posts = await response.json()
 
@@ -23,7 +21,7 @@ const initialState = {
     // list: []
 }
 
-const allPostsReducer = (state = initialState, action) => {
+const userPostsReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
             const allPosts = {};
@@ -40,4 +38,4 @@ const allPostsReducer = (state = initialState, action) => {
         }
     }
 
-export default allPostsReducer
+export default userPostsReducer

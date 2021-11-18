@@ -1,6 +1,5 @@
-const LOAD = 'allPosts/LOAD'
-const ADD = 'posts/ADD'
-const DELETE = 'posts/DELETE'
+const LOAD = 'mainposts/LOAD'
+
 
 
 
@@ -10,8 +9,9 @@ const load = posts => ({
 })
 
 
-export const getAllPosts = (userId) => async dispatch => {
-    const response = await fetch(`/api/allposts/${userId}`)
+
+export const getMainFeedPosts = (userId) => async dispatch => {
+    const response = await fetch(`/api/main/${userId}`)
     if (response.ok) {
         const posts = await response.json()
 
@@ -19,11 +19,14 @@ export const getAllPosts = (userId) => async dispatch => {
     }
 }
 
+
+
+
 const initialState = {
     // list: []
 }
 
-const allPostsReducer = (state = initialState, action) => {
+const mainFeedPostsReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
             const allPosts = {};
@@ -32,7 +35,7 @@ const allPostsReducer = (state = initialState, action) => {
             });
             return {
                 ...allPosts,
-                // ...state,
+                ...state,
             }
         }
         default:
@@ -40,4 +43,4 @@ const allPostsReducer = (state = initialState, action) => {
         }
     }
 
-export default allPostsReducer
+export default mainFeedPostsReducer

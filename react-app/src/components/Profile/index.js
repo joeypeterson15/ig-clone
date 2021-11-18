@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom';
 import './Profile.css'
 
 function Profile () {
+
+    
+
     const user = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.myPosts))
+
 
     const dispatch = useDispatch()
     useEffect(() => {

@@ -1,16 +1,23 @@
 import { useHistory } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
+
+
 import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
-import DeleteCommentModal from '../DeleteCommentModal';
-import { deleteMyLike } from '../../store/like';
-import "./Post.css"
 
-function Post () {
+import DeleteCommentModal from '../DeleteCommentModal';
+
+import { getUser } from '../../store/user';
+
+import { Link } from 'react-router-dom';
+import "../Post/Post.css"
+
+function YourProfilePost () {
 
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
@@ -19,15 +26,17 @@ function Post () {
     const params = useParams()
     const {postId} = params
 
-    const user = useSelector((state) => state.session?.user)
+    const user = useSelector((state) => Object.values(state.user)[0])
+    console.log(user, 'HELLOOOOOO')
     const comments = useSelector((state) => Object.values(state.comments))
-    const post = useSelector((state) => state.myPosts[postId])
+    const post = useSelector((state) => state.allPosts[postId])
     const likes = useSelector((state) => Object.values(state.likes))
 
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(getUser(post?.userId))
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
     }, [dispatch])
@@ -88,40 +97,24 @@ function Post () {
         dispatch(createOneLike(payload))
     }
 
-    const isLiked = () => {
-        if (likes) {
-            for (let i = 0; i < likes.length; i++){
-                let like = likes[i]
-                if (like.userId == user?.id) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    const deleteLike = () => {
-        dispatch(deleteMyLike(user?.id, post?.id))
-    }
-
     return (
         <div className="post-outer-container">
-            <div onClick={() => history.push('/profile')}>exit</div>
+            <div onClick={() => history.push(`/p/${user?.id}`)}>exit</div>
             <div className="post-modal-container">
                         <div className="left-image">
                             <img className="image-modal" src={post?.imageUrl}></img>
                         </div>
                         <div className="post-modal-right">
                             <div className="upper-right-modal">
-                                <div>{user?.username}</div>
+                                <Link to={`/p/${user?.id}`}>{user?.username}</Link>
 
-                                <div onClick={openMenu} >edit</div>
+                                {/* <div onClick={openMenu} >edit</div>
                                     {showMenu && (
                                         <ul className="edit-post-dropdown">
                                         <li></li>
                                         <button onClick={deletePost}>delete post</button>
                                         </ul>
-                                    )}
+                                    )} */}
 
                             </div>
                             <div className="middle-right-modal">
@@ -146,20 +139,10 @@ function Post () {
                                 <div>There are currently no comments for this post</div>}
                             </div>
                             <div className="likes-right-div">
-                                <div>
-                                    {!isLiked()
-                                    ?
-                                    <form onSubmit={createLike}>
-                                        <button type="submit">like this post</button>
-                                    </form>
-                                    :
-                                    <div>
-                                        <button onClick={deleteLike}>unlike</button>
-                                    </div>
-                                    }
-
-                                </div>
                                 {countLikes()}
+                                <form onSubmit={createLike}>
+                                    <button type="submit">like this post</button>
+                                </form>
                             </div>
                             <div className="create-comment-right">
 
@@ -179,4 +162,4 @@ function Post () {
     )
 }
 
-export default Post
+export default YourProfilePost

@@ -17,7 +17,7 @@ function Explore() {
         <div className="explore-outer-container">
             { posts ? <div className="all-posts-container">
                 {posts.map((post) => (
-                    <Link to={`/explore/${post.id}`}>
+                    <Link to={`/posts/${post.id}`}>
                         <div key={post.id}>
                             <img className="post-image" src={post.imageUrl}></img>
                             {/* <div>{post.body}</div> */}

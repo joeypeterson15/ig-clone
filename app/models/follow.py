@@ -13,8 +13,5 @@ class Follow(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
-            'imageUrl': self.imageUrl,
-            'createdAt' : self.createdAt,
-            'body' : self.body,
-            'likes' : self.likes
+            'followId': self.followId
         }

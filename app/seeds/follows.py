@@ -6,12 +6,22 @@ def seed_follows():
         followId=2
     )
     follow2 = Follow(
-        userId = 2,
-        followId= 1
+        userId = 1,
+        followId= 3
+    )
+    follow3 = Follow(
+        userId = 1,
+        followId= 4
+    )
+    follow4 = Follow(
+        userId = 1,
+        followId= 5
     )
 
     db.session.add(follow1)
     db.session.add(follow2)
+    db.session.add(follow3)
+    db.session.add(follow4)
     db.session.commit()
 
 

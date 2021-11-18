@@ -13,17 +13,17 @@ def seed_posts():
         body="this was the best concert I've ever been to!"
     )
     post3 = Post(
-        userId=1,
+        userId=3,
         imageUrl="https://i.ibb.co/M5kJKSJ/festival-post.jpg",
         body="me and all my friends"
     )
     post4 = Post(
-        userId=1,
+        userId=4,
         imageUrl="https://i.ibb.co/j4gfzbY/forest-walk-post.jpg",
         body="Feeling very relaxed right now"
     )
     post5 = Post(
-        userId=1,
+        userId=5,
         imageUrl="https://i.ibb.co/b2GqtC4/galaxy-post.jpg",
         body="How cool is this"
     )
@@ -33,12 +33,12 @@ def seed_posts():
         body="Nothing beats this"
     )
     post7 = Post(
-        userId=1,
+        userId=6,
         imageUrl="https://i.ibb.co/m4YN4Ss/laughing-post.jpg",
         body="Love this guy! I had such a blast last weekend"
     )
     post8 = Post(
-        userId=1,
+        userId=7,
         imageUrl="https://i.ibb.co/kGCnvXc/sitting-rocks-guy-post.jpg",
         body="Can't wait to come back here"
     )
