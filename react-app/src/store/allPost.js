@@ -32,7 +32,7 @@ const allPostsReducer = (state = initialState, action) => {
             });
             return {
                 ...allPosts,
-                ...state,
+                // ...state,
             }
         }
         default:

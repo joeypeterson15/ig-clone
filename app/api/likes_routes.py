@@ -24,3 +24,10 @@ def create_like():
     db.session.add(like)
     db.session.commit()
     return {'like' : like.to_dict()}
+
+@likes_routes.route('/delete/<int:userId>/<int:postId>', methods=['DELETE'])
+def delete_comment(userId, postId):
+    like = Like.query.filter(Like.userId == userId, Like.postId == postId).one()
+    db.session.delete(like)
+    db.session.commit()
+    return { 'id' : like.id }

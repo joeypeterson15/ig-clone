@@ -1,16 +1,13 @@
 import { useHistory } from 'react-router-dom';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
-
-
 import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
-
 import DeleteCommentModal from '../DeleteCommentModal';
+import { deleteMyLike } from '../../store/like';
 import "./Post.css"
 
 function Post () {
@@ -91,6 +88,22 @@ function Post () {
         dispatch(createOneLike(payload))
     }
 
+    const isLiked = () => {
+        if (likes) {
+            for (let i = 0; i < likes.length; i++){
+                let like = likes[i]
+                if (like.userId == user?.id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    const deleteLike = () => {
+        dispatch(deleteMyLike(user?.id, post?.id))
+    }
+
     return (
         <div className="post-outer-container">
             <div onClick={() => history.push('/profile')}>exit</div>
@@ -133,10 +146,20 @@ function Post () {
                                 <div>There are currently no comments for this post</div>}
                             </div>
                             <div className="likes-right-div">
+                                <div>
+                                    {!isLiked()
+                                    ?
+                                    <form onSubmit={createLike}>
+                                        <button type="submit">like this post</button>
+                                    </form>
+                                    :
+                                    <div>
+                                        <button onClick={deleteLike}>unlike</button>
+                                    </div>
+                                    }
+
+                                </div>
                                 {countLikes()}
-                                <form onSubmit={createLike}>
-                                    <button type="submit">like this post</button>
-                                </form>
                             </div>
                             <div className="create-comment-right">
 

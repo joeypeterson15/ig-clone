@@ -22,12 +22,13 @@ function YourPost () {
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
+    // const [isLiked, setIsLiked] = useState(false)
 
     const params = useParams()
     const {postId} = params
 
+    const sessionUser = useSelector((state) => state.session?.user)
     const user = useSelector((state) => Object.values(state.user)[0])
-    console.log(user, 'HELLOOOOOO')
     const comments = useSelector((state) => Object.values(state.comments))
     const post = useSelector((state) => state.allPosts[postId])
     const likes = useSelector((state) => Object.values(state.likes))
@@ -39,8 +40,19 @@ function YourPost () {
         dispatch(getUser(post?.userId))
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
-    }, [dispatch])
 
+    }, [dispatch])
+    const isLiked = () => {
+        if (likes) {
+            for (let i = 0; i < likes.length; i++){
+                let like = likes[i]
+                if (like.userId == sessionUser?.id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     useEffect(() => {
         if (!showMenu) return;
@@ -139,10 +151,13 @@ function YourPost () {
                                 <div>There are currently no comments for this post</div>}
                             </div>
                             <div className="likes-right-div">
+                                <div>
+                                    {!isLiked() ? <form onSubmit={createLike}>
+                                        <button type="submit">like this post</button>
+                                    </form> : <button>unlike</button>}
+
+                                </div>
                                 {countLikes()}
-                                <form onSubmit={createLike}>
-                                    <button type="submit">like this post</button>
-                                </form>
                             </div>
                             <div className="create-comment-right">
 
