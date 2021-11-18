@@ -25,7 +25,9 @@ def create_post():
         post = Post (
             body = form.data['body'],
             imageUrl = form.data['imageUrl'],
-            userId = form.data['userId']
+            userId = form.data['userId'],
+            avatar = form.data['avatar'],
+            username = form.data['username']
         )
     db.session.add(post)
     db.session.commit()

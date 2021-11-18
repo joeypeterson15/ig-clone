@@ -8,11 +8,32 @@
     margin-left: 28%;
     margin-bottom: 10rem;
     width: 40rem;
-    height: 50rem;
+    height: 55rem;
     border: 0.5px solid rgba(155, 155, 155, 0.4);
 }
 
 .main-feed-image {
     width: 40rem;
     height: 45rem;
+}
+
+
+
+.upper-username-avatar-container{
+    display: flex;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.main-feed-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.main-feed-username-upper {
+    font-size: 18px;
+    font-weight: 400;
+    padding-left: 1rem;
 }
