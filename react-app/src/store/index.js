@@ -10,6 +10,7 @@ import userPostsReducer from './userPost';
 import followsReducer from './follow';
 import mainFeedPostsReducer from './mainFeedPosts';
 import mainCommentsReducer from './mainComments';
+import mainLikesReducer from './mainLikes';
 
 const rootReducer = combineReducers({
   session,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   userPosts : userPostsReducer,
   follows: followsReducer,
   mainFeedPosts: mainFeedPostsReducer,
-  mainFeedComments : mainCommentsReducer
+  mainFeedComments : mainCommentsReducer,
+  mainLikes : mainLikesReducer
 });
 
 

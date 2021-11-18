@@ -45,39 +45,7 @@ function YourPost () {
     }, [dispatch])
 
 
-    const isLiked = () => {
-        if (likes) {
-            for (let i = 0; i < likes.length; i++){
-                let like = likes[i]
-                if (like.userId == sessionUser?.id) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
-    useEffect(() => {
-        if (!showMenu) return;
-
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
-
-    const openMenu = () => {
-      if (showMenu) return;
-      setShowMenu(true);
-    };
-
-    const deletePost = () => {
-        dispatch(deleteOnePost(postId))
-        history.push('/profile')
-    }
 
     const createComment = (e) => {
         e.preventDefault()
@@ -105,15 +73,27 @@ function YourPost () {
     const createLike = (e) => {
         e.preventDefault()
         const payload = {
-            userId : user?.id,
+            userId : sessionUser?.id,
             postId,
-            username : user?.username
+            username : sessionUser?.username
         }
         dispatch(createOneLike(payload))
     }
 
+    const isLiked = () => {
+        if (likes) {
+            for (let i = 0; i < likes.length; i++){
+                let like = likes[i]
+                if (like.userId == sessionUser?.id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     const deleteLike = () => {
-        dispatch(deleteMyLike(user?.id, post?.id))
+        dispatch(deleteMyLike(sessionUser?.id, post?.id))
     }
 
     return (
@@ -126,14 +106,6 @@ function YourPost () {
                         <div className="post-modal-right">
                             <div className="upper-right-modal">
                                 <Link to={`/p/${post?.userId}`}>{user?.username}</Link>
-
-                                {/* <div onClick={openMenu} >edit</div>
-                                    {showMenu && (
-                                        <ul className="edit-post-dropdown">
-                                        <li></li>
-                                        <button onClick={deletePost}>delete post</button>
-                                        </ul>
-                                    )} */}
 
                             </div>
                             <div className="middle-right-modal">

@@ -11,6 +11,7 @@ import { createOneLike } from '../../store/like';
 import DeleteCommentModal from '../DeleteCommentModal';
 import { getMainFeedComments } from '../../store/mainComments';
 import DeleteMainCommentModal from '../DeleteMainCommentModal/DeleteMainCommentModal';
+import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/mainLikes';
 
 const MainFeedPost = ({ post }) => {
 
@@ -19,14 +20,14 @@ const MainFeedPost = ({ post }) => {
     const sessionUser = useSelector((state) => state.session?.user)
     const user = useSelector((state) => Object.values(state.user)[0])
     const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
-    const likes = useSelector((state) => Object.values(state.likes))
+    const likes = useSelector((state) => Object.values(state.mainLikes).filter((like) => like.postId === post?.id))
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getUser(post?.userId))
         dispatch(getMainFeedComments(post?.id))
-        dispatch(getLikes(post?.id))
+        dispatch(getMainLikes(post?.id))
 
     }, [dispatch])
 
@@ -72,7 +73,11 @@ const MainFeedPost = ({ post }) => {
             postId : post?.id,
             username : sessionUser?.username
         }
-        dispatch(createOneLike(payload))
+        dispatch(createOneMainLike(payload))
+    }
+
+    const deleteLike = () => {
+        dispatch(deleteOneMainLike(sessionUser?.id, post?.id))
     }
 
     return (
@@ -103,13 +108,20 @@ const MainFeedPost = ({ post }) => {
                 </div>
                 <div className="likes-right-div">
                     <div>
-                        {!isLiked() ? <form onSubmit={createLike}>
+                        {!isLiked()
+                        ?
+                        <form onSubmit={createLike}>
                             <button type="submit">like this post</button>
-                        </form> : <button>unlike</button>}
+                        </form>
+                        :
+                        <div>
+                            <button onClick={deleteLike}>unlike</button>
+                        </div>
+                        }
 
+                        </div>
+                        {countLikes()}
                     </div>
-                    {countLikes()}
-                </div>
                 <div className="create-comment-right">
 
                     <form onSubmit={createComment}>
