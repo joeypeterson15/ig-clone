@@ -18,7 +18,9 @@ function AddPostModal () {
         const payload = {
             userId : user?.id,
             body,
-            imageUrl
+            imageUrl,
+            avatar: user?.avatar,
+            username: user?.username
         }
         setShowModal(false)
         dispatch(createOnePost(payload))

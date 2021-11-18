@@ -10,6 +10,8 @@ class Post(db.Model):
     createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
     body = db.Column(db.String(1000), nullable=True)
     likes = db.Column(db.Integer, default = 0)
+    username = db.Column(db.String(100), nullable=False)
+    avatar = db.Column(db.String(1000), nullable=False)
 
 
     def to_dict(self):
@@ -19,5 +21,7 @@ class Post(db.Model):
             'imageUrl': self.imageUrl,
             'createdAt' : self.createdAt,
             'body' : self.body,
-            'likes' : self.likes
+            'likes' : self.likes,
+            'username' : self.username,
+            'avatar' : self.avatar
         }

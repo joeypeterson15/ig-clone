@@ -5,3 +5,5 @@ class addPostForm(FlaskForm):
     body = StringField('body')
     userId = IntegerField('userId')
     imageUrl = StringField('imageUrl')
+    avatar = StringField('avatar')
+    username = StringField('username')
