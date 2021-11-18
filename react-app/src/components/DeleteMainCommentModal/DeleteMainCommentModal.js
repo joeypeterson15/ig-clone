@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { useSelector} from 'react-redux';
-import { deleteOneComment } from '../../store/comment';
+
 import { deleteMainFeedComment } from '../../store/mainComments';
 
-function DeleteCommentModal ({comment}) {
+function DeleteMainCommentModal ({comment}) {
     const [showModal, setShowModal] = useState(false);
 
     // const user = useSelector((state) => state.session?.user)
@@ -15,8 +15,7 @@ function DeleteCommentModal ({comment}) {
     const deleteComment = (e) => {
         e.preventDefault()
         setShowModal(false)
-        dispatch(deleteOneComment(comment?.id))
-
+        dispatch(deleteMainFeedComment(comment?.id))
     }
 
     return (
@@ -36,4 +35,4 @@ function DeleteCommentModal ({comment}) {
     )
 }
 
-export default DeleteCommentModal;
+export default DeleteMainCommentModal;

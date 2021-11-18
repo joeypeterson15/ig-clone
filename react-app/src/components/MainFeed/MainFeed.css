@@ -33,7 +33,19 @@
 }
 
 .main-feed-username-upper {
-    font-size: 18px;
-    font-weight: 400;
+    /* font-size: 18px; */
+    font-weight: 550;
     padding-left: 1rem;
+}
+
+
+
+.main-feed-lower {
+    display: flex;
+    padding-left: 1rem;
+}
+
+.main-lower-username {
+    font-weight: 550;
+    padding-right: 1rem;
 }

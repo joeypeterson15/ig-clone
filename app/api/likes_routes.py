@@ -27,7 +27,7 @@ def create_like():
 
 @likes_routes.route('/delete/<int:userId>/<int:postId>', methods=['DELETE'])
 def delete_comment(userId, postId):
-    like = Like.query.filter(Like.userId == userId, Like.postId == postId).one()
+    like = Like.query.filter(Like.userId == userId, Like.postId == postId).first()
     db.session.delete(like)
     db.session.commit()
     return { 'id' : like.id }
