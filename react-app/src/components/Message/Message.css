@@ -1,10 +1,22 @@
-.messages-container {
-    background-color: seagreen;
+
+.messages-component-container {
+    left: 37.8rem;
+    top: 4rem;
+    /* background-color: hotpink; */
+    border: 0.2px solid rgb(221, 221, 221);
+    height: 42rem;
     position: absolute;
+}
+
+.messages-container {
+    /* background-color: seagreen; */
+    border-top: 0.2px solid rgb(221, 221, 221);
+    border-bottom: 0.2px solid rgb(221, 221, 221);
     left: 31rem;
-    top: 12.3rem;
-    height: 28rem;
-    width: 40rem;
+    top: 14rem;
+    height: 31.4rem;
+    width: 36.6rem;
+    overflow-y: scroll;
     /* display: flex;
     flex-direction: column;
     justify-content: space-between; */
@@ -12,7 +24,6 @@
 
 .messages-in-messages-container {
 
-    overflow-y: scroll;
 }
 
 .message-in-messages {
@@ -23,24 +34,75 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
+    margin-left: 1rem;
+    margin-top: 3rem;
+}
+
+.channel-avatar {
+    width: 2rem;
+    height: 2rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 50%;
 }
 
 .submit-message-form {
     display: flex;
     justify-content: space-between;
-    background-color: pink;
+    /* background-color: rgb(83, 45, 51); */
     width: 100%;
-    position: absolute;
-    top: 27rem;
+    /* position: absolute; */
+    margin-top: 2.5rem;
+    /* margin-left: 33.87%; */
+    /* padding-left: 3rem; */
 }
 
 .message-input {
-    border-radius: 10px;
+    border: 0.2px solid rgb(219, 219, 219);
+    border-radius: 30px;
     height: 2.5rem;
-    width: 80%;
-    margin-left: 5%;
+    width: 100%;
+    padding-left: 3%;
+    margin-left: 8%;
 }
 
 .message-send-button {
     visibility: hidden;
+}
+
+.time-time-div {
+    margin-left: 47%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: rgb(139, 139, 139);
+    font-size: 13.7px;
+    font-weight: 200;
+}
+.time-stamp-div {
+    margin-left: 39%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: rgb(139, 139, 139);
+    font-size: 13.7px;
+    font-weight: 200;
+}
+
+.content-avatar-in-message-div {
+    display: flex;
+}
+
+.message-content {
+    margin-left: 0.8rem;
+    border: 0.2px solid rgb(233, 233, 233);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 7rem;
+}
+
+.upper-right-messages {
+    display: flex;
+}
+
+.channel-name {
+    padding-left: 1rem;
 }

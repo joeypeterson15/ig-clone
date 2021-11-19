@@ -37,32 +37,75 @@ function Message () {
         setContent('')
     }
 
+    const convertTime = function(oldTime){
+        let newTime = oldTime.split(' ')[1]
+        let time = newTime.split(':');
+        let hours = time[0];
+        let minutes = time[1];
+        let timeValue = "" + ((hours >12) ? hours -12 :hours);
+            timeValue += (minutes < 10) ? ':' + minutes : ":" + minutes;
+            timeValue += (hours >= 12) ? " pm" : " am";
+            // timeValue += "" + date
+            return timeValue;
+        }
+
+    const isSameDay = function(oldTime) {
+        // let today = Date.now().getDate().toString()
+        let newToday = new Date().getDate().toString()
+        let newOldTime = new Date(oldTime).getDate()
+        console.log('todays date:', newToday)
+        console.log('message date:', newOldTime)
+        if (newToday == newOldTime){
+            return true
+        }
+        return false
+    }
+
 
     return (
+        <div className="messages-component-container">
 
-        <div className="messages-container">
-
-            <h3>{channels[channelId]?.friendUsername}</h3>
-
-            <div className="messages-in-messages-container">
-                {!!messages.length ? messages.map((message) => (
-                    <div className="message-in-messages">
-
-                        <div className="time-stamp-div">{message?.createdAt}</div>
-
-                        <div className="content-avatar-in-message-div">
-                            <div>{message?.content}</div>
-                            <img className="messenger-avatar" alt="" src={message?.userAvatar}></img>
-                        </div>
-
-                    </div>
-                )) : "no messages"}
+            <div className="upper-right-messages">
+                <img className="channel-avatar" alt="" src={channels[channelId]?.friendAvatar}></img>
+                <h3 className="channel-name">{channels[channelId]?.friendUsername}</h3>
             </div>
 
-            <form className="submit-message-form" onSubmit={createMessage}>
-                <input className="message-input" type="text" placeholder="send message..." value={content} onChange={(e) => setContent(e.target.value)}></input>
-                <button className="message-send-button" type="submit">Send</button>
-            </form>
+            <div className="messages-container">
+
+                <div className="messages-in-messages-container">
+                    {!!messages.length ? messages.map((message) => (
+                        <div className="message-in-messages">
+                            <div>
+                                {isSameDay(message?.createdAt)
+                            ?
+                            <div className="time-time-div">
+                                {convertTime(message?.createdAt)}
+                            </div>
+                            :
+                            <div className="time-stamp-div">
+                                {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(message?.createdAt))} {new Date(message?.createdAt).getDate()}, 2021 {convertTime(message?.createdAt)}
+
+                            </div>
+                            }
+
+
+                            </div>
+
+
+                            <div className="content-avatar-in-message-div">
+                                <img className="messenger-avatar" alt="" src={message?.userAvatar}></img>
+                                <div className="message-content">{message?.content}</div>
+                            </div>
+
+                        </div>
+                    )) : "no messages"}
+                </div>
+            </div>
+
+                <form className="submit-message-form" onSubmit={createMessage}>
+                    <input className="message-input" type="text" placeholder="send message..." value={content} onChange={(e) => setContent(e.target.value)}></input>
+                    <button className="message-send-button" type="submit">Send</button>
+                </form>
 
         </div>
 

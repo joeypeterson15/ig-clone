@@ -4,9 +4,17 @@
 
 .channel-and-search-left-container {
     width: 20rem;
-    background-color: blue;
-    margin-left: 10rem;
-    height: 30rem;
+    margin-top: 0.7rem;
+    border-top: 0.2px solid rgb(221, 221, 221);
+    border-left: 0.2px solid rgb(221, 221, 221);
+    border-bottom: 0.2px solid rgb(221, 221, 221);
+    /* background-color: blue; */
+    margin-left: 17.29rem;
+    height: 42rem;
+}
+
+.channels-div {
+
 }
 
 .channel-in-channel-container{
