@@ -19,7 +19,7 @@ class Post(db.Model):
             'id': self.id,
             'userId': self.userId,
             'imageUrl': self.imageUrl,
-            'createdAt' : self.createdAt,
+            'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S"),
             'body' : self.body,
             'likes' : self.likes,
             'username' : self.username,

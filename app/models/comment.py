@@ -18,5 +18,5 @@ class Comment(db.Model):
             'postId': self.postId,
             'userId' : self.userId,
             'content' : self.content,
-            'createdAt' : self.createdAt
+            'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S")
         }

@@ -16,6 +16,7 @@ import UserProfile from './components/UserProfile';
 import YourProfilePost from './components/YourProfilePost/YourProfilePost';
 import MainFeed from './components/MainFeed';
 import Search from './components/Search';
+import Channel from './components/Channel';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -73,7 +74,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/messages' exact={true} >
           <NavBar />
-          <Search />
+          <Channel />
         </ProtectedRoute>
         <ProtectedRoute path='/:postId' exact={true} >
           <Post />
