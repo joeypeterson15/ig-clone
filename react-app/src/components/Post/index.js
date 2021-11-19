@@ -9,6 +9,7 @@ import { createOneLike } from '../../store/like';
 import DeleteCommentModal from '../DeleteCommentModal';
 import { deleteMyLike } from '../../store/like';
 import { Link } from 'react-router-dom';
+import UpdateCommentModal from '../UpdateCommentModal';
 import "./Post.css"
 
 function Post () {
@@ -186,7 +187,11 @@ function Post () {
                                     <div className='comment-edit-div'>
                                         <div>{comment.content}</div>
                                         {comment.userId === user?.id ?
-                                        <DeleteCommentModal comment={comment}/> : ''}
+                                        <div>
+                                            <UpdateCommentModal comment={comment}/>
+                                            <DeleteCommentModal comment={comment}/>
+                                        </div>
+                                         : ''}
                                     </div>
 
 
