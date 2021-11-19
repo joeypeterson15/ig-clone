@@ -8,6 +8,7 @@ import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
 import DeleteCommentModal from '../DeleteCommentModal';
 import { deleteMyLike } from '../../store/like';
+import { Link } from 'react-router-dom';
 import "./Post.css"
 
 function Post () {
@@ -15,6 +16,8 @@ function Post () {
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
+    const [hashtags, setHashtags] = useState([])
+    const [body, setBody] = useState([])
 
     const params = useParams()
     const {postId} = params
@@ -24,6 +27,7 @@ function Post () {
     const post = useSelector((state) => state.myPosts[postId])
     const likes = useSelector((state) => Object.values(state.likes))
 
+    console.log(post?.body.split(" ").join(" "))
 
     const dispatch = useDispatch()
 
@@ -49,6 +53,37 @@ function Post () {
       if (showMenu) return;
       setShowMenu(true);
     };
+
+
+    useEffect(() => {
+        let split = post?.body.split(" ")
+        for (let i = 0; i < split.length; i++) {
+            let e = split[i];
+            if (e.includes("#")) {
+                setHashtags(old => [...old, e])
+                // split.splice(i,1)
+            } else {
+                setBody(old => [...old, e])
+            }
+        }
+        //  setBody(split.join(' '))
+        //  console.log(body)
+    }, [dispatch])
+
+    // const hashTagBody = () => {
+    //     let split = post?.body.split(" ")
+    //     for (let i = 0; i < split.length; i++) {
+    //         let e = split[i];
+    //         if (e.includes("#")) {
+    //             setHashtags(old => [...old, e])
+    //             split.splice(i,1)
+    //         }
+    //     }
+    //      setBody(split.join(' '))
+    //      console.log(body)
+    // }
+
+
 
     const deletePost = () => {
         dispatch(deleteOnePost(postId))
@@ -104,6 +139,9 @@ function Post () {
         dispatch(deleteMyLike(user?.id, post?.id))
     }
 
+
+
+
     return (
         <div className="post-outer-container">
             <div onClick={() => history.push('/profile')}>exit</div>
@@ -128,8 +166,18 @@ function Post () {
                                 <div>
                                     {user?.username}
                                 </div>
-                                <div>
+                                {/* <div>
                                     {post?.body}
+                                </div> */}
+                                <div>
+                                    {body.join(' ')}
+                                </div>
+                                <div>
+                                    {hashtags ? hashtags.map((hashtag) => (
+                                        <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                    ))
+
+                                : ""}
                                 </div>
                             </div>
                             <div className="bottom-right-comments">

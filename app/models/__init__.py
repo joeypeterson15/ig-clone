@@ -6,3 +6,4 @@ from .follow import Follow
 from .like import Like
 from .channel import Channel
 from .message import Message
+from .hashtag import Hashtag
