@@ -11,6 +11,9 @@ import followsReducer from './follow';
 import mainFeedPostsReducer from './mainFeedPosts';
 import mainCommentsReducer from './mainComments';
 import mainLikesReducer from './mainLikes';
+import channelReducer from './channel';
+import allUsersReducer from './allUsers';
+import messageReducer from './message';
 
 const rootReducer = combineReducers({
   session,
@@ -23,7 +26,10 @@ const rootReducer = combineReducers({
   follows: followsReducer,
   mainFeedPosts: mainFeedPostsReducer,
   mainFeedComments : mainCommentsReducer,
-  mainLikes : mainLikesReducer
+  mainLikes : mainLikesReducer,
+  channels : channelReducer,
+  allUsers : allUsersReducer,
+  messages : messageReducer
 });
 
 

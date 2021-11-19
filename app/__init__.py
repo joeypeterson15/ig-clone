@@ -16,6 +16,9 @@ from .api.get_user_route import get_user_routes
 from .api.user_post_routes import user_post_routes
 from .api.follow_routes import follow_routes
 from .api.main_post_routes import main_post_routes
+from .api.channel_routes import channel_routes
+from .api.all_user_routes import all_user_routes
+from .api.message_routes import message_routes
 
 
 from .seeds import seed_commands
@@ -48,6 +51,9 @@ app.register_blueprint(get_user_routes, url_prefix='/api/postuser')
 app.register_blueprint(user_post_routes, url_prefix='/api/userposts')
 app.register_blueprint(follow_routes, url_prefix='/api/follows')
 app.register_blueprint(main_post_routes, url_prefix='/api/main')
+app.register_blueprint(channel_routes, url_prefix='/api/channels')
+app.register_blueprint(all_user_routes, url_prefix='/api/allusers')
+app.register_blueprint(message_routes, url_prefix='/api/messages')
 db.init_app(app)
 Migrate(app, db)
 

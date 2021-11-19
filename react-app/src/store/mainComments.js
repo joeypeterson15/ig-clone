@@ -41,7 +41,6 @@ export const createMainFeedComment = (payload) => async dispatch => {
     })
 
     if (response.ok) {
-        console.log('response!!!', response)
         const comment = await response.json()
         dispatch(addComment(comment))
     }
@@ -77,12 +76,6 @@ const mainCommentsReducer = (state = initialState, action) => {
                 ...allComments,
                 ...state,
             }
-
-
-            // const newState = {...state}
-            // const postId = Object.keys(action.comments.comments)[0]
-            // newState[postId] = action.channels[postId]
-            // return newState
         }
 
         case ADD: {
