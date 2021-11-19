@@ -8,6 +8,7 @@ import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
 import DeleteCommentModal from '../DeleteCommentModal';
 import { deleteMyLike } from '../../store/like';
+import { Link } from 'react-router-dom';
 import "./Post.css"
 
 function Post () {
@@ -16,7 +17,7 @@ function Post () {
     const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
     const [hashtags, setHashtags] = useState([])
-    const [body, setBody] = useState('')
+    const [body, setBody] = useState([])
 
     const params = useParams()
     const {postId} = params
@@ -26,6 +27,7 @@ function Post () {
     const post = useSelector((state) => state.myPosts[postId])
     const likes = useSelector((state) => Object.values(state.likes))
 
+    console.log(post?.body.split(" ").join(" "))
 
     const dispatch = useDispatch()
 
@@ -54,18 +56,32 @@ function Post () {
 
 
     useEffect(() => {
-        let split = body.split(" ")
+        let split = post?.body.split(" ")
         for (let i = 0; i < split.length; i++) {
             let e = split[i];
-            if (e === "#") {
-                setHashtags(old => [...old, (`${e}${split[i + 1]}`)])
-                split.splice(i,2)
+            if (e.includes("#")) {
+                setHashtags(old => [...old, e])
+                // split.splice(i,1)
+            } else {
+                setBody(old => [...old, e])
             }
-
         }
-         setBody(split.join(' '))
-         console.log(body)
+        //  setBody(split.join(' '))
+        //  console.log(body)
     }, [dispatch])
+
+    // const hashTagBody = () => {
+    //     let split = post?.body.split(" ")
+    //     for (let i = 0; i < split.length; i++) {
+    //         let e = split[i];
+    //         if (e.includes("#")) {
+    //             setHashtags(old => [...old, e])
+    //             split.splice(i,1)
+    //         }
+    //     }
+    //      setBody(split.join(' '))
+    //      console.log(body)
+    // }
 
 
 
@@ -154,7 +170,14 @@ function Post () {
                                     {post?.body}
                                 </div> */}
                                 <div>
-                                    {body}
+                                    {body.join(' ')}
+                                </div>
+                                <div>
+                                    {hashtags ? hashtags.map((hashtag) => (
+                                        <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                    ))
+
+                                : ""}
                                 </div>
                             </div>
                             <div className="bottom-right-comments">
