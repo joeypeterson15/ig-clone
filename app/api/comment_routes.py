@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import Comment, db
 from app.forms import addCommentForm
+from app.forms import updateCommentForm
 
 
 comment_routes = Blueprint('comments', __name__)
@@ -34,3 +35,11 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
     return { 'commentId' : id }
+
+@comment_routes.route('/update/<int:id>', methods=['POST'])
+def update_comment(id):
+    form = updateCommentForm()
+    comment = Comment.query.get(id)
+    comment.content = form.data['content']
+    db.session.commit()
+    return { 'commentId' : comment.id, 'comment' : comment.to_dict() }

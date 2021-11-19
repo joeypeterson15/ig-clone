@@ -12,6 +12,7 @@ import DeleteCommentModal from '../DeleteCommentModal';
 import { getMainFeedComments } from '../../store/mainComments';
 import DeleteMainCommentModal from '../DeleteMainCommentModal/DeleteMainCommentModal';
 import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/mainLikes';
+import UpdateMainCommentModal from '../UpdateMainCommentModal';
 
 const MainFeedPost = ({ post }) => {
 
@@ -99,7 +100,11 @@ const MainFeedPost = ({ post }) => {
                         <div className='comment-edit-div'>
                             <div>{comment?.content}</div>
                             {comment?.userId === sessionUser?.id ?
-                            <DeleteMainCommentModal comment={comment}/> : ''}
+                            <div>
+                            <UpdateMainCommentModal comment={comment}/>
+                            <DeleteMainCommentModal comment={comment}/>
+                        </div>
+                         : ''}
                         </div>
 
 

@@ -6,3 +6,5 @@ from .addLikeForm import addLikeForm
 from .addFollowForm import addFollowForm
 from .addChannelForm import addChannelForm
 from .addMessageForm import addMessageForm
+from .update_comment import updateCommentForm
+from .update_post import UpdatePostForm

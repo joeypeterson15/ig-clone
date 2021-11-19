@@ -12,6 +12,7 @@ import { createOneLike } from '../../store/like';
 import { deleteMyLike } from '../../store/like';
 
 import DeleteCommentModal from '../DeleteCommentModal';
+import UpdateCommentModal from '../UpdateCommentModal';
 
 import { getUser } from '../../store/user';
 
@@ -122,7 +123,11 @@ function YourPost () {
                                     <div className='comment-edit-div'>
                                         <div>{comment.content}</div>
                                         {comment.userId === user?.id ?
-                                        <DeleteCommentModal comment={comment}/> : ''}
+                                        <div>
+                                        <UpdateCommentModal comment={comment}/>
+                                        <DeleteCommentModal comment={comment}/>
+                                    </div>
+                                     : ''}
                                     </div>
 
 

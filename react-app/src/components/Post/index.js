@@ -9,6 +9,9 @@ import { createOneLike } from '../../store/like';
 import DeleteCommentModal from '../DeleteCommentModal';
 import { deleteMyLike } from '../../store/like';
 import { Link } from 'react-router-dom';
+import UpdateCommentModal from '../UpdateCommentModal';
+import UpdatePostModal from '../UpdatePostModal';
+import { getMyPosts } from '../../store/post';
 import "./Post.css"
 
 function Post () {
@@ -24,16 +27,18 @@ function Post () {
 
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
-    const post = useSelector((state) => state.myPosts[postId])
+    const post1 = useSelector((state) => state?.myPosts[postId])
+    const post = useSelector((state) => Object.values(state.myPosts).find(post => post.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
-    console.log(post?.body.split(" ").join(" "))
+    console.log(post1)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
+        
     }, [dispatch])
 
 
@@ -160,6 +165,7 @@ function Post () {
                                         <button onClick={deletePost}>delete post</button>
                                         </ul>
                                     )}
+                                <UpdatePostModal post={post}/>
 
                             </div>
                             <div className="middle-right-modal">
@@ -186,7 +192,11 @@ function Post () {
                                     <div className='comment-edit-div'>
                                         <div>{comment.content}</div>
                                         {comment.userId === user?.id ?
-                                        <DeleteCommentModal comment={comment}/> : ''}
+                                        <div>
+                                            <UpdateCommentModal comment={comment}/>
+                                            <DeleteCommentModal comment={comment}/>
+                                        </div>
+                                         : ''}
                                     </div>
 
 

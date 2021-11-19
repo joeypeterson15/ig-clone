@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Post, User, db, Comment, Like
-from app.forms import addPostForm
+from app.forms import UpdatePostForm, addPostForm
 
 post_routes = Blueprint('posts', __name__)
 
@@ -45,3 +45,12 @@ def delete_my_post(postId):
     db.session.delete(post)
     db.session.commit()
     return {'postId' : postId}
+
+
+@post_routes.route('/update/<int:id>', methods=['POST'])
+def update_comment(id):
+    form = UpdatePostForm()
+    post = Post.query.get(id)
+    post.body = form.data['body']
+    db.session.commit()
+    return { 'postId' : post.id, 'post' : post.to_dict() }

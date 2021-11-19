@@ -1,6 +1,7 @@
 const LOAD = 'mainComments/LOAD'
 const ADD = 'mainComments/ADD'
 const DELETE = 'mainComments/DELETE'
+const LOAD_AFTER_UPDATE = 'mainComments/LOAD_AFTER_UPDATE'
 
 
 const loadComments = comments => ({
@@ -16,6 +17,12 @@ const addComment = comment => ({
 const removeOneComment = commentId => ({
     type: DELETE,
     commentId
+})
+
+const loadAfterUpdate = (commentId, comment) => ({
+    type: LOAD_AFTER_UPDATE,
+    commentId,
+    comment
 })
 
 
@@ -61,6 +68,20 @@ export const deleteMainFeedComment = (commentId) => async dispatch => {
 
 }
 
+export const updateOneMainComment = (payload, commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/update/${commentId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const { commentId, comment } = await response.json()
+        dispatch(loadAfterUpdate(commentId, comment))
+    }
+}
+
 const initialState = {
     // list: []
 }
@@ -88,6 +109,12 @@ const mainCommentsReducer = (state = initialState, action) => {
         case DELETE: {
             const newState = {...state}
             delete newState[action.commentId.commentId]
+            return newState;
+        }
+        case LOAD_AFTER_UPDATE: {
+            const newState = { ...state}
+            delete newState[action.commentId]
+            newState[action.commentId] = action.comment
             return newState;
         }
         default:
