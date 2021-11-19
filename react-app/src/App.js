@@ -18,6 +18,7 @@ import MainFeed from './components/MainFeed';
 import Search from './components/Search';
 import Channel from './components/Channel';
 import Message from './components/Message';
+import AboutCreator from './components/AboutCreator';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -92,6 +93,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <MainFeed />
+        </ProtectedRoute>
+        <ProtectedRoute path='/about' exact={true} >
+          <AboutCreator />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
