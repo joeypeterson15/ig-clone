@@ -27,17 +27,18 @@ function Post () {
 
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
-    const post = useSelector((state) => state?.myPosts[postId])
-    // const post = useSelector((state) => Object.keys(state.myPosts).find(key => state.myPosts[key] === postId))
+    const post1 = useSelector((state) => state?.myPosts[postId])
+    const post = useSelector((state) => Object.values(state.myPosts).find(post => post.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
-    console.log(post?.body.split(" ").join(" "))
+    console.log(post1)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
+        
     }, [dispatch])
 
 

@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { updateOnePost } from '../../store/post';
 import { useHistory } from 'react-router';
+import { getMyPosts } from '../../store/post';
 import "./UpdatePostModal.css"
 
 
@@ -21,7 +22,8 @@ function UpdatePostModal ({post}) {
         }
         setShowModal(false)
         dispatch(updateOnePost(payload, post?.id))
-        history.push(`/${post?.id}`)
+        history.push('/profile')
+        // dispatch(getMyPosts(post?.id))
 
     }
 
