@@ -5,3 +5,4 @@ from .add_comment_form import addCommentForm
 from .addLikeForm import addLikeForm
 from .addFollowForm import addFollowForm
 from .addChannelForm import addChannelForm
+from .addMessageForm import addMessageForm

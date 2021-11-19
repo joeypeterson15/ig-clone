@@ -1,0 +1,46 @@
+.messages-container {
+    background-color: seagreen;
+    position: absolute;
+    left: 31rem;
+    top: 12.3rem;
+    height: 28rem;
+    width: 40rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+.messages-in-messages-container {
+
+    overflow-y: scroll;
+}
+
+.message-in-messages {
+
+}
+
+.messenger-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.submit-message-form {
+    display: flex;
+    justify-content: space-between;
+    background-color: pink;
+    width: 100%;
+    position: absolute;
+    top: 27rem;
+}
+
+.message-input {
+    border-radius: 10px;
+    height: 2.5rem;
+    width: 80%;
+    margin-left: 5%;
+}
+
+.message-send-button {
+    visibility: hidden;
+}
