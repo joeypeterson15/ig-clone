@@ -1,6 +1,7 @@
 const LOAD = 'posts/LOAD'
 const ADD = 'posts/ADD'
 const DELETE = 'posts/DELETE'
+const LOAD_AFTER_UPDATE = 'posts/LOAD_AFTER_UPDATE'
 
 
 
@@ -17,6 +18,12 @@ const createPost = post => ({
 const removeOnePost = postId => ({
     type: DELETE,
     postId
+})
+
+const loadAfterUpdate = (postId, post) => ({
+    type: LOAD_AFTER_UPDATE,
+    postId,
+    post
 })
 
 
@@ -59,6 +66,21 @@ export const deleteOnePost = (postId) => async dispatch => {
 }
 
 
+export const updateOnePost = (payload, postId) => async dispatch => {
+    const response = await fetch(`/api/posts/update/${postId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const { postId, post } = await response.json()
+        dispatch(loadAfterUpdate(postId, post))
+    }
+}
+
+
 const initialState = {
     // list: []
 }
@@ -85,6 +107,12 @@ const myPostsReducer = (state = initialState, action) => {
         case DELETE: {
             const newState = {...state}
             delete newState[action.postId.postId]
+            return newState;
+        }
+        case LOAD_AFTER_UPDATE: {
+            const newState = { ...state}
+            delete newState[action.postId]
+            newState[action.postId] = action.post
             return newState;
         }
         default:
