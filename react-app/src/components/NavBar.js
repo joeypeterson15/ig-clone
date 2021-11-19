@@ -4,13 +4,14 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import AddPostModal from './AddPostModal';
+import "./NavBar.css"
 
 const NavBar = () => {
   const userId = useSelector((state) => state.session?.user?.id)
 
   return (
-    <nav>
-      <ul>
+    <nav >
+      <ul className="navbar-nav">
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home

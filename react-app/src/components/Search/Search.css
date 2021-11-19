@@ -1,3 +1,11 @@
+.search-container {
+  /* background-color: red; */
+  border-bottom: 0.2px solid rgb(221, 221, 221);
+  width: 20rem;
+  height: 3.7rem;
+}
+
+
 .search-results-div {
     display: flex;
     height: 40px;
@@ -35,10 +43,4 @@
   }
   .search-results.results-found{
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-  }
-
-  .search-container {
-      background-color: red;
-      width: 20rem;
-      height: 5rem;
   }
