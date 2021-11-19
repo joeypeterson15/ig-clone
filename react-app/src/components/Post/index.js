@@ -15,6 +15,8 @@ function Post () {
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
+    const [hashtags, setHashtags] = useState([])
+    const [body, setBody] = useState('')
 
     const params = useParams()
     const {postId} = params
@@ -49,6 +51,23 @@ function Post () {
       if (showMenu) return;
       setShowMenu(true);
     };
+
+
+    useEffect(() => {
+        let split = body.split(" ")
+        for (let i = 0; i < split.length; i++) {
+            let e = split[i];
+            if (e === "#") {
+                setHashtags(old => [...old, (`${e}${split[i + 1]}`)])
+                split.splice(i,2)
+            }
+
+        }
+         setBody(split.join(' '))
+         console.log(body)
+    }, [dispatch])
+
+
 
     const deletePost = () => {
         dispatch(deleteOnePost(postId))
@@ -104,6 +123,9 @@ function Post () {
         dispatch(deleteMyLike(user?.id, post?.id))
     }
 
+
+
+
     return (
         <div className="post-outer-container">
             <div onClick={() => history.push('/profile')}>exit</div>
@@ -128,8 +150,11 @@ function Post () {
                                 <div>
                                     {user?.username}
                                 </div>
-                                <div>
+                                {/* <div>
                                     {post?.body}
+                                </div> */}
+                                <div>
+                                    {body}
                                 </div>
                             </div>
                             <div className="bottom-right-comments">

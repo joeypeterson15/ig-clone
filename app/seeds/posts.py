@@ -5,72 +5,82 @@ def seed_posts():
     post1 = Post(
         userId=1,
         imageUrl="https://i.ibb.co/HhBtWPm/concert-event-photo.jpg",
-        body="Had so much fun",
+        body="another one #fun",
         avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
-        username='Demo'
+        username='Demo',
+        hashtagId=3
     )
     post2 = Post(
         userId=1,
         imageUrl="https://i.ibb.co/4RtZknX/concert-fire-event-post.jpg",
-        body="this was the best concert I've ever been to!",
+        body="I had such a blast! #fun",
         avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
-        username='Demo'
+        username='Demo',
+        hashtagId=3
     )
     post3 = Post(
         userId=3,
         imageUrl="https://i.ibb.co/M5kJKSJ/festival-post.jpg",
-        body="me and all my friends",
+        body="me and all my friends #fun",
         avatar="https://i.ibb.co/f8spgnW/hoodie-guy-pro-pic.jpg",
-        username="bobbie"
+        username="bobbie",
+        hashtagId=3
+
     )
     post4 = Post(
         userId=4,
         imageUrl="https://i.ibb.co/j4gfzbY/forest-walk-post.jpg",
-        body="Feeling very relaxed right now",
+        body="Feeling very relaxed right now #travel",
         avatar="https://i.ibb.co/WGBwPLL/motorcycle-pro-pic.jpg",
-        username="winterBrad"
+        username="winterBrad",
+        hashtagId=2
     )
     post5 = Post(
         userId=5,
         imageUrl="https://i.ibb.co/b2GqtC4/galaxy-post.jpg",
-        body="How cool is this",
+        body="How cool is this #sublime",
         avatar="https://i.ibb.co/Fm3KzQb/party-guy-profilepic.jpg",
-        username="andrewkep"
+        username="andrewkep",
+        hashtagId=1
     )
     post6 = Post(
         userId=2,
         imageUrl="https://i.ibb.co/CwYWXMW/hiking-picture-post.jpg",
-        body="Nothing beats this",
+        body="Nothing beats this #travel",
         avatar="https://i.ibb.co/5hJ1kkT/lake-pro-pic-girl.jpg",
-        username="marnie"
+        username="marnie",
+        hashtagId=2
     )
     post7 = Post(
         userId=6,
         imageUrl="https://i.ibb.co/m4YN4Ss/laughing-post.jpg",
-        body="Love this guy! I had such a blast last weekend",
+        body="Love this guy. Had a lot of last weekend",
         username="stew20",
         avatar="https://i.ibb.co/GJC95Jz/pro-pic-camera.jpg"
     )
     post8 = Post(
         userId=7,
         imageUrl="https://i.ibb.co/kGCnvXc/sitting-rocks-guy-post.jpg",
-        body="Can't wait to come back here",
+        body="Can't wait to come back #travel",
         avatar="https://i.ibb.co/ykqMdnZ/Middle-age-man-portrait-at-sunset.jpg" ,
-        username="steven10"
+        username="steven10",
+        hashtagId=2
     )
     post9 = Post(
         userId=2,
         imageUrl="https://i.ibb.co/YbdJXrW/spiral-galaxy-post.jpg",
-        body="Space!",
+        body="whoa #sublime",
         avatar="https://i.ibb.co/5hJ1kkT/lake-pro-pic-girl.jpg",
-        username="marnie"
+        username="marnie",
+        hashtagId=1
     )
     post10 = Post(
-        userId=1,
+        userId=10,
         imageUrl="https://i.ibb.co/fxsc09W/woman-sitting-rock.jpg",
-        body="One of my favorite places to go",
+        body="One of my favorite places to go #travel",
         avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
-        username="Demo"
+        username="robinite111",
+        hashtagId=2
     )
 
 
