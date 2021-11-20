@@ -171,9 +171,6 @@ function Post () {
                                 <div>
                                     {user?.username}
                                 </div>
-                                {/* <div>
-                                    {post?.body}
-                                </div> */}
                                 <div>
                                     {body.join(' ')}
                                 </div>

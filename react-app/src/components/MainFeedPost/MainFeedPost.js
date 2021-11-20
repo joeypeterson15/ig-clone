@@ -14,6 +14,8 @@ const MainFeedPost = ({ post }) => {
     const sessionUser = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
     const likes = useSelector((state) => Object.values(state.mainLikes).filter((like) => like.postId === post?.id))
+    const [hashtags, setHashtags] = useState([])
+    const [body, setBody] = useState([])
 
     const dispatch = useDispatch()
 
@@ -22,6 +24,21 @@ const MainFeedPost = ({ post }) => {
         dispatch(getMainFeedComments(post?.id))
         dispatch(getMainLikes(post?.id))
 
+    }, [dispatch])
+
+    useEffect(() => {
+        let split = post?.body.split(" ")
+        for (let i = 0; i < split.length; i++) {
+            let e = split[i];
+            if (e.includes("#")) {
+                setHashtags(old => [...old, e])
+                // split.splice(i,1)
+            } else {
+                setBody(old => [...old, e])
+            }
+        }
+        //  setBody(split.join(' '))
+        //  console.log(body)
     }, [dispatch])
 
     const isLiked = () => {
@@ -81,12 +98,30 @@ const MainFeedPost = ({ post }) => {
                     <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">{post?.username}</Link>
                 </div>
                 <img className="main-feed-image" src={post?.imageUrl}></img>
+
+
                 <div className="main-feed-lower">
                     <div className="main-lower-username">{post?.username}</div>
-                    <div>{post?.body}</div>
+                    {/* <div>{post?.body}</div> */}
+                    <div className="middle-right-modal">
+                        {/* <div>
+                            {post?.username}
+                        </div> */}
+                        <div>
+                            {body.join(' ')}
+                        </div>
+                        <div>
+                            {hashtags ? hashtags.map((hashtag) => (
+                                <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                            ))
+
+                        : ""}
+                        </div>
+                    </div>
                 </div>
 
                 <div className="bottom-right-comments">
+                    <Link to={`/posts/${post?.id}`}></Link>
                     {comments ?
                     comments.map((comment) => (
                         <div className='comment-edit-div'>
