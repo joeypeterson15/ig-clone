@@ -15,7 +15,6 @@ import YourPost from './components/YourPost';
 import UserProfile from './components/UserProfile';
 import YourProfilePost from './components/YourProfilePost/YourProfilePost';
 import MainFeed from './components/MainFeed';
-import Search from './components/Search';
 import Channel from './components/Channel';
 import Message from './components/Message';
 import AboutCreator from './components/AboutCreator';

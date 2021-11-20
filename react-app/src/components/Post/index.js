@@ -11,7 +11,6 @@ import { deleteMyLike } from '../../store/like';
 import { Link } from 'react-router-dom';
 import UpdateCommentModal from '../UpdateCommentModal';
 import UpdatePostModal from '../UpdatePostModal';
-import { getMyPosts } from '../../store/post';
 import "./Post.css"
 
 function Post () {
@@ -38,7 +37,7 @@ function Post () {
     useEffect(() => {
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
-        
+
     }, [dispatch])
 
 

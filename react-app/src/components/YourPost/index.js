@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
 
-
-import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
@@ -22,7 +20,7 @@ import "../Post/Post.css"
 function YourPost () {
 
     let history = useHistory()
-    const [showMenu, setShowMenu] = useState(false);
+    // const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
     // const [isLiked, setIsLiked] = useState(false)
 

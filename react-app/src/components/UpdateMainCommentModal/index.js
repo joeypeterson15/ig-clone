@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
-import { updateOneComment } from '../../store/comment';
 import { updateOneMainComment } from '../../store/mainComments';
 
 
@@ -18,11 +17,6 @@ function UpdateMainCommentModal ({comment}) {
         setShowModal(false)
         dispatch(updateOneMainComment(payload, comment?.id))
 
-    }
-
-    const handleClose = () => {
-        setShowModal(false)
-        setContent('')
     }
 
     return (

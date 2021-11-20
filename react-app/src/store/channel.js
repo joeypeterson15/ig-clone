@@ -1,6 +1,6 @@
 const LOAD = 'channels/LOAD'
 const ADD = 'channels/ADD'
-const DELETE = 'channels/DELETE'
+// const DELETE = 'channels/DELETE'
 
 
 const loadChannels = channels => ({
@@ -46,7 +46,7 @@ const channelReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
             const allChannels = {};
-            
+
 
                 action.channels.channels.forEach(channel => {
                     allChannels[channel.id] = channel
