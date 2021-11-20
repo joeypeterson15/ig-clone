@@ -15,7 +15,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
-    seed_hashtags()
+    # seed_hashtags()
     seed_posts()
     seed_follows()
     seed_comments()
@@ -27,7 +27,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_hashtags()
+    # undo_hashtags()
     undo_posts()
     undo_follows()
     undo_comments()

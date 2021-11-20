@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import { createOnePost } from '../../store/post';
 import { useDispatch } from 'react-redux';
 import { useSelector} from 'react-redux';
+import { createOneHashtag } from '../../store/hashtag';
 
 function AddPostModal () {
     const [showModal, setShowModal] = useState(false);
@@ -22,8 +23,20 @@ function AddPostModal () {
             avatar: user?.avatar,
             username: user?.username
         }
+        let split = body.split(" ")
+        let hashArray = []
+        for (let i = 0; i < split.length; i++) {
+            let e = split[i];
+            if (e.includes("#")) {
+              hashArray.push(e.substring(1))
+                // dispatch(createOneHashtag({name : e.substring(1)}))
+                // split.splice(i,1)
+            }
+        }
+
+
         setShowModal(false)
-        dispatch(createOnePost(payload))
+        dispatch(createOnePost(payload, hashArray))
         setBody('')
         setImageUrl('')
     }

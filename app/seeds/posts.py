@@ -8,7 +8,7 @@ def seed_posts():
         body="another one #fun",
         avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
         username='Demo',
-        hashtagId=3
+        # hashtagId=3
     )
     post2 = Post(
         userId=1,
@@ -16,7 +16,7 @@ def seed_posts():
         body="I had such a blast! #fun",
         avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
         username='Demo',
-        hashtagId=3
+        # hashtagId=3
     )
     post3 = Post(
         userId=3,
@@ -24,7 +24,7 @@ def seed_posts():
         body="me and all my friends #fun",
         avatar="https://i.ibb.co/f8spgnW/hoodie-guy-pro-pic.jpg",
         username="bobbie",
-        hashtagId=3
+        # hashtagId=3
 
     )
     post4 = Post(
@@ -33,7 +33,7 @@ def seed_posts():
         body="Feeling very relaxed right now #travel",
         avatar="https://i.ibb.co/WGBwPLL/motorcycle-pro-pic.jpg",
         username="winterBrad",
-        hashtagId=2
+        # hashtagId=2
     )
     post5 = Post(
         userId=5,
@@ -41,7 +41,7 @@ def seed_posts():
         body="How cool is this #sublime",
         avatar="https://i.ibb.co/Fm3KzQb/party-guy-profilepic.jpg",
         username="andrewkep",
-        hashtagId=1
+        # hashtagId=1
     )
     post6 = Post(
         userId=2,
@@ -49,7 +49,7 @@ def seed_posts():
         body="Nothing beats this #travel",
         avatar="https://i.ibb.co/5hJ1kkT/lake-pro-pic-girl.jpg",
         username="marnie",
-        hashtagId=2
+        # hashtagId=2
     )
     post7 = Post(
         userId=6,
@@ -64,7 +64,6 @@ def seed_posts():
         body="Can't wait to come back #travel",
         avatar="https://i.ibb.co/ykqMdnZ/Middle-age-man-portrait-at-sunset.jpg" ,
         username="steven10",
-        hashtagId=2
     )
     post9 = Post(
         userId=2,
@@ -72,7 +71,6 @@ def seed_posts():
         body="whoa #sublime",
         avatar="https://i.ibb.co/5hJ1kkT/lake-pro-pic-girl.jpg",
         username="marnie",
-        hashtagId=1
     )
     post10 = Post(
         userId=10,
@@ -80,7 +78,6 @@ def seed_posts():
         body="One of my favorite places to go #travel",
         avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
         username="robinite111",
-        hashtagId=2
     )
 
 

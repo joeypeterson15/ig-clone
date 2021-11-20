@@ -4,13 +4,16 @@ from app.models import db, Hashtag
 
 def seed_hashtags():
     h1 = Hashtag(
-        name="sublime"
+        name="sublime",
+        postId=1
     )
     h2 = Hashtag(
-        name="travel"
+        name="travel",
+        postId=2
     )
     h3 = Hashtag(
-        name="fun"
+        name="fun",
+        postId=1
     )
 
 

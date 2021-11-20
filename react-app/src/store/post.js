@@ -1,3 +1,5 @@
+import { createOneHashtag } from "./hashtag"
+
 const LOAD = 'posts/LOAD'
 const ADD = 'posts/ADD'
 const DELETE = 'posts/DELETE'
@@ -36,7 +38,8 @@ export const getMyPosts = (userId) => async dispatch => {
     }
 }
 
-export const createOnePost = (payload) => async dispatch => {
+
+export const createOnePost = (payload, hashArray) => async dispatch => {
     const response = await fetch(`/api/posts/`, {
         method: 'POST',
         headers: {
@@ -44,11 +47,38 @@ export const createOnePost = (payload) => async dispatch => {
         },
         body: JSON.stringify({...payload})
       })
+
     if (response.ok) {
         const post = await response.json()
+        
+        if(!!hashArray) {
+
+            for (let i = 0; i < hashArray.length; i++) {
+                await fetch(`/api/hashtags/${hashArray[i]}/${post.id}`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type' : 'application/json',
+                },
+                // body: JSON.stringify({...name})
+              })
+            }
+        }
         dispatch(createPost(post))
     }
 }
+// export const createOnePost = (payload) => async dispatch => {
+//     const response = await fetch(`/api/posts/`, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type' : 'application/json',
+//         },
+//         body: JSON.stringify({...payload})
+//       })
+//     if (response.ok) {
+//         const post = await response.json()
+//         dispatch(createPost(post))
+//     }
+// }
 
 export const deleteOnePost = (postId) => async dispatch => {
     const response = await fetch(`/api/posts/${postId}`, {

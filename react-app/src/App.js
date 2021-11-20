@@ -19,6 +19,7 @@ import Search from './components/Search';
 import Channel from './components/Channel';
 import Message from './components/Message';
 import AboutCreator from './components/AboutCreator';
+import Hashtag from './components/Hashtag';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,9 +71,10 @@ function App() {
           <NavBar />
           <YourProfilePost />
         </ProtectedRoute>
-        <ProtectedRoute path='/hashtags/:hashtag' exact={true} >
+        <ProtectedRoute path='/hashtags/:name' exact={true} >
           <NavBar />
           <h3>Hashtag page</h3>
+          <Hashtag />
         </ProtectedRoute>
         <ProtectedRoute path='/profile' exact={true} >
           <NavBar />

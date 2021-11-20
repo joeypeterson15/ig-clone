@@ -14,6 +14,8 @@ import mainLikesReducer from './mainLikes';
 import channelReducer from './channel';
 import allUsersReducer from './allUsers';
 import messageReducer from './message';
+import hashReducer from './hashtag';
+import hashPostReducer from './hashposts';
 
 const rootReducer = combineReducers({
   session,
@@ -29,7 +31,9 @@ const rootReducer = combineReducers({
   mainLikes : mainLikesReducer,
   channels : channelReducer,
   allUsers : allUsersReducer,
-  messages : messageReducer
+  messages : messageReducer,
+  hashtags : hashReducer,
+  hashPosts : hashPostReducer
 });
 
 
