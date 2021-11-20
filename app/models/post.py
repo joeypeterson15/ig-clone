@@ -12,7 +12,7 @@ class Post(db.Model):
     likes = db.Column(db.Integer, default = 0)
     username = db.Column(db.String(100), nullable=False)
     avatar = db.Column(db.String(1000), nullable=False)
-    hashtagId = db.Column(db.Integer, db.ForeignKey('hashtags.id'), nullable=True)
+    # hashtagId = db.Column(db.Integer, db.ForeignKey('hashtags.id'), nullable=True)
 
 
     def to_dict(self):
