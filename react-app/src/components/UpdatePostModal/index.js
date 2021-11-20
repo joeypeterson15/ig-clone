@@ -3,7 +3,6 @@ import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { updateOnePost } from '../../store/post';
 import { useHistory } from 'react-router';
-import { getMyPosts } from '../../store/post';
 import "./UpdatePostModal.css"
 
 
@@ -26,11 +25,6 @@ function UpdatePostModal ({post}) {
         // dispatch(getMyPosts(post?.id))
 
     }
-
-    // const handleClose = () => {
-    //     setShowModal(false)
-    //     setContent('')
-    // }
 
     return (
         <>

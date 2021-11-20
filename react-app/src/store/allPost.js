@@ -1,6 +1,6 @@
 const LOAD = 'allPosts/LOAD'
-const ADD = 'posts/ADD'
-const DELETE = 'posts/DELETE'
+// const ADD = 'posts/ADD'
+// const DELETE = 'posts/DELETE'
 
 
 

@@ -5,7 +5,6 @@ import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
 
 
-import { deleteOnePost } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
@@ -54,15 +53,6 @@ function YourProfilePost () {
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
-    const openMenu = () => {
-      if (showMenu) return;
-      setShowMenu(true);
-    };
-
-    const deletePost = () => {
-        dispatch(deleteOnePost(postId))
-        history.push('/profile')
-    }
 
     const createComment = (e) => {
         e.preventDefault()
@@ -102,19 +92,12 @@ function YourProfilePost () {
             <div onClick={() => history.push(`/p/${user?.id}`)}>exit</div>
             <div className="post-modal-container">
                         <div className="left-image">
-                            <img className="image-modal" src={post?.imageUrl}></img>
+                            <img alt="" className="image-modal" src={post?.imageUrl}></img>
                         </div>
                         <div className="post-modal-right">
                             <div className="upper-right-modal">
                                 <Link to={`/p/${user?.id}`}>{user?.username}</Link>
 
-                                {/* <div onClick={openMenu} >edit</div>
-                                    {showMenu && (
-                                        <ul className="edit-post-dropdown">
-                                        <li></li>
-                                        <button onClick={deletePost}>delete post</button>
-                                        </ul>
-                                    )} */}
 
                             </div>
                             <div className="middle-right-modal">

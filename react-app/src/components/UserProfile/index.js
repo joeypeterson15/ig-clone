@@ -56,17 +56,6 @@ function UserProfile () {
         dispatch(createOneFollow(payload))
     }
 
-    // const isFollowed = () => {
-    //     for (let i = 0; i < follows.length; i++) {
-    //         let follow = follows[i];
-    //         if (follow.followId === userId) {
-    //             console.log(follow)
-    //             return true
-    //         }
-    //     }
-    //     return false
-    // }
-
 
     return (
         <>
@@ -96,7 +85,7 @@ function UserProfile () {
                 {posts.map((post) => (
                     <Link to={`/p/${userId}/${post.id}`}>
                         <div key={post.id}>
-                            <img className="post-image" src={post.imageUrl}></img>
+                            <img alt="" className="post-image" src={post.imageUrl}></img>
                             {/* <div>{post.body}</div> */}
                         </div>
                     </Link>

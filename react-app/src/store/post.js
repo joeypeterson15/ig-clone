@@ -1,4 +1,4 @@
-import { createOneHashtag } from "./hashtag"
+
 
 const LOAD = 'posts/LOAD'
 const ADD = 'posts/ADD'
@@ -50,7 +50,7 @@ export const createOnePost = (payload, hashArray) => async dispatch => {
 
     if (response.ok) {
         const post = await response.json()
-        
+
         if(!!hashArray) {
 
             for (let i = 0; i < hashArray.length; i++) {

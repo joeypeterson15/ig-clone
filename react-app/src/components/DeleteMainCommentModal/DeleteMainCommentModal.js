@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
-import { useSelector} from 'react-redux';
-
 import { deleteMainFeedComment } from '../../store/mainComments';
 
 function DeleteMainCommentModal ({comment}) {
     const [showModal, setShowModal] = useState(false);
-
-    // const user = useSelector((state) => state.session?.user)
 
     const dispatch = useDispatch()
 

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getMyPosts } from '../../store/post';
-import PostModal from '../PostModal/PostModal';
 import { Link } from 'react-router-dom';
 import './Profile.css'
 

@@ -13,12 +13,12 @@ import "./NavBar.css"
 const NavBar = () => {
   const userId = useSelector((state) => state.session?.user?.id)
   const dispatch = useDispatch()
-  const [credential, setCredential] = useState('')
-  const [password, setPassword] = useState('')
+  // const [credential, setCredential] = useState('')
+  // const [password, setPassword] = useState('')
 
   const demoLogin = async () => {
-    setCredential("demo@aa.io")
-    setPassword("password")
+    // setCredential("demo@aa.io")
+    // setPassword("password")
     return dispatch(
       sessionActions.login("demo@aa.io", "password")
     )
@@ -32,7 +32,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        
+
         { userId ? '' :
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
@@ -46,11 +46,11 @@ const NavBar = () => {
 
           }
 
-        <li>
+        {/* <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to='/messages' exact={true} activeClassName='active'>
             DM's

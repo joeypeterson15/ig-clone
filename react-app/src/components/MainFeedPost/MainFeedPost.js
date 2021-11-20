@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
 import { getUser } from '../../store/user';
-import { getComments, createOneComment } from '../../store/comment';
 import { createMainFeedComment } from '../../store/mainComments';
-import { getLikes } from '../../store/like';
-import { createOneLike } from '../../store/like';
-
-import DeleteCommentModal from '../DeleteCommentModal';
 import { getMainFeedComments } from '../../store/mainComments';
 import DeleteMainCommentModal from '../DeleteMainCommentModal/DeleteMainCommentModal';
 import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/mainLikes';
@@ -16,10 +10,8 @@ import UpdateMainCommentModal from '../UpdateMainCommentModal';
 
 const MainFeedPost = ({ post }) => {
 
-    const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
     const sessionUser = useSelector((state) => state.session?.user)
-    const user = useSelector((state) => Object.values(state.user)[0])
     const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
     const likes = useSelector((state) => Object.values(state.mainLikes).filter((like) => like.postId === post?.id))
 

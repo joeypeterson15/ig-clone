@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
-import { useSelector} from 'react-redux';
-import { deleteOneFollow, getFollows } from '../../store/follow';
+import { deleteOneFollow } from '../../store/follow';
 
 
 function UnfollowModal ({ userId, followId}) {
     const [showModal, setShowModal] = useState(false);
-
-    // const user = useSelector((state) => state.session?.user)
 
     const dispatch = useDispatch()
 

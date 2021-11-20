@@ -3,7 +3,6 @@ import { Modal } from '../../context/Modal';
 import { createOnePost } from '../../store/post';
 import { useDispatch } from 'react-redux';
 import { useSelector} from 'react-redux';
-import { createOneHashtag } from '../../store/hashtag';
 
 function AddPostModal () {
     const [showModal, setShowModal] = useState(false);
