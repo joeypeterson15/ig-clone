@@ -84,7 +84,7 @@ function App() {
           <NavBar />
           <Channel />
         </ProtectedRoute>
-        <ProtectedRoute path='/messages/:userId/:friendId/:channelId' exact={true} >
+        <ProtectedRoute path='/messages/:userId/:friendId' exact={true} >
           <NavBar />
           <Channel />
           <Message />

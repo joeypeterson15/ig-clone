@@ -9,11 +9,13 @@ import "./Message.css"
 function Message () {
 
     const params = useParams()
-    const {userId, friendId, channelId} = params
+    const {userId, friendId } = params
 
     const [content, setContent] = useState('')
 
-    const channels = useSelector(state => state.channels)
+    // const channels = useSelector(state => state.channels)
+    const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == friendId))
+    // console.log(channel)
     const messages = useSelector(state => Object.values(state.messages))
     const sessionUser = useSelector(state => state.session?.user)
 
@@ -31,7 +33,7 @@ function Message () {
             userId,
             friendId,
             userAvatar: sessionUser?.avatar,
-            channelId : channels[channelId].id
+            channelId : channel?.id
         }
         dispatch(createOneMessage(payload))
         setContent('')
@@ -66,8 +68,8 @@ function Message () {
         <div className="messages-component-container">
 
             <div className="upper-right-messages">
-                <img className="channel-avatar" alt="" src={channels[channelId]?.friendAvatar}></img>
-                <h3 className="channel-name">{channels[channelId]?.friendUsername}</h3>
+                <img className="channel-avatar" alt="" src={channel?.friendAvatar}></img>
+                <h3 className="channel-name">{channel?.friendUsername}</h3>
             </div>
 
             <div className="messages-container">
