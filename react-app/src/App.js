@@ -19,6 +19,7 @@ import Channel from './components/Channel';
 import Message from './components/Message';
 import AboutCreator from './components/AboutCreator';
 import Hashtag from './components/Hashtag';
+import MainFeedOnePost from './components/MainFeedOnePost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -90,6 +91,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/:postId' exact={true} >
           <Post />
+        </ProtectedRoute>
+        <ProtectedRoute path='/main/:postId' exact={true} >
+          <MainFeedOnePost />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <NavBar />

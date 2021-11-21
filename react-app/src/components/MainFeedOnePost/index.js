@@ -3,39 +3,35 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
-
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
 import { deleteMyLike } from '../../store/like';
-
 import DeleteCommentModal from '../DeleteCommentModal';
 import UpdateCommentModal from '../UpdateCommentModal';
-
 import { getUser } from '../../store/user';
 import { getAllPosts } from '../../store/allPost';
-
 import { Link } from 'react-router-dom';
+import { getUserPosts } from '../../store/userPost';
+import { getMainFeedPosts } from '../../store/mainFeedPosts';
 import "../Post/Post.css"
 
-function YourPost () {
+function MainFeedOnePost () {
 
     let history = useHistory()
-    // const [showMenu, setShowMenu] = useState(false);
+   
     const [content, setContent] = useState('')
     const [hashtags, setHashtags] = useState([])
     const [body, setBody] = useState([])
-    // const [isLiked, setIsLiked] = useState(false)
+
 
     const params = useParams()
     const {postId} = params
 
     const sessionUser = useSelector((state) => state.session?.user)
-    const user = useSelector((state) => Object.values(state.user)[0])
     const comments = useSelector((state) => Object.values(state.comments))
-    const post1 = useSelector((state) => state.allPosts[postId])
-    const post = useSelector((state) => Object.values(state.allPosts).find(post => post?.id == postId))
-
+    const user = useSelector((state) => Object.values(state.user)[0])
+    const post = useSelector((state) => Object.values(state.mainFeedPosts).find(post => post?.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
 
@@ -44,14 +40,13 @@ function YourPost () {
     useEffect( () => {
         dispatch(getUser(post?.userId))
         dispatch(getComments(postId))
-        dispatch(getAllPosts(user?.id))
         dispatch(getLikes(postId))
 
     }, [dispatch, postId])
 
     useEffect(() => {
 
-        let split = post?.body.split(" ")
+        let split = post?.body?.split(" ")
 
             for (let i = 0; i < split.length; i++) {
                 let e = split[i];
@@ -121,7 +116,7 @@ function YourPost () {
 
     return (
         <div className="post-outer-container">
-            <div onClick={() => history.push('/explore')}>exit</div>
+            <div onClick={() => history.push('/')}>exit</div>
             <div className="post-modal-container">
                         <div className="left-image">
                             <img className="image-modal" src={post?.imageUrl}></img>
@@ -202,4 +197,4 @@ function YourPost () {
     )
 }
 
-export default YourPost
+export default MainFeedOnePost

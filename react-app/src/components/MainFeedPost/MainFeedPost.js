@@ -7,6 +7,7 @@ import { getMainFeedComments } from '../../store/mainComments';
 import DeleteMainCommentModal from '../DeleteMainCommentModal/DeleteMainCommentModal';
 import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/mainLikes';
 import UpdateMainCommentModal from '../UpdateMainCommentModal';
+import { getAllPosts } from '../../store/allPost';
 import MainFeedHover from '../MainFeedHover';
 
 const MainFeedPost = ({ post }) => {
@@ -181,7 +182,7 @@ const MainFeedPost = ({ post }) => {
                 </div>
 
                 <div className="bottom-right-comments">
-                    <Link className="view-all-comments-link" to={`/p/${post?.userId}/${post?.id}`}>View all {countComments()}</Link>
+                    <Link className="view-all-comments-link" to={`/main/${post.id}`}>View all {countComments()}</Link>
                     {comments ?
                     comments.slice(0,2).map((comment) => (
 
