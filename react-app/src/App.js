@@ -68,7 +68,6 @@ function App() {
           <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path='/p/:userId/:postId' exact={true} >
-          <NavBar />
           <YourProfilePost />
         </ProtectedRoute>
         <ProtectedRoute path='/hashtags/:name' exact={true} >

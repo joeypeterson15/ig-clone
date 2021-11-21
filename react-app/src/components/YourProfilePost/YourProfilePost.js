@@ -8,12 +8,13 @@ import { useState, useEffect} from 'react';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
+import UpdateCommentModal from '../UpdateCommentModal';
 
 import DeleteCommentModal from '../DeleteCommentModal';
 
 import { getUser } from '../../store/user';
 import { getUserPosts } from '../../store/userPost';
-
+import { deleteMyLike } from '../../store/like';
 import { Link } from 'react-router-dom';
 import "../Post/Post.css"
 
@@ -28,6 +29,7 @@ function YourProfilePost () {
     const params = useParams()
     const {postId} = params
 
+    const sessionUser = useSelector((state) => state.session?.user)
     const user = useSelector((state) => Object.values(state.user)[0])
     const comments = useSelector((state) => Object.values(state.comments))
     const post = useSelector((state) => Object.values(state.userPosts).find(post => post?.id == postId))
@@ -73,12 +75,26 @@ function YourProfilePost () {
     }, [showMenu]);
 
 
+    // const createComment = (e) => {
+    //     e.preventDefault()
+    //     const payload = {
+    //         content,
+    //         postId,
+    //         userId: user?.id
+    //     }
+    //     setContent('')
+    //     dispatch(createOneComment(payload))
+    //     dispatch(getComments(postId))
+    // }
+
     const createComment = (e) => {
         e.preventDefault()
         const payload = {
             content,
             postId,
-            userId: user?.id
+            userId: sessionUser?.id,
+            avatar: sessionUser?.avatar,
+            username: sessionUser?.username
         }
         setContent('')
         dispatch(createOneComment(payload))
@@ -99,66 +115,128 @@ function YourProfilePost () {
     const createLike = (e) => {
         e.preventDefault()
         const payload = {
-            userId : user?.id,
+            userId : sessionUser?.id,
             postId,
-            username : user?.username
+            username : sessionUser?.username
         }
         dispatch(createOneLike(payload))
     }
 
+    const isLiked = () => {
+        if (likes) {
+            for (let i = 0; i < likes.length; i++){
+                let like = likes[i]
+                if (like.userId == sessionUser?.id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    const deleteLike = () => {
+        dispatch(deleteMyLike(sessionUser?.id, post?.id))
+    }
+
     return (
         <div className="post-outer-container">
-            <div onClick={() => history.push(`/p/${user?.id}`)}>exit</div>
+            <div className="exit-post-icon">
+                <i onClick={() => history.push(`/p/${user?.id}`)} class="fas fa-times"></i>
+
+            </div>
             <div className="post-modal-container">
                         <div className="left-image">
-                            <img alt="" className="image-modal" src={post?.imageUrl}></img>
+                            <img className="image-modal" src={post?.imageUrl}></img>
                         </div>
                         <div className="post-modal-right">
                             <div className="upper-right-modal">
-                                <Link to={`/p/${user?.id}`}>{user?.username}</Link>
+                                <div className="username-avatar-div">
 
+                                    <img className="user-avatar" alt="" src={user?.avatar}></img>
+                                    <Link className="username-bold" to={`/p/${post?.userId}`}>{user?.username}</Link>
 
-                            </div>
-                            <div className="middle-right-modal">
-                                <div>
-                                    {user?.username}
                                 </div>
-                                <div>
-                                    {body.join(' ')}
-                                </div>
-                                <div>
-                                    {hashtags ? hashtags.map((hashtag) => (
-                                        <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
-                                    ))
 
-                                : ""}
-                                </div>
                             </div>
                             <div className="bottom-right-comments">
+                                <div className="middle-right-modal">
+                                    <div className="post-content-and-username">
+                                        <img className="user-avatar" alt="" src={user?.avatar}></img>
+                                        <div className="username-bold">
+                                            {user?.username}
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        {body.join(' ')}
+                                    </div>
+                                    <div>
+                                        {hashtags ? hashtags.map((hashtag) => (
+                                            <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                        ))
+
+                                    : ""}
+                                    </div>
+                                </div>
+
+
                                 {comments ?
                                 comments.map((comment) => (
-                                    <div className='comment-edit-div'>
-                                        <div>{comment.content}</div>
-                                        {comment.userId === user?.id ?
-                                        <DeleteCommentModal comment={comment}/> : ''}
+                                    <div className='comment-edit-mypost-div'>
+                                        {/* <div>{comment.content}</div> */}
+
+                                        <div className="left-side-comment">
+
+                                            <img className="user-avatar" alt="" src={comment?.avatar}></img>
+                                            <div className="username-bold" >{comment?.username}</div>
+                                            <div>{comment?.content}</div>
+
+                                        </div>
+
+
+                                        {comment.userId === sessionUser?.id ?
+                                        <div>
+                                        <UpdateCommentModal comment={comment}/>
+                                        <DeleteCommentModal comment={comment}/>
+                                    </div>
+                                     : ''}
                                     </div>
 
 
                                 )) :
                                 <div>There are currently no comments for this post</div>}
                             </div>
-                            <div className="likes-right-div">
-                                {countLikes()}
-                                <form onSubmit={createLike}>
-                                    <button type="submit">like this post</button>
-                                </form>
+
+                            <div className="likes-post-div">
+                                <div>
+                                    {!isLiked()
+                                    ?
+                                    <div className="heart">
+
+                                            <i onClick={createLike} className="far fa-heart"></i>
+
+                                    </div>
+                                        :
+                                        <div className="heart red-heart">
+                                            {/* <button onClick={deleteLike}>unlike</button> */}
+                                            <i onClick={deleteLike} className="fas fa-heart"></i>
+                                        </div>
+                                        }
+                                </div>
+
+                                </div>
+
+                                <div className="count-likes-main">
+                                    {countLikes()}
+
                             </div>
+
                             <div className="create-comment-right">
 
-                                <form onSubmit={createComment}>
-                                    <input value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
-                                    <button type='submit'>post</button>
+                                <form className="post-comment-main" onSubmit={createComment}>
+                                    <input className="my-post-input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                                 </form>
+                                    <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} type='submit'>post</button>
 
                             </div>
                         </div>
