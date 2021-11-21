@@ -17,7 +17,7 @@ function DeleteMainCommentModal ({comment}) {
     return (
         <>
         <div onClick={() => setShowModal(true)}>
-          delete comment
+          delete
         </div>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>

@@ -4,11 +4,12 @@
 
 
 .main-feed-posts {
+    position: relative;
     background-color: white;
     margin-left: 28%;
     margin-bottom: 10rem;
     width: 40rem;
-    height: 55rem;
+    height: 65rem;
     border: 0.5px solid rgba(155, 155, 155, 0.4);
 }
 
@@ -38,14 +39,81 @@
     padding-left: 1rem;
 }
 
+.hover-username-main-feed {
+    display: none;
+}
+.username-div-with-hover:hover + .hover-username-main-feed, .hover-username-main-feed:hover {
+    display: inline-block;
+}
+
 
 
 .main-feed-lower {
     display: flex;
-    padding-left: 1rem;
+    padding-top: 0.5rem;
+    /* padding-left: 1rem; */
 }
 
 .main-lower-username {
     font-weight: 550;
     padding-right: 1rem;
+}
+
+.post-comment-main {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(83, 45, 51); */
+    /* width: 100%; */
+    /* position: absolute; */
+    /* margin-top: 2.5rem; */
+    /* margin-left: 33.87%; */
+    /* padding-left: 3rem; */
+}
+
+.input-comment-main {
+    border-top: 0.2px solid rgb(219, 219, 219);
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    /* border-radius: 30px; */
+    height: 3rem;
+    width: 100%;
+    padding-left: 3%;
+    /* margin-left: 8%; */
+}
+
+.post-comment-submit-button {
+    position: absolute;
+    bottom: 0.8rem;
+    right: 0;
+    z-index: 1;
+    border: none;
+    background-color: white;
+    color: rgba(92, 188, 226, 0.4);
+    /* visibility: hidden; */
+
+}
+
+.red-heart {
+    color:red;
+}
+
+.heart {
+    font-size: 1.5rem;
+}
+
+.count-likes-main {
+    font-weight: 550;
+}
+
+.view-all-comments-link {
+    text-decoration: none;
+    color: grey
+}
+
+.edit-delete-comment-div {
+    display: flex;
 }

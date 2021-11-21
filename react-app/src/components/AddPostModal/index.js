@@ -44,7 +44,7 @@ function AddPostModal () {
         <>
         <div onClick={() => setShowModal(true)}>
           <div>
-            <i className="fas fa-plus">Create Post</i>
+          <i class="far fa-plus-square"></i>
           </div>
         </div>
         {showModal && (

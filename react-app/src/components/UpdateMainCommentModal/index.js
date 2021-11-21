@@ -22,7 +22,7 @@ function UpdateMainCommentModal ({comment}) {
     return (
         <>
             <div>
-                <div onClick={() => setShowModal(true)}>edit comment</div>
+                <div onClick={() => setShowModal(true)}>edit</div>
             </div>
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
