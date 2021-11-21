@@ -12,6 +12,7 @@ import { createOneLike } from '../../store/like';
 import DeleteCommentModal from '../DeleteCommentModal';
 
 import { getUser } from '../../store/user';
+import { getUserPosts } from '../../store/userPost';
 
 import { Link } from 'react-router-dom';
 import "../Post/Post.css"
@@ -21,14 +22,15 @@ function YourProfilePost () {
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
     const [content, setContent] = useState('')
+    const [hashtags, setHashtags] = useState([])
+    const [body, setBody] = useState([])
 
     const params = useParams()
     const {postId} = params
 
     const user = useSelector((state) => Object.values(state.user)[0])
-    console.log(user, 'HELLOOOOOO')
     const comments = useSelector((state) => Object.values(state.comments))
-    const post = useSelector((state) => state.allPosts[postId])
+    const post = useSelector((state) => Object.values(state.userPosts).find(post => post?.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
 
@@ -36,9 +38,26 @@ function YourProfilePost () {
 
     useEffect(() => {
         dispatch(getUser(post?.userId))
+        dispatch(getUserPosts(post?.userId))
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
     }, [dispatch])
+
+    useEffect(() => {
+        let split = post?.body.split(" ")
+        for (let i = 0; i < split.length; i++) {
+            let e = split[i];
+            if (e.includes("#")) {
+                setHashtags(old => [...old, e])
+                // split.splice(i,1)
+            } else {
+                setBody(old => [...old, e])
+            }
+        }
+        //  setBody(split.join(' '))
+        //  console.log(body)
+    }, [dispatch])
+
 
 
     useEffect(() => {
@@ -105,7 +124,14 @@ function YourProfilePost () {
                                     {user?.username}
                                 </div>
                                 <div>
-                                    {post?.body}
+                                    {body.join(' ')}
+                                </div>
+                                <div>
+                                    {hashtags ? hashtags.map((hashtag) => (
+                                        <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                    ))
+
+                                : ""}
                                 </div>
                             </div>
                             <div className="bottom-right-comments">

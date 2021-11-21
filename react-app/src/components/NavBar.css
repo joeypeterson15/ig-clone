@@ -1,4 +1,18 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap"); */
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&display=swap');
+
 .navbar-nav {
+    background-color: red;
     display: flex;
     justify-content: space-between;
+    height: 3rem;
+}
+
+.instagram-font-logo {
+    /* font-family: 'Pacifico'; */
+    font-family: 'Cookie';
+    text-decoration: none;
+    font-size: 40px;
+    color: black;
+
 }

@@ -10,6 +10,7 @@ import UnfollowModal from '../UnfollowModal';
 import '../Profile/Profile.css'
 
 
+
 function UserProfile () {
 
     const [isFollowed, setIsFollowed] = useState(false)
@@ -83,7 +84,7 @@ function UserProfile () {
 
             { posts ? <div className="my-posts-container">
                 {posts.map((post) => (
-                    <Link to={`/p/${userId}/${post.id}`}>
+                    <Link to={`/p/${userId}/${post?.id}`}>
                         <div key={post.id}>
                             <img alt="" className="post-image" src={post.imageUrl}></img>
                             {/* <div>{post.body}</div> */}

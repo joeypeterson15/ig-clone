@@ -50,3 +50,25 @@
     grid-row-gap: 50px;
     grid-column-gap: 4%;
 }
+
+
+
+
+/*   user profile stuff    */
+
+.follow-button {
+    color: white;
+    background-color: blue;
+    border: none;
+    width: 5rem;
+    height: 1.5rem;
+    border-radius: 20px;
+
+}
+
+.unfollow-button {
+    border: none;
+    width: 5rem;
+    height: 1.5rem;
+    /* border-radius: 20px; */
+}

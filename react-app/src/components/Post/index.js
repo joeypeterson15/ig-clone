@@ -26,11 +26,11 @@ function Post () {
 
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
-    const post1 = useSelector((state) => state?.myPosts[postId])
+    // const post1 = useSelector((state) => state?.myPosts[postId])
     const post = useSelector((state) => Object.values(state.myPosts).find(post => post.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
-    console.log(post1)
+    // console.log(post1)
 
     const dispatch = useDispatch()
 
@@ -183,6 +183,7 @@ function Post () {
                                 </div>
                             </div>
                             <div className="bottom-right-comments">
+
                                 {comments ?
                                 comments.map((comment) => (
                                     <div className='comment-edit-div'>

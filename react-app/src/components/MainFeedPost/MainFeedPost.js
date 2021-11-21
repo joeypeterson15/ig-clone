@@ -75,6 +75,20 @@ const MainFeedPost = ({ post }) => {
         }
         return `${count} likes`
     }
+    const countComments = () => {
+        let count = 0;
+        if(comments) {
+            for (let i = 0; i < comments.length; i++) {
+                count ++;
+            }
+            if (count === 1) {
+                return '1 comment'
+            }
+            return `${count} comments`
+
+        }
+        return '0 comments';
+    }
 
     const createLike = (e) => {
         e.preventDefault()
@@ -95,10 +109,36 @@ const MainFeedPost = ({ post }) => {
             <div className="main-feed-posts">
                 <div className="upper-username-avatar-container">
                     <img className="main-feed-avatar" alt="" src={post?.avatar}></img>
-                    <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">{post?.username}</Link>
+                    <div className="username-div-with-hover">
+                        <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">
+                            {post?.username}
+                        </Link>
+                        <div className="hover-username-main-feed">hello</div>
+
+                    </div>
                 </div>
                 <img className="main-feed-image" src={post?.imageUrl}></img>
+                <div className="likes-post-div">
+                        <div>
+                            {!isLiked()
+                            ?
+                            <div className="heart">
 
+                                <i onClick={createLike} className="far fa-heart"></i>
+
+                            </div>
+                            :
+                            <div className="heart red-heart">
+                                {/* <button onClick={deleteLike}>unlike</button> */}
+                                <i onClick={deleteLike} className="fas fa-heart"></i>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div className="count-likes-main">
+                        {countLikes()}
+
+                    </div>
 
                 <div className="main-feed-lower">
                     <div className="main-lower-username">{post?.username}</div>
@@ -121,16 +161,16 @@ const MainFeedPost = ({ post }) => {
                 </div>
 
                 <div className="bottom-right-comments">
-                    <Link to={`/posts/${post?.id}`}></Link>
+                    <Link className="view-all-comments-link" to={`/p/${post?.userId}/${post?.id}`}>View all {countComments()}</Link>
                     {comments ?
                     comments.map((comment) => (
                         <div className='comment-edit-div'>
                             <div>{comment?.content}</div>
                             {comment?.userId === sessionUser?.id ?
-                            <div>
-                            <UpdateMainCommentModal comment={comment}/>
-                            <DeleteMainCommentModal comment={comment}/>
-                        </div>
+                            <div className="edit-delete-comment-div">
+                                <UpdateMainCommentModal comment={comment}/>
+                                <DeleteMainCommentModal comment={comment}/>
+                            </div>
                          : ''}
                         </div>
 
@@ -138,28 +178,13 @@ const MainFeedPost = ({ post }) => {
                     )) :
                     <div>There are currently no comments for this post</div>}
                 </div>
-                <div className="likes-right-div">
-                    <div>
-                        {!isLiked()
-                        ?
-                        <form onSubmit={createLike}>
-                            <button type="submit">like this post</button>
-                        </form>
-                        :
-                        <div>
-                            <button onClick={deleteLike}>unlike</button>
-                        </div>
-                        }
 
-                        </div>
-                        {countLikes()}
-                    </div>
-                <div className="create-comment-right">
+                <div >
 
-                    <form onSubmit={createComment}>
-                        <input value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
-                        <button type='submit'>post</button>
+                    <form className="post-comment-main" onSubmit={createComment}>
+                        <input className="input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                     </form>
+                        <button className="post-comment-submit-button" type='submit'>post</button>
 
                 </div>
             </div>

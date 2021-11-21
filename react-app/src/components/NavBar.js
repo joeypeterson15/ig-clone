@@ -26,12 +26,20 @@ const NavBar = () => {
 
   return (
     <nav >
-      <ul className="navbar-nav">
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+      <div className="navbar-nav">
+
+
+          <NavLink className="instagram-font-logo" to='/' exact={true} activeClassName='active'>
+            Instagram
           </NavLink>
-        </li>
+
+
+
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <i class="fas fa-home"></i>
+          </NavLink>
+
+
 
         { userId ? '' :
           <NavLink to='/login' exact={true} activeClassName='active'>
@@ -42,33 +50,28 @@ const NavBar = () => {
           { userId ? '' :
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
-          </NavLink>
+          </NavLink>}
 
-          }
 
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
-        <li>
           <NavLink to='/messages' exact={true} activeClassName='active'>
-            DM's
+            <i class="far fa-paper-plane"></i>
+            {/* <i class="fas fa-paper-plane"></i> */}
           </NavLink>
-        </li>
-        <li>
+
+          { userId ?
+              <AddPostModal />
+
+          : ''}
+
           <NavLink to='/explore' exact={true} activeClassName='active'>
-            Explore
+            <i class="far fa-compass"></i>
+            {/* <i class="fas fa-compass"></i> */}
           </NavLink>
-        </li>
-        { userId ? <li>
+
+        { userId ?
           <NavLink to='/profile' exact={true} activeClassName='active'>
             Profile
           </NavLink>
-        </li>
-        : ''}
-        { userId ?
-            <AddPostModal />
 
         : ''}
 
@@ -76,17 +79,17 @@ const NavBar = () => {
           <LogoutButton />
         : ''}
 
-        <li>
+       
           <NavLink to='/about' exact={true} activeClassName='active'>
             About Creator
           </NavLink>
-        </li>
+
 
           {userId ?
             ''
           : <button id="demo-user-button" onClick={() => demoLogin()}>Demo</button> }
 
-      </ul>
+      </div>
     </nav>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { deleteOneFollow } from '../../store/follow';
+import '../Profile/Profile.css'
 
 
 function UnfollowModal ({ userId, followId}) {
@@ -20,8 +21,8 @@ function UnfollowModal ({ userId, followId}) {
 
     return (
         <>
-        <button onClick={() => setShowModal(true)}>
-          Unfollow
+        <button className="unfollow-button" onClick={() => setShowModal(true)}>
+            <i class="fas fa-user-check"></i>
         </button>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
