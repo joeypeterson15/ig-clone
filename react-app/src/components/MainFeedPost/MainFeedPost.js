@@ -7,11 +7,14 @@ import { getMainFeedComments } from '../../store/mainComments';
 import DeleteMainCommentModal from '../DeleteMainCommentModal/DeleteMainCommentModal';
 import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/mainLikes';
 import UpdateMainCommentModal from '../UpdateMainCommentModal';
+import { createOneChannel } from '../../store/channel';
+import { useHistory } from 'react-router';
 import { getAllPosts } from '../../store/allPost';
 import MainFeedHover from '../MainFeedHover';
 
 const MainFeedPost = ({ post }) => {
 
+    let history = useHistory()
     const [content, setContent] = useState('')
     const sessionUser = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
@@ -108,6 +111,20 @@ const MainFeedPost = ({ post }) => {
         dispatch(deleteOneMainLike(sessionUser?.id, post?.id))
     }
 
+
+
+    const createChannel = () => {
+        const payload = {
+            friendId : post?.userId,
+            friendAvatar : post?.avatar,
+            friendUsername : post?.username,
+            userId: sessionUser?.id
+        }
+        dispatch(createOneChannel(payload))
+        history.push(`/messages/${sessionUser?.id}/${post?.userId}`)
+
+      }
+
     return (
         <>
             <div className="main-feed-posts">
@@ -125,7 +142,7 @@ const MainFeedPost = ({ post }) => {
                                 </div>
                                 <div className="bottom-buttons-hover">
                                     <button>Unfollow</button>
-                                    <button>Messsage</button>
+                                    <button onClick={createChannel}>Messsage</button>
                                 </div>
                             </div>
                         </div>
