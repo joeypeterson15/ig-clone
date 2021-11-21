@@ -1,32 +1,54 @@
 .post-outer-container {
-    background-color: grey;
+    background-color: rgb(77, 77, 77);
     height: 800px;
     width: 100%;
 }
 
+.exit-post-icon {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}
+
 .post-modal-container {
-    margin-left: 30%;
+    position: absolute;
+    margin-left: 13%;
     display: flex;
-    background-color: red;
-    width: 50rem;
+    background-color: white;
+    width: 65.6rem;
+    height: 40rem;
+    margin-top: 3rem;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     /* padding-left: 20%; */
 }
 
 .image-modal {
-    width: 30rem;
-    height: 30rem;
+    width: 34.5rem;
+    height: 100%;
     /* margin-left: 20%; */
 }
 
+.post-modal-right {
+    width: 100%;
+    /* background-color: khaki; */
+    /* padding-left: 1rem; */
+}
+
 .upper-right-modal {
+    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     padding-bottom: 1rem;
+    border-bottom: 0.2px solid rgb(219, 219, 219);
 }
 
 .middle-right-modal {
     display: flex;
     padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .edit-post-dropdown {
@@ -34,11 +56,67 @@
 }
 
 .likes-right-div {
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
+    border-top: 0.2px solid rgb(219, 219, 219);
     padding-bottom: 2rem;
 }
 
-.comment-edit-div {
+.comment-edit-mypost-div {
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.username-avatar-div{
+    display: flex;
+    /* background-color: red; */
+}
+
+.user-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+
+}
+
+.edit-delete-post {
+    display: flex;
+}
+
+.edit-post-icon {
+    
+}
+
+.my-post-input-comment-main {
+    border-top: 0.2px solid rgb(219, 219, 219);
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    /* border-radius: 30px; */
+    height: 3rem;
+    width: 29rem;
+    padding-left: 3%;
+    /* margin-left: 8%; */
+}
+
+.bottom-right-comments {
+    /* background-color: red; */
+    height: 27rem;
+    border-bottom: 0.2px solid rgb(219, 219, 219);
+    overflow-y: scroll;
+}
+
+.left-side-comment {
+    display: flex;
+}
+
+.username-bold {
+    font-weight: 600;
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+.post-content-and-username {
+    display: flex;
 }

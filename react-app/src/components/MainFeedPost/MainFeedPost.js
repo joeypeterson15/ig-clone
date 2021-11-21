@@ -124,19 +124,21 @@ const MainFeedPost = ({ post }) => {
                             ?
                             <div className="heart">
 
-                                <i onClick={createLike} className="far fa-heart"></i>
+                                    <i onClick={createLike} className="far fa-heart"></i>
 
                             </div>
-                            :
-                            <div className="heart red-heart">
-                                {/* <button onClick={deleteLike}>unlike</button> */}
-                                <i onClick={deleteLike} className="fas fa-heart"></i>
-                            </div>
-                            }
+                                :
+                                <div className="heart red-heart">
+                                    {/* <button onClick={deleteLike}>unlike</button> */}
+                                    <i onClick={deleteLike} className="fas fa-heart"></i>
+                                </div>
+                                }
                         </div>
-                    </div>
-                    <div className="count-likes-main">
-                        {countLikes()}
+
+                        </div>
+
+                        <div className="count-likes-main">
+                            {countLikes()}
 
                     </div>
 
@@ -163,7 +165,7 @@ const MainFeedPost = ({ post }) => {
                 <div className="bottom-right-comments">
                     <Link className="view-all-comments-link" to={`/p/${post?.userId}/${post?.id}`}>View all {countComments()}</Link>
                     {comments ?
-                    comments.map((comment) => (
+                    comments.slice(0,2).map((comment) => (
                         <div className='comment-edit-div'>
                             <div>{comment?.content}</div>
                             {comment?.userId === sessionUser?.id ?
