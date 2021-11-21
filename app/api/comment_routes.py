@@ -21,7 +21,9 @@ def create_comment():
         comment = Comment (
             content = form.data['content'],
             postId = form.data['postId'],
-            userId = form.data['userId']
+            userId = form.data['userId'],
+            avatar = form.data['avatar'],
+            username = form.data['username']
         )
     print(comment)
     db.session.add(comment)

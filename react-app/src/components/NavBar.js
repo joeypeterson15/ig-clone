@@ -6,15 +6,23 @@ import { useSelector } from 'react-redux';
 import AddPostModal from './AddPostModal';
 import * as sessionActions from '../store/session'
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import "./NavBar.css"
 
 const NavBar = () => {
   const userId = useSelector((state) => state.session?.user?.id)
+  const user = useSelector((state) => state.session?.user)
+  const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch()
   // const [credential, setCredential] = useState('')
   // const [password, setPassword] = useState('')
+
+  useEffect(() => {
+
+    setShowMenu(false)
+
+  }, [dispatch])
 
   const demoLogin = async () => {
     // setCredential("demo@aa.io")
@@ -24,37 +32,47 @@ const NavBar = () => {
     )
   }
 
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+
   return (
     <nav >
       <div className="navbar-nav">
 
+        <div className="left-side-navbar">
 
-          <NavLink className="instagram-font-logo" to='/' exact={true} activeClassName='active'>
-            Instagram
-          </NavLink>
+            <NavLink className="instagram-font-logo" to='/' exact={true} activeClassName='active'>
+              Instagram
+            </NavLink>
+
+        </div>
+
+        <div className="right-side-nav-bar">
 
 
 
           <NavLink to='/' exact={true} activeClassName='active'>
-            <i class="fas fa-home"></i>
+            <div className="nav-icon">
+              <i class="fas fa-home"></i>
+            </div>
           </NavLink>
 
 
 
-        { userId ? '' :
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>}
-
-
-          { userId ? '' :
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>}
 
 
           <NavLink to='/messages' exact={true} activeClassName='active'>
-            <i class="far fa-paper-plane"></i>
+          <div className="nav-icon">
+              <i class="far fa-paper-plane"></i>
+
+            </div>
             {/* <i class="fas fa-paper-plane"></i> */}
           </NavLink>
 
@@ -64,30 +82,63 @@ const NavBar = () => {
           : ''}
 
           <NavLink to='/explore' exact={true} activeClassName='active'>
-            <i class="far fa-compass"></i>
+          <div className="nav-icon">
+              <i class="far fa-compass"></i>
+          </div>
             {/* <i class="fas fa-compass"></i> */}
           </NavLink>
 
         { userId ?
-          <NavLink to='/profile' exact={true} activeClassName='active'>
-            Profile
-          </NavLink>
+        <div>
+
+          <img alt="" src={user?.avatar} className="user-avatar-nav" onClick={showMenu === false ? openMenu : closeMenu}></img>
+
+            {showMenu && (
+              <ul>
+                <li>
+                  <NavLink to='/profile' exact={true} activeClassName='active'>
+                    Profile
+                  </NavLink>
+
+                </li>
+                <li>
+                  <LogoutButton />
+                </li>
+                <li>
+                <NavLink to='/about' exact={true} activeClassName='active'>
+                  About Creator
+                </NavLink>
+                </li>
+              </ul>
+
+            )}
+
+        </div>
 
         : ''}
 
-         { userId ?
-          <LogoutButton />
-        : ''}
+        </div>
 
-       
-          <NavLink to='/about' exact={true} activeClassName='active'>
-            About Creator
-          </NavLink>
+
+
+
 
 
           {userId ?
             ''
           : <button id="demo-user-button" onClick={() => demoLogin()}>Demo</button> }
+
+          { userId ? '' :
+            <NavLink to='/login' exact={true} activeClassName='active'>
+              Login
+            </NavLink>}
+
+
+            { userId ? '' :
+            <NavLink to='/sign-up' exact={true} activeClassName='active'>
+              Sign Up
+            </NavLink>}
+
 
       </div>
     </nav>

@@ -3,6 +3,8 @@ import { Modal } from '../../context/Modal';
 import { createOnePost } from '../../store/post';
 import { useDispatch } from 'react-redux';
 import { useSelector} from 'react-redux';
+import './AddPostModal.css'
+
 
 function AddPostModal () {
     const [showModal, setShowModal] = useState(false);
@@ -43,7 +45,7 @@ function AddPostModal () {
     return (
         <>
         <div onClick={() => setShowModal(true)}>
-          <div>
+          <div className="nav-icon">
           <i class="far fa-plus-square"></i>
           </div>
         </div>

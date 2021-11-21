@@ -5,3 +5,5 @@ class addCommentForm(FlaskForm):
     content = StringField('content')
     userId = IntegerField('userId')
     postId = IntegerField('postId')
+    username = StringField('username')
+    avatar = StringField('avatar')

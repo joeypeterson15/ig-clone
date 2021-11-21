@@ -7,6 +7,7 @@ import { getMainFeedComments } from '../../store/mainComments';
 import DeleteMainCommentModal from '../DeleteMainCommentModal/DeleteMainCommentModal';
 import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/mainLikes';
 import UpdateMainCommentModal from '../UpdateMainCommentModal';
+import MainFeedHover from '../MainFeedHover';
 
 const MainFeedPost = ({ post }) => {
 
@@ -58,7 +59,9 @@ const MainFeedPost = ({ post }) => {
         const payload = {
             content,
             postId : post?.id,
-            userId: sessionUser?.id
+            userId: sessionUser?.id,
+            avatar: sessionUser?.avatar,
+            username: sessionUser?.username
         }
         setContent('')
         dispatch(createMainFeedComment(payload))
@@ -113,46 +116,63 @@ const MainFeedPost = ({ post }) => {
                         <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">
                             {post?.username}
                         </Link>
-                        <div className="hover-username-main-feed">hello</div>
+                        <div className="hover-username-main-feed">
+                            <div className="hover-card">
+                                <div className="upper-hover-div">
+                                    <img className="hover-avatar" alt="" src={post?.avatar}></img>
+                                    <div>{post?.username}</div>
+                                </div>
+                                <div className="bottom-buttons-hover">
+                                    <button>Unfollow</button>
+                                    <button>Messsage</button>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
                 <img className="main-feed-image" src={post?.imageUrl}></img>
                 <div className="likes-post-div">
-                        <div>
+                        <div className="icons-under-image-post">
                             {!isLiked()
                             ?
                             <div className="heart">
 
-                                <i onClick={createLike} className="far fa-heart"></i>
+                                    <i onClick={createLike} className="far fa-heart"></i>
 
                             </div>
-                            :
-                            <div className="heart red-heart">
-                                {/* <button onClick={deleteLike}>unlike</button> */}
-                                <i onClick={deleteLike} className="fas fa-heart"></i>
+                                :
+                                <div className="heart red-heart">
+                                    {/* <button onClick={deleteLike}>unlike</button> */}
+                                    <i onClick={deleteLike} className="fas fa-heart"></i>
+                                </div>
+                                }
+                            <div className="heart comment-icon">
+                                <i class="far fa-comment"></i>
                             </div>
-                            }
+
+                            <div className="heart messages-icon">
+                                <i class="far fa-paper-plane"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div className="count-likes-main">
-                        {countLikes()}
+
+                        </div>
+
+                        <div className="count-likes-main">
+                            {countLikes()}
 
                     </div>
 
                 <div className="main-feed-lower">
                     <div className="main-lower-username">{post?.username}</div>
                     {/* <div>{post?.body}</div> */}
-                    <div className="middle-right-modal">
-                        {/* <div>
-                            {post?.username}
-                        </div> */}
-                        <div>
+                    <div className="middle-right-modal-post">
+                        <div className="post-body-without-hashtags">
                             {body.join(' ')}
                         </div>
-                        <div>
+                        <div className="hashtags">
                             {hashtags ? hashtags.map((hashtag) => (
-                                <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                <Link className="hashtag-link" to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
                             ))
 
                         : ""}
@@ -163,9 +183,17 @@ const MainFeedPost = ({ post }) => {
                 <div className="bottom-right-comments">
                     <Link className="view-all-comments-link" to={`/p/${post?.userId}/${post?.id}`}>View all {countComments()}</Link>
                     {comments ?
-                    comments.map((comment) => (
-                        <div className='comment-edit-div'>
-                            <div>{comment?.content}</div>
+                    comments.slice(0,2).map((comment) => (
+
+                        <div className='comment-edit-main-div'>
+                            <div className="avatar-user-body-main">
+                                {/* <img alt="" className="user-avatar-main" src={comment?.avatar}></img> */}
+                                <div className="user-username-main">{comment?.username}</div>
+                                <div className="main-comment-body-div">
+                                    {comment?.content}
+                                </div>
+                            </div>
+
                             {comment?.userId === sessionUser?.id ?
                             <div className="edit-delete-comment-div">
                                 <UpdateMainCommentModal comment={comment}/>
