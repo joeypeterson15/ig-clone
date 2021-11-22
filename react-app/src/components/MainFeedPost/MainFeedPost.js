@@ -9,8 +9,9 @@ import { deleteOneMainLike, createOneMainLike, getMainLikes } from '../../store/
 import UpdateMainCommentModal from '../UpdateMainCommentModal';
 import { createOneChannel } from '../../store/channel';
 import { useHistory } from 'react-router';
-import { getAllPosts } from '../../store/allPost';
+import { getChannels } from '../../store/channel';
 import MainFeedHover from '../MainFeedHover';
+
 
 const MainFeedPost = ({ post }) => {
 
@@ -19,6 +20,7 @@ const MainFeedPost = ({ post }) => {
     const sessionUser = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
     const likes = useSelector((state) => Object.values(state.mainLikes).filter((like) => like.postId === post?.id))
+    const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const [hashtags, setHashtags] = useState([])
     const [body, setBody] = useState([])
 
@@ -28,6 +30,7 @@ const MainFeedPost = ({ post }) => {
         dispatch(getUser(post?.userId))
         dispatch(getMainFeedComments(post?.id))
         dispatch(getMainLikes(post?.id))
+        dispatch(getChannels(sessionUser?.id))
 
     }, [dispatch])
 
@@ -114,16 +117,23 @@ const MainFeedPost = ({ post }) => {
 
 
     const createChannel = () => {
-        const payload = {
-            friendId : post?.userId,
-            friendAvatar : post?.avatar,
-            friendUsername : post?.username,
-            userId: sessionUser?.id
-        }
-        dispatch(createOneChannel(payload))
-        history.push(`/messages/${sessionUser?.id}/${post?.userId}`)
 
-      }
+        if (!channel) {
+
+            const payload = {
+                friendId : post?.userId,
+                friendAvatar : post?.avatar,
+                friendUsername : post?.username,
+                userId: sessionUser?.id
+            }
+            dispatch(createOneChannel(payload))
+            history.push(`/messages/${sessionUser?.id}/${post?.userId}`)
+
+        } else {
+            history.push(`/messages/${sessionUser?.id}/${post?.userId}`)
+        }
+
+    }
 
     return (
         <>
@@ -134,7 +144,7 @@ const MainFeedPost = ({ post }) => {
                         <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">
                             {post?.username}
                         </Link>
-                        <div className="hover-username-main-feed">
+                        {/* <div className="hover-username-main-feed">
                             <div className="hover-card">
                                 <div className="upper-hover-div">
                                     <img className="hover-avatar" alt="" src={post?.avatar}></img>
@@ -145,7 +155,8 @@ const MainFeedPost = ({ post }) => {
                                     <button onClick={createChannel}>Messsage</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
+                        <MainFeedHover post={post} />
 
                     </div>
                 </div>
@@ -166,11 +177,12 @@ const MainFeedPost = ({ post }) => {
                                 </div>
                                 }
                             <div className="heart comment-icon">
-                                <i class="far fa-comment"></i>
+                                {/* <i class="far fa-comment"></i> */}
+                                <Link className="view-all-comments-link" to={`/main/${post.id}`}><i class="far fa-comment"></i></Link>
                             </div>
 
                             <div className="heart messages-icon">
-                                <i class="far fa-paper-plane"></i>
+                                <i class="far fa-paper-plane" onClick={createChannel}></i>
                             </div>
                         </div>
 

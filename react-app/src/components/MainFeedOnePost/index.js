@@ -14,6 +14,8 @@ import { getAllPosts } from '../../store/allPost';
 import { Link } from 'react-router-dom';
 import { getUserPosts } from '../../store/userPost';
 import { getMainFeedPosts } from '../../store/mainFeedPosts';
+
+import { getEveryPost } from '../../store/everyPost';
 import "../Post/Post.css"
 
 function MainFeedOnePost () {
@@ -32,12 +34,14 @@ function MainFeedOnePost () {
     const comments = useSelector((state) => Object.values(state.comments))
     const user = useSelector((state) => Object.values(state.user)[0])
     const post = useSelector((state) => Object.values(state.mainFeedPosts).find(post => post?.id == postId))
+    // const post = useSelector((state) => Object.values(state.posts).find(post => post?.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
 
     const dispatch = useDispatch()
 
     useEffect( () => {
+        // dispatch(getEveryPost())
         dispatch(getUser(post?.userId))
         dispatch(getComments(postId))
         dispatch(getLikes(postId))

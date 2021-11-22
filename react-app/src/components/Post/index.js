@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { useState, useEffect} from 'react';
-import { deleteOnePost } from '../../store/post';
+import { deleteOnePost, getMyPosts } from '../../store/post';
 import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
@@ -11,6 +11,7 @@ import { deleteMyLike } from '../../store/like';
 import { Link } from 'react-router-dom';
 import UpdateCommentModal from '../UpdateCommentModal';
 import UpdatePostModal from '../UpdatePostModal';
+import { getEveryPost } from '../../store/everyPost';
 import "./Post.css"
 
 function Post () {
@@ -26,15 +27,14 @@ function Post () {
 
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
-    // const post1 = useSelector((state) => state?.myPosts[postId])
     const post = useSelector((state) => Object.values(state.myPosts).find(post => post.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
-    // console.log(post1)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(getMyPosts(user?.id))
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
 
