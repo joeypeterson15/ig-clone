@@ -114,6 +114,34 @@ const MainFeedPost = ({ post }) => {
         dispatch(deleteOneMainLike(sessionUser?.id, post?.id))
     }
 
+    const isSameDay = function(oldTime) {
+        // let today = Date.now().getDate().toString()
+        let newToday = new Date().getDate().toString()
+        let newOldTime = new Date(oldTime).getDate()
+        console.log('todays date:', newToday)
+        console.log('message date:', newOldTime)
+        if (newToday == newOldTime){
+            return true
+        }
+        return false
+    }
+
+    const hoursAgo = function(createdAt) {
+        const now = new Date(Date.now()).getHours()
+        const post = createdAt.split(' ')[1].split(':')[0]
+        console.log('hournow', now)
+        console.log('hourpost', post)
+        return (Number(now) - Number(post))
+    }
+
+    const daysAgo = function(createdAt) {
+        let now = new Date().getDate().toString()
+        let post = new Date(createdAt).getDate()
+        console.log('daynow', now)
+        console.log('daypost', post)
+        return (Number(now) - Number(post))
+    }
+
 
 
     const createChannel = () => {
@@ -144,19 +172,7 @@ const MainFeedPost = ({ post }) => {
                         <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">
                             {post?.username}
                         </Link>
-                        {/* <div className="hover-username-main-feed">
-                            <div className="hover-card">
-                                <div className="upper-hover-div">
-                                    <img className="hover-avatar" alt="" src={post?.avatar}></img>
-                                    <div>{post?.username}</div>
-                                </div>
-                                <div className="bottom-buttons-hover">
-                                    <button>Unfollow</button>
-                                    <button onClick={createChannel}>Messsage</button>
-                                </div>
-                            </div>
-                        </div> */}
-                        <MainFeedHover post={post} />
+                        <MainFeedHover post={post}/>
 
                     </div>
                 </div>
@@ -172,13 +188,13 @@ const MainFeedPost = ({ post }) => {
                             </div>
                                 :
                                 <div className="heart red-heart">
-                                    {/* <button onClick={deleteLike}>unlike</button> */}
+
                                     <i onClick={deleteLike} className="fas fa-heart"></i>
                                 </div>
                                 }
                             <div className="heart comment-icon">
-                                {/* <i class="far fa-comment"></i> */}
-                                <Link className="view-all-comments-link" to={`/main/${post.id}`}><i class="far fa-comment"></i></Link>
+
+                                <Link className="view-all-comments-icon" to={`/main/${post.id}`}><i class="far fa-comment"></i></Link>
                             </div>
 
                             <div className="heart messages-icon">
@@ -237,8 +253,11 @@ const MainFeedPost = ({ post }) => {
                     <div>There are currently no comments for this post</div>}
                 </div>
 
-                <div >
+                <div className="date-or-time-created">
+                    {isSameDay(post?.createdAt) ? hoursAgo(post?.createdAt) : daysAgo(post?.createdAt)}
+                </div>
 
+                <div >
                     <form className="post-comment-main" onSubmit={createComment}>
                         <input className="input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                     </form>

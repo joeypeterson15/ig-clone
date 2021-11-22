@@ -152,6 +152,10 @@
     text-decoration: none;
     color: grey;
 }
+.view-all-comments-icon {
+    text-decoration: none;
+    color: rgb(36, 36, 36);
+}
 
 .edit-delete-comment-div {
     display: flex;
