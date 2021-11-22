@@ -1,0 +1,72 @@
+.hover-posts-container {
+    display: flex;
+}
+
+
+.hover-post-in-container {
+    width: 7rem;
+    height: 7rem;
+}
+
+.hover-card {
+    background-color: white;
+    border-radius: 3px;
+    border: 0.2px solid rgb(197, 197, 197);
+    box-shadow: 0.1px 0.2px;
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    z-index: 1;
+}
+
+.upper-hover-div {
+    display: flex;
+    padding-bottom: 2rem;
+}
+
+.number-category-div {
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: 0.2px solid rgb(197, 197, 197); */
+    border-top: 0.2px solid rgb(197, 197, 197);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+
+.number-category {
+    text-align: center;
+    /* background-color: red; */
+    width: 6rem;
+}
+
+.number-hover {
+    font-weight: 600
+}
+
+.category-name {
+    color: grey;
+}
+
+.bottom-buttons-hover {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    /* border-top: 0.2px solid rgb(197, 197, 197); */
+
+}
+
+.button-hover {
+    width: 9rem;
+    height: 2rem;
+    border: 0.2px solid rgb(204, 204, 204);
+    border-radius: 2px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: white;
+    font-weight: 600;
+}

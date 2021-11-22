@@ -16,6 +16,8 @@ import allUsersReducer from './allUsers';
 import messageReducer from './message';
 import hashReducer from './hashtag';
 import hashPostReducer from './hashposts';
+import EveryPostsReducer from './everyPost';
+import followersReducer from './followers';
 
 const rootReducer = combineReducers({
   session,
@@ -33,7 +35,9 @@ const rootReducer = combineReducers({
   allUsers : allUsersReducer,
   messages : messageReducer,
   hashtags : hashReducer,
-  hashPosts : hashPostReducer
+  hashPosts : hashPostReducer,
+  posts: EveryPostsReducer,
+  followers: followersReducer
 });
 
 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getMyPosts } from '../../store/post';
 import { Link } from 'react-router-dom';
 import './Profile.css'
+import { getEveryPost } from '../../store/everyPost';
 
 function Profile () {
 
@@ -10,11 +11,13 @@ function Profile () {
 
     const user = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.myPosts))
+    // const posts = useSelector((state) => Object.values(state.posts).filter(post => post.userId === user?.id))
 
 
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getMyPosts(user?.id))
+        // dispatch(getEveryPost())
     }, [dispatch])
 
     const countPosts = () => {
@@ -44,22 +47,6 @@ function Profile () {
                         </div>
                 </div>
             </div>
-
-
-            {/* { posts ? <div className="my-posts-container">
-                {posts.map((post) => (
-                    <div key={post.id}>
-                        <img className="post-image" src={post.imageUrl}></img>
-                        <div>{post.body}</div>
-                    </div>
-                ))}
-            </div> : <div>You don't have any posts yet!</div>} */}
-
-            {/* { posts ? <div className="my-posts-container">
-                {posts.map((post) => (
-                    <PostModal post={post} user={user}/>
-                ))}
-            </div> : <div>You don't have any posts yet!</div>} */}
 
             { posts ? <div className="my-posts-container">
                 {posts.map((post) => (

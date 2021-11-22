@@ -26,7 +26,7 @@ function Channel () {
                 <Search />
                 <div className="channels-div">
                     {channels ? channels.map((channel) => (
-                        <Link to={`/messages/${channel?.userId}/${channel?.friendId}/${channel?.id}`} className="channel-in-channel-container">
+                        <Link to={`/messages/${channel?.userId}/${channel?.friendId}`} className="channel-in-channel-container">
                             <img className="avatar-div-channel-container" alt="" src={channel?.friendAvatar}></img>
                             <div>{channel?.friendUsername}</div>
                         </Link>

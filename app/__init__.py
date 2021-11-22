@@ -21,6 +21,8 @@ from .api.all_user_routes import all_user_routes
 from .api.message_routes import message_routes
 from .api.hash_routes import hashtags_routes
 from .api.hash_post_routes import hash_post_routes
+from .api.every_post_routes import every_post_routes
+from .api.follower_routes import follower_routes
 
 
 from .seeds import seed_commands
@@ -58,6 +60,8 @@ app.register_blueprint(all_user_routes, url_prefix='/api/allusers')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
 app.register_blueprint(hashtags_routes, url_prefix='/api/hashtags')
 app.register_blueprint(hash_post_routes, url_prefix='/api/hashposts')
+app.register_blueprint(every_post_routes, url_prefix='/api/everypost')
+app.register_blueprint(follower_routes, url_prefix='/api/followers')
 db.init_app(app)
 Migrate(app, db)
 
