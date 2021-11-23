@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SearchModal from "../SearchModal";
 import "./Channel.css"
 
 function Channel () {
@@ -23,7 +24,10 @@ function Channel () {
     return (
         <div className="channel-outer-div">
             <div className="channel-and-search-left-container">
-                <Search />
+                <div className="top-left-channel">
+                    <div>{sessionUser?.username}</div>
+                    <SearchModal />
+                </div>
                 <div className="channels-div">
                     {channels ? channels.map((channel) => (
                         <Link to={`/messages/${channel?.userId}/${channel?.friendId}`} className="channel-in-channel-container">
