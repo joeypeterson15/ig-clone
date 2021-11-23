@@ -49,7 +49,7 @@ const SearchNav = () => {
             { !!results.length && results?.map(user => (
 
             <div className='search-results-div' onClick={whenClicked(user)} >
-                <img alt="" src={user.avatar}></img>
+                <img className="search-results-image-nav" alt="" src={user.avatar}></img>
                 <p>{user.username}</p>
             </div>))}
 

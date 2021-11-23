@@ -252,6 +252,7 @@ const MainFeedPost = ({ post }) => {
 
                     )) :
                     <div>There are currently no comments for this post</div>}
+                </div>
                     <div className="date-or-time-created">
                         {isSameDay(post?.createdAt) ?
 
@@ -260,7 +261,6 @@ const MainFeedPost = ({ post }) => {
                             :
                             daysAgo(post?.createdAt)}
                     </div>
-                </div>
 
 
                 <div >
