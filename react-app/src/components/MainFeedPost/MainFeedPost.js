@@ -139,7 +139,8 @@ const MainFeedPost = ({ post }) => {
         let post = new Date(createdAt).getDate()
         console.log('daynow', now)
         console.log('daypost', post)
-        return (Number(now) - Number(post))
+        if ((now - post) === 1 ) return "1 DAY AGO"
+        else return (Number(now) - Number(post)) + "DAYS AGO"
     }
 
 
