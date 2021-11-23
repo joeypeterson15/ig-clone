@@ -251,11 +251,16 @@ const MainFeedPost = ({ post }) => {
 
                     )) :
                     <div>There are currently no comments for this post</div>}
+                    <div className="date-or-time-created">
+                        {isSameDay(post?.createdAt) ?
+
+                                hoursAgo(post?.createdAt) + ' HOURS AGO'
+
+                            :
+                            daysAgo(post?.createdAt)}
+                    </div>
                 </div>
 
-                <div className="date-or-time-created">
-                    {isSameDay(post?.createdAt) ? hoursAgo(post?.createdAt) : daysAgo(post?.createdAt)}
-                </div>
 
                 <div >
                     <form className="post-comment-main" onSubmit={createComment}>
