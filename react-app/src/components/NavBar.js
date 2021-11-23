@@ -7,6 +7,7 @@ import AddPostModal from './AddPostModal';
 import * as sessionActions from '../store/session'
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import SearchNav from './SearchNav';
 
 import "./NavBar.css"
 
@@ -54,18 +55,17 @@ const NavBar = () => {
 
         </div>
 
+        <div className="nav-search">
+          <SearchNav />
+        </div>
+
         <div className="right-side-nav-bar">
-
-
 
           <NavLink to='/' exact={true} activeClassName='active'>
             <div className="nav-icon">
               <i class="fas fa-home"></i>
             </div>
           </NavLink>
-
-
-
 
 
           <NavLink to='/messages' exact={true} activeClassName='active'>

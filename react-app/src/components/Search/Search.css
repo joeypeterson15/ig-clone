@@ -44,3 +44,17 @@
   .search-results.results-found{
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
   }
+
+  /* .search-bar {
+    background-color: honeydew;
+    width: 100%;
+  } */
+
+  .search-input {
+    border-radius: 2px;
+    border: 0.2px solid grey;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    background-color: rgb(238, 238, 238);
+  }

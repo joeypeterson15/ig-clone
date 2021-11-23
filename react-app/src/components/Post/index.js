@@ -74,20 +74,6 @@ function Post () {
         //  console.log(body)
     }, [dispatch])
 
-    // const hashTagBody = () => {
-    //     let split = post?.body.split(" ")
-    //     for (let i = 0; i < split.length; i++) {
-    //         let e = split[i];
-    //         if (e.includes("#")) {
-    //             setHashtags(old => [...old, e])
-    //             split.splice(i,1)
-    //         }
-    //     }
-    //      setBody(split.join(' '))
-    //      console.log(body)
-    // }
-
-
 
     const deletePost = () => {
         dispatch(deleteOnePost(postId))
@@ -144,6 +130,20 @@ function Post () {
     const deleteLike = () => {
         dispatch(deleteMyLike(user?.id, post?.id))
     }
+
+
+    const isSameDay = function(oldTime) {
+        // let today = Date.now().getDate().toString()
+        let newToday = new Date().getDate().toString()
+        let newOldTime = new Date(oldTime).getDate()
+        console.log('todays date:', newToday)
+        console.log('message date:', newOldTime)
+        if (newToday == newOldTime){
+            return true
+        }
+        return false
+    }
+
 
 
 

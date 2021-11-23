@@ -46,3 +46,9 @@ nav {
 .nav-icon {
     font-size: 22px;
 }
+
+.nav-search {
+    /* background-color: red; */
+    width: 10rem;
+    height: 2rem;
+}
