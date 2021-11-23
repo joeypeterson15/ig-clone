@@ -2,9 +2,13 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { createOneChannel } from "../../store/channel"
+import { useHistory } from "react-router"
 import './Search.css'
 
-const Search = () => {
+const Search = ({ setShowModal }) => {
+
+  let history = useHistory()
+
   const [term, setTerm] = useState("")
   const [results, setResults] = useState([])
   const sessionUser = useSelector(state => state.session?.user)
@@ -32,6 +36,8 @@ const Search = () => {
         userId: sessionUser?.id
     }
     dispatch(createOneChannel(payload))
+    setShowModal(false)
+    history.push(`/messages/${sessionUser?.id}/${friend?.id}`)
     setTerm('')
   }
 
@@ -41,9 +47,10 @@ const Search = () => {
 
   return (
     <div className="search-container" >
+
       <form className='search-bar' autoComplete="off">
 
-        <input type="search"
+        <input className="search-channel-input" type="search"
            placeholder='Start Up A Conversation' value={term} onChange={(e) => setTerm(e.target.value)} />
 
       </form>
@@ -52,8 +59,8 @@ const Search = () => {
 
             { !!results.length && results?.map(user => (
 
-            <div className='search-results-div' onClick={createChannel(user)} >
-                <img alt="" src={user.avatar}></img>
+            <div className='search-channel-results-div' onClick={createChannel(user)} >
+                <img className="channel-results-image" alt="" src={user.avatar}></img>
                 <p>{user.username}</p>
             </div>))}
 

@@ -19,11 +19,22 @@
 
 .channel-in-channel-container{
     display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
 }
 
 .avatar-div-channel-container {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    padding-right: 1rem;
+    margin-right: 1rem;
+}
+
+.top-left-channel {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.2px solid rgb(221, 221, 221);
 }
