@@ -85,7 +85,7 @@
 }
 
 .edit-post-icon {
-    
+
 }
 
 .my-post-input-comment-main {
@@ -119,4 +119,43 @@
 
 .post-content-and-username {
     display: flex;
+}
+
+
+.time-post-div {
+    padding-left: 0.5rem;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: rgb(139, 139, 139);
+    font-size: 13.7px;
+    font-weight: 400;
+}
+.time-stamp-post-div {
+    /* margin-left: 39%; */
+    padding-left: 0.5rem;
+
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: rgb(139, 139, 139);
+    font-size: 13.7px;
+    font-weight: 400;
+}
+
+
+.prev-post-icon {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    color: white;
+    font-size: 20px;
+    height: 2rem;
+    width: 2rem;
+}
+
+.next-post-icon {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    background-color: hotpink;
+
 }

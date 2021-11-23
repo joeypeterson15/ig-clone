@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 * {
     font-family: 'Roboto';
@@ -52,6 +52,20 @@
     display: inline-block;
 }
 
+
+
+/* .edit-comment-hover {
+    display: none
+}
+
+.edit-delete-comment-div:hover + .edit-comment-hover, .edit-comment-hover:hover {
+    display: inline-block;
+} */
+
+.edit-delete-comment-div {
+    display: flex;
+}
+
 .hover-avatar {
     width: 2.5rem;
     height: 2.5rem;
@@ -72,7 +86,7 @@
 .main-feed-lower {
     display: flex;
     padding-top: 0.5rem;
-    /* padding-left: 1rem; */
+    padding-left: 1rem;
 }
 
 .main-lower-username {
@@ -133,6 +147,7 @@
 
 .icons-under-image-post {
     padding-bottom: 1rem;
+    margin-left: 1rem;
 }
 
 .red-heart {
@@ -152,6 +167,7 @@
 
 .count-likes-main {
     font-weight: 500;
+    padding-left: 1rem;
 }
 
 .view-all-comments-link {
@@ -163,9 +179,7 @@
     color: rgb(36, 36, 36);
 }
 
-.edit-delete-comment-div {
-    display: flex;
-}
+
 
 .middle-right-modal-post {
     display: flex;
@@ -179,8 +193,9 @@
 
 }
 
-.bottom-right-comments {
+.bottom-right-main-comments {
     padding-top: 0.3rem;
+    padding-left: 1rem;
 
 }
 
@@ -219,4 +234,5 @@
     /* background-color: blue; */
     color: grey;
     font-size: 11px;
+    font-weight: 400;
 }

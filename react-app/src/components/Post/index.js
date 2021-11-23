@@ -21,12 +21,15 @@ function Post () {
     const [content, setContent] = useState('')
     const [hashtags, setHashtags] = useState([])
     const [body, setBody] = useState([])
+    const [lastPost, setLastPost] = useState('')
+    const [nextPost, setNextPost] = useState('')
 
     const params = useParams()
     const {postId} = params
 
     const user = useSelector((state) => state.session?.user)
     const comments = useSelector((state) => Object.values(state.comments))
+    const posts = useSelector(state => Object.values(state.myPosts))
     const post = useSelector((state) => Object.values(state.myPosts).find(post => post.id == postId))
     const likes = useSelector((state) => Object.values(state.likes))
 
@@ -38,7 +41,7 @@ function Post () {
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
 
-    }, [dispatch])
+    }, [dispatch, postId])
 
 
     useEffect(() => {
@@ -70,9 +73,37 @@ function Post () {
                 setBody(old => [...old, e])
             }
         }
+
+        return(
+            () => {
+
+                setBody([]);
+                setHashtags([])
+            }
+        )
         //  setBody(split.join(' '))
         //  console.log(body)
-    }, [dispatch])
+    }, [dispatch, postId])
+
+    useEffect(() => {
+        for (let i = 0; i < posts.length; i++) {
+            let p = posts[i]
+            let n = posts[i + 1]
+            let l = posts[i - 1]
+            if (p.id === post?.id) {
+                if (n) setNextPost(n.id);
+                if (l) setLastPost(l.id)
+            }
+        }
+
+        return(
+            () => {
+
+                setNextPost('');
+                setLastPost('')
+            }
+        )
+    }, [dispatch, postId])
 
 
     const deletePost = () => {
@@ -144,6 +175,17 @@ function Post () {
         return false
     }
 
+    const convertTime = function(oldTime){
+        let newTime = oldTime.split(' ')[1]
+        let time = newTime.split(':');
+        let hours = time[0];
+        let minutes = time[1];
+        let timeValue = "" + ((hours >12) ? hours -12 :hours);
+            timeValue += (minutes < 10) ? ':' + minutes : ":" + minutes;
+            timeValue += (hours >= 12) ? " pm" : " am";
+            // timeValue += "" + date
+            return timeValue;
+        }
 
 
 
@@ -252,9 +294,26 @@ function Post () {
 
                                 </div>
 
-                                <div className="count-likes-main">
+                                <div className="count-likes-mypost">
                                     {countLikes()}
 
+                            </div>
+                            <div>
+                                <div>
+                                    {isSameDay(post?.createdAt)
+                                ?
+                                <div className="time-post-div">
+                                    {convertTime(post?.createdAt)}
+                                </div>
+                                :
+                                <div className="time-stamp-post-div">
+                                    {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(post?.createdAt))} {new Date(post?.createdAt).getDate()}, 2021 {convertTime(post?.createdAt)}
+
+                                </div>
+                                }
+
+
+                                </div>
                             </div>
                             <div className="create-comment-right">
 
@@ -266,6 +325,16 @@ function Post () {
                             </div>
                         </div>
                     </div>
+
+                    {lastPost ?
+                        <Link className="prev-post-icon" to={`/${lastPost}`}><i className= "fas fa-angle-left"></i></Link>
+                    : ''}
+
+                    {nextPost ?
+                        <Link className="next-post-icon" to={`/${nextPost}`}>Next</Link>
+                     : ''}
+
+
 
 
 

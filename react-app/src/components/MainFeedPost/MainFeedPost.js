@@ -204,7 +204,7 @@ const MainFeedPost = ({ post }) => {
 
                         </div>
 
-                        <div className="count-likes-main">
+                    <div className="count-likes-main">
                             {countLikes()}
 
                     </div>
@@ -226,7 +226,7 @@ const MainFeedPost = ({ post }) => {
                     </div>
                 </div>
 
-                <div className="bottom-right-comments">
+                <div className="bottom-right-main-comments">
                     <Link className="view-all-comments-link" to={`/main/${post.id}`}>View all {countComments()}</Link>
                     {comments ?
                     comments.slice(0,2).map((comment) => (
@@ -242,8 +242,9 @@ const MainFeedPost = ({ post }) => {
 
                             {comment?.userId === sessionUser?.id ?
                             <div className="edit-delete-comment-div">
-                                <UpdateMainCommentModal comment={comment}/>
-                                <DeleteMainCommentModal comment={comment}/>
+                                    <UpdateMainCommentModal comment={comment}/>
+                                    <DeleteMainCommentModal comment={comment}/>
+
                             </div>
                          : ''}
                         </div>
