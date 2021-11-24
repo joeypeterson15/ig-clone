@@ -14,30 +14,36 @@ import '../Profile/Profile.css'
 function UserProfile () {
 
     const [isFollowed, setIsFollowed] = useState(false)
-
+    const [showModal, setShowModal] = useState(false)
     const params = useParams()
     const {userId} = params
     const sessionUser = useSelector((state) => state.session?.user)
     const follows = useSelector((state) => Object.values(state.follows))
+    console.log(follows)
+
     const user = useSelector((state) => Object.values(state.user)[0])
     const posts = useSelector((state) => Object.values(state.userPosts))
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        for (let i = 0; i < follows.length; i++) {
-                let follow = follows[i];
-                if (follow.followId == userId) {
-                    setIsFollowed(true)
-                }
-            }
-        },[dispatch, follows])
+
 
         useEffect(() => {
             dispatch(getFollows(sessionUser?.id))
             dispatch(getUser(userId))
             dispatch(getUserPosts(userId))
-        }, [dispatch])
+        }, [dispatch, showModal])
+
+           useEffect(() => {
+        for (let i = 0; i < follows.length; i++) {
+                let follow = follows[i];
+                if (follow.followId == userId) {
+                    setIsFollowed(true)
+                } else {
+                    setIsFollowed(false)
+                }
+            }
+        },[dispatch, follows, showModal])
 
 
     const countPosts = () => {
@@ -55,6 +61,8 @@ function UserProfile () {
             followId : userId
         }
         dispatch(createOneFollow(payload))
+        setIsFollowed(true)
+        // dispatch(getFollows(sessionUser?.id))
     }
 
 
@@ -66,9 +74,9 @@ function UserProfile () {
                         <div className="top-my-profile-content">
                             <div>{user?.username}</div>
                             <div>
-                                {isFollowed === false ? <button onClick={createFollow} className="follow-button">Follow</button>
+                                {!isFollowed ? <button onClick={createFollow} className="follow-button">Follow</button>
                                 :
-                                <UnfollowModal userId={sessionUser?.id} followId={userId}/>}
+                                <UnfollowModal setIsFollowed={setIsFollowed} showModal={showModal} setShowModal={setShowModal} userId={sessionUser?.id} followId={userId}/>}
                             </div>
                         </div>
                         <div className="middle-my-profile-content">

@@ -2,20 +2,29 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { deleteOneFollow } from '../../store/follow';
+import { getFollows } from '../../store/follow';
+import { useEffect} from 'react';
 import '../Profile/Profile.css'
 
 
-function UnfollowModal ({ userId, followId}) {
-    const [showModal, setShowModal] = useState(false);
+function UnfollowModal ({ setIsFollowed, userId, followId, showModal, setShowModal}) {
+    // const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        return (
+            setIsFollowed(false)
+        )
+    })
 
     const deleteFollow = (e) => {
         e.preventDefault()
         // dispatch(deleteOneFollow(id))
         setShowModal(false)
         dispatch(deleteOneFollow(userId, followId))
-        // dispatch(getFollows(userId))
+        setIsFollowed(false)
+        dispatch(getFollows(userId))
     }
 
 

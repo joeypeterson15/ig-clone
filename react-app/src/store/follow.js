@@ -81,6 +81,7 @@ const followsReducer = (state = initialState, action) => {
             });
             return {
                 ...allFollows,
+                ...state
             }
         }
         case ADD: {
