@@ -267,8 +267,8 @@ const MainFeedPost = ({ post }) => {
                 <div >
                     <form className="post-comment-main" onSubmit={createComment}>
                         <input className="input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
-                    </form>
                         <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} type='submit'>post</button>
+                    </form>
 
                 </div>
             </div>
