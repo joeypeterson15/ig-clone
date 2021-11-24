@@ -25,7 +25,6 @@ def seed_posts():
         avatar="https://i.ibb.co/f8spgnW/hoodie-guy-pro-pic.jpg",
         username="bobbie",
         # hashtagId=3
-
     )
     post4 = Post(
         userId=4,

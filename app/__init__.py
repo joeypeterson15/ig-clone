@@ -23,6 +23,7 @@ from .api.hash_routes import hashtags_routes
 from .api.hash_post_routes import hash_post_routes
 from .api.every_post_routes import every_post_routes
 from .api.follower_routes import follower_routes
+from .api.all_follows_routes import all_follow_routes
 
 
 from .seeds import seed_commands
@@ -62,6 +63,8 @@ app.register_blueprint(hashtags_routes, url_prefix='/api/hashtags')
 app.register_blueprint(hash_post_routes, url_prefix='/api/hashposts')
 app.register_blueprint(every_post_routes, url_prefix='/api/everypost')
 app.register_blueprint(follower_routes, url_prefix='/api/followers')
+app.register_blueprint(all_follow_routes, url_prefix='/api/allfollows')
+
 db.init_app(app)
 Migrate(app, db)
 

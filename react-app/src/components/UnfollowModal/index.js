@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteOneFollow } from '../../store/follow';
 import { getFollows } from '../../store/follow';
 import { useEffect} from 'react';
+// import { getMainFeedPosts } from '../../store/mainFeedPosts';
 import '../Profile/Profile.css'
 
 
@@ -25,6 +26,7 @@ function UnfollowModal ({ setIsFollowed, userId, followId, showModal, setShowMod
         dispatch(deleteOneFollow(userId, followId))
         setIsFollowed(false)
         dispatch(getFollows(userId))
+        // dispatch(getMainFeedPosts(userId))
     }
 
 

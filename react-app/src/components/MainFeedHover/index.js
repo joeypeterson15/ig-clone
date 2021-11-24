@@ -8,6 +8,7 @@ import { createOneChannel } from "../../store/channel";
 import { getEveryPost } from "../../store/everyPost";
 import { getFollows } from "../../store/follow";
 import { getFollowers } from "../../store/followers";
+import { getAllFollows } from '../../store/allFollows';
 
 import "./MainFeedHover.css"
 
@@ -19,7 +20,8 @@ function MainFeedHover ({ post }) {
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const sessionUser = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.mainFeedPosts).filter(post => post?.userId == userId))
-    const follows = useSelector((state) => Object.values(state.follows))
+    // const follows = useSelector((state) => Object.values(state.follows))
+    const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === post.id))
     const followers = useSelector(state => Object.values(state.followers))
 
 
@@ -32,6 +34,7 @@ function MainFeedHover ({ post }) {
         dispatch(getAllPosts(post?.userId))
         dispatch(getFollows(post?.userId))
         dispatch(getFollowers(post?.userId))
+        dispatch(getAllFollows())
     }, [dispatch])
 
 
