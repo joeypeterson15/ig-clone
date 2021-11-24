@@ -12,13 +12,14 @@ import { Link } from 'react-router-dom';
 import UpdateCommentModal from '../UpdateCommentModal';
 import UpdatePostModal from '../UpdatePostModal';
 import { getEveryPost } from '../../store/everyPost';
+import Comment from '../Comment';
 import "./Post.css"
 
 function Post () {
 
     let history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
-    const [showCommentMenu, setCommentMenu] = useState(false);
+    // const [showCommentMenu, setCommentMenu] = useState(false);
     const [content, setContent] = useState('')
     const [hashtags, setHashtags] = useState([])
     const [body, setBody] = useState([])
@@ -53,14 +54,14 @@ function Post () {
       if (showMenu) return;
       setShowMenu(true);
     };
-    const closeCommentMenu = () => {
-        setCommentMenu(false);
-    };
+    // const closeCommentMenu = () => {
+    //     setCommentMenu(false);
+    // };
 
-    const openCommentMenu = () => {
-      if (showMenu) return;
-      setCommentMenu(true);
-    };
+    // const openCommentMenu = () => {
+    //   if (showMenu) return;
+    //   setCommentMenu(true);
+    // };
 
 
     useEffect(() => {
@@ -211,7 +212,7 @@ function Post () {
                                 <div className="username-avatar-div">
 
                                     <img className="user-avatar" alt="" src={user?.avatar}></img>
-                                    <div className="username-bold">{user?.username}</div>
+                                    <div className="username-top-bold">{user?.username}</div>
 
                                 </div>
 
@@ -242,7 +243,7 @@ function Post () {
                                             {user?.username}
                                         </div>
                                     </div>
-                                    <div>
+                                    <div className="comment-content-post">
                                         {body.join(' ')}
                                     </div>
                                     <div>
@@ -256,32 +257,32 @@ function Post () {
 
                                 {comments ?
                                 comments.map((comment) => (
-                                    <div className='comment-edit-mypost-div'>
-                                        <div className="left-side-comment">
+                                    // <div className='comment-edit-mypost-div'>
+                                    //     <div className="left-side-comment">
 
-                                            <img className="user-avatar" alt="" src={comment?.avatar}></img>
-                                            <div className="username-bold" >{comment?.username}</div>
-                                            <div>{comment?.content}</div>
+                                    //         <img className="user-avatar" alt="" src={comment?.avatar}></img>
+                                    //         <div className="username-bold" >{comment?.username}</div>
+                                    //         <div className="comment-content-post">{comment?.content}</div>
 
-                                        </div>
+                                    //     </div>
 
-                                        {comment.userId === user?.id ?
+                                    //     {comment.userId === user?.id ?
 
-                                        <div>
-                                            <div className={showMenu === false ? "three-dot-close" : "three-dot-open" }>
-                                            <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
-                                        </div>
-                                            {showCommentMenu && (
-                                                <div className="edit-my-comment-dropdown">
-                                                    <UpdateCommentModal comment={comment}/>
-                                                    <DeleteCommentModal comment={comment}/>
-                                                </div>
-                                            )}
-                                        </div>
-                                         : ''}
-                                    </div>
+                                    //     <div>
+                                    //         <div className={showMenu === false ? "three-dot-close" : "three-dot-open" }>
+                                    //         <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
+                                    //     </div>
+                                    //         {showCommentMenu && (
+                                    //             <div className="edit-my-comment-dropdown">
+                                    //                 <UpdateCommentModal comment={comment}/>
+                                    //                 <DeleteCommentModal comment={comment}/>
+                                    //             </div>
+                                    //         )}
+                                    //     </div>
+                                    //      : ''}
+                                    // </div>
 
-
+                                    <Comment comment={comment} user={user}/>
                                 )) :
                                 <div>There are currently no comments for this post</div>}
                             </div>

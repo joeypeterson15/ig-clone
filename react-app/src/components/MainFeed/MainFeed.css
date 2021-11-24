@@ -36,6 +36,7 @@
 
 .avatar-user-body-main {
     display: flex;
+
 }
 
 .main-feed-avatar {
@@ -65,6 +66,7 @@
 
 .edit-delete-comment-div {
     display: flex;
+    font-size: 14px;
 }
 
 .hover-avatar {
@@ -78,21 +80,24 @@
     font-weight: 500;
     padding-left: 1rem;
     text-decoration: none;
-    color: black;
+    color: rgb(36, 36, 36)
 }
 
 
 
 
 .main-feed-lower {
+    font-size: 14px;
     display: flex;
     padding-top: 0.5rem;
     padding-left: 1rem;
+    color: rgb(36, 36, 36)
 }
 
 .main-lower-username {
     font-weight: 500;
     padding-right: 1rem;
+    color: rgb(36, 36, 36);
 }
 
 .post-comment-main {
@@ -158,6 +163,7 @@
 .heart {
     font-size: 1.5rem;
     margin-right: 1rem;
+    color: rgb(36, 36, 36);
 }
 
 .comment-icon {
@@ -168,16 +174,20 @@
 
 .count-likes-main {
     font-weight: 500;
+    font-size: 14px;
     padding-left: 1rem;
+    color: rgb(36, 36, 36)
 }
 
 .view-all-comments-link {
+    font-size: 14px;
     text-decoration: none;
     color: grey;
 }
 .view-all-comments-icon {
     text-decoration: none;
     color: rgb(36, 36, 36);
+
 }
 
 
@@ -190,14 +200,17 @@
     padding-right: 0.2rem;
 }
 
-.hashtags {
-
-}
 
 .bottom-right-main-comments {
+    font-size: 14px;
     padding-top: 0.3rem;
     padding-left: 1rem;
 
+}
+
+.main-comment-body-div {
+    padding-top: 0.2rem;
+    color: rgb(36, 36, 36)
 }
 
 .hashtag-link {
@@ -222,7 +235,10 @@
 }
 
 .user-username-main {
+    padding-top: 0.2rem;
     font-weight: 500;
+    color: rgb(36, 36, 36);
+    font-size: 14px;
     /* margin-left: 0.5rem; */
     margin-right: 0.5rem;
 }

@@ -8,13 +8,10 @@ import { getComments, createOneComment } from '../../store/comment';
 import { getLikes } from '../../store/like';
 import { createOneLike } from '../../store/like';
 import { deleteMyLike } from '../../store/like';
-
 import DeleteCommentModal from '../DeleteCommentModal';
 import UpdateCommentModal from '../UpdateCommentModal';
-
 import { getUser } from '../../store/user';
 import { getAllPosts } from '../../store/allPost';
-
 import { Link } from 'react-router-dom';
 import "../Post/Post.css"
 

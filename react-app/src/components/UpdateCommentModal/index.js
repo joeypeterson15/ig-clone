@@ -5,7 +5,7 @@ import { updateOneComment } from '../../store/comment';
 
 
 
-function UpdateCommentModal ({comment}) {
+function UpdateCommentModal ({comment , setCommentMenu}) {
     const [showModal, setShowModal] = useState(false);
     const [content, setContent] = useState(comment?.content)
     const dispatch = useDispatch();
@@ -17,6 +17,7 @@ function UpdateCommentModal ({comment}) {
         }
         setShowModal(false)
         dispatch(updateOneComment(payload, comment?.id))
+        setCommentMenu(false)
 
     }
 
@@ -27,9 +28,9 @@ function UpdateCommentModal ({comment}) {
 
     return (
         <>
-            <div>
-                <div onClick={() => setShowModal(true)}>edit</div>
-            </div>
+
+            <div className="edit-comment-buttons" onClick={() => setShowModal(true)}>edit</div>
+
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <div>

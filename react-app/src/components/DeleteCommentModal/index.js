@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { deleteOneComment } from '../../store/comment';
 
-function DeleteCommentModal ({comment}) {
+function DeleteCommentModal ({comment, setCommentMenu }) {
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch()
@@ -12,12 +12,13 @@ function DeleteCommentModal ({comment}) {
         e.preventDefault()
         setShowModal(false)
         dispatch(deleteOneComment(comment?.id))
+        setCommentMenu(false)
 
     }
 
     return (
         <>
-        <div onClick={() => setShowModal(true)}>
+        <div className="edit-comment-buttons" onClick={() => setShowModal(true)}>
           delete
         </div>
         {showModal && (

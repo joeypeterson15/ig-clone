@@ -43,6 +43,7 @@
     justify-content: space-between;
     padding-bottom: 1rem;
     border-bottom: 0.2px solid rgb(219, 219, 219);
+    padding-top: 0.6rem;
 }
 
 .middle-right-modal {
@@ -113,11 +114,28 @@
     display: flex;
 }
 
-.username-bold {
-    font-weight: 600;
-    padding-left: 1.5rem;
-    padding-right: 0.5rem;
+
+.comment-content-post {
+    font-size: 14px;
+    color: rgb(36, 36, 36);
 }
+
+.username-bold {
+    font-weight: 550;
+    padding-left: 1.5rem;
+    padding-right: 0.3rem;
+    color: rgb(36, 36, 36);
+    font-size: 14.7px;
+}
+.username-top-bold {
+    font-weight: 550;
+    padding-left: 1.5rem;
+    padding-right: 0.3rem;
+    color: rgb(36, 36, 36);
+    font-size: 14.7px;
+    padding-top: 0.7rem;
+}
+
 
 .post-content-and-username {
     display: flex;
@@ -139,7 +157,7 @@
     padding-top: 4%;
     padding-bottom: 3%;
     color: rgb(139, 139, 139);
-    font-size: 13.7px;
+    font-size: 11px;
     font-weight: 400;
 }
 
@@ -176,7 +194,30 @@
     border: 0.2px solid rgba(255, 0, 0, 0.342);
 }
 
+/* .bottom-right-comments:hover + .three-dot-close, .three-dot-close:hover {
+    display: inline-block;
+} */
+
+.edit-my-comment-dropdown {
+    right: 0.5rem;
+    position: absolute;
+    background-color: rgba(212, 212, 212, 0.342);
+    width: 5rem;
+    height: 5rem;
+}
+
+.edit-comment-buttons {
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.edit-comment-buttons:hover {
+    background-color: grey;
+}
+
 .three-dot-close {
+    /* display: none; */
     font-size: 20px;
     color: rgb(153, 153, 153);
     padding-right: 1rem;
@@ -194,6 +235,7 @@
     padding-top: 0.2rem;
     font-weight: 500;
     font-size: 16px;
+    color: rgb(36, 36, 36);
 }
 
 .red-heart {
@@ -204,4 +246,5 @@
     font-size: 1.6rem;
     padding-left: 1rem;
     padding-top: 0.5rem;
+    color: rgb(36, 36, 36);
 }
