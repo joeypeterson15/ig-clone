@@ -6,11 +6,11 @@ import { useHistory } from 'react-router';
 import "./UpdatePostModal.css"
 
 
-function UpdatePostModal ({post}) {
+function UpdatePostModal ({ setShowMenu, post, showModal, setShowModal}) {
 
     let history = useHistory()
 
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
     const [body, setBody] = useState(post?.body)
     const dispatch = useDispatch();
 
@@ -19,9 +19,11 @@ function UpdatePostModal ({post}) {
         const payload = {
             body
         }
-        setShowModal(false)
         dispatch(updateOnePost(payload, post?.id))
-        history.push('/profile')
+        setShowModal(false)
+        setShowMenu(false)
+
+        // history.push(`/${post?.id}`)
         // dispatch(getMyPosts(post?.id))
 
     }

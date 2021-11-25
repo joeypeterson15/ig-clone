@@ -18,6 +18,7 @@ import "./Post.css"
 function Post () {
 
     let history = useHistory()
+    const [showModal, setShowModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     // const [showCommentMenu, setCommentMenu] = useState(false);
     const [content, setContent] = useState('')
@@ -43,7 +44,7 @@ function Post () {
         dispatch(getComments(postId))
         dispatch(getLikes(postId))
 
-    }, [dispatch, postId])
+    }, [dispatch, postId, showModal])
 
 
     const closeMenu = () => {
@@ -85,7 +86,7 @@ function Post () {
         )
         //  setBody(split.join(' '))
         //  console.log(body)
-    }, [dispatch, postId])
+    }, [dispatch, showModal, postId])
 
     useEffect(() => {
         for (let i = 0; i < posts.length; i++) {
@@ -224,7 +225,7 @@ function Post () {
                                         </div>
                                         {showMenu && (
                                             <div className="edit-my-post-dropdown">
-                                                <UpdatePostModal post={post}/>
+                                                <UpdatePostModal setHashtags={setHashtags} setBody={setBody} setShowMenu={setShowMenu} showModal={showModal} setShowModal={setShowModal} post={post}/>
                                                 <button className="edit-post-button" onClick={deletePost}>delete post</button>
                                             </div>
                                         )}

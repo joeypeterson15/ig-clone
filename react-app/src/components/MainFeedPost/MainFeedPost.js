@@ -201,7 +201,7 @@ const MainFeedPost = ({ post }) => {
 
                             </div>
                                 :
-                                <div className="heart red-heart">
+                                <div className="red-heart">
 
                                     <i onClick={deleteLike} className="fas fa-heart"></i>
                                 </div>
