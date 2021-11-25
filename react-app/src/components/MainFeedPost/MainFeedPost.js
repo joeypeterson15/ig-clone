@@ -11,7 +11,7 @@ import { createOneChannel } from '../../store/channel';
 import { useHistory } from 'react-router';
 import { getChannels } from '../../store/channel';
 import MainFeedHover from '../MainFeedHover';
-import Comment from '../Comment';
+import CommentMain from '../CommentMain';
 
 
 const MainFeedPost = ({ post }) => {
@@ -263,7 +263,7 @@ const MainFeedPost = ({ post }) => {
                         //  : ''}
                         // </div>
 
-                            <Comment comment={comment} user={sessionUser}/>
+                            <CommentMain comment={comment} user={sessionUser}/>
                     )) :
                     <div>There are currently no comments for this post</div>}
                 </div>
