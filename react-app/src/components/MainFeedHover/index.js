@@ -32,7 +32,7 @@ function MainFeedHover ({ post }) {
         dispatch(getEveryPost())
         dispatch(getUser(post?.userId))
         dispatch(getAllPosts(post?.userId))
-        dispatch(getFollows(post?.userId))
+        // dispatch(getFollows(post?.userId))
         dispatch(getFollowers(post?.userId))
         dispatch(getAllFollows())
     }, [dispatch])

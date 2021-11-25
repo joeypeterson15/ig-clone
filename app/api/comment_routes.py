@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from app.models import Comment, db
 from app.forms import addCommentForm
 from app.forms import updateCommentForm
+from sqlalchemy import asc, desc
 
 
 comment_routes = Blueprint('comments', __name__)
@@ -9,7 +10,7 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/<int:id>')
 def get_my_comments(id):
-    comments = Comment.query.filter(Comment.postId == id)
+    comments = Comment.query.filter(Comment.postId == id).order_by(desc(Comment.createdAt))
     return {'comments': [comment.to_dict() for comment in comments]}
 
 @comment_routes.route('/', methods=['POST'])

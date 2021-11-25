@@ -6,6 +6,7 @@ class Follow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     followId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
 
 
@@ -13,5 +14,6 @@ class Follow(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
-            'followId': self.followId
+            'followId': self.followId,
+            'createdAt': self.createdAt
         }

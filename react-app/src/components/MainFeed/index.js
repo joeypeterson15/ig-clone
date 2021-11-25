@@ -14,7 +14,7 @@ function MainFeed () {
 
     useEffect(() => {
         dispatch(getMainFeedPosts(sessionUser?.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
     return (
         <div className="main-feed-outer-container">
