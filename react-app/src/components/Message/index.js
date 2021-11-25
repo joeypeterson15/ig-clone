@@ -40,6 +40,7 @@ function Message () {
     }
 
     const convertTime = function(oldTime){
+        console.log(oldTime)
         let newTime = oldTime.split(' ')[1]
         let time = newTime.split(':');
         let hours = time[0];
