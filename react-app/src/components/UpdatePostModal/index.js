@@ -29,7 +29,7 @@ function UpdatePostModal ({post}) {
     return (
         <>
             <div>
-                <div onClick={() => setShowModal(true)}>update post</div>
+                <button className="edit-post-button" onClick={() => setShowModal(true)}>update post</button>
             </div>
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>

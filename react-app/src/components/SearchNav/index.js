@@ -44,7 +44,7 @@ const SearchNav = () => {
 
       </form>
 
-        {<ul className={`search-results ${users.length >= 9 ? 'results-found' : "" }`}>
+        {<ul className={`search-results-nav ${users.length >= 9 ? 'results-found' : "" }`}>
 
             { !!results.length && results?.map(user => (
 

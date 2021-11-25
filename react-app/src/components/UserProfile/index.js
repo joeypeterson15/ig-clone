@@ -6,6 +6,7 @@ import { getUser } from '../../store/user';
 import { getUserPosts } from '../../store/userPost';
 import { createOneFollow } from '../../store/follow';
 import { getFollows } from '../../store/follow';
+import { getAllFollows } from '../../store/allFollows';
 import UnfollowModal from '../UnfollowModal';
 import '../Profile/Profile.css'
 
@@ -14,30 +15,40 @@ import '../Profile/Profile.css'
 function UserProfile () {
 
     const [isFollowed, setIsFollowed] = useState(false)
-
+    const [showModal, setShowModal] = useState(false)
     const params = useParams()
     const {userId} = params
     const sessionUser = useSelector((state) => state.session?.user)
+    // const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === sessionUser?.id))
     const follows = useSelector((state) => Object.values(state.follows))
+    // const follow = useSelector((state) => Object.values(state.follows).find(follow => follow.followId === userId))
+    console.log(follows)
+
     const user = useSelector((state) => Object.values(state.user)[0])
     const posts = useSelector((state) => Object.values(state.userPosts))
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        for (let i = 0; i < follows.length; i++) {
-                let follow = follows[i];
-                if (follow.followId == userId) {
-                    setIsFollowed(true)
-                }
-            }
-        },[dispatch, follows])
+
 
         useEffect(() => {
             dispatch(getFollows(sessionUser?.id))
             dispatch(getUser(userId))
             dispatch(getUserPosts(userId))
-        }, [dispatch])
+        }, [dispatch, userId, sessionUser, showModal])
+
+        useEffect(() => {
+            for (let i = 0; i < follows.length; i++) {
+                let follow = follows[i];
+                if (follow.followId === Number(userId)) {
+                    setIsFollowed(true)
+
+                }
+            }
+
+        },[dispatch, follows, showModal])
+
+
 
 
     const countPosts = () => {
@@ -66,9 +77,9 @@ function UserProfile () {
                         <div className="top-my-profile-content">
                             <div>{user?.username}</div>
                             <div>
-                                {isFollowed === false ? <button onClick={createFollow} className="follow-button">Follow</button>
+                                {!isFollowed ? <button onClick={createFollow} className="follow-button">Follow</button>
                                 :
-                                <UnfollowModal userId={sessionUser?.id} followId={userId}/>}
+                                <UnfollowModal setIsFollowed={setIsFollowed} showModal={showModal} setShowModal={setShowModal} userId={sessionUser?.id} followId={userId}/>}
                             </div>
                         </div>
                         <div className="middle-my-profile-content">

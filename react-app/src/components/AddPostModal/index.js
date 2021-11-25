@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import { createOnePost } from '../../store/post';
 import { useDispatch } from 'react-redux';
 import { useSelector} from 'react-redux';
+import { useHistory } from 'react-router';
 import './AddPostModal.css'
 
 
@@ -10,6 +11,8 @@ function AddPostModal () {
     const [showModal, setShowModal] = useState(false);
     const [imageUrl, setImageUrl] = useState('')
     const [body, setBody] = useState('')
+
+    let history = useHistory()
 
     const user = useSelector((state) => state.session?.user)
 
@@ -40,6 +43,10 @@ function AddPostModal () {
         dispatch(createOnePost(payload, hashArray))
         setBody('')
         setImageUrl('')
+
+        if (!window.location.href.includes('profile')) {
+            history.push('/profile')
+        }
     }
 
     return (

@@ -8,6 +8,7 @@ import * as sessionActions from '../store/session'
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import SearchNav from './SearchNav';
+import { getMainFeedPosts } from '../store/mainFeedPosts';
 
 import "./NavBar.css"
 
@@ -29,7 +30,14 @@ const NavBar = () => {
     // setCredential("demo@aa.io")
     // setPassword("password")
     return dispatch(
-      sessionActions.login("demo@aa.io", "password")
+      sessionActions.login("demo@aa.io", "password"),
+    )
+  }
+  const marnieLogin = async () => {
+    // setCredential("demo@aa.io")
+    // setPassword("password")
+    return dispatch(
+      sessionActions.login("marnie@aa.io", "password"),
     )
   }
 
@@ -126,7 +134,12 @@ const NavBar = () => {
 
           {userId ?
             ''
-          : <button id="demo-user-button" onClick={() => demoLogin()}>Demo</button> }
+          :
+          <div>
+              <button id="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
+              <button id="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
+
+          </div>}
 
           { userId ? '' :
             <NavLink to='/login' exact={true} activeClassName='active'>

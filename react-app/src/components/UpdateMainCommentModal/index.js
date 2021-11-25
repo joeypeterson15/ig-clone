@@ -22,7 +22,7 @@ function UpdateMainCommentModal ({comment}) {
     return (
         <>
             <div>
-                <div className="edit-comment-hover" onClick={() => setShowModal(true)}>edit</div>
+                <div className="edit-comment-buttons" onClick={() => setShowModal(true)}>edit</div>
             </div>
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>

@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import Post, User, Follow
+from sqlalchemy import asc, desc
+
 
 
 main_post_routes = Blueprint('main_posts', __name__)
@@ -7,7 +9,7 @@ main_post_routes = Blueprint('main_posts', __name__)
 @main_post_routes.route('/<int:id>')
 def get_main_posts(id):
     posts = []
-    follows = Follow.query.filter(Follow.userId == id).all()
+    follows = Follow.query.filter(Follow.userId == id).order_by(Follow.createdAt).all()
     userIds = [follow.to_dict()['followId'] for follow in follows]
     for i in userIds:
         posts.append(Post.query.filter(Post.userId == i).first())

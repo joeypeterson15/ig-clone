@@ -16,7 +16,7 @@ function DeleteMainCommentModal ({comment}) {
 
     return (
         <>
-        <div className="edit-comment-hover" onClick={() => setShowModal(true)}>
+        <div className="edit-comment-buttons" onClick={() => setShowModal(true)}>
           delete
         </div>
         {showModal && (

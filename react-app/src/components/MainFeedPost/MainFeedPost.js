@@ -11,6 +11,7 @@ import { createOneChannel } from '../../store/channel';
 import { useHistory } from 'react-router';
 import { getChannels } from '../../store/channel';
 import MainFeedHover from '../MainFeedHover';
+import CommentMain from '../CommentMain';
 
 
 const MainFeedPost = ({ post }) => {
@@ -126,6 +127,18 @@ const MainFeedPost = ({ post }) => {
         return false
     }
 
+    const convertTime = function(oldTime){
+        let newTime = oldTime.split(' ')[1]
+        let time = newTime.split(':');
+        let hours = time[0];
+        let minutes = time[1];
+        let timeValue = "" + ((hours >12) ? hours -12 :hours);
+            timeValue += (minutes < 10) ? ':' + minutes : ":" + minutes;
+            timeValue += (hours >= 12) ? " pm" : " am";
+            // timeValue += "" + date
+            return timeValue;
+        }
+
     const hoursAgo = function(createdAt) {
         const now = new Date(Date.now()).getHours()
         const post = createdAt.split(' ')[1].split(':')[0]
@@ -232,25 +245,25 @@ const MainFeedPost = ({ post }) => {
                     {comments ?
                     comments.slice(0,2).map((comment) => (
 
-                        <div className='comment-edit-main-div'>
-                            <div className="avatar-user-body-main">
-                                {/* <img alt="" className="user-avatar-main" src={comment?.avatar}></img> */}
-                                <div className="user-username-main">{comment?.username}</div>
-                                <div className="main-comment-body-div">
-                                    {comment?.content}
-                                </div>
-                            </div>
+                        // <div className='comment-edit-main-div'>
+                        //     <div className="avatar-user-body-main">
+                        //         {/* <img alt="" className="user-avatar-main" src={comment?.avatar}></img> */}
+                        //         <div className="user-username-main">{comment?.username}</div>
+                        //         <div className="main-comment-body-div">
+                        //             {comment?.content}
+                        //         </div>
+                        //     </div>
 
-                            {comment?.userId === sessionUser?.id ?
-                            <div className="edit-delete-comment-div">
-                                    <UpdateMainCommentModal comment={comment}/>
-                                    <DeleteMainCommentModal comment={comment}/>
+                        //     {comment?.userId === sessionUser?.id ?
+                        //     <div className="edit-delete-comment-div">
+                        //             <UpdateMainCommentModal comment={comment}/>
+                        //             <DeleteMainCommentModal comment={comment}/>
 
-                            </div>
-                         : ''}
-                        </div>
+                        //     </div>
+                        //  : ''}
+                        // </div>
 
-
+                            <CommentMain comment={comment} user={sessionUser}/>
                     )) :
                     <div>There are currently no comments for this post</div>}
                 </div>
@@ -267,8 +280,8 @@ const MainFeedPost = ({ post }) => {
                 <div >
                     <form className="post-comment-main" onSubmit={createComment}>
                         <input className="input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
-                    </form>
                         <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} type='submit'>post</button>
+                    </form>
 
                 </div>
             </div>

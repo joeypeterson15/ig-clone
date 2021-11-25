@@ -17,10 +17,11 @@ nav {
 
 .instagram-font-logo {
     /* font-family: 'Pacifico'; */
+    /* padding-top: 1rem; */
     font-family: 'Cookie';
     text-decoration: none;
-    font-size: 40px;
-    color: black;
+    font-size: 37px;
+    color: rgb(36, 36, 36);
 
 }
 
@@ -45,6 +46,7 @@ nav {
 
 .nav-icon {
     font-size: 22px;
+    color: rgb(36, 36, 36);
 }
 
 .nav-search {
