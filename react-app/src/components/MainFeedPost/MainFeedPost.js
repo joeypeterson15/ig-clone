@@ -153,7 +153,7 @@ const MainFeedPost = ({ post }) => {
         console.log('daynow', now)
         console.log('daypost', post)
         if ((now - post) === 1 ) return "1 DAY AGO"
-        else return (Number(now) - Number(post)) + "DAYS AGO"
+        else return (Number(now) - Number(post)) + " DAYS AGO"
     }
 
 
@@ -201,7 +201,7 @@ const MainFeedPost = ({ post }) => {
 
                             </div>
                                 :
-                                <div className="heart red-heart">
+                                <div className="red-heart">
 
                                     <i onClick={deleteLike} className="fas fa-heart"></i>
                                 </div>

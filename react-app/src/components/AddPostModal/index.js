@@ -58,10 +58,10 @@ function AddPostModal () {
         </div>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
-            <form onSubmit={createPost}>
-                <input value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="imageUrl"></input>
-                <input value={body} onChange={(e) => setBody(e.target.value)}type="text" placeholder="content"></input>
-                <button type="submit">Create Post</button>
+            <form className="modal-form" onSubmit={createPost}>
+                <input className="modal-input" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="imageUrl"></input>
+                <textarea className="modal-textarea" rows={15} value={body} onChange={(e) => setBody(e.target.value)}type="text" placeholder="content"></textarea>
+                <button className="submit-modal-button" type="submit">Create Post</button>
             </form>
         </Modal>
       )}

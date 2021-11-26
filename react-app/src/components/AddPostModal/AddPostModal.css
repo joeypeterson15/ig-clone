@@ -2,3 +2,32 @@
     color: black;
     font-size: 22px;
 }
+
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    height: 25rem;
+    text-align: center;
+}
+
+.submit-modal-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-top: 0.2px solid rgb(212, 212, 212)
+}
+
+.submit-modal-button:hover {
+    background-color: grey;
+}
+
+.modal-input {
+    text-align: center;
+}
+.modal-textarea {
+    text-align: center;
+}

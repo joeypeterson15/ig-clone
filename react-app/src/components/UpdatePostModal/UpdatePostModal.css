@@ -1,5 +1,26 @@
+.update-post-card {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 5px;
+}
+
 
 .update-post-image {
-    width: 10rem;
-    height: 10rem;
+    width: 20rem;
+    height: 20rem;
+    margin-left: 5rem;
+}
+
+.modal-textarea {
+    margin-left: 5rem;
+}
+
+.modal-submit-button {
+    height: 2.5rem;
+    position: absolute;
+    bottom: 0.1rem;
+    right: 0.6rem;
+    width: 3.5rem;
+    border: 0.2px solid grey;
+    border-radius: 2px;
 }
