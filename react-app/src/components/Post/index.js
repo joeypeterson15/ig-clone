@@ -79,14 +79,14 @@ function Post () {
 
         return(
             () => {
-
                 setBody([]);
                 setHashtags([])
+
             }
         )
         //  setBody(split.join(' '))
         //  console.log(body)
-    }, [dispatch, showModal, postId])
+    }, [dispatch, showModal, post, postId])
 
     useEffect(() => {
         for (let i = 0; i < posts.length; i++) {
@@ -104,6 +104,8 @@ function Post () {
 
                 setNextPost('');
                 setLastPost('')
+                setBody([]);
+                setHashtags([])
             }
         )
     }, [dispatch, postId])
@@ -225,7 +227,7 @@ function Post () {
                                         </div>
                                         {showMenu && (
                                             <div className="edit-my-post-dropdown">
-                                                <UpdatePostModal setHashtags={setHashtags} setBody={setBody} setShowMenu={setShowMenu} showModal={showModal} setShowModal={setShowModal} post={post}/>
+                                                <UpdatePostModal setHashtags={setHashtags} setPostBody={setBody} setShowMenu={setShowMenu} showModal={showModal} setShowModal={setShowModal} post={post}/>
                                                 <button className="edit-post-button" onClick={deletePost}>delete post</button>
                                             </div>
                                         )}

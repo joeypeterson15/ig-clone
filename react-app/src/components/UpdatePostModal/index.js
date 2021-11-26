@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import "./UpdatePostModal.css"
 
 
-function UpdatePostModal ({ setShowMenu, post, showModal, setShowModal}) {
+function UpdatePostModal ({ setPostBody, setHashtags, setShowMenu, post, showModal, setShowModal}) {
 
     let history = useHistory()
 
@@ -22,6 +22,9 @@ function UpdatePostModal ({ setShowMenu, post, showModal, setShowModal}) {
         dispatch(updateOnePost(payload, post?.id))
         setShowModal(false)
         setShowMenu(false)
+        setPostBody([])
+        setHashtags([])
+
 
         // history.push(`/${post?.id}`)
         // dispatch(getMyPosts(post?.id))
@@ -35,15 +38,17 @@ function UpdatePostModal ({ setShowMenu, post, showModal, setShowModal}) {
             </div>
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <div>
+              <div className="update-post-card">
                     <img className="update-post-image" alt="" src={post?.imageUrl}></img>
                     <form onSubmit={submitUpdatePost}>
-                        <textarea
+                        <textarea className="modal-textarea"
+                        rows={7}
+                        cols={43}
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                         >
                         </textarea>
-                        <button type="submit">update post</button>
+                        <button className="modal-submit-button" type="submit">update</button>
                     </form>
                 </div>
             </Modal>
