@@ -24,8 +24,8 @@ function Explore() {
                 {posts.map((post, i) => (
 
 
-                    <Link to={`/posts/${post.id}`}>
-                        <div key={post.id}>
+                    <Link className={ (i >= 3) && (i % 4 === 0) ? "big-explore-div" : "explore-div"} to={`/posts/${post.id}`}>
+                        <div  key={post.id}>
                             <img className={ (i >= 3) && (i % 4 === 0) ? "big-explore-image" : "explore-image"} src={post.imageUrl}></img>
                             {/* <div>{post.body}</div> */}
                         </div>
