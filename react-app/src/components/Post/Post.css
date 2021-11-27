@@ -211,7 +211,8 @@
 } */
 
 .edit-my-comment-dropdown {
-    right: 0.5rem;
+    z-index: 1000;
+    right: 4rem;
     position: absolute;
     background-color: rgba(212, 212, 212, 0.342);
     width: 5rem;
@@ -233,7 +234,7 @@
     font-size: 20px;
     color: rgb(153, 153, 153);
     padding-right: 1rem;
-    padding-top: 0.5rem;
+    /* padding-top: 0.5rem; */
 }
 .three-dot-close-main {
     /* display: none; */
@@ -263,8 +264,12 @@
     color: rgb(36, 36, 36);
 }
 
-.red-heart {
+.my-red-heart {
+    font-size: 1.6rem;
     color:rgb(172, 46, 46);
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+
 }
 
 .my-heart {
@@ -276,4 +281,9 @@
 
 .red-comment-heart {
     color:rgb(172, 46, 46);
+    padding-right: 0.5rem;
+}
+
+.comment-heart {
+    padding-right: 0.5rem;
 }
