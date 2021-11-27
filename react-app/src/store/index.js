@@ -19,6 +19,7 @@ import hashPostReducer from './hashposts';
 import EveryPostsReducer from './everyPost';
 import followersReducer from './followers';
 import allFollowsReducer from './allFollows';
+import CommentLikesReducer from './commentLikes';
 
 const rootReducer = combineReducers({
   session,
@@ -39,7 +40,8 @@ const rootReducer = combineReducers({
   hashPosts : hashPostReducer,
   posts: EveryPostsReducer,
   followers: followersReducer,
-  allFollows: allFollowsReducer
+  allFollows: allFollowsReducer,
+  commentLikes: CommentLikesReducer
 });
 
 

@@ -120,6 +120,18 @@
     color: rgb(36, 36, 36);
 }
 
+.comment-likes-div {
+    padding-left: 4rem;
+    font-size: 12px;
+    color: rgb(134, 134, 134);
+    display: flex;
+}
+
+.count-comment-likes {
+    padding-left: 1rem;
+    font-weight: 500;
+}
+
 .username-bold {
     font-weight: 550;
     padding-left: 1.5rem;
@@ -260,4 +272,8 @@
     padding-left: 1rem;
     padding-top: 0.5rem;
     color: rgb(36, 36, 36);
+}
+
+.red-comment-heart {
+    color:rgb(172, 46, 46);
 }
