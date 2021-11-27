@@ -31,7 +31,7 @@ function Hashtag () {
     return (
         <div>
             <div className="my-profile-container">
-                <div className="profile-picture" style={{backgroundImage: `url(${posts[0].imageUrl})`}}></div>
+                <div className="profile-picture" style={{backgroundImage: `url(${posts[0]?.imageUrl})`}}></div>
                 <div className="my-profile-content">
                         <div className="top-my-profile-content">
                             <div className="profile-username">#{name}</div>
@@ -44,7 +44,7 @@ function Hashtag () {
 
 
                         </div>
-                        
+
                 </div>
             </div>
             { posts ? <div className="my-posts-container">

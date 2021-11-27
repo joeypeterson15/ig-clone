@@ -19,7 +19,18 @@ function UpdatePostModal ({ setPostBody, setHashtags, setShowMenu, post, showMod
         const payload = {
             body
         }
-        dispatch(updateOnePost(payload, post?.id))
+
+        let split = body.split(" ")
+        let hashArray = []
+        for (let i = 0; i < split.length; i++) {
+            let e = split[i];
+            if (e.includes("#")) {
+              hashArray.push(e.substring(1))
+                // dispatch(createOneHashtag({name : e.substring(1)}))
+                // split.splice(i,1)
+            }
+        }
+        dispatch(updateOnePost(payload, post?.id, hashArray))
         setShowModal(false)
         setShowMenu(false)
         setPostBody([])

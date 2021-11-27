@@ -96,7 +96,7 @@ export const deleteOnePost = (postId) => async dispatch => {
 }
 
 
-export const updateOnePost = (payload, postId) => async dispatch => {
+export const updateOnePost = (payload, postId, hashArray) => async dispatch => {
     const response = await fetch(`/api/posts/update/${postId}`, {
         method: 'POST',
         headers: {
@@ -106,7 +106,22 @@ export const updateOnePost = (payload, postId) => async dispatch => {
     })
     if (response.ok) {
         const { postId, post } = await response.json()
+
+
+        if(!!hashArray) {
+
+            for (let i = 0; i < hashArray.length; i++) {
+                await fetch(`/api/hashtags/${hashArray[i]}/${post.id}`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type' : 'application/json',
+                },
+                // body: JSON.stringify({...name})
+              })
+            }
+        }
         dispatch(loadAfterUpdate(postId, post))
+
     }
 }
 

@@ -15,7 +15,7 @@ def get_my_posts(id):
 def get_all_posts(id):
     posts = Post.query.filter(Post.userId != id).all()
     return {'posts': [post.to_dict() for post in posts]}
-    
+
 
 @post_routes.route('/', methods=['POST'])
 def create_post():
@@ -51,6 +51,8 @@ def delete_my_post(postId):
 
 @post_routes.route('/update/<int:id>', methods=['POST'])
 def update_comment(id):
+    hashtags = Hashtag.query.filter(Hashtag.postId == id).all()
+    [db.session.delete(hashtag) for hashtag in hashtags]
     form = UpdatePostForm()
     post = Post.query.get(id)
     post.body = form.data['body']

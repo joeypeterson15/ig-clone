@@ -168,6 +168,16 @@
     color: rgb(36, 36, 36);
 }
 
+.comment-main-heart {
+    color: rgb(36, 36, 36);
+    padding-right: 0.5rem;
+}
+
+.red-comment-main-heart {
+    color:rgb(231, 63, 63);
+    padding-right: 0.5rem;
+}
+
 .comment-icon {
     transform: scaleX(-1);
 }

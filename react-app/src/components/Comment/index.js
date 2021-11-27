@@ -142,7 +142,11 @@ function Comment ({ comment, user }) {
 
             {comment.userId === user?.id ?
 
-            <div>
+            <div className="flex">
+                <div className={showCommentMenu === false ? "three-dot-close" : "three-dot-open" }>
+                    <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
+                </div>
+                
                 {!isLiked()
                             ?
                 <div className="comment-heart">
@@ -153,9 +157,7 @@ function Comment ({ comment, user }) {
                     <i onClick={deleteLike} className="fas fa-heart"></i>
                 </div> }
 
-                <div className={showCommentMenu === false ? "three-dot-close" : "three-dot-open" }>
-                <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
-            </div>
+
                 {showCommentMenu && (
                     <div className="edit-my-comment-dropdown">
                         <UpdateCommentModal setCommentMenu={setCommentMenu} comment={comment}/>

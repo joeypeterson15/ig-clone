@@ -233,8 +233,7 @@ function MainFeedOnePost () {
 
                                     </div>
                                         :
-                                        <div className="my-heart red-heart">
-                                            {/* <button onClick={deleteLike}>unlike</button> */}
+                                        <div className="my-red-heart">
                                             <i onClick={deleteLike} className="fas fa-heart"></i>
                                         </div>
                                         }
