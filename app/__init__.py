@@ -27,6 +27,7 @@ from .api.every_post_routes import every_post_routes
 from .api.follower_routes import follower_routes
 from .api.all_follows_routes import all_follow_routes
 from .api.comment_like_routes import comment_likes_routes
+from .api.reply_routes import reply_routes
 
 
 from .seeds import seed_commands
@@ -68,6 +69,7 @@ app.register_blueprint(every_post_routes, url_prefix='/api/everypost')
 app.register_blueprint(follower_routes, url_prefix='/api/followers')
 app.register_blueprint(all_follow_routes, url_prefix='/api/allfollows')
 app.register_blueprint(comment_likes_routes, url_prefix='/api/commentlikes')
+app.register_blueprint(reply_routes, url_prefix='/api/replies')
 
 db.init_app(app)
 Migrate(app, db)

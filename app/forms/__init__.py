@@ -10,3 +10,4 @@ from .update_comment import updateCommentForm
 from .update_post import UpdatePostForm
 from .add_hash import addHashTagForm
 from .like_comment_form import addCommentLikeForm
+from .add_reply import addReplyForm

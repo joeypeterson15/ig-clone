@@ -20,6 +20,7 @@ import EveryPostsReducer from './everyPost';
 import followersReducer from './followers';
 import allFollowsReducer from './allFollows';
 import CommentLikesReducer from './commentLikes';
+import repliesReducer from './reply';
 
 const rootReducer = combineReducers({
   session,
@@ -41,7 +42,8 @@ const rootReducer = combineReducers({
   posts: EveryPostsReducer,
   followers: followersReducer,
   allFollows: allFollowsReducer,
-  commentLikes: CommentLikesReducer
+  commentLikes: CommentLikesReducer,
+  replies : repliesReducer
 });
 
 

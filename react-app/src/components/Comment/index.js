@@ -6,21 +6,39 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { createOneCommentLike } from "../../store/commentLikes";
 import { deleteOneCommentLike } from "../../store/commentLikes";
+import { getReplies, createOneReply } from "../../store/reply";
+import Reply from "../Reply";
+import './Comment.css'
 
 
 function Comment ({ comment, user }) {
 
     const dispatch = useDispatch()
+    // const [reply, setReply] = useState('')
     const commentId = comment?.id
     const [showCommentMenu, setCommentMenu] = useState(false);
     const sessionUser = useSelector((state) => state.session?.user)
+    const replies = useSelector(state => Object.values(state.replies).filter(reply => reply.commentId === comment?.id))
     // const commentLikes = useSelector(state => Object.values(state.commentLikes))
     const commentLikes = useSelector(state => Object.values(state.commentLikes).filter(c => c?.commentId == comment?.id))
-    console.log(commentLikes)
+    console.log(replies)
+
+    const [showMenu, setShowMenu] = useState(false);
+
+
+    const closeMenu = () => {
+        setShowMenu(false);
+    };
+
+    const openMenu = () => {
+      if (showMenu) return;
+      setShowMenu(true);
+    };
 
 
     useEffect(() => {
         dispatch(getCommentLikes(comment?.id))
+        dispatch(getReplies(comment?.id))
     }, [dispatch])
 
     const closeCommentMenu = () => {
@@ -112,6 +130,19 @@ function Comment ({ comment, user }) {
         else return (Number(now) - Number(post)) + " DAYS AGO"
     }
 
+    // const createReply = (e) => {
+    //     e.preventDefault()
+    //     const payload = {
+    //         content: reply,
+    //         commentId: comment?.id,
+    //         userId: sessionUser?.id,
+    //         avatar: sessionUser?.avatar,
+    //         username: sessionUser?.username
+    //     }
+    //     dispatch(createOneReply(payload))
+
+    // }
+
 
     return (
         <div className='comment-edit-mypost-div'>
@@ -136,7 +167,28 @@ function Comment ({ comment, user }) {
 
                     {count()} likes
                 </div>
+
             </div>
+                <div className="view-replies" onClick={showMenu === false ? openMenu : closeMenu}>
+                    ------ 0 replies
+                </div>
+
+                {showMenu && (
+                //     <div>
+                //     {replies.map(reply => (
+
+                //         <div>{reply?.content}</div>
+                //     ))}
+                // </div>
+                <Reply replies={replies} commentId={comment?.id}/>
+                )}
+
+
+
+                {/* <form onSubmit={createReply}>
+                    <input type="text" placeholder="reply" value={reply} onChange={(e) => setReply(e.target.value)}></input>
+                    <button type="submit">Reply</button>
+                </form> */}
 
             </div>
 
@@ -146,7 +198,7 @@ function Comment ({ comment, user }) {
                 <div className={showCommentMenu === false ? "three-dot-close" : "three-dot-open" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
                 </div>
-                
+
                 {!isLiked()
                             ?
                 <div className="comment-heart">
