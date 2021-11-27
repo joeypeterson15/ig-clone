@@ -20,6 +20,7 @@ import Message from './components/Message';
 import AboutCreator from './components/AboutCreator';
 import Hashtag from './components/Hashtag';
 import MainFeedOnePost from './components/MainFeedOnePost';
+import HashtagPost from './components/HashtagPost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -72,8 +73,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/hashtags/:name' exact={true} >
           <NavBar />
-          <h3>Hashtag page</h3>
           <Hashtag />
+        </ProtectedRoute>
+        <ProtectedRoute path='/hashtags/:name/:postId' exact={true} >
+          <HashtagPost />
         </ProtectedRoute>
         <ProtectedRoute path='/profile' exact={true} >
           <NavBar />

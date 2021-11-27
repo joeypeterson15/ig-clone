@@ -9,3 +9,4 @@ from .addMessageForm import addMessageForm
 from .update_comment import updateCommentForm
 from .update_post import UpdatePostForm
 from .add_hash import addHashTagForm
+from .like_comment_form import addCommentLikeForm

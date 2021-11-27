@@ -7,4 +7,5 @@ from .like import Like
 from .channel import Channel
 from .message import Message
 from .hashtag import Hashtag
+from .comment_like import CommentLike
 # from .hash_post import HashPost

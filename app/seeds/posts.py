@@ -53,7 +53,7 @@ def seed_posts():
     post7 = Post(
         userId=6,
         imageUrl="https://i.ibb.co/m4YN4Ss/laughing-post.jpg",
-        body="Love this guy. Had a lot of last weekend",
+        body="Love this guy. Had a lot of last weekend #fun",
         username="stew20",
         avatar="https://i.ibb.co/GJC95Jz/pro-pic-camera.jpg"
     )
