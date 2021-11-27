@@ -28,7 +28,13 @@ function Reply ({replies, commentId}) {
         <div>
             {replies.map(reply => (
 
-                <div>{reply?.content}</div>
+            <div className="left-side-reply-comment">
+
+                <img className="user-avatar" alt="" src={reply?.avatar}></img>
+                <div className="username-bold" >{reply?.username}</div>
+                <div className="comment-content-post">{reply?.content}</div>
+
+            </div>
             ))}
             <form onSubmit={createReply}>
                     <input type="text" placeholder="reply" value={reply} onChange={(e) => setReply(e.target.value)}></input>

@@ -113,6 +113,11 @@
 .left-side-comment {
     display: flex;
 }
+.left-side-reply-comment {
+    display: flex;
+    padding-left: 10rem;
+    padding-top: 1rem;
+}
 
 
 .comment-content-post {

@@ -59,6 +59,15 @@ function Comment ({ comment, user }) {
         }
         return count
     }
+    const countReplies = () => {
+        let count = 0;
+        if (replies) {
+            for (let i = 0; i < replies.length; i++) {
+                count += 1;
+            }
+        }
+        return count
+    }
 
     const isLiked = () => {
         if (commentLikes) {
@@ -169,9 +178,14 @@ function Comment ({ comment, user }) {
                 </div>
 
             </div>
+            {replies ?
+
                 <div className="view-replies" onClick={showMenu === false ? openMenu : closeMenu}>
-                    ------ 0 replies
+                    ------ view {countReplies()} replies
                 </div>
+                :
+                ""
+        }
 
                 {showMenu && (
                 //     <div>
