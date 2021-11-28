@@ -11,7 +11,7 @@ import Reply from "../Reply";
 import './Comment.css'
 
 
-function Comment ({ comment, user }) {
+function Comment ({ setCommentId, comment, user }) {
 
     const dispatch = useDispatch()
     // const [reply, setReply] = useState('')
@@ -135,8 +135,8 @@ function Comment ({ comment, user }) {
         let post = new Date(createdAt).getDate()
         console.log('daynow', now)
         console.log('daypost', post)
-        if ((now - post) === 1 ) return "1 DAY AGO"
-        else return (Number(now) - Number(post)) + " DAYS AGO"
+        if ((now - post) === 1 ) return "1d"
+        else return (Number(now) - Number(post)) + "d"
     }
 
     // const createReply = (e) => {
@@ -151,6 +151,18 @@ function Comment ({ comment, user }) {
     //     dispatch(createOneReply(payload))
 
     // }
+
+    const setupReply = (comment) => (e) => {
+        e.preventDefault();
+        const input = document.getElementById('my-post-input-comment-main')
+        input.value = "@" + comment?.username
+        setCommentId(comment?.id)
+        if (showMenu === false) {
+            setShowMenu(true)
+        }
+
+
+    }
 
 
     return (
@@ -176,6 +188,7 @@ function Comment ({ comment, user }) {
 
                     {count()} likes
                 </div>
+                <div onClick={setupReply(comment)} className="reply-div">Reply</div>
 
             </div>
             {replies ?
@@ -194,7 +207,7 @@ function Comment ({ comment, user }) {
                 //         <div>{reply?.content}</div>
                 //     ))}
                 // </div>
-                <Reply replies={replies} commentId={comment?.id}/>
+                <Reply setCommentId={setCommentId} replies={replies} commentId={comment?.id}/>
                 )}
 
 
@@ -209,7 +222,7 @@ function Comment ({ comment, user }) {
             {comment.userId === user?.id ?
 
             <div className="flex">
-                <div className={showCommentMenu === false ? "three-dot-close" : "three-dot-open" }>
+                <div className={showCommentMenu === false ? "three-dot-close-main" : "three-dot-open-main" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
                 </div>
 

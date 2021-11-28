@@ -79,8 +79,8 @@ function CommentMain ({ comment, user }) {
 
                 {showCommentMenu && (
                     <div className="edit-my-comment-dropdown">
-                        <UpdateMainCommentModal comment={comment}/>
-                        <DeleteMainCommentModal comment={comment}/>
+                        <UpdateMainCommentModal setCommentMenu={setCommentMenu} comment={comment}/>
+                        <DeleteMainCommentModal setCommentMenu={setCommentMenu} comment={comment}/>
                     </div>
                 )}
             </div>

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { deleteMainFeedComment } from '../../store/mainComments';
+import './DeleteMainCommentModal.css'
 
-function DeleteMainCommentModal ({comment}) {
+function DeleteMainCommentModal ({setCommentMenu, comment}) {
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch()
@@ -12,6 +13,13 @@ function DeleteMainCommentModal ({comment}) {
         e.preventDefault()
         setShowModal(false)
         dispatch(deleteMainFeedComment(comment?.id))
+        setCommentMenu(false)
+    }
+
+    const closeModal = (e) => {
+        // e.preventDefault()
+        setCommentMenu(false)
+        setShowModal(false)
     }
 
     return (
@@ -21,9 +29,9 @@ function DeleteMainCommentModal ({comment}) {
         </div>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
-            <form onSubmit={deleteComment}>
-                <button type="submit">Delete</button>
-                <div>Cancel</div>
+            <form className="delete-comment-modal-form" onSubmit={deleteComment}>
+                <button className="submit-modal-button" type="submit">Delete</button>
+                <button onClick={closeModal} className="cancel-button-modal">Cancel</button>
             </form>
         </Modal>
       )}

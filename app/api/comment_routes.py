@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Comment, db
+from app.models import Comment, db, CommentLike, Reply
 from app.forms import addCommentForm
 from app.forms import updateCommentForm
 from sqlalchemy import asc, desc
@@ -15,7 +15,7 @@ def get_my_comments(id):
 
 @comment_routes.route('/', methods=['POST'])
 def create_comment():
-    print('made it to back end!!!!')
+
     form = addCommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -33,7 +33,10 @@ def create_comment():
 
 @comment_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_comment(id):
-    print('hellooooo!!!!!')
+    commentLikes = CommentLike.query.filter(CommentLike.commentId == id).all()
+    replies = Reply.query.filter(Reply.commentId == id).all()
+    [db.session.delete(commentLike) for commentLike in commentLikes]
+    [db.session.delete(reply) for reply in replies]
     comment = Comment.query.get(id)
     db.session.delete(comment)
     db.session.commit()

@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import { getUserPosts } from '../../store/userPost';
 import { getMainFeedPosts } from '../../store/mainFeedPosts';
 import Comment from '../Comment';
+import { createOneReply } from '../../store/reply';
 
 import { getEveryPost } from '../../store/everyPost';
 import "../Post/Post.css"
@@ -26,6 +27,8 @@ function MainFeedOnePost () {
     const [content, setContent] = useState('')
     const [hashtags, setHashtags] = useState([])
     const [body, setBody] = useState([])
+
+    const [commentId, setCommentId] = useState('')
 
 
     const params = useParams()
@@ -72,16 +75,37 @@ function MainFeedOnePost () {
 
     const createComment = (e) => {
         e.preventDefault()
-        const payload = {
-            content,
-            postId,
-            userId: sessionUser?.id,
-            avatar: sessionUser?.avatar,
-            username: sessionUser?.username
+        console.log('comment', commentId)
+
+        if (content.includes('@')) {
+            let array = content.split(' ')
+            array.shift()
+            array.join(' ')
+            const payload = {
+                content: array,
+                commentId,
+                userId: sessionUser?.id,
+                avatar: sessionUser?.avatar,
+                username: sessionUser?.username
+            }
+            dispatch(createOneReply(payload))
+            setCommentId('')
+            setContent('')
+        } else {
+
+            const payload = {
+                content,
+                postId,
+                userId: sessionUser?.id,
+                avatar: sessionUser?.avatar,
+                username: sessionUser?.username
+            }
+            setContent('')
+            dispatch(createOneComment(payload))
+            dispatch(getComments(postId))
+
         }
-        setContent('')
-        dispatch(createOneComment(payload))
-        dispatch(getComments(postId))
+
     }
 
     const countLikes = () => {
@@ -184,9 +208,9 @@ function MainFeedOnePost () {
                                     <div className="comment-content-post">
                                         {body.join(' ')}
                                     </div>
-                                    <div>
+                                    <div >
                                         {hashtags ? hashtags.map((hashtag) => (
-                                            <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                            <Link className="hashtag-link" to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
                                         ))
 
                                     : ""}
@@ -196,27 +220,9 @@ function MainFeedOnePost () {
 
                                 {comments ?
                                 comments.map((comment) => (
-                                    // <div className='comment-edit-mypost-div'>
-                                    //     {/* <div>{comment.content}</div> */}
-
-                                    //     <div className="left-side-comment">
-
-                                    //         <img className="user-avatar" alt="" src={comment?.avatar}></img>
-                                    //         <div className="username-bold" >{comment?.username}</div>
-                                    //         <div>{comment?.content}</div>
-
-                                    //     </div>
 
 
-                                    //     {comment.userId === sessionUser?.id ?
-                                    //     <div>
-                                    //     <UpdateCommentModal comment={comment}/>
-                                    //     <DeleteCommentModal comment={comment}/>
-                                    // </div>
-                                    //  : ''}
-                                    // </div>
-
-                                    <Comment user={sessionUser} comment={comment}/>
+                                    <Comment setCommentId={setCommentId} user={sessionUser} comment={comment}/>
 
 
                                 )) :
@@ -266,7 +272,7 @@ function MainFeedOnePost () {
                             <div className="create-comment-right">
 
                                 <form className="post-comment-main" onSubmit={createComment}>
-                                    <input className="my-post-input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
+                                    <input id="my-post-input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                                 </form>
                                     <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} type='submit'>post</button>
 

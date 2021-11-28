@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
 import { deleteOneComment } from '../../store/comment';
+import '../DeleteMainCommentModal/DeleteMainCommentModal.css'
 
 function DeleteCommentModal ({comment, setCommentMenu }) {
     const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,12 @@ function DeleteCommentModal ({comment, setCommentMenu }) {
 
     }
 
+    const closeModal = (e) => {
+        // e.preventDefault()
+        setCommentMenu(false)
+        setShowModal(false)
+    }
+
     return (
         <>
         <div className="edit-comment-buttons" onClick={() => setShowModal(true)}>
@@ -23,9 +30,9 @@ function DeleteCommentModal ({comment, setCommentMenu }) {
         </div>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
-            <form onSubmit={deleteComment}>
-                <button type="submit">Delete</button>
-                <div>Cancel</div>
+            <form className="delete-comment-modal-form" onSubmit={deleteComment}>
+                <button className="submit-modal-button" type="submit">Delete</button>
+                <button onClick={closeModal} className="cancel-button-modal">Cancel</button>
             </form>
         </Modal>
       )}

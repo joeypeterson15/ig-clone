@@ -148,9 +148,10 @@
     font-weight: 550;
     padding-left: 1.5rem;
     padding-right: 0.3rem;
-    color: rgb(36, 36, 36);
+    color: rgb(46, 46, 46);
     font-size: 14.7px;
     padding-top: 0.7rem;
+    text-decoration: none;
 }
 
 
@@ -287,8 +288,14 @@
 .red-comment-heart {
     color:rgb(172, 46, 46);
     padding-right: 0.5rem;
+    font-size: 0.8rem;
+    padding-top: 0.3rem;
 }
 
 .comment-heart {
     padding-right: 0.5rem;
+    color: rgb(63, 63, 63);
+    font-size: 0.8rem;
+    padding-top: 0.3rem;
+
 }

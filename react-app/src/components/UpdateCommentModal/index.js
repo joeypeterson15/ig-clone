@@ -26,6 +26,12 @@ function UpdateCommentModal ({comment , setCommentMenu}) {
         setContent('')
     }
 
+    const closeModal = (e) => {
+        // e.preventDefault()
+        setCommentMenu(false)
+        setShowModal(false)
+    }
+
     return (
         <>
 
@@ -33,14 +39,17 @@ function UpdateCommentModal ({comment , setCommentMenu}) {
 
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <div>
-                    <form onSubmit={submitUpdateComment()}>
-                        <textarea
+              <div className="edit-main-comment-container">
+                    <form className="update-comment-modal-form" onSubmit={submitUpdateComment()}>
+                        <textarea className="update-main-modal-textarea"
+                        col={30}
+                        rows={10}
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         >
                         </textarea>
-                        <button type="submit">update comment</button>
+                        <button className="submit-modal-button" type="submit">Update</button>
+                        <button onClick={closeModal} className="cancel-button-modal">Cancel</button>
                     </form>
                 </div>
             </Modal>

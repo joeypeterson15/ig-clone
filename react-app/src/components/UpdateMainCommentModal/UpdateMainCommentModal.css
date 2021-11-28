@@ -1,0 +1,60 @@
+.edit-main-comment-container {
+    background-color: white;
+    width: 17rem;
+}
+
+.update-comment-modal-form {
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    height: 15rem;
+    text-align: center;
+    border-top-left-radius: 5px;
+}
+
+.update-main-modal-textarea {
+    margin-right: 5rem;
+    width: 90%;
+    border: none;
+    overflow: auto;
+    outline: none;
+    resize: none;
+    font-size: 15px;
+    font-family: 500;
+    padding: 1rem;
+
+}
+
+
+.submit-modal-button {
+    position: absolute;
+    bottom: 3rem;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-top: 0.2px solid rgb(212, 212, 212);
+    color: rgb(61, 61, 61);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cancel-button-modal {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-top: 0.2px solid rgb(212, 212, 212);
+    color: rgb(61, 61, 61);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.submit-modal-button:hover {
+    background-color: grey;
+}
+
+.cancel-button-modal:hover {
+    background-color: grey;
+
+}

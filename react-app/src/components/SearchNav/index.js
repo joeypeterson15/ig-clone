@@ -36,24 +36,33 @@ const SearchNav = () => {
 
 
   return (
-    <div className="search-container-nav" >
-      <form className='search-bar' autoComplete="off">
 
-        <input className="search-input" type="search"
-           placeholder='Search' value={term} onChange={(e) => setTerm(e.target.value)} />
+    <div>
 
-      </form>
 
-        {<ul className={`search-results-nav ${users.length >= 9 ? 'results-found' : "" }`}>
+          <div className="search-container-nav" >
+            <form className='search-bar' autoComplete="off">
 
-            { !!results.length && results?.map(user => (
+              <input className="search-input" type="search"
+                placeholder='Search' value={term} onChange={(e) => setTerm(e.target.value)} />
 
-            <div className='search-results-div' onClick={whenClicked(user)} >
-                <img className="search-results-image-nav" alt="" src={user.avatar}></img>
-                <p>{user.username}</p>
-            </div>))}
+            </form>
+          </div>
+          <div className="search-results-main-container">
 
-        </ul>}
+              { !!results.length && results?.map(user => (
+
+              <div className='search-results-div' onClick={whenClicked(user)} >
+                  <img className="search-results-image-nav" alt="" src={user.avatar}></img>
+                  <p className="username-search-main">{user.username}</p>
+              </div>))}
+
+
+          </div>
+
+
+
+
     </div>
   )
 }
