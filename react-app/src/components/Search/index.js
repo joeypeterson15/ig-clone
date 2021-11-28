@@ -13,6 +13,7 @@ const Search = ({ setShowModal }) => {
   const [results, setResults] = useState([])
   const sessionUser = useSelector(state => state.session?.user)
   const users = useSelector(state => Object.values(state.allUsers))
+  const [friend, setFriend] = useState('')
   console.log(users)
 
   const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const Search = ({ setShowModal }) => {
   }, [term])
 
 
-  const createChannel = (friend) => () => {
+  const createChannel = () => {
     const payload = {
         friendId : friend?.id,
         friendAvatar : friend?.avatar,
@@ -41,6 +42,11 @@ const Search = ({ setShowModal }) => {
     setTerm('')
   }
 
+  const setupFriend = (user) => {
+    setFriend(user)
+
+  }
+
 
 
 
@@ -50,7 +56,7 @@ const Search = ({ setShowModal }) => {
       <div className="top-search-channel-container">
         <i onClick={() => setShowModal(false)} class="exit fas fa-times"></i>
         <div className="new-message-header">New Message</div>
-        <div>Next</div>
+        <div onClick={createChannel}>Next</div>
       </div>
 
       <form className='search-bar-channel' autoComplete="off">
@@ -66,7 +72,7 @@ const Search = ({ setShowModal }) => {
 
             { !!results.length && results?.map(user => (
 
-            <div className='search-channel-results-div' onClick={createChannel(user)} >
+            <div className={friend ? 'search-channel-clicked-results-div' :'search-channel-results-div'} onClick={() => setFriend(user)} >
                 <img className="channel-results-image" alt="" src={user.avatar}></img>
                 <p>{user.username}</p>
             </div>))}
