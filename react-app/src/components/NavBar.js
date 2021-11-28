@@ -24,7 +24,7 @@ const NavBar = () => {
 
     setShowMenu(false)
 
-  }, [dispatch])
+  }, [dispatch, window.location.href])
 
   const demoLogin = async () => {
     // setCredential("demo@aa.io")
@@ -78,10 +78,14 @@ const NavBar = () => {
 
           <NavLink to='/messages' exact={true} activeClassName='active'>
           <div className="nav-icon">
+            { window.location.href.includes('messages') ?
+
+                <i class="fas fa-paper-plane"></i>
+              :
               <i class="far fa-paper-plane"></i>
 
+            }
             </div>
-            {/* <i class="fas fa-paper-plane"></i> */}
           </NavLink>
 
           { userId ?
@@ -91,9 +95,17 @@ const NavBar = () => {
 
           <NavLink to='/explore' exact={true} activeClassName='active'>
           <div className="nav-icon">
-              <i class="far fa-compass"></i>
+          { window.location.href.includes('explore') ?
+
+               <i class="fas fa-compass"></i>
+
+            :
+
+            <i class="far fa-compass"></i>
+
+            }
           </div>
-            {/* <i class="fas fa-compass"></i> */}
+
           </NavLink>
 
         { userId ?
@@ -102,22 +114,20 @@ const NavBar = () => {
           <img alt="" src={user?.avatar} className="user-avatar-nav" onClick={showMenu === false ? openMenu : closeMenu}></img>
 
             {showMenu && (
-              <ul>
-                <li>
-                  <NavLink to='/profile' exact={true} activeClassName='active'>
+              <div className="avatar-navbar-icon-container">
+
+                  <NavLink className="avatar-navbar-links" to='/profile' exact={true} activeClassName='active'>
                     Profile
                   </NavLink>
 
-                </li>
-                <li>
-                  <LogoutButton />
-                </li>
-                <li>
-                <NavLink to='/about' exact={true} activeClassName='active'>
+
+
+                <NavLink className="avatar-navbar-links" to='/about' exact={true} activeClassName='active'>
                   About Creator
                 </NavLink>
-                </li>
-              </ul>
+
+                  <LogoutButton />
+              </div>
 
             )}
 

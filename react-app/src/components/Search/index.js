@@ -47,15 +47,22 @@ const Search = ({ setShowModal }) => {
 
   return (
     <div className="search-container" >
+      <div className="top-search-channel-container">
+        <i onClick={() => setShowModal(false)} class="exit fas fa-times"></i>
+        <div className="new-message-header">New Message</div>
+        <div>Next</div>
+      </div>
 
-      <form className='search-bar' autoComplete="off">
-
+      <form className='search-bar-channel' autoComplete="off">
+        <div className="to-div">To:</div>
         <input className="search-channel-input" type="search"
-           placeholder='Start Up A Conversation' value={term} onChange={(e) => setTerm(e.target.value)} />
+           placeholder='Search...' value={term} onChange={(e) => setTerm(e.target.value)} />
 
       </form>
 
-        {<ul className={`search-results ${users.length >= 9 ? 'results-found' : "" }`}>
+      <div className="channel-text" >Suggested</div>
+
+
 
             { !!results.length && results?.map(user => (
 
@@ -64,7 +71,7 @@ const Search = ({ setShowModal }) => {
                 <p>{user.username}</p>
             </div>))}
 
-        </ul>}
+
     </div>
   )
 }

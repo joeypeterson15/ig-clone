@@ -54,3 +54,49 @@ nav {
     width: 10rem;
     height: 2rem;
 }
+
+.avatar-navbar-icon-container {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 18rem;
+    top: 3.5rem;
+    /* border: 0.1px solid rgb(151, 151, 151); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    /* text-align: center; */
+
+}
+
+.avatar-navbar-links {
+    text-decoration: none;
+
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+    padding-left: 0.2rem;
+    padding-top: 0.5rem;
+}
+
+.avatar-navbar-links:hover {
+    background-color: rgb(238, 238, 238)
+}
+
+.logout-button:hover {
+    background-color: rgb(238, 238, 238)
+}
+
+.logout-button {
+    border: none;
+    background-color: white;
+
+    font-size: 14px;
+    color: rgb(71, 71, 71);
+    width: 10rem;
+    text-align: left;
+    padding-left: 0.2rem;
+    border-top: 0.1px solid rgb(200, 200, 200);
+    margin-top: 0.5rem;
+    padding-top: 0.2rem;
+}

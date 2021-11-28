@@ -1,5 +1,5 @@
 .search-container {
-  background-color: red;
+  /* background-color: red; */
   border-bottom: 0.2px solid rgb(221, 221, 221);
   width: 30rem;
   height: 30rem;
@@ -7,12 +7,48 @@
 }
 
 .search-channel-input {
-  width: 90%;
-  margin-left: 5%;
-  border: 0.2px solid rgb(221, 221, 221);
-  height: 2rem;
+  width: 100%;
+  /* margin-left: 5%; */
+  border: none;
+  border-top: 0.2px solid rgb(221, 221, 221);
+  border-bottom: 0.2px solid rgb(221, 221, 221);
+  height: 3.5rem;
   margin-top: 1rem;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
+  outline: none;
+  padding-left: 12%;
+}
+
+.top-search-channel-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.to-div {
+  position: absolute;
+  top: 3.3rem;
+  left: 0.4rem;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgb(32, 32, 32)
+}
+.exit {
+  color: rgb(53, 53, 53);
+  font-size: 1.5rem;
+  padding-left: 0.4rem;
+}
+
+.new-message-header {
+  font-weight: 500;
+  padding-top: 0.5rem;
+}
+
+.channel-text {
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(32, 32, 32);
+  padding-left: 0.4rem;
+  padding-top: 0.4rem;
 }
 
 .channel-results-image {
@@ -23,12 +59,12 @@
 
 .search-channel-results-div {
   display: flex;
-  height: 20rem;
+  height: 3rem;
   align-items: center;
   /* gap: 0.25rem; */
   background-color: white;
   /* border-radius: 2px; */
-  max-height: 25px;
+  /* max-height: 25px; */
 }
 
 
@@ -101,7 +137,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
   }
 
-  /* .search-bar {
+  /* .search-bar-channel {
     background-color: honeydew;
     width: 100%;
   } */

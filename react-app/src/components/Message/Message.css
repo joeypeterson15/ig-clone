@@ -1,11 +1,12 @@
 
 .messages-component-container {
     left: 37.8rem;
-    top: 4rem;
+    top: 4.25rem;
     /* background-color: hotpink; */
     border: 0.2px solid rgb(221, 221, 221);
     height: 42rem;
     position: absolute;
+    z-index: 1;
 }
 
 .messages-container {
@@ -13,7 +14,7 @@
     border-top: 0.2px solid rgb(221, 221, 221);
     border-bottom: 0.2px solid rgb(221, 221, 221);
     left: 31rem;
-    top: 14rem;
+    top: 13rem;
     height: 31.4rem;
     width: 36.6rem;
     overflow-y: scroll;
@@ -24,8 +25,8 @@
 
 
 .messenger-avatar {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
     margin-left: 1rem;
     margin-top: 3rem;
@@ -54,13 +55,33 @@
     border: 0.2px solid rgb(219, 219, 219);
     border-radius: 30px;
     height: 2.5rem;
-    width: 100%;
+    width: 89%;
     padding-left: 3%;
-    margin-left: 8%;
+    margin-left: 4%;
+    outline: none;
 }
 
 .message-send-button {
-    visibility: hidden;
+    /* visibility: hidden; */
+    position: absolute;
+    z-index: 1;
+    border: none;
+    background-color: white;
+    right: 2.5rem;
+    bottom: 2.6rem;
+    font-size: 16px;
+    color: rgba(0, 200, 200, 0.3)
+}
+.blue-message-send-button {
+    /* visibility: hidden; */
+    position: absolute;
+    z-index: 1;
+    border: none;
+    background-color: white;
+    right: 2.5rem;
+    bottom: 2.6rem;
+    font-size: 16px;
+    color: rgba(0, 200, 200, 0.6)
 }
 
 .time-time-div {
@@ -79,21 +100,42 @@
     font-size: 13.7px;
     font-weight: 200;
 }
+.time-time-messages-div {
+    margin-left: 47%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: rgb(139, 139, 139);
+    font-size: 12px;
+    font-weight: 400;
+}
+.time-stamp-messages-div {
+    margin-left: 39%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: rgb(139, 139, 139);
+    font-size: 12px;
+    font-weight: 400;
+}
 
 .content-avatar-in-message-div {
     display: flex;
+    padding-left: 0.1rem;
 }
 
 .message-content {
     margin-left: 0.8rem;
     border: 0.2px solid rgb(233, 233, 233);
     border-radius: 20px;
-    padding: 2rem;
-    width: 7rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    width: 12.5rem;
+    color: rgb(66, 66, 66);
+    font-size: 14px;
 }
 
 .upper-right-messages {
     display: flex;
+    height: 3.25rem;
 }
 
 .channel-name {
