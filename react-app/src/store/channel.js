@@ -1,6 +1,6 @@
 const LOAD = 'channels/LOAD'
 const ADD = 'channels/ADD'
-// const DELETE = 'channels/DELETE'
+const DELETE = 'channels/DELETE'
 
 
 const loadChannels = channels => ({
@@ -11,6 +11,11 @@ const loadChannels = channels => ({
 const addChannel = channel => ({
     type: ADD,
     channel
+})
+
+const removeOneChannel = channelId => ({
+    type: DELETE,
+    channelId
 })
 
 export const getChannels = (userId) => async dispatch => {
@@ -36,6 +41,21 @@ export const createOneChannel = (payload) => async dispatch => {
         const channel = await response.json()
         dispatch(addChannel(channel))
     }
+}
+
+export const deleteOneChannel = (userId, friendId, channelId) => async dispatch => {
+    const response = await fetch(`/api/channels/delete/${channelId}`, {
+        method: 'DELETE',
+        // headers: {
+        //   'Content-Type' : 'application/json',
+        // },
+
+      })
+      if (response.ok) {
+          const channelId = await response.json()
+          dispatch(removeOneChannel(channelId))
+      }
+
 }
 
 const initialState = {
@@ -65,6 +85,13 @@ const channelReducer = (state = initialState, action) => {
             }
             return newState;
         }
+
+        case DELETE: {
+            const newState = {...state}
+            delete newState[action.channelId.channelId]
+            return newState;
+        }
+
         default:
             return state;
         }

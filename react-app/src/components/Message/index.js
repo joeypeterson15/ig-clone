@@ -4,10 +4,13 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getMessages, createOneMessage } from "../../store/message";
 import { getChannels } from "../../store/channel";
+import { useHistory } from "react-router";
+import { deleteOneChannel } from "../../store/channel";
 import "./Message.css"
 
 function Message () {
 
+    let history = useHistory()
     const params = useParams()
     const {userId, friendId } = params
 
@@ -17,7 +20,19 @@ function Message () {
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == friendId))
     // console.log(channel)
     const messages = useSelector(state => Object.values(state.messages))
+
     const sessionUser = useSelector(state => state.session?.user)
+
+    const [showMenu, setShowMenu] = useState(false);
+
+    const closeMenu = () => {
+        setShowMenu(false);
+    };
+
+    const openMenu = () => {
+      if (showMenu) return;
+      setShowMenu(true);
+    };
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -64,13 +79,32 @@ function Message () {
         return false
     }
 
+    const deleteChannel = (e) => {
+        e.preventDefault()
+        dispatch(deleteOneChannel(userId, friendId, channel?.id))
+        setShowMenu(false);
+        history.push('/messages')
+    }
+
 
     return (
         <div className="messages-component-container">
 
             <div className="upper-right-messages">
-                <img className="channel-avatar" alt="" src={channel?.friendAvatar}></img>
-                <h3 className="channel-name">{channel?.friendUsername}</h3>
+                <div className="flex">
+                    <img className="channel-avatar" alt="" src={channel?.friendAvatar}></img>
+                    <h3 className="channel-name">{channel?.friendUsername}</h3>
+
+                </div>
+                <div onClick={showMenu === false ? openMenu : closeMenu} className="delete-channel-icon">
+                    <i class="i-icon fas fa-info"></i>
+                </div>
+                {showMenu && (
+                    <div className="edit-my-post-dropdown">
+                        <button onClick={deleteChannel}>delete chat</button>
+                        <button>Cancel</button>
+                    </div>
+                )}
             </div>
 
             <div className="messages-container">

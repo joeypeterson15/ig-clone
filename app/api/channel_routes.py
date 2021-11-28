@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Channel, User, db, Comment, Like
+from app.models import Channel, User, db, Comment, Like, Message
 from app.forms import addChannelForm
 
 channel_routes = Blueprint('channels', __name__)
@@ -25,3 +25,14 @@ def create_channel():
     db.session.add(channel)
     db.session.commit()
     return {'channel' : channel.to_dict()}
+
+@channel_routes.route('/delete/<int:channelId>', methods=['DELETE'])
+def delete_channel(channelId):
+    channel = Channel.query.get(channelId)
+    messages = Message.query.filter(Message.channelId == channelId).all()
+    print('messages!!!!!!', messages)
+    [db.session.delete(message) for message in messages]
+    db.session.commit()
+    db.session.delete(channel)
+    db.session.commit()
+    return {'channelId' : channelId}

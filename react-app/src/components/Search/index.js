@@ -3,28 +3,36 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { createOneChannel } from "../../store/channel"
 import { useHistory } from "react-router"
+import { getAllUsers } from "../../store/allUsers"
 import './Search.css'
 
-const Search = ({ setShowModal }) => {
+const Search = ({ showModal, setShowModal, users }) => {
 
   let history = useHistory()
 
   const [term, setTerm] = useState("")
-  const [results, setResults] = useState([])
   const sessionUser = useSelector(state => state.session?.user)
-  const users = useSelector(state => Object.values(state.allUsers))
+  // const users = useSelector(state => Object.values(state.allUsers).filter(user => user?.id !== sessionUser?.id))
+  const [results, setResults] = useState([...users])
   const [friend, setFriend] = useState('')
-  console.log(users)
+
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [dispatch, showModal])
 
   useEffect(()=> {
     if(term.length > 0) {
 
       fetch(`/api/users/search/${term}`).then(res => res.json()).then(json => {setResults(json.users.filter(user => user.username !== sessionUser?.username )); console.log(json)}).catch(e => console.log(e));
 
-    } else (setResults(""));
+    }
+    else {
+      setResults([...users])
+      setFriend('')
+    };
 
   }, [term])
 
@@ -56,7 +64,7 @@ const Search = ({ setShowModal }) => {
       <div className="top-search-channel-container">
         <i onClick={() => setShowModal(false)} class="exit fas fa-times"></i>
         <div className="new-message-header">New Message</div>
-        <div onClick={createChannel}>Next</div>
+        <div className={friend ? "blue-next":"next"} onClick={createChannel}>Next</div>
       </div>
 
       <form className='search-bar-channel' autoComplete="off">
@@ -70,12 +78,25 @@ const Search = ({ setShowModal }) => {
 
 
 
+      <div className="search-results-container">
             { !!results.length && results?.map(user => (
 
-            <div className={friend ? 'search-channel-clicked-results-div' :'search-channel-results-div'} onClick={() => setFriend(user)} >
-                <img className="channel-results-image" alt="" src={user.avatar}></img>
-                <p>{user.username}</p>
-            </div>))}
+                <div className={friend.id === user?.id ? 'search-channel-clicked-results-div' :'search-channel-results-div'} onClick={() => setFriend(user)} >
+                    <div className="img-username">
+                      <img className="channel-results-image" alt="" src={user.avatar}></img>
+                      <p className="username-results">{user.username}</p>
+
+                    </div>
+                    { friend.id === user?.id ? <div className="circle-with-checkmark">
+                      <i class="check fas fa-check"></i>
+                    </div>
+                    :
+                    <div className="circle"></div>}
+                </div>
+
+))}
+</div>
+
 
 
     </div>
