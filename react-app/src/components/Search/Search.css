@@ -1,9 +1,9 @@
 .search-container {
   /* background-color: red; */
   border-bottom: 0.2px solid rgb(221, 221, 221);
-  width: 30rem;
+  width: 23rem;
   height: 30rem;
-  border-radius: 2px;
+  /* border-radius: 5rem; */
 }
 
 .search-channel-input {
@@ -14,7 +14,7 @@
   border-bottom: 0.2px solid rgb(221, 221, 221);
   height: 3.5rem;
   margin-top: 1rem;
-  /* border-radius: 0.5rem; */
+
   outline: none;
   padding-left: 12%;
 }
@@ -22,6 +22,7 @@
 .top-search-channel-container {
   display: flex;
   justify-content: space-between;
+  border-radius: 5rem;
 }
 
 .to-div {
