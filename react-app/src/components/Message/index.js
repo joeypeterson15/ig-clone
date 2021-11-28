@@ -80,16 +80,16 @@ function Message () {
                         <div className="message-in-messages">
                             <div>
                                 {isSameDay(message?.createdAt)
-                            ?
-                            <div className="time-time-div">
-                                {convertTime(message?.createdAt)}
-                            </div>
-                            :
-                            <div className="time-stamp-div">
-                                {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(message?.createdAt))} {new Date(message?.createdAt).getDate()}, 2021 {convertTime(message?.createdAt)}
+                                ?
+                                <div className="time-time-messages-div">
+                                    {convertTime(message?.createdAt)}
+                                </div>
+                                :
+                                <div className="time-stamp-messages-div">
+                                    {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(message?.createdAt))} {new Date(message?.createdAt).getDate()}, 2021 {convertTime(message?.createdAt)}
 
-                            </div>
-                            }
+                                </div>
+                                }
 
 
                             </div>
@@ -101,13 +101,13 @@ function Message () {
                             </div>
 
                         </div>
-                    )) : "no messages"}
+                    )) : ""}
                 </div>
             </div>
 
                 <form className="submit-message-form" onSubmit={createMessage}>
                     <input className="message-input" type="text" placeholder="send message..." value={content} onChange={(e) => setContent(e.target.value)}></input>
-                    <button className="message-send-button" type="submit">Send</button>
+                    <button className={content ? "blue-message-send-button" : "message-send-button"} type="submit">Send</button>
                 </form>
 
         </div>
