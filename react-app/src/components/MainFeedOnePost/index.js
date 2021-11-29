@@ -210,13 +210,17 @@ function MainFeedOnePost () {
                                     <div className="comment-content-post">
                                         {body.join(' ')}
                                     </div>
-                                    <div >
-                                        {hashtags ? hashtags.map((hashtag) => (
-                                            <Link className="hashtag-link" to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+
+
+
+                                </div>
+                                <div>
+
+                                {hashtags ? hashtags.map((hashtag) => (
+                                            <Link className="post-hashtag-link" to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
                                         ))
 
                                     : ""}
-                                    </div>
                                 </div>
 
 

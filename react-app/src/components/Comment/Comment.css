@@ -1,9 +1,9 @@
 .view-replies {
     font-size: 12px;
-    color: rgb(73, 73, 73);
+    color: rgb(134, 134, 134);
     padding-left: 7rem;
-    padding-top: 2rem;
-    font-weight: 500rem;
+    padding-top: 1.3rem;
+    font-weight: 600rem;
 }
 
 .reply-div {
@@ -11,28 +11,42 @@
     font-weight: 500;
 }
 
-.comment-edit-mypost-div:hover .three-dot-close-main {
+.comment-edit-mypost-div:hover .three-dot-close-post {
     display: block
 }
 
 
-.three-dot-open-main {
+.three-dot-open-post {
     font-size: 15px;
     color: rgb(33, 0, 95);
-    padding-right: 1rem;
+    margin-left: 7rem;
+    /* width: 1rem; */
+    position: absolute;
     /* display: none; */
     /* padding-top: 0.5rem; */
 }
 
-.three-dot-close-main {
+.three-dot-close-post {
     display: none;
     /* display: none; */
+    /* width: 1rem; */
     font-size: 15px;
     color: rgb(153, 153, 153);
-    padding-right: 1rem;
+    margin-left: 7rem;
+    position: absolute;
     /* padding-top: 0.5rem; */
 }
 
 .flexing {
     display: flex;
+}
+
+.edit-delete-comment-menu-in-post{
+    z-index: 1000;
+    right: 13rem;
+
+    position: absolute;
+    background-color: rgba(212, 212, 212, 0.342);
+    width: 5rem;
+    height: 4.5rem;
 }

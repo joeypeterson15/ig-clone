@@ -1,4 +1,8 @@
 .post-outer-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
     background-color: rgb(77, 77, 77);
     height: 800px;
     width: 100%;
@@ -48,7 +52,7 @@
 
 .middle-right-modal {
     display: flex;
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
     padding-top: 1rem;
 }
 
@@ -113,16 +117,12 @@
 .left-side-comment {
     display: flex;
 }
-.left-side-reply-comment {
-    display: flex;
-    padding-left: 10rem;
-    padding-top: 1rem;
-}
 
 
 .comment-content-post {
     font-size: 14px;
     color: rgb(36, 36, 36);
+    padding-top: 0.4rem;
 }
 
 .comment-likes-div {
@@ -143,6 +143,7 @@
     padding-right: 0.3rem;
     color: rgb(36, 36, 36);
     font-size: 14.7px;
+    padding-top: 0.4rem;
 }
 .username-top-bold {
     font-weight: 550;

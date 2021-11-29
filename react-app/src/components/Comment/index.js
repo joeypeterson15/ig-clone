@@ -189,12 +189,18 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
                     {count()} likes
                 </div>
                 <div onClick={setupReply(comment)} className="reply-div">Reply</div>
+                <div className={showCommentMenu === false ? "three-dot-close-post" : "three-dot-open-post" }>
+                    <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
+                </div>
 
             </div>
-            {replies ?
+            {replies.length > 0 ?
 
-                <div className="view-replies" onClick={showMenu === false ? openMenu : closeMenu}>
-                    ------ view {countReplies()} replies
+                !showMenu ? <div className="view-replies" onClick={openMenu}>
+                    View replies ({countReplies()})
+                </div> :
+                <div className="view-replies" onClick={closeMenu}>
+                    Hide replies ({countReplies()})
                 </div>
                 :
                 ""
@@ -207,7 +213,7 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
                 //         <div>{reply?.content}</div>
                 //     ))}
                 // </div>
-                <Reply setCommentId={setCommentId} replies={replies} commentId={comment?.id}/>
+                <Reply setCommentId={setCommentId} comment={comment} replies={replies} commentId={comment?.id}/>
                 )}
 
 
@@ -222,9 +228,9 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
             {comment.userId === user?.id ?
 
             <div className="flexing">
-                <div className={showCommentMenu === false ? "three-dot-close-main" : "three-dot-open-main" }>
+                {/* <div className={showCommentMenu === false ? "three-dot-close-main" : "three-dot-open-main" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
-                </div>
+                </div> */}
 
                 {!isLiked()
                             ?
@@ -238,7 +244,7 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
 
 
                 {showCommentMenu && (
-                    <div className="edit-my-comment-dropdown">
+                    <div className="edit-delete-comment-menu-in-post">
                         <UpdateCommentModal setCommentMenu={setCommentMenu} comment={comment}/>
                         <DeleteCommentModal setCommentMenu={setCommentMenu} comment={comment}/>
                     </div>

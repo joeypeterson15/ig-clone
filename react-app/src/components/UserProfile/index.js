@@ -8,6 +8,7 @@ import { createOneFollow } from '../../store/follow';
 import { getFollows } from '../../store/follow';
 import { getAllFollows } from '../../store/allFollows';
 import UnfollowModal from '../UnfollowModal';
+import { getFollowers } from '../../store/followers';
 import '../Profile/Profile.css'
 
 
@@ -19,8 +20,9 @@ function UserProfile () {
     const params = useParams()
     const {userId} = params
     const sessionUser = useSelector((state) => state.session?.user)
-    // const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === sessionUser?.id))
+    const userFollows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === userId))
     const follows = useSelector((state) => Object.values(state.follows))
+    const followers = useSelector(state => Object.values(state.followers))
     // const follow = useSelector((state) => Object.values(state.follows).find(follow => follow.followId === userId))
     console.log(follows)
 
@@ -33,6 +35,8 @@ function UserProfile () {
 
         useEffect(() => {
             dispatch(getFollows(sessionUser?.id))
+            dispatch(getAllFollows())
+            dispatch(getFollowers(userId))
             dispatch(getUser(userId))
             dispatch(getUserPosts(userId))
         }, [dispatch, userId, sessionUser, showModal])
@@ -68,6 +72,14 @@ function UserProfile () {
         dispatch(createOneFollow(payload))
     }
 
+    const count = (list) => {
+        let count = 0;
+        for (let i = 0; i<list.length; i++) {
+            count += 1
+        }
+        return count;
+    }
+
 
     return (
         <>
@@ -83,9 +95,19 @@ function UserProfile () {
                             </div>
                         </div>
                         <div className="middle-my-profile-content">
-                            <div>{countPosts()} posts</div>
-                            <div># of followers</div>
-                            <div># of following</div>
+                            <div className="flex">
+                                <div className="bold-numbers">{countPosts()}</div>
+                                <div className='space'>posts</div>
+                            </div>
+                            <div className="flex">
+                                <div className="bold-numbers">{count(followers)}</div>
+                                <div className='space'>followers</div>
+                            </div>
+                            <div className="flex">
+                                <div className="bold-numbers">{count(userFollows)}</div>
+                                <div className='space'>following</div>
+                            </div>
+
                         </div>
                         <div className="bottom-my-profile-content">
                             <div>Bio</div>

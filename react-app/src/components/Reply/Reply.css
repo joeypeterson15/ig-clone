@@ -1,0 +1,27 @@
+.comment-likes-reply-div {
+    padding-left: 11.5rem;
+    font-size: 12px;
+    color: rgb(134, 134, 134);
+    display: flex;
+}
+
+.reply-content {
+    font-size: 14px;
+    color: rgb(36, 36, 36);
+    padding-top: 0.4rem;
+}
+
+.username-reply-bold {
+    font-weight: 550;
+    padding-left: 1.5rem;
+    padding-right: 0.3rem;
+    color: rgb(36, 36, 36);
+    font-size: 14.7px;
+    padding-top: 0.4rem;
+}
+
+.left-side-reply-comment {
+    display: flex;
+    padding-left: 7rem;
+    padding-top: 1rem;
+}
