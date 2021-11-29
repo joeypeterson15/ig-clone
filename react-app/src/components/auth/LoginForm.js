@@ -18,6 +18,8 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+      // setEmail('')
+      // setPassword('')
     }
   };
 
@@ -34,15 +36,19 @@ const LoginForm = () => {
   }
 
   const demoLogin = async () => {
-    // setCredential("demo@aa.io")
+    // setEmail("demo@aa.io")
     // setPassword("password")
+    // setEmail('')
+    //   setPassword('')
     return dispatch(
       sessionActions.login("demo@aa.io", "password"),
     )
   }
   const marnieLogin = async () => {
-    // setCredential("demo@aa.io")
+    // setEmail("demo@aa.io")
     // setPassword("password")
+    // setEmail('')
+    //   setPassword('')
     return dispatch(
       sessionActions.login("marnie@aa.io", "password"),
     )
@@ -83,18 +89,21 @@ const LoginForm = () => {
                     value={password}
                     onChange={updatePassword}
                   />
-                  <button id="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
-                    <button id="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
-                  <button id="login-login-button" type='submit'>Login</button>
+              <div className="demo-logins-box">
+                      <button className="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
+                      <button className="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
+
+                </div>
+
+                    <button id="login-login-button" type='submit'>Login</button>
                 </div>
             </form>
         </div>
                 <div className="signup-in-login-card">
                     Don't have an account? <Link to="/sign-up">Sign up</Link>
                 </div>
-                <div className="demo-logins-box">
-                    <button id="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
-                    <button id="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
+                <div className="about">
+                    <Link className="about-link-login" to="/about">About Creator</Link>
                 </div>
 
     </div>

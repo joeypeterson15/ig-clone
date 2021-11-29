@@ -49,6 +49,9 @@ function App() {
           <NavBar />
           <SignUpForm />
         </Route>
+        <Route path='/about' exact={true} >
+          <AboutCreator />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <MainFeed />
@@ -101,9 +104,7 @@ function App() {
         <ProtectedRoute path='/main/:postId' exact={true} >
           <MainFeedOnePost />
         </ProtectedRoute>
-        <ProtectedRoute path='/about' exact={true} >
-          <AboutCreator />
-        </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );
