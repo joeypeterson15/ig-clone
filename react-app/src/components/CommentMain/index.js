@@ -11,6 +11,7 @@ function CommentMain ({ comment, user }) {
 
     const commentLikes = useSelector(state => Object.values(state.commentLikes).filter(c => c?.commentId == comment?.id))
     const [showCommentMenu, setCommentMenu] = useState(false);
+    const [clicked, setClicked] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -19,10 +20,12 @@ function CommentMain ({ comment, user }) {
 
     const closeCommentMenu = () => {
         setCommentMenu(false);
+        setClicked(false)
     };
 
     const openCommentMenu = () => {
       if (showCommentMenu) return;
+      setClicked(true)
       setCommentMenu(true);
     };
 
@@ -63,8 +66,8 @@ function CommentMain ({ comment, user }) {
 
             {comment.userId === user?.id ?
 
-            <div className="flex">
-                <div className={showCommentMenu === false ? "three-dot-close-main" : "three-dot-open-main" }>
+            <div className="flex-for-life">
+                <div className={showCommentMenu === false ?  "three-dot-close-main" : "three-dot-open-main" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
                 </div>
                 {!isLiked()

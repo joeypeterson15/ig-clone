@@ -3,6 +3,13 @@
     font-size: 22px;
 }
 
+.add-post-first-card {
+    /* background-color: hotpink; */
+    /* border-radius: 2rem; */
+    width: 30rem;
+    height: 30rem
+}
+
 
 .modal-form {
     display: flex;
@@ -25,9 +32,134 @@
     background-color: grey;
 }
 
-.modal-input {
-    text-align: center;
+#modal-input {
+    /* text-align: center; */
+    width: 93.35%;
+    /* margin-top: 23.55rem; */
+    border: none;
+    border-top: 0.2px solid rgb(212, 212, 212);
+    overflow: auto;
+    outline: none;
+    resize: none;
+    font-size: 15px;
+    font-family: 500;
+    padding: 1rem;
 }
 .modal-textarea {
     text-align: center;
+}
+
+
+
+
+.upper-image-add-div {
+    text-align: center;
+    width: 100%;
+    height: 2rem;
+    border-bottom: 0.2px solid rgb(212, 212, 212)
+
+}
+
+.submit-post-modal-button {
+    position: absolute;
+    font-weight: 500;
+    font-size: 15px;
+    right: 0.4rem;
+    top: 0.5rem;
+    color: rgb(107, 186, 223);
+    background-color: white;
+    border: none;
+}
+
+
+.next-button {
+    position: absolute;
+    right: 0.4rem;
+    top: 0.5rem;
+    color: rgba(0, 0, 0, 0.15);
+}
+
+.next-button-blue {
+    position: absolute;
+    right: 0.4rem;
+    top: 0.5rem;
+    color: rgb(107, 186, 223)
+}
+
+.new-post-heading {
+    padding-top: 0.5rem;
+    font-weight: 500;
+    font-size: 15.5px;
+    color: rgba(0,0,0,0.8)
+}
+
+.arrow-left {
+    position: absolute;
+    left: 0.6rem;
+    top: 0.5rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.instagram-image-add {
+    width: 100%;
+    /* height: 80%; */
+    /* border-radius: 2rem; */
+}
+
+
+
+.add-post-second-card {
+    width: 50rem;
+}
+
+
+.image-plus-caption-body {
+    display: flex;
+}
+
+.modal-addcaption-textarea {
+     /* text-align: center; */
+     /* width: 93.35%; */
+     /* margin-top: 23.55rem; */
+     border: none;
+     border-bottom: 0.2px solid rgb(212, 212, 212);
+     overflow: auto;
+     outline: none;
+     resize: none;
+     font-size: 15px;
+     font-family: 500;
+     padding: 1rem;
+     margin-right: 0;
+}
+
+.upload-image {
+    width: 63%;
+    background-color: hotpink;
+}
+
+.avatar-image {
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: 0.7rem;
+}
+
+.ye {
+    padding-bottom: 0.5rem;
+    padding-top: 2rem;
+}
+
+.username {
+    color: rgba(0, 0, 0, 0.75);
+    font-family: 13.5px;
+    font-weight: 500;
+    padding-left: 0.7rem;
+    padding-top: 0.2rem;
+}
+
+.errors-container {
+    z-index: 3000;
+    position: absolute;
+    top: 0;
+    background-color: red;
 }

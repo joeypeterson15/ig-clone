@@ -27,6 +27,7 @@ function MainFeedOnePost () {
     const [content, setContent] = useState('')
     const [hashtags, setHashtags] = useState([])
     const [body, setBody] = useState([])
+    const [showMenu, setShowMenu] = useState(false)
 
     const [commentId, setCommentId] = useState('')
 
@@ -91,6 +92,7 @@ function MainFeedOnePost () {
             dispatch(createOneReply(payload))
             setCommentId('')
             setContent('')
+            setShowMenu(true)
         } else {
 
             const payload = {
@@ -222,7 +224,7 @@ function MainFeedOnePost () {
                                 comments.map((comment) => (
 
 
-                                    <Comment setCommentId={setCommentId} user={sessionUser} comment={comment}/>
+                                    <Comment setShowMenu={setShowMenu} showMenu={showMenu} setCommentId={setCommentId} user={sessionUser} comment={comment}/>
 
 
                                 )) :

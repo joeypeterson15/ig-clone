@@ -11,7 +11,7 @@ import Reply from "../Reply";
 import './Comment.css'
 
 
-function Comment ({ setCommentId, comment, user }) {
+function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
 
     const dispatch = useDispatch()
     // const [reply, setReply] = useState('')
@@ -23,7 +23,7 @@ function Comment ({ setCommentId, comment, user }) {
     const commentLikes = useSelector(state => Object.values(state.commentLikes).filter(c => c?.commentId == comment?.id))
     console.log(replies)
 
-    const [showMenu, setShowMenu] = useState(false);
+    // const [showMenu, setShowMenu] = useState(false);
 
 
     const closeMenu = () => {
@@ -157,9 +157,9 @@ function Comment ({ setCommentId, comment, user }) {
         const input = document.getElementById('my-post-input-comment-main')
         input.value = "@" + comment?.username
         setCommentId(comment?.id)
-        if (showMenu === false) {
-            setShowMenu(true)
-        }
+        // if (showMenu === false) {
+        //     setShowMenu(true)
+        // }
 
 
     }
@@ -221,7 +221,7 @@ function Comment ({ setCommentId, comment, user }) {
 
             {comment.userId === user?.id ?
 
-            <div className="flex">
+            <div className="flexing">
                 <div className={showCommentMenu === false ? "three-dot-close-main" : "three-dot-open-main" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
                 </div>

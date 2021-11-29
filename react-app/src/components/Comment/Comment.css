@@ -10,3 +10,29 @@
     padding-left: 0.5rem;
     font-weight: 500;
 }
+
+.comment-edit-mypost-div:hover .three-dot-close-main {
+    display: block
+}
+
+
+.three-dot-open-main {
+    font-size: 15px;
+    color: rgb(33, 0, 95);
+    padding-right: 1rem;
+    /* display: none; */
+    /* padding-top: 0.5rem; */
+}
+
+.three-dot-close-main {
+    display: none;
+    /* display: none; */
+    font-size: 15px;
+    color: rgb(153, 153, 153);
+    padding-right: 1rem;
+    /* padding-top: 0.5rem; */
+}
+
+.flexing {
+    display: flex;
+}
