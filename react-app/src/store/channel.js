@@ -74,7 +74,7 @@ const channelReducer = (state = initialState, action) => {
 
             return {
                 ...allChannels,
-                ...state,
+                // ...state,
             }
         }
 

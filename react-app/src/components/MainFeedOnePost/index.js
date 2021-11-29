@@ -81,9 +81,11 @@ function MainFeedOnePost () {
         if (content.includes('@')) {
             let array = content.split(' ')
             array.shift()
-            array.join(' ')
+            console.log(array)
+            array.join('')
+            console.log(array)
             const payload = {
-                content: array,
+                content: array.join(' '),
                 commentId,
                 userId: sessionUser?.id,
                 avatar: sessionUser?.avatar,

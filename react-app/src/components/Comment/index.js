@@ -11,7 +11,7 @@ import Reply from "../Reply";
 import './Comment.css'
 
 
-function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
+function Comment ({ setCommentId, comment, user }) {
 
     const dispatch = useDispatch()
     // const [reply, setReply] = useState('')
@@ -23,7 +23,7 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
     const commentLikes = useSelector(state => Object.values(state.commentLikes).filter(c => c?.commentId == comment?.id))
     console.log(replies)
 
-    // const [showMenu, setShowMenu] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
 
 
     const closeMenu = () => {
@@ -189,9 +189,12 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
                     {count()} likes
                 </div>
                 <div onClick={setupReply(comment)} className="reply-div">Reply</div>
+                {comment?.userId === sessionUser?.id ?
                 <div className={showCommentMenu === false ? "three-dot-close-post" : "three-dot-open-post" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
                 </div>
+                : ''
+                }
 
             </div>
             {replies.length > 0 ?
@@ -225,7 +228,7 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
 
             </div>
 
-            {comment.userId === user?.id ?
+
 
             <div className="flexing">
                 {/* <div className={showCommentMenu === false ? "three-dot-close-main" : "three-dot-open-main" }>
@@ -250,7 +253,7 @@ function Comment ({ setCommentId, comment, user, showMenu, setShowMenu }) {
                     </div>
                 )}
             </div>
-                : ''}
+                
         </div>
     )
 }
