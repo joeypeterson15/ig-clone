@@ -72,6 +72,12 @@ function AddPostModal () {
         // if (imageUrl) url.value = imageUrl
     }
 
+    const discardPost = () => {
+        setShowModal(false)
+        setShowCaptionModal(false)
+        setImageUrl('')
+    }
+
     return (
         <>
         <div onClick={() => setShowModal(true)}>
@@ -81,6 +87,7 @@ function AddPostModal () {
         </div>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
+            
             <div className="add-post-first-card">
 
                 <div className="upper-image-add-div">
@@ -97,8 +104,12 @@ function AddPostModal () {
                 {/* {imageUrl ? */}
                     {/* <img src={imageUrl} className="instagram-image-add"></img> */}
                     {/* : */}
-                    <a href="https://ibb.co/CwFnmJZ"><img className="instagram-image-add"  src="https://i.ibb.co/8mVjNzp/black-white-instagram-add-post.png" alt="black-white-instagram-add-post" border="0"></img></a>
-
+                    {/* <a href="https://ibb.co/CwFnmJZ"><img className="instagram-image-add"  src="https://i.ibb.co/8mVjNzp/black-white-instagram-add-post.png" alt="black-white-instagram-add-post" border="0"></img></a> */}
+                    {/* <a href="https://ibb.co/cY04z30"><img className="instagram-image-add"  src="https://i.ibb.co/NT5cwC5/blackkk.png" alt="blackkk" border="0"></img></a> */}
+                        {/* <a href="https://ibb.co/JCpZhhV"><img className="instagram-image-add" src="https://i.ibb.co/XV5Hww1/Popular-Instagram-icon-in-round-black-color-on-transparent-PNG.png" alt="Popular-Instagram-icon-in-round-black-color-on-transparent-PNG" border="0"></img></a> */}
+                    <div className="instagram-image-container">
+                    <a href="https://ibb.co/Z84ZmVs"><img className="instagram-image-add" src="https://i.ibb.co/cFfmL15/outline-gray-instagram-icon.jpg" alt="outline-gray-instagram-icon" border="0"></img></a>
+                    </div>
                 {/* <a href="https://ibb.co/T2PT7XP"><img className="instagram-image-add" src="https://i.ibb.co/QQYcTBY/instagram-add-post.jpg" alt="instagram-add-post" border="0"></img></a> */}
 
                 <textarea id="modal-input" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="Add Image..."></textarea>

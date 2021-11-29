@@ -7,7 +7,7 @@
     /* background-color: hotpink; */
     /* border-radius: 2rem; */
     width: 30rem;
-    height: 30rem
+    height: 20rem
 }
 
 
@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.submit-modal-button {
+/* .submit-modal-button {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -30,7 +30,7 @@
 
 .submit-modal-button:hover {
     background-color: grey;
-}
+} */
 
 #modal-input {
     /* text-align: center; */
@@ -100,8 +100,13 @@
     color: rgba(0, 0, 0, 0.6);
 }
 
+.instagram-image-container {
+    width: 50%;
+    height: 80%;
+}
+
 .instagram-image-add {
-    width: 100%;
+    width: 200%;
     /* height: 80%; */
     /* border-radius: 2rem; */
 }

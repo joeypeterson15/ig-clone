@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5000
   }
 
   #modal-background {
@@ -15,10 +16,19 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(211, 211, 211, 0.7);
+    background-color: rgba(44, 44, 44, 0.83);
   }
 
   #modal-content {
     position: absolute;
     background-color:white;
+    border-radius: 1rem;
+  }
+
+  .exit-modal {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    font-size: 26px;
   }
