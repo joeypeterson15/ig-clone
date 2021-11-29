@@ -6,3 +6,5 @@ class addChannelForm(FlaskForm):
     friendId = IntegerField('friendId')
     friendUsername = StringField('friendUsername')
     friendAvatar = StringField('friendAvatar')
+    username = StringField('username')
+    userAvatar = StringField('userAvatar')

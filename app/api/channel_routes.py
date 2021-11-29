@@ -16,15 +16,22 @@ def create_channel():
     form = addChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        channel = Channel (
+        channel1 = Channel (
             userId = form.data['userId'],
             friendId = form.data['friendId'],
             friendAvatar = form.data['friendAvatar'],
             friendUsername = form.data['friendUsername'],
         )
-    db.session.add(channel)
+        channel2 = Channel (
+            userId = form.data['friendId'],
+            friendId = form.data['userId'],
+            friendAvatar = form.data['userAvatar'],
+            friendUsername = form.data['username'],
+        )
+    db.session.add(channel1)
+    db.session.add(channel2)
     db.session.commit()
-    return {'channel' : channel.to_dict()}
+    return {'channel' : channel1.to_dict()}
 
 @channel_routes.route('/delete/<int:channelId>', methods=['DELETE'])
 def delete_channel(channelId):

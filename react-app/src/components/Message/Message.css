@@ -119,6 +119,10 @@
 
 .content-avatar-in-message-div {
     display: flex;
+    padding-left: 20rem;
+}
+.content-friend-in-message-div {
+    display: flex;
     padding-left: 0.1rem;
 }
 

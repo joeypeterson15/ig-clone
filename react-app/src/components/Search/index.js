@@ -42,7 +42,9 @@ const Search = ({ showModal, setShowModal, users }) => {
         friendId : friend?.id,
         friendAvatar : friend?.avatar,
         friendUsername : friend?.username,
-        userId: sessionUser?.id
+        userId: sessionUser?.id,
+        userAvatar : sessionUser?.avatar,
+        username : sessionUser?.username
     }
     dispatch(createOneChannel(payload))
     setShowModal(false)

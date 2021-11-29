@@ -6,6 +6,7 @@ import { getMessages, createOneMessage } from "../../store/message";
 import { getChannels } from "../../store/channel";
 import { useHistory } from "react-router";
 import { deleteOneChannel } from "../../store/channel";
+import { getYourMessages } from "../../store/yourMessage";
 import "./Message.css"
 
 function Message () {
@@ -18,9 +19,11 @@ function Message () {
 
     // const channels = useSelector(state => state.channels)
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == friendId))
-    // console.log(channel)
-    const messages = useSelector(state => Object.values(state.messages))
+    const messages1 = useSelector(state => Object.values(state.messages))
+    const messages2 = useSelector(state => Object.values(state.yourmessages))
+    const messages = [...messages1, ...messages2]
 
+    console.log(messages)
     const sessionUser = useSelector(state => state.session?.user)
 
     const [showMenu, setShowMenu] = useState(false);
@@ -38,7 +41,14 @@ function Message () {
     useEffect(() => {
         dispatch(getChannels(sessionUser?.id))
         dispatch(getMessages(userId, friendId))
+        dispatch(getYourMessages(userId, friendId))
 
+        if (!messages) return
+        else messages.sort(function(a,b){
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          });
     }, [dispatch, friendId])
 
     const createMessage = (e) => {
@@ -128,11 +138,19 @@ function Message () {
 
                             </div>
 
+                            {message.userId === sessionUser?.id ?
+                                <div className="content-avatar-in-message-div">
+                                    <div className="message-content">{message?.content}</div>
+                                    <img className="messenger-avatar" alt="" src={message?.userAvatar}></img>
+                                </div>
 
-                            <div className="content-avatar-in-message-div">
-                                <img className="messenger-avatar" alt="" src={message?.userAvatar}></img>
-                                <div className="message-content">{message?.content}</div>
-                            </div>
+                                :
+                                <div className="content-friend-in-message-div">
+                                        <img className="messenger-avatar" alt="" src={message?.userAvatar}></img>
+                                        <div className="message-content">{message?.content}</div>
+                                </div>
+
+                            }
 
                         </div>
                     )) : ""}
