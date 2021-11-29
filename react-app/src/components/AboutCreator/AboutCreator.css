@@ -1,0 +1,16 @@
+.about-outer-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    display: flex;
+}
+
+.about-info-card {
+    color: blanchedalmond;
+    border: 0.1px solid blanchedalmond;
+    margin-top: 18rem;
+    margin-left: 40rem;
+}

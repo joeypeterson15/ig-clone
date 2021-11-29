@@ -76,7 +76,10 @@ function MainFeedOnePost () {
 
     const createComment = (e) => {
         e.preventDefault()
-        console.log('comment', commentId)
+        if (!content) {
+            window.alert('Comments must contain text')
+            return
+        }
 
         if (content.includes('@')) {
             let array = content.split(' ')
@@ -282,7 +285,7 @@ function MainFeedOnePost () {
                                 <form className="post-comment-main" onSubmit={createComment}>
                                     <input id="my-post-input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                                 </form>
-                                    <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} type='submit'>post</button>
+                                    <button onClick={createComment}className={!!content ? "submit-button-blue" : "no-blue-submit-button"} >post</button>
 
                             </div>
                         </div>

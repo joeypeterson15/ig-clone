@@ -64,6 +64,10 @@ const MainFeedPost = ({ post }) => {
 
     const createComment = (e) => {
         e.preventDefault()
+        if (!content) {
+            window.alert('Comments must contain text')
+            return
+        }
         const payload = {
             content,
             postId : post?.id,

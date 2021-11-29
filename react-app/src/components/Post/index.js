@@ -118,6 +118,10 @@ function Post () {
 
     const createComment = (e) => {
         e.preventDefault()
+        if (!content) {
+            window.alert('Comments must contain text')
+            return
+        }
         const payload = {
             content,
             postId,
@@ -260,30 +264,6 @@ function Post () {
 
                                 {comments ?
                                 comments.map((comment) => (
-                                    // <div className='comment-edit-mypost-div'>
-                                    //     <div className="left-side-comment">
-
-                                    //         <img className="user-avatar" alt="" src={comment?.avatar}></img>
-                                    //         <div className="username-bold" >{comment?.username}</div>
-                                    //         <div className="comment-content-post">{comment?.content}</div>
-
-                                    //     </div>
-
-                                    //     {comment.userId === user?.id ?
-
-                                    //     <div>
-                                    //         <div className={showMenu === false ? "three-dot-close" : "three-dot-open" }>
-                                    //         <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
-                                    //     </div>
-                                    //         {showCommentMenu && (
-                                    //             <div className="edit-my-comment-dropdown">
-                                    //                 <UpdateCommentModal comment={comment}/>
-                                    //                 <DeleteCommentModal comment={comment}/>
-                                    //             </div>
-                                    //         )}
-                                    //     </div>
-                                    //      : ''}
-                                    // </div>
 
                                     <Comment comment={comment} user={user}/>
                                 )) :
@@ -331,9 +311,9 @@ function Post () {
                             </div>
                             <div className="create-comment-right">
                                 <form className="post-comment-main" onSubmit={createComment}>
-                                    <input className="my-post-input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
+                                    <input id="my-post-input-comment-main" value={content} onChange={(e) => setContent(e.target.value)} type='text' placeholder='post a comment...'></input>
                                 </form>
-                                    <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} type='submit'>post</button>
+                                    <button className={!!content ? "post-comment-submit-button-blue" : "post-comment-submit-button"} onClick={createComment}>post</button>
                             </div>
                         </div>
                     </div>

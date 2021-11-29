@@ -23,6 +23,14 @@ const Search = ({ showModal, setShowModal, users }) => {
     dispatch(getAllUsers())
   }, [dispatch, showModal])
 
+
+  useEffect(() => {
+    if (friend) {
+      let input = document.getElementById('search-channel-input')
+      input.value= "@" + friend.username
+    }
+  }, [dispatch, friend])
+
   useEffect(()=> {
     if(term.length > 0) {
 
@@ -64,14 +72,17 @@ const Search = ({ showModal, setShowModal, users }) => {
   return (
     <div className="search-container" >
       <div className="top-search-channel-container">
-        <i onClick={() => setShowModal(false)} class="exit fas fa-times"></i>
+        <div className="exit">
+
+          <i onClick={() => setShowModal(false)} class="fas fa-times"></i>
+        </div>
         <div className="new-message-header">New Message</div>
         <div className={friend ? "blue-next":"next"} onClick={createChannel}>Next</div>
       </div>
 
       <form className='search-bar-channel' autoComplete="off">
         <div className="to-div">To:</div>
-        <input className="search-channel-input" type="search"
+        <input id="search-channel-input" type="search"
            placeholder='Search...' value={term} onChange={(e) => setTerm(e.target.value)} />
 
       </form>

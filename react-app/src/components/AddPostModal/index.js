@@ -22,6 +22,11 @@ function AddPostModal () {
     const createPost = (e) => {
         e.preventDefault()
 
+        if (!body) {
+            window.alert('Please provide a caption for your post')
+            return
+        }
+
 
         const payload = {
             userId : user?.id,
@@ -56,20 +61,28 @@ function AddPostModal () {
         if (!imageUrl) {
 
             window.alert('please provde an image url')
+            return
+        }
+        if (imageUrl && !isValidImageURL(imageUrl)) {
+            window.alert('please provide a valid image url')
+            return
+        }
 
-        } else {
+         else {
 
             setShowModal(false)
             setShowCaptionModal(true)
         }
     }
 
+    function isValidImageURL(url){
+        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    }
+
     const prevModal = () => {
         setShowCaptionModal(false)
         setShowModal(true)
-        // const url = document.getElementById('modal-input')
-        // console.log('imageUrl', imageUrl, url)
-        // if (imageUrl) url.value = imageUrl
+
     }
 
     const discardPost = () => {
@@ -77,6 +90,8 @@ function AddPostModal () {
         setShowCaptionModal(false)
         setImageUrl('')
     }
+
+
 
     return (
         <>
@@ -87,7 +102,7 @@ function AddPostModal () {
         </div>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
-            
+
             <div className="add-post-first-card">
 
                 <div className="upper-image-add-div">

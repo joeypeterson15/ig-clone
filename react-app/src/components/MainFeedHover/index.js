@@ -6,9 +6,10 @@ import { useHistory } from "react-router";
 import { getAllPosts } from "../../store/allPost";
 import { createOneChannel } from "../../store/channel";
 import { getEveryPost } from "../../store/everyPost";
-import { getFollows } from "../../store/follow";
+import { deleteOneFollow, getFollows } from "../../store/follow";
 import { getFollowers } from "../../store/followers";
 import { getAllFollows } from '../../store/allFollows';
+
 
 import "./MainFeedHover.css"
 
@@ -16,12 +17,16 @@ import "./MainFeedHover.css"
 function MainFeedHover ({ post }) {
     const dispatch = useDispatch()
     const userId = post?.id
+    const [isFollowed, setIsFollowed] = useState(false)
+
     const user = useSelector(state => state.user[0])
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const sessionUser = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.mainFeedPosts).filter(post => post?.userId == userId))
     // const follows = useSelector((state) => Object.values(state.follows))
-    const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === post.id))
+    const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === userId))
+    const myFollows = useSelector((state) => Object.values(state.follows))
+
     const followers = useSelector(state => Object.values(state.followers))
 
 
@@ -29,6 +34,7 @@ function MainFeedHover ({ post }) {
     let history = useHistory()
 
     useEffect(() => {
+        dispatch(getFollows(sessionUser?.id))
         dispatch(getEveryPost())
         dispatch(getUser(post?.userId))
         dispatch(getAllPosts(post?.userId))
@@ -36,6 +42,17 @@ function MainFeedHover ({ post }) {
         dispatch(getFollowers(post?.userId))
         dispatch(getAllFollows())
     }, [dispatch])
+
+    useEffect(() => {
+        for (let i = 0; i < myFollows.length; i++) {
+            let follow = myFollows[i];
+            if (follow.followId === Number(userId)) {
+                setIsFollowed(true)
+
+            }
+        }
+
+    },[dispatch, myFollows])
 
 
     const createChannel = () => {
@@ -63,6 +80,18 @@ function MainFeedHover ({ post }) {
             count += 1
         }
         return count;
+    }
+
+
+
+    const deleteFollow = (e) => {
+        e.preventDefault()
+        // dispatch(deleteOneFollow(id))
+
+        dispatch(deleteOneFollow(sessionUser?.id, userId))
+        setIsFollowed(false)
+        dispatch(getFollows(sessionUser?.id))
+        // dispatch(getMainFeedPosts(userId))
     }
 
     return (
@@ -98,7 +127,7 @@ function MainFeedHover ({ post }) {
                     : ''}
                 </div>
                 <div className="bottom-buttons-hover">
-                    <button className="button-hover">Unfollow</button>
+                    <button onClick={deleteFollow} className={isFollowed ? "button-hover" : "button-hover-follow"}>Unfollow</button>
                     <button className="button-hover" onClick={createChannel}>Message</button>
                 </div>
             </div>

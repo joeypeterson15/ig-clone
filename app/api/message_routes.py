@@ -8,7 +8,10 @@ message_routes = Blueprint('messages', __name__)
 
 @message_routes.route('/<int:userId>/<int:friendId>')
 def get_messages(userId, friendId):
-    messages = Message.query.filter(Message.userId == userId, Message.friendId == friendId).order_by(Message.createdAt).all()
+    messages1 = Message.query.filter(Message.userId == userId, Message.friendId == friendId).all()
+    messages2 = Message.query.filter(Message.userId == friendId, Message.friendId == userId).all()
+    messages = sorted([*messages1 , *messages2], key=lambda message: message.createdAt)
+    print(messages)
     return {'messages': [message.to_dict() for message in messages]}
 
 @message_routes.route('/', methods=['POST'])

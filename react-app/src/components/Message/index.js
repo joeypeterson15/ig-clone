@@ -19,9 +19,9 @@ function Message () {
 
     // const channels = useSelector(state => state.channels)
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == friendId))
-    const messages1 = useSelector(state => Object.values(state.messages))
+    const messages = useSelector(state => Object.values(state.messages))
     const messages2 = useSelector(state => Object.values(state.yourmessages))
-    const messages = [...messages1, ...messages2]
+    // const messages = [...messages1, ...messages2]
 
     console.log(messages)
     const sessionUser = useSelector(state => state.session?.user)
@@ -43,12 +43,11 @@ function Message () {
         dispatch(getMessages(userId, friendId))
         dispatch(getYourMessages(userId, friendId))
 
-        if (!messages) return
-        else messages.sort(function(a,b){
-            // Turn your strings into dates, and then subtract them
-            // to get a value that is either negative, positive, or zero.
-            return new Date(b.createdAt) - new Date(a.createdAt);
-          });
+        // if (!messages) return
+        // else messages.sort(function(a,b){
+
+        //     return new Date(b.createdAt) - new Date(a.createdAt);
+        //   });
     }, [dispatch, friendId])
 
     const createMessage = (e) => {
@@ -69,8 +68,12 @@ function Message () {
         let newTime = oldTime.split(' ')[1]
         let time = newTime.split(':');
         let hours = time[0];
+        let newHours = ((hours >12) ? hours -12 :hours)
+        if (newHours == '00') newHours=12
+        if (Number(newHours) < 10) newHours = newHours[1]
         let minutes = time[1];
-        let timeValue = "" + ((hours >12) ? hours -12 :hours);
+        // let timeValue = "" + ((hours >12) ? hours -12 :hours);
+        let timeValue = "" + newHours;
             timeValue += (minutes < 10) ? ':' + minutes : ":" + minutes;
             timeValue += (hours >= 12) ? " pm" : " am";
             // timeValue += "" + date

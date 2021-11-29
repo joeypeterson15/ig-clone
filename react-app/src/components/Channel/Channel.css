@@ -1,17 +1,24 @@
 .channel-outer-div {
+    background-color: grey;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
  display: flex;
 }
 
 .channel-and-search-left-container {
+    background-color: white;
     width: 20rem;
-    margin-top: 0.7rem;
+    margin-top: 5rem;
     border-top: 0.2px solid rgb(221, 221, 221);
     border-left: 0.2px solid rgb(221, 221, 221);
     border-bottom: 0.2px solid rgb(221, 221, 221);
     /* border-right: 0.2px solid rgb(221, 221, 221); */
     /* background-color: blue; */
     margin-left: 17.29rem;
-    height: 42rem;
+    height: 39rem;
 }
 
 .channels-div {
@@ -70,11 +77,23 @@
 }
 
 .right-side-container {
+    background-color: white;
+
     border: 0.2px solid rgb(221, 221, 221);
-    height: 42rem;
-    margin-top: 0.7rem;
+    height: 39rem;
+    margin-top: 5rem;
     width: 36.6rem;
     z-index: -1;
+}
+
+.upfront-side-container {
+    background-color: white;
+
+    border: 0.2px solid rgb(221, 221, 221);
+    height: 39rem;
+    margin-top: 5rem;
+    width: 36.6rem;
+    z-index: 1;
 }
 
 .center-messages-icon {
@@ -83,14 +102,21 @@
     height: 6rem;
     border-radius: 50%;
     text-align: center;
-    margin-left: 39%;
+    margin-left: 34%;
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.75)
     /* margin-top: 40%; */
+}
+
+.big-message-icon-div {
+    /* background-color: blanchedalmond; */
+    padding-top: 0.7rem;
+    padding-right: 0.4rem;
 }
 
 /* .messages-icon {
     font-size: 3rem;
     font-weight: 100;
-    padding-top: 1.5rem;
 } */
 
 .center-right-container {
@@ -111,4 +137,7 @@
 
 .grey-text {
     color: grey;
+}
+.black-text {
+    color: rgba(0, 0, 0, 0.75)
 }

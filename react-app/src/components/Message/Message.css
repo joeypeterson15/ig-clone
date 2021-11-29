@@ -1,10 +1,11 @@
 
 .messages-component-container {
-    left: 37.8rem;
-    top: 4.25rem;
+    background-color: white;
+    left: 37.4rem;
+    top: 5rem;
     /* background-color: hotpink; */
     border: 0.2px solid rgb(221, 221, 221);
-    height: 42rem;
+    height: 39rem;
     position: absolute;
     z-index: 1;
 }
@@ -46,7 +47,7 @@
     /* background-color: rgb(83, 45, 51); */
     width: 100%;
     /* position: absolute; */
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     /* margin-left: 33.87%; */
     /* padding-left: 3rem; */
 }
@@ -68,7 +69,7 @@
     border: none;
     background-color: white;
     right: 2.5rem;
-    bottom: 2.6rem;
+    bottom: 1.3rem;
     font-size: 16px;
     color: rgba(0, 200, 200, 0.3)
 }
@@ -79,7 +80,7 @@
     border: none;
     background-color: white;
     right: 2.5rem;
-    bottom: 2.6rem;
+    bottom: 1.3rem;
     font-size: 16px;
     color: rgba(0, 200, 200, 0.6)
 }
@@ -108,7 +109,7 @@
     font-size: 12px;
     font-weight: 400;
 }
-.time-stamp-messages-div {    
+.time-stamp-messages-div {
     margin-left: 39%;
     padding-top: 3%;
     padding-bottom: 3%;
