@@ -45,21 +45,26 @@ function UpdatePostModal ({ setPostBody, setHashtags, setShowMenu, post, showMod
     return (
         <>
             <div>
-                <button className="edit-post-button" onClick={() => setShowModal(true)}>update post</button>
+                <button className="edit-post-button" onClick={() => setShowModal(true)}>Update</button>
             </div>
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <div className="update-post-card">
-                    <img className="update-post-image" alt="" src={post?.imageUrl}></img>
-                    <form onSubmit={submitUpdatePost}>
-                        <textarea className="modal-textarea"
-                        rows={7}
-                        cols={43}
+              <div className="update-post-modal-card">
+                    <img className="upload-image" alt="" src={post?.imageUrl}></img>
+                    <form className="modal-form" onSubmit={submitUpdatePost}>
+                    <div className="ye flex">
+                                <img src={post?.avatar} className="avatar-image"></img>
+                                <div className="username">{post?.username}</div>
+                            </div>
+                        <textarea className="modal-addcaption-textarea"
+                        rows={12}
+                        // cols={43}
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                         >
                         </textarea>
-                        <button className="modal-submit-button" type="submit">update</button>
+                        <button className="update-down update-post-button" type="submit">Update</button>
+                        <button className="update-post-button" onClick={() => setShowModal(false)}> Cancel</button>
                     </form>
                 </div>
             </Modal>

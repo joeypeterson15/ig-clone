@@ -13,6 +13,7 @@ import UpdateCommentModal from '../UpdateCommentModal';
 import UpdatePostModal from '../UpdatePostModal';
 import { getEveryPost } from '../../store/everyPost';
 import Comment from '../Comment';
+import { Modal } from '../../context/Modal';
 import "./Post.css"
 
 function Post () {
@@ -113,6 +114,7 @@ function Post () {
 
     const deletePost = () => {
         dispatch(deleteOnePost(postId))
+        setShowMenu(false)
         history.push('/profile')
     }
 
@@ -226,14 +228,20 @@ function Post () {
 
                                 <div className="edit-delete-post">
                                     <div className="edit-post-icon">
-                                        <div className={showMenu === false ? "three-dot-close" : "three-dot-open" }>
+                                        <div className={showMenu === false ? "three-dot-close-edit-post" : "three-dot-open-edit-post" }>
                                             <i class="fas fa-ellipsis-h" onClick={showMenu === false ? openMenu : closeMenu}></i>
                                         </div>
                                         {showMenu && (
-                                            <div className="edit-my-post-dropdown">
-                                                <UpdatePostModal setHashtags={setHashtags} setPostBody={setBody} setShowMenu={setShowMenu} showModal={showModal} setShowModal={setShowModal} post={post}/>
-                                                <button className="edit-post-button" onClick={deletePost}>delete post</button>
-                                            </div>
+                                            <Modal onClose={() => setShowMenu(false)}>
+
+                                                <div className="edit-my-post-dropdown">
+                                                    <UpdatePostModal setHashtags={setHashtags} setPostBody={setBody} setShowMenu={setShowMenu} showModal={showModal} setShowModal={setShowModal} post={post}/>
+                                                    <button className="edit-post-button" onClick={deletePost}>Delete</button>
+                                                    <button className="edit-post-button" onClick={() => setShowMenu(false)}>Cancel</button>
+                                                </div>
+
+
+                                            </Modal>
                                         )}
                                     </div>
 
@@ -253,9 +261,9 @@ function Post () {
                                     <div className="comment-content-post">
                                         {body.join(' ')}
                                     </div>
-                                    <div>
+                                    <div className="hashtags-in-my-post">
                                         {hashtags ? hashtags.map((hashtag) => (
-                                            <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                            <Link className="hashtag-link" to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
                                         ))
 
                                     : ""}
@@ -319,11 +327,18 @@ function Post () {
                     </div>
 
                     {lastPost ?
-                        <Link className="prev-post-icon" to={`/${lastPost}`}><div className="next-prev-icon"><i className= "fas fa-angle-left"></i></div></Link>
+                            <div className="prev-div">
+
+                                    <Link className="prev-link" to={`/${lastPost}`}><i className= "arrow fas fa-angle-left"></i></Link>
+                            </div>
                     : ''}
 
                     {nextPost ?
-                        <Link className="next-post-icon" to={`/${nextPost}`}>Next</Link>
+
+                        <div className="next-div">
+
+                                    <Link className="next-link" to={`/${nextPost}`}><i className= "arrow-right fas fa-angle-right"></i></Link>
+                            </div>
                      : ''}
 
 
