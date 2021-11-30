@@ -58,7 +58,7 @@ function ReplyLike ({ reply}) {
 
 
     return (
-        <div>
+        <div className="reply-liked-div">
 
                         {!isLiked()
                             ?
@@ -70,7 +70,7 @@ function ReplyLike ({ reply}) {
                                 <i onClick={() => deleteReply(reply?.id)} className="fas fa-heart"></i>
                         </div> }
 
-                        
+
 
          </div>
     )

@@ -23,7 +23,7 @@
 
 .left-side-reply-comment {
     /* background-color: red; */
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     padding-left: 7.3rem;
