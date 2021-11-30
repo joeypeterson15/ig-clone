@@ -4,9 +4,9 @@ from app.models import db, Post
 def seed_posts():
     post1 = Post(
         userId=1,
-        imageUrl="https://i.ibb.co/HhBtWPm/concert-event-photo.jpg",
+        imageUrl="https://i.ibb.co/w73yC8j/Golden-Retriever-in-Canoe.png",
         body="another one #fun",
-        avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
+        avatar="https://i.ibb.co/grcC8F2/Person-on-Snowy-Mountain.png",
         username='Demo',
         # hashtagId=3
     )
@@ -14,15 +14,15 @@ def seed_posts():
         userId=1,
         imageUrl="https://i.ibb.co/4RtZknX/concert-fire-event-post.jpg",
         body="I had such a blast! #fun",
-        avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
+        avatar="https://i.ibb.co/grcC8F2/Person-on-Snowy-Mountain.png",
         username='Demo',
         # hashtagId=3
     )
     post3 = Post(
         userId=3,
-        imageUrl="https://i.ibb.co/M5kJKSJ/festival-post.jpg",
+        imageUrl="https://i.ibb.co/XLKR6dQ/Open-Road-Sunset.png",
         body="me and all my friends #fun",
-        avatar="https://i.ibb.co/f8spgnW/hoodie-guy-pro-pic.jpg",
+        avatar="https://i.ibb.co/r0Tcv5c/Retro-Car-on-Beach.png",
         username="bobbie",
         # hashtagId=3
     )
@@ -30,7 +30,7 @@ def seed_posts():
         userId=4,
         imageUrl="https://i.ibb.co/j4gfzbY/forest-walk-post.jpg",
         body="Feeling very relaxed right now #travel",
-        avatar="https://i.ibb.co/WGBwPLL/motorcycle-pro-pic.jpg",
+        avatar="https://i.ibb.co/MB1w1yT/Map-Passport-Camera.png",
         username="winterBrad",
         # hashtagId=2
     )
@@ -38,46 +38,191 @@ def seed_posts():
         userId=5,
         imageUrl="https://i.ibb.co/b2GqtC4/galaxy-post.jpg",
         body="How cool is this #sublime",
-        avatar="https://i.ibb.co/Fm3KzQb/party-guy-profilepic.jpg",
+        avatar="https://i.ibb.co/xHx6d5b/Lake-with-Cotton-Candy-Skies.png",
         username="andrewkep",
         # hashtagId=1
     )
     post6 = Post(
         userId=2,
-        imageUrl="https://i.ibb.co/CwYWXMW/hiking-picture-post.jpg",
+        imageUrl="https://i.ibb.co/GPNDJK0/Woman-in-Car-on-Roadtrip-2.png",
         body="Nothing beats this #travel",
-        avatar="https://i.ibb.co/5hJ1kkT/lake-pro-pic-girl.jpg",
+        avatar="https://i.ibb.co/XzqDmjB/Roadtrip-Views.png",
         username="marnie",
         # hashtagId=2
     )
     post7 = Post(
         userId=6,
-        imageUrl="https://i.ibb.co/m4YN4Ss/laughing-post.jpg",
-        body="Love this guy. Had a lot of last weekend #fun",
-        username="stew20",
-        avatar="https://i.ibb.co/GJC95Jz/pro-pic-camera.jpg"
+        imageUrl="https://i.ibb.co/R6vqMmW/Man-Standing-in-Beach-Cave.png",
+        body="Had a lot of fun here last weekend #fun",
+        username="steph",
+        avatar="https://i.ibb.co/sJjZN4n/Galaxy-Woman-on-Cliff-Space.png"
     )
     post8 = Post(
         userId=7,
         imageUrl="https://i.ibb.co/kGCnvXc/sitting-rocks-guy-post.jpg",
         body="Can't wait to come back #travel",
-        avatar="https://i.ibb.co/ykqMdnZ/Middle-age-man-portrait-at-sunset.jpg" ,
+        avatar="https://i.ibb.co/DWKt6Nc/Dog-on-Beach.png" ,
         username="steven10",
     )
     post9 = Post(
         userId=2,
         imageUrl="https://i.ibb.co/YbdJXrW/spiral-galaxy-post.jpg",
         body="whoa #sublime",
-        avatar="https://i.ibb.co/5hJ1kkT/lake-pro-pic-girl.jpg",
+        avatar="https://i.ibb.co/XzqDmjB/Roadtrip-Views.png",
         username="marnie",
     )
     post10 = Post(
         userId=10,
-        imageUrl="https://i.ibb.co/fxsc09W/woman-sitting-rock.jpg",
+        imageUrl="https://i.ibb.co/KbnMd6p/Girl-Hiking-in-Whistler-stefgoes.png",
         body="One of my favorite places to go #travel",
-        avatar="https://i.ibb.co/C5CdyNH/cool-trippy-boy-profile-picture.jpg",
-        username="robinite111",
+        avatar="https://i.ibb.co/r488nBQ/Feet-Hanging-Over-Lake.png",
+        username="gabyms",
     )
+
+
+
+
+#  couples page 12
+
+    post11 = Post(
+        userId=12,
+        imageUrl="https://i.ibb.co/V9TFVyG/Couple-in-Rice-Field-foryouandyours.png",
+        body="Getting lost in a rice field in Bali is the ultimate test. How would you and yours fare?",
+        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+        username="foryouandyours"
+    )
+    post12 = Post(
+        userId=12,
+        imageUrl="https://i.ibb.co/r5SMZMh/Couple-Looking-Out-Over-Rio-foryouandyours.png",
+        body="On top of the world",
+        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+        username="foryouandyours"
+    )
+    post13 = Post(
+        userId=12,
+        imageUrl="https://i.ibb.co/BVW5gHF/Couple-in-Hammock-at-Sunset-foryouandyours.png",
+        body="Peace of mind and heart",
+        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+        username="foryouandyours"
+    )
+    post14 = Post(
+        userId=12,
+        imageUrl="https://i.ibb.co/sRzhKw1/Couple-Holding-Hands-in-India-foryouandyours.png",
+        body="Live your dreams together",
+        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+        username="foryouandyours"
+    )
+    post15 = Post(
+        userId=12,
+        imageUrl="https://i.ibb.co/9pbrXjh/Couple-Enjoying-the-View-foryouandyours.png",
+        body="Partners that climb mountains with you",
+        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+        username="foryouandyours"
+    )
+
+
+    # galaxy 13
+
+    post16 = Post(
+        userId=13,
+        imageUrl="https://i.ibb.co/4PXS9nC/Finland-Geomagnetic-Storm-Galaxy-Junkie.png",
+        body="Standing in the eye of the storm. Photograph from the geomagnetic storm in Northern Finland",
+        avatar="https://i.ibb.co/p0h9Vrm/Silhouette-with-Space-SBeam-of-Light-Space.png",
+        username="GalaxyJunkie"
+    )
+    post17 = Post(
+        userId=13,
+        imageUrl="https://i.ibb.co/Xbr9vnB/Northern-Norway-Nightsky-Galaxy-Junkie.png",
+        body="About last night’s show…",
+        avatar="https://i.ibb.co/p0h9Vrm/Silhouette-with-Space-SBeam-of-Light-Space.png",
+        username="GalaxyJunkie"
+    )
+    post18 = Post(
+        userId=13,
+        imageUrl="https://i.ibb.co/s6WkcLp/Between-Finland-and-Sweden-Galaxyjunkie.png",
+        body="Casually standing between Finland and Sweden. Does that mean I’m in Finden?",
+        avatar="https://i.ibb.co/p0h9Vrm/Silhouette-with-Space-SBeam-of-Light-Space.png",
+        username="GalaxyJunkie"
+    )
+
+
+
+
+    post19 = Post(
+        userId=14,
+        imageUrl="https://i.ibb.co/59Y1FH5/Zion.png",
+        body="Weaving thru canyon trails & soaking up the otherworldly sights",
+        avatar="https://i.ibb.co/BPDsbCW/Yellowstone.png",
+        username="usnationalparks"
+    )
+    post20 = Post(
+        userId=14,
+        imageUrl="https://i.ibb.co/kB6vkH0/Badlands.png",
+        body="Fresh air, don’t care",
+        avatar="https://i.ibb.co/BPDsbCW/Yellowstone.png",
+        username="usnationalparks"
+    )
+    post21 = Post(
+        userId=14,
+        imageUrl="https://i.ibb.co/3vmZzYq/Yosemite.png",
+        body="“It is easier to feel than to realize, or in any way explain, Yosemite grandeur…” ",
+        avatar="https://i.ibb.co/BPDsbCW/Yellowstone.png",
+        username="usnationalparks"
+    )
+
+    post22 = Post(
+        userId=1,
+        imageUrl="https://i.ibb.co/m4P7TZZ/Gondola.png",
+        body="Can't believe I'm doing this right now!",
+        avatar="https://i.ibb.co/grcC8F2/Person-on-Snowy-Mountain.png",
+        username='Demo',
+        # hashtagId=3
+    )
+
+    # <img src="https://i.ibb.co/m4P7TZZ/Gondola.png" alt="Gondola" border="0">
+
+
+
+
+
+    # post22 = Post(
+    #     userId=
+    #     imageUrl=
+    #     body=
+    #     avatar=
+    #     username=
+    # )
+    # post23 = Post(
+    #     userId=
+    #     imageUrl=
+    #     body=
+    #     avatar=
+    #     username=
+    # )
+    # post24 = Post(
+    #     userId=
+    #     imageUrl=
+    #     body=
+    #     avatar=
+    #     username=
+    # )
+    # post25 = Post(
+    #     userId=
+    #     imageUrl=
+    #     body=
+    #     avatar=
+    #     username=
+    # )
+
+#     <img src="https://i.ibb.co/59Y1FH5/Zion.png" alt="Zion" border="0">
+# <img src="https://i.ibb.co/3vmZzYq/Yosemite.png" alt="Yosemite" border="0">
+# <img src="https://i.ibb.co/kB6vkH0/Badlands.png" alt="Badlands" border="0">
+# <img src="https://i.ibb.co/BPDsbCW/Yellowstone.png" alt="Yellowstone" border="0">
+
+
+
+
+
 
 
     db.session.add(post1)
@@ -90,6 +235,18 @@ def seed_posts():
     db.session.add(post8)
     db.session.add(post9)
     db.session.add(post10)
+    db.session.add(post11)
+    db.session.add(post12)
+    db.session.add(post13)
+    db.session.add(post14)
+    db.session.add(post15)
+    db.session.add(post16)
+    db.session.add(post17)
+    db.session.add(post18)
+    db.session.add(post19)
+    db.session.add(post20)
+    db.session.add(post21)
+    db.session.add(post22)
 
     db.session.commit()
 
@@ -124,3 +281,5 @@ def undo_posts():
 # <a href="https://ibb.co/fHT7F66"><img src="https://i.ibb.co/m4P7TZZ/Gondola.png" alt="Gondola" border="0"></a>
 # <a href="https://ibb.co/ws54j6q"><img src="https://i.ibb.co/xHx6d5b/Lake-with-Cotton-Candy-Skies.png" alt="Lake-with-Cotton-Candy-Skies" border="0"></a>
 # <a href="https://ibb.co/S0RG8rX"><img src="https://i.ibb.co/2PgHQN7/Starry-Night-Sky-Space.png" alt="Starry-Night-Sky-Space" border="0"></a>
+
+# <img src="https://i.ibb.co/KbnMd6p/Girl-Hiking-in-Whistler-stefgoes.png" alt="Girl-Hiking-in-Whistler-stefgoes" border="0">

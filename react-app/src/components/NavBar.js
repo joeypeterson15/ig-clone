@@ -58,7 +58,7 @@ const NavBar = () => {
         <div className="left-side-navbar">
 
             <NavLink className="instagram-font-logo" to='/' exact={true} activeClassName='active'>
-              Instagram
+              Intergram
             </NavLink>
 
         </div>
