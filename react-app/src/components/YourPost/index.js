@@ -179,9 +179,9 @@ function YourPost () {
                                     <div className="comment-content-post">
                                         {body.join(' ')}
                                     </div>
-                                    <div>
+                                    <div className="hashtags-in-my-post">
                                         {hashtags ? hashtags.map((hashtag) => (
-                                            <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
+                                            <Link className="hashtag-link" to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
                                         ))
 
                                     : ""}
