@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { createOneCommentLike } from "../../store/commentLikes";
 import { deleteOneCommentLike } from "../../store/commentLikes";
 import { getReplies, createOneReply } from "../../store/reply";
+import { getReplyLikes } from "../../store/replyLike";
 import Reply from "../Reply";
 import './Comment.css'
 
@@ -15,6 +16,8 @@ function Comment ({ setCommentId, comment, user }) {
 
     const dispatch = useDispatch()
     // const [reply, setReply] = useState('')
+    const replyLikes = useSelector(state => Object.values(state.replylikes))
+
     const commentId = comment?.id
     const [showCommentMenu, setCommentMenu] = useState(false);
     const sessionUser = useSelector((state) => state.session?.user)
@@ -36,9 +39,11 @@ function Comment ({ setCommentId, comment, user }) {
     };
 
 
+
     useEffect(() => {
         dispatch(getCommentLikes(comment?.id))
         dispatch(getReplies(comment?.id))
+
     }, [dispatch])
 
     const closeCommentMenu = () => {
@@ -59,6 +64,7 @@ function Comment ({ setCommentId, comment, user }) {
         }
         return count
     }
+
     const countReplies = () => {
         let count = 0;
         if (replies) {
@@ -68,6 +74,10 @@ function Comment ({ setCommentId, comment, user }) {
         }
         return count
     }
+
+
+    
+
 
     const isLiked = () => {
         if (commentLikes) {
@@ -253,7 +263,7 @@ function Comment ({ setCommentId, comment, user }) {
                     </div>
                 )}
             </div>
-                
+
         </div>
     )
 }

@@ -58,7 +58,7 @@ function UpdatePostModal ({ setPostBody, setHashtags, setShowMenu, post, showMod
                             </div>
                         <textarea className="modal-addcaption-textarea"
                         rows={12}
-                        // cols={43}
+          
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                         >

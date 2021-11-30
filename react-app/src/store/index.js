@@ -22,6 +22,7 @@ import allFollowsReducer from './allFollows';
 import CommentLikesReducer from './commentLikes';
 import repliesReducer from './reply';
 import yourMessageReducer from './yourMessage';
+import ReplyLikesReducer from './replyLike';
 
 const rootReducer = combineReducers({
   session,
@@ -45,7 +46,8 @@ const rootReducer = combineReducers({
   allFollows: allFollowsReducer,
   commentLikes: CommentLikesReducer,
   replies : repliesReducer,
-  yourmessages: yourMessageReducer
+  yourmessages: yourMessageReducer,
+  replylikes : ReplyLikesReducer
 });
 
 

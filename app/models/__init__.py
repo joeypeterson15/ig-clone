@@ -9,4 +9,5 @@ from .message import Message
 from .hashtag import Hashtag
 from .comment_like import CommentLike
 from .reply import Reply
+from .reply_like import ReplyLike
 # from .hash_post import HashPost
