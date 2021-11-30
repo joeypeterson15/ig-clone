@@ -27,8 +27,16 @@
 
   .exit-modal {
     position: absolute;
-    top: 2rem;
+    top: 1.5rem;
     right: 2rem;
     color: white;
-    font-size: 26px;
+    font-size: 30px;
   }
+
+  .exit-post-icon {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}

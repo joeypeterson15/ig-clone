@@ -246,13 +246,25 @@ const MainFeedPost = ({ post }) => {
 
                 <div className="bottom-right-main-comments">
                     <Link className="view-all-comments-link" to={`/main/${post.id}`}>View all {countComments()}</Link>
-                    {comments ?
-                    comments.slice(0,2).map((comment) => (
+
+                    {comments &&
+
+                        (comments.length < 3 ?
+                        comments.slice(0,2).map((comment) => (
 
 
-                            <CommentMain comment={comment} user={sessionUser}/>
-                    )) :
-                    <div>There are currently no comments for this post</div>}
+                                <CommentMain comment={comment} user={sessionUser}/>
+                        )) :
+
+
+                        comments.splice(comments.length - 2,2).map((comment) => (
+
+
+                                <CommentMain comment={comment} user={sessionUser}/>
+                        )))}
+
+
+
                 </div>
                     <div className="date-or-time-created">
                         {isSameDay(post?.createdAt) ?

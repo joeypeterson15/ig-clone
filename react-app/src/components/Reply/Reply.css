@@ -6,6 +6,7 @@
 }
 
 .reply-content {
+    display: flex;
     font-size: 14px;
     color: rgb(36, 36, 36);
     padding-top: 0.4rem;
@@ -21,7 +22,15 @@
 }
 
 .left-side-reply-comment {
+    /* background-color: red; */
+    width: 100%;
     display: flex;
-    padding-left: 7rem;
+    justify-content: space-between;
+    padding-left: 7.3rem;
     padding-top: 1rem;
+    padding-right: 0.6rem;
+}
+
+.count-reply-likes {
+    padding-left: 0.5rem;
 }

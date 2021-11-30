@@ -1,0 +1,17 @@
+.red-reply-heart {
+    color:rgb(172, 46, 46);
+    /* padding-right: 0.5rem; */
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+}
+
+.reply-heart {
+    /* padding-right: 0.5rem; */
+    color: rgb(63, 63, 63);
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+    z-index: 20;
+    /* position: absolute; */
+    /* right: 1rem; */
+
+}

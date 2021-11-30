@@ -1,27 +1,42 @@
 import { createOneReply } from "../../store/reply"
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ReplyLike from "../ReplyLike";
+import { getReplyLikes } from "../../store/replyLike";
+
 import './Reply.css'
 
 function Reply ({setCommentId, replies, commentId, comment}) {
 
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session?.user)
+    const replyLikes = useSelector(state => Object.values(state.replylikes))
     const [reply, setReply] = useState('')
 
-    const isSameDay = function(oldTime) {
-        // let today = Date.now().getDate().toString()
-        let newToday = new Date().getDate().toString()
-        let newOldTime = new Date(oldTime).getDate()
-        console.log('todays date:', newToday)
-        console.log('message date:', newOldTime)
-        if (newToday == newOldTime){
-            return true
+
+    useEffect(() => {
+        dispatch(getReplyLikes())
+    }, [dispatch])
+
+    const countReplyLikes = (replyId) => {
+        let count = 0;
+        if (replyLikes) {
+            for (let i = 0; i < replyLikes.length; i++) {
+                let replyLike = replyLikes[i]
+                if (replyLike.replyId === replyId) {
+                    count += 1;
+
+                }
+            }
         }
-        return false
+        if (count === 1) return count + ' like'
+        else return count + ' likes'
     }
+
+
 
     const convertTime = function(oldTime){
         let newTime = oldTime.split(' ')[1]
@@ -52,6 +67,21 @@ function Reply ({setCommentId, replies, commentId, comment}) {
         else return (Number(now) - Number(post)) + "d"
     }
 
+    const isSameDay = function(oldTime) {
+        // let today = Date.now().getDate().toString()
+        let newToday = new Date().getDate().toString()
+        let newOldTime = new Date(oldTime).getDate()
+        console.log('todays date:', newToday)
+        console.log('message date:', newOldTime)
+        if (newToday == newOldTime){
+            return true
+        }
+        return false
+    }
+
+
+
+
 
     return (
         <div>
@@ -60,18 +90,27 @@ function Reply ({setCommentId, replies, commentId, comment}) {
             <div>
 
                     <div className="left-side-reply-comment">
+                        <div className="flex">
 
-                        <img className="user-avatar" alt="" src={reply?.avatar}></img>
-                        <div className="username-reply-bold" >{reply?.username}</div>
-                        <div className="reply-content">
-                            <Link className="hashtag-link" to={comment?.userId === sessionUser?.id ? `/profile` :`/p/${comment?.userId}`}>
-                                @{comment?.username}
-                            </Link>
-                            {reply?.content}
+                            <img className="user-avatar" alt="" src={reply?.avatar}></img>
+                            <div className="username-reply-bold" >{reply?.username}</div>
+                            <div className="reply-content">
+                                <Link className="hashtag-link" to={comment?.userId === sessionUser?.id ? `/profile` :`/p/${comment?.userId}`}>
+                                    @{comment?.username}
+                                </Link>
+                                {reply?.content}
+                            </div>
+
+
                         </div>
 
-                    </div>
 
+
+                            <ReplyLike reply={reply} />
+
+
+
+                    </div>
 
                     <div className="comment-likes-reply-div">
                         <div>
@@ -82,11 +121,9 @@ function Reply ({setCommentId, replies, commentId, comment}) {
                         :
                         daysAgo(reply?.createdAt)}
                         </div>
-                        {/* <div className="count-comment-likes">
 
-                            {count()} likes
-                        </div>
-                        <div onClick={setupReply(reply)} className="reply-div">reply</div> */}
+                        <div className="count-reply-likes">{countReplyLikes(reply?.id)}</div>
+
 
                     </div>
             </div>

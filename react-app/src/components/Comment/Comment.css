@@ -13,7 +13,7 @@
 
 .comment-edit-mypost-div:hover .three-dot-close-post {
     display: block
-    
+
 }
 
 
@@ -40,6 +40,8 @@
 
 .flexing {
     display: flex;
+    /* background-color: red; */
+    height: 1rem;
 }
 
 .edit-delete-comment-menu-in-post{

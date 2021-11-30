@@ -296,9 +296,9 @@
 }
 
 .post-hashtag-link {
-    color: rgba(0, 68, 255, 0.7);
+    color: rgb(25, 48, 255);
     text-decoration: none;
-    margin-left: 7rem;
+    margin-left: 4rem;
     padding-top: 0.4rem;
 
     font-size: 14px;

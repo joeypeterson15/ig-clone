@@ -1,13 +1,14 @@
-.update-post-card {
-    width: 30rem;
-    height: 30rem;
+.update-post-modal-card {
+    width: 44rem;
+    height: 25rem;
     border-radius: 5px;
+    display: flex;
 }
 
 
 .update-post-image {
-    width: 20rem;
-    height: 20rem;
+    width: 17rem;
+    height: 17rem;
     margin-left: 5rem;
 }
 
@@ -23,4 +24,23 @@
     width: 3.5rem;
     border: 0.2px solid grey;
     border-radius: 2px;
+}
+
+.update-down {
+    margin-top: 0.5rem;
+    /* font-weight: 500; */
+}
+
+.update-post-button {
+    height: 2rem;
+    margin-bottom: 0.2rem;
+    width: 90%;
+    margin-left: 5%;
+    border: 0.1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.1rem;
+
+}
+
+.update-post-button:hover {
+    background-color: rgba(0, 20, 100, 0.1);
 }

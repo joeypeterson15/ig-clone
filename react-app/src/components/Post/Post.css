@@ -58,8 +58,33 @@
 
 .edit-my-post-dropdown {
     /* z-index: 10; */
-    position: absolute;
-    right: 0;
+    display: flex;
+    flex-direction: column;
+    /* position: absolute; */
+    /* right: 5%;
+    top: 5%; */
+    width: 15rem;
+    align-items: center;
+    /* padding: 0.1rem; */
+}
+.edit-post-button {
+    border-radius: 1px;
+    width: 18rem;
+    height: 2.2rem;
+    color: rgb(41, 41, 41);
+    background-color: rgb(255, 255, 255);
+    font-weight: 500;
+    /* border-radius: 0.8rem; */
+    border: 0.1px solid rgba(0, 0, 0, 0.342);
+}
+
+.hashtags-in-my-post {
+    padding-top: 0.3rem;
+}
+
+.edit-post-button:hover {
+    background-color: rgb(202, 202, 202);
+
 }
 
 .likes-right-div {
@@ -181,20 +206,60 @@
 }
 
 
-.next-prev-icon {
+.prev-div {
     font-size: 20px;
-
-
-}
-
-.prev-post-icon {
+    background-color: white;
+    z-index: 100;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 2rem;
-    color: white;
-    height: 4rem;
-    width: 4rem;
+    color: black;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+
+
 }
+.next-div {
+    font-size: 20px;
+    background-color: white;
+    z-index: 100;
+    position: absolute;
+    top: 40%;
+    right: 2rem;
+    color: black;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+
+
+}
+
+.prev-link {
+    /* left: 2rem; */
+    color: black;
+    padding-left: 0.6rem;
+    /* padding-top: 1rem; */
+    font-size: 20px;
+}
+.next-link {
+    /* left: 2rem; */
+    color: black;
+    padding-right: 0.2rem;
+    /* padding-top: 1rem; */
+    font-size: 20px;
+}
+
+.arrow {
+    padding-top: 0.4rem;
+}
+.arrow-right {
+    padding-top: 0.4rem;
+    padding-left: 0.7rem;
+}
+
+
+
 
 .next-post-icon {
     position: absolute;
@@ -204,14 +269,7 @@
 
 }
 
-.edit-post-button {
-    border-radius: 1px;
-    width: 10rem;
-    height: 3rem;
-    color: white;
-    background-color: rgb(51, 51, 51);
-    border: 0.2px solid rgba(255, 0, 0, 0.342);
-}
+
 
 /* .bottom-right-comments:hover + .three-dot-close, .three-dot-close:hover {
     display: inline-block;
@@ -252,6 +310,24 @@
 }
 
 
+
+.three-dot-close-edit-post {
+    /* display: none; */
+    font-size: 15px;
+    color: rgb(99, 99, 99);
+    padding-right: 1.3rem;
+    padding-top: 0.7rem;
+    /* padding-top: 0.5rem; */
+}
+
+.three-dot-open-edit-post {
+    font-size: 15px;
+    color: rgb(33, 0, 95);
+    padding-right: 1.3rem;
+    padding-top: 0.7rem;
+}
+
+
 .count-likes-mypost {
     padding-left: 1rem;
     padding-top: 0.2rem;
@@ -280,6 +356,7 @@
     padding-right: 0.5rem;
     font-size: 0.8rem;
     padding-top: 0.3rem;
+    height: 1rem;
 }
 
 .comment-heart {
@@ -287,5 +364,6 @@
     color: rgb(63, 63, 63);
     font-size: 0.8rem;
     padding-top: 0.3rem;
+    height: 1rem;
 
 }

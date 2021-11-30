@@ -41,6 +41,10 @@ function UpdateMainCommentModal ({setCommentMenu, comment}) {
             <Modal onClose={() => setShowModal(false)}>
               <div className="edit-main-comment-container">
                     <form className="update-comment-modal-form" onSubmit={submitUpdateComment()}>
+                    <div className="ye flex">
+                                <img src={comment?.avatar} className="avatar-image"></img>
+                                <div className="username">{comment?.username}</div>
+                            </div>
                         <textarea className="update-main-modal-textarea"
                         col={30}
                         rows={10}
