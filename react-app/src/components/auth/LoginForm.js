@@ -100,7 +100,10 @@ const LoginForm = () => {
             </form>
         </div>
                 <div className="signup-in-login-card">
-                    Don't have an account? <Link to="/sign-up">Sign up</Link>
+                  <div className="padding-div">
+                    Don't have an account? <Link className="login-link" to="/sign-up">Sign up</Link>
+
+                  </div>
                 </div>
                 <div className="about">
                     <Link className="about-link-login" to="/about">About Creator</Link>
