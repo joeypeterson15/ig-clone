@@ -78,47 +78,54 @@ def seed_posts():
         avatar="https://i.ibb.co/r488nBQ/Feet-Hanging-Over-Lake.png",
         username="gabyms",
     )
+    post23 = Post(
+        userId=10,
+        imageUrl="https://i.ibb.co/r488nBQ/Feet-Hanging-Over-Lake.png",
+        body="Just hangin'",
+        avatar="https://i.ibb.co/Zh0qCTh/Cosmic-Girl-IG-Profile-Pic.png",
+        username="gabyms"
+    )
 
 
 
 
 #  couples page 12
 
-    post11 = Post(
-        userId=12,
-        imageUrl="https://i.ibb.co/V9TFVyG/Couple-in-Rice-Field-foryouandyours.png",
-        body="Getting lost in a rice field in Bali is the ultimate test. How would you and yours fare?",
-        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
-        username="foryouandyours"
-    )
-    post12 = Post(
-        userId=12,
-        imageUrl="https://i.ibb.co/r5SMZMh/Couple-Looking-Out-Over-Rio-foryouandyours.png",
-        body="On top of the world",
-        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
-        username="foryouandyours"
-    )
-    post13 = Post(
-        userId=12,
-        imageUrl="https://i.ibb.co/BVW5gHF/Couple-in-Hammock-at-Sunset-foryouandyours.png",
-        body="Peace of mind and heart",
-        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
-        username="foryouandyours"
-    )
-    post14 = Post(
-        userId=12,
-        imageUrl="https://i.ibb.co/sRzhKw1/Couple-Holding-Hands-in-India-foryouandyours.png",
-        body="Live your dreams together",
-        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
-        username="foryouandyours"
-    )
-    post15 = Post(
-        userId=12,
-        imageUrl="https://i.ibb.co/9pbrXjh/Couple-Enjoying-the-View-foryouandyours.png",
-        body="Partners that climb mountains with you",
-        avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
-        username="foryouandyours"
-    )
+    # post11 = Post(
+    #     userId=12,
+    #     imageUrl="https://i.ibb.co/V9TFVyG/Couple-in-Rice-Field-foryouandyours.png",
+    #     body="Getting lost in a rice field in Bali is the ultimate test. How would you and yours fare?",
+    #     avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+    #     username="foryouandyours"
+    # )
+    # post12 = Post(
+    #     userId=12,
+    #     imageUrl="https://i.ibb.co/r5SMZMh/Couple-Looking-Out-Over-Rio-foryouandyours.png",
+    #     body="On top of the world",
+    #     avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+    #     username="foryouandyours"
+    # )
+    # post13 = Post(
+    #     userId=12,
+    #     imageUrl="https://i.ibb.co/BVW5gHF/Couple-in-Hammock-at-Sunset-foryouandyours.png",
+    #     body="Peace of mind and heart",
+    #     avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+    #     username="foryouandyours"
+    # )
+    # post14 = Post(
+    #     userId=12,
+    #     imageUrl="https://i.ibb.co/sRzhKw1/Couple-Holding-Hands-in-India-foryouandyours.png",
+    #     body="Live your dreams together",
+    #     avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+    #     username="foryouandyours"
+    # )
+    # post15 = Post(
+    #     userId=12,
+    #     imageUrl="https://i.ibb.co/9pbrXjh/Couple-Enjoying-the-View-foryouandyours.png",
+    #     body="Partners that climb mountains with you",
+    #     avatar="https://i.ibb.co/M5tGBz8/Traveler-Couples-IG-Profile-Pic.png",
+    #     username="foryouandyours"
+    # )
 
 
     # galaxy 13
@@ -235,11 +242,6 @@ def seed_posts():
     db.session.add(post8)
     db.session.add(post9)
     db.session.add(post10)
-    db.session.add(post11)
-    db.session.add(post12)
-    db.session.add(post13)
-    db.session.add(post14)
-    db.session.add(post15)
     db.session.add(post16)
     db.session.add(post17)
     db.session.add(post18)
@@ -247,6 +249,7 @@ def seed_posts():
     db.session.add(post20)
     db.session.add(post21)
     db.session.add(post22)
+    db.session.add(post23)
 
     db.session.commit()
 

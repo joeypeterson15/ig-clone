@@ -23,7 +23,7 @@ def seed_users():
     glen = User(
         username='glennyboy', email='glen@aa.io', password='password', avatar="https://i.ibb.co/541Cc9M/Man-on-top-of-mountain.png")
     gabyms = User(
-        username='gabyms', email='robin@aa.io', password='password', avatar="https://i.ibb.co/r488nBQ/Feet-Hanging-Over-Lake.png")
+        username='gabyms', email='robin@aa.io', password='password', avatar="https://i.ibb.co/Zh0qCTh/Cosmic-Girl-IG-Profile-Pic.png")
     charles = User(
         username='charlesthe5th', email='charles@aa.io', password='password', avatar="https://i.ibb.co/kGzyNJm/Roadtrip-with-Snowy-Mountain-View.png")
     foryouAndYours = User (
