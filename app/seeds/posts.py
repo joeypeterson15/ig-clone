@@ -29,10 +29,24 @@ def seed_posts():
     post4 = Post(
         userId=4,
         imageUrl="https://i.ibb.co/j4gfzbY/forest-walk-post.jpg",
-        body="Feeling very relaxed right now #travel",
+        body="Spotty #travel",
         avatar="https://i.ibb.co/MB1w1yT/Map-Passport-Camera.png",
         username="winterBrad",
         # hashtagId=2
+    )
+    post24= Post (
+        userId=4,
+        imageUrl="https://i.ibb.co/Fbcxxqz/Man-at-Train-Tracks.png",
+        body="Where to next...",
+        avatar="https://i.ibb.co/MB1w1yT/Map-Passport-Camera.png",
+        username="winterBrad",
+    )
+    post26= Post(
+        userId=4,
+        imageUrl="https://i.ibb.co/DWKt6Nc/Dog-on-Beach.png",
+        body="Beach day with the pup",
+        avatar="https://i.ibb.co/MB1w1yT/Map-Passport-Camera.png",
+        username="winterBrad",
     )
     post5 = Post(
         userId=5,
@@ -68,6 +82,13 @@ def seed_posts():
         userId=2,
         imageUrl="https://i.ibb.co/YbdJXrW/spiral-galaxy-post.jpg",
         body="whoa #sublime",
+        avatar="https://i.ibb.co/XzqDmjB/Roadtrip-Views.png",
+        username="marnie",
+    )
+    post25= Post (
+        userId=2,
+        imageUrl="https://i.ibb.co/LzyzZ83/Dog-on-Beach-2.png",
+        body="Frisbee and the beach",
         avatar="https://i.ibb.co/XzqDmjB/Roadtrip-Views.png",
         username="marnie",
     )
@@ -250,6 +271,9 @@ def seed_posts():
     db.session.add(post21)
     db.session.add(post22)
     db.session.add(post23)
+    db.session.add(post24)
+    db.session.add(post25)
+    db.session.add(post26)
 
     db.session.commit()
 
