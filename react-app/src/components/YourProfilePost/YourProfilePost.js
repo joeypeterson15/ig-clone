@@ -16,6 +16,7 @@ import { getUser } from '../../store/user';
 import { getUserPosts } from '../../store/userPost';
 import { deleteMyLike } from '../../store/like';
 import { Link } from 'react-router-dom';
+import Comment from '../Comment';
 import "../Post/Post.css"
 
 function YourProfilePost () {
@@ -138,6 +139,30 @@ function YourProfilePost () {
         dispatch(deleteMyLike(sessionUser?.id, post?.id))
     }
 
+    const isSameDay = function(oldTime) {
+        // let today = Date.now().getDate().toString()
+        let newToday = new Date().getDate().toString()
+        let newOldTime = new Date(oldTime).getDate()
+        console.log('todays date:', newToday)
+        console.log('message date:', newOldTime)
+        if (newToday == newOldTime){
+            return true
+        }
+        return false
+    }
+
+    const convertTime = function(oldTime){
+        let newTime = oldTime.split(' ')[1]
+        let time = newTime.split(':');
+        let hours = time[0];
+        let minutes = time[1];
+        let timeValue = "" + ((hours >12) ? hours -12 :hours);
+            timeValue += (minutes < 10) ? ':' + minutes : ":" + minutes;
+            timeValue += (hours >= 12) ? " pm" : " am";
+            // timeValue += "" + date
+            return timeValue;
+        }
+
     return (
         <div className="post-outer-container">
             <div className="exit-post-icon">
@@ -153,7 +178,7 @@ function YourProfilePost () {
                                 <div className="username-avatar-div">
 
                                     <img className="user-avatar" alt="" src={user?.avatar}></img>
-                                    <Link className="username-bold" to={`/p/${post?.userId}`}>{user?.username}</Link>
+                                    <Link className="username-top-bold" to={`/p/${post?.userId}`}>{user?.username}</Link>
 
                                 </div>
 
@@ -167,10 +192,10 @@ function YourProfilePost () {
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div className="comment-content-post">
                                         {body.join(' ')}
                                     </div>
-                                    <div>
+                                    <div className="hashtags-in-my-post">
                                         {hashtags ? hashtags.map((hashtag) => (
                                             <Link to={`/hashtags/${hashtag.substring(1)}`}>{hashtag}</Link>
                                         ))
@@ -182,26 +207,8 @@ function YourProfilePost () {
 
                                 {comments ?
                                 comments.map((comment) => (
-                                    <div className='comment-edit-mypost-div'>
-                                        {/* <div>{comment.content}</div> */}
 
-                                        <div className="left-side-comment">
-
-                                            <img className="user-avatar" alt="" src={comment?.avatar}></img>
-                                            <div className="username-bold" >{comment?.username}</div>
-                                            <div>{comment?.content}</div>
-
-                                        </div>
-
-
-                                        {comment.userId === sessionUser?.id ?
-                                        <div>
-                                        <UpdateCommentModal comment={comment}/>
-                                        <DeleteCommentModal comment={comment}/>
-                                    </div>
-                                     : ''}
-                                    </div>
-
+                                    <Comment user={sessionUser} comment={comment} />
 
                                 )) :
                                 <div>There are currently no comments for this post</div>}
@@ -211,13 +218,13 @@ function YourProfilePost () {
                                 <div>
                                     {!isLiked()
                                     ?
-                                    <div className="heart">
+                                    <div className="my-heart">
 
                                             <i onClick={createLike} className="far fa-heart"></i>
 
                                     </div>
                                         :
-                                        <div className="heart red-heart">
+                                        <div className="my-heart red-heart">
                                             {/* <button onClick={deleteLike}>unlike</button> */}
                                             <i onClick={deleteLike} className="fas fa-heart"></i>
                                         </div>
@@ -229,6 +236,23 @@ function YourProfilePost () {
                                 <div className="count-likes-main">
                                     {countLikes()}
 
+                            </div>
+                            <div>
+                                <div>
+                                    {isSameDay(post?.createdAt)
+                                ?
+                                <div className="time-post-div">
+                                    {convertTime(post?.createdAt)}
+                                </div>
+                                :
+                                <div className="time-stamp-post-div">
+                                    {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(post?.createdAt))} {new Date(post?.createdAt).getDate()}, 2021
+
+                                </div>
+                                }
+
+
+                                </div>
                             </div>
 
                             <div className="create-comment-right">
