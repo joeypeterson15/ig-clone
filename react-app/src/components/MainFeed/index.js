@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getMainFeedPosts } from '../../store/mainFeedPosts';
 import MainFeedPost from '../MainFeedPost/MainFeedPost';
+import BFS from '../BFS';
 
 import "./MainFeed.css"
 
@@ -17,11 +18,15 @@ function MainFeed () {
     }, [dispatch, sessionUser])
 
     return (
-        <div className="main-feed-outer-container">
-            {posts ? posts.map((post) => (
-                <MainFeedPost post={post} />
-            )) : <div>You need to follow people before you can see their posts!</div>}
-        </div>
+        <>
+            <div className="main-feed-outer-container">
+                {posts ? posts.map((post) => (
+                    <MainFeedPost post={post} />
+                )) : <div>You need to follow people before you can see their posts!</div>}
+            </div>
+            <BFS />
+
+        </>
     )
 }
 
