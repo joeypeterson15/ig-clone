@@ -1,16 +1,37 @@
 .recommended-users-container {
-    background-color: red;
+    /* background-color: red; */
     position: absolute;
-    width: 10rem;
-    height: 10rem;
-    top: 5rem;
-    right: 5rem;
+    width: 13rem;
+    height: 18rem;
+    top: 20rem;
+    right: 13rem;
+    border: 0.1px solid rgba(173, 173, 173, 0.5);
 }
 
-.recommended-user {
-    /* background-color: black; */
-    /* z-index: 200;
-    position: absolute; */
-    top: 10rem;
-    left: 5rem;
+.recommended-user-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem;
+    margin-bottom: 0.3rem;
+
+}
+
+.rec-avatar-username {
+    display: flex;
+}
+
+.rec-follow-button {
+    border-radius: 0.5px;
+    color: white;
+    background-color: rgba(42, 130, 245, 0.9);
+    border: none;
+    width: 4rem;
+    height: 1rem;
+
+}
+
+.avatar-rec {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
 }

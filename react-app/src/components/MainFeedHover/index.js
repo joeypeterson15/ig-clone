@@ -22,7 +22,7 @@ function MainFeedHover ({ post }) {
     const user = useSelector(state => state.user[0])
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const sessionUser = useSelector((state) => state.session?.user)
-    const posts = useSelector((state) => Object.values(state.mainFeedPosts).filter(post => post?.userId == userId))
+    const posts = useSelector((state) => Object.values(state.allPosts).filter(post => post?.userId == userId))
     // const follows = useSelector((state) => Object.values(state.follows))
     const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === userId))
     const myFollows = useSelector((state) => Object.values(state.follows))
