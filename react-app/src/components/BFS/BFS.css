@@ -1,0 +1,16 @@
+.recommended-users-container {
+    background-color: red;
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    top: 5rem;
+    right: 5rem;
+}
+
+.recommended-user {
+    /* background-color: black; */
+    /* z-index: 200;
+    position: absolute; */
+    top: 10rem;
+    left: 5rem;
+}
