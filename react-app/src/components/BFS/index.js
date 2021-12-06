@@ -1,6 +1,7 @@
 import { getAllFollows } from '../../store/allFollows';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
+import { getFollows } from '../../store/follow';
 import { createOneFollow } from '../../store/follow';
 import BFSFollow from '../BFSFollow';
 
@@ -8,11 +9,12 @@ import './BFS.css'
 
 
 
-function BFS ({ }) {
+function BFS ({ follows, posts }) {
 
 
     const user = useSelector((state) => state.session?.user)
-    const follows = useSelector((state) => Object.values(state.allFollows))
+
+    // const follows = useSelector((state) => Object.values(state.allFollows))
     const [users, setUsers] = useState([]);
     const [finalRecommendedUsers, setFinalRecommendedUsers] = useState([])
     console.log('all follows', follows)
@@ -21,10 +23,14 @@ function BFS ({ }) {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getAllFollows())
+    // useEffect(() => {
+    //     dispatch(getAllFollows())
+    // }, [dispatch, user])
 
-        function getRecommendedFollows( degrees) {
+    useEffect(() => {
+
+
+        const getRecommendedFollows = async (degrees) => {
             let queue = [[user?.id]];
 
             let recommended = [];
@@ -55,7 +61,9 @@ function BFS ({ }) {
                     // if (path.length > currentFollows.size + 1) recommended.push(id);
                     if (!currentFollows.has(id) && user?.id !== id && path.length > 1) {
                         recommended.push(id);
-                        recommendedUsers.push(users.find(user => user?.id === id))
+                        let newUser =users.find(user => user?.id === id)
+                        recommendedUsers.push(newUser)
+                        // setFinalRecommendedUsers(oldArray => [...oldArray, newUser])
                     }
 
 
@@ -68,14 +76,18 @@ function BFS ({ }) {
                     }
                 }
             }
-            console.log('recommended users', recommendedUsers)
+            console.log('recommended users', finalRecommendedUsers)
             setFinalRecommendedUsers([...recommendedUsers])
             // return recommended;
         }
 
 
         getRecommendedFollows(2)
-    }, [dispatch])
+
+        // return (
+        //     setFinalRecommendedUsers([])
+        // )
+    }, [user, posts])
 
     useEffect(() => {
         async function fetchData() {
@@ -89,33 +101,9 @@ function BFS ({ }) {
 
 
 
-
-
-
-    //  const createFollow = (follow) => (e) => {
-    //     e.preventDefault()
-    //     const payload = {
-    //         userId : user?.id,
-    //         followId : follow?.id
-    //     }
-    //     dispatch(createOneFollow(payload))
-    //     setIsFollowed(true)
-    // }
-
-
     return (
         <div className="recommended-users-container">
             {finalRecommendedUsers.map(user => (
-                // <div className="recommended-user-card">
-                //     <div className="recommended-username">{user?.username}</div>
-                //     <div className="recommended-follow-div">
-                //         {isFollowed
-                //         ?
-                //         <div>check</div>
-                //         :
-                //         <button onClick={createFollow(user)} className="follow-button">Follow</button>}
-                //     </div>
-                // </div>
                 <BFSFollow follow={user}/>
             ))}
         </div>
