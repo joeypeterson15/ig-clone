@@ -24,7 +24,7 @@ function MainFeed () {
                     <MainFeedPost post={post} />
                 )) : <div>You need to follow people before you can see their posts!</div>}
             </div>
-            <BFS />
+            <BFS user={sessionUser} />
 
         </>
     )
