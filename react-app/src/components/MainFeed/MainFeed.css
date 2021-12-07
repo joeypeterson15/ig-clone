@@ -6,6 +6,7 @@
 
 .main-feed-outer-container {
     background-color: rgba(240, 240, 240, 0.4);
+    padding-top: 1rem;
 }
 
 
@@ -15,8 +16,8 @@
     position: relative;
     background-color: white;
     margin-left: 17%;
-    /* margin-top: 2rem; */
-    /* margin-bottom: 1rem; */
+    /* padding-top: 2rem; */
+    margin-bottom: 2rem;
     width: 40rem;
     height: 65rem;
     border: 0.5px solid rgba(155, 155, 155, 0.4);

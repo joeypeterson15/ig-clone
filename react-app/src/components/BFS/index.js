@@ -103,7 +103,15 @@ function BFS ({ follows, posts }) {
 
     return (
         <>
-        <div id="suggestions-heading">Suggestions for You</div>
+        <div className="switch-account-container">
+            <div className="rec-avatar-username">
+                <img className="avatar-switch" alt="" src={user?.avatar}></img>
+                <div className="username-switch">{user?.username}</div>
+            </div>
+
+            <button className="switch">Switch</button>
+        </div>
+        <div id="suggestions-heading">Suggestions For You</div>
         <div className="recommended-users-container">
             {finalRecommendedUsers.map(user => (
                 <BFSFollow follow={user}/>

@@ -3,20 +3,32 @@
     position: fixed;
     width: 17rem;
     height: 18rem;
-    top: 15rem;
-    right: 16rem;
+    top: 14rem;
+    right: 15.5rem;
     /* border: 0.1px solid rgba(173, 173, 173, 0.5); */
 }
 
 #suggestions-heading {
     position: fixed;
     width: 13rem;
-    top: 13rem;
+    top: 12rem;
     height: 2rem;
-    right: 19.5rem;
-    font-size: 15px;
+    right: 19.2rem;
+    font-size: 14px;
     font-weight: 500;
     color: rgb(146, 146, 146);
+
+}
+
+.switch-account-container {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 17rem;
+    top: 7rem;
+    height: 5rem;
+    right: 15.5rem;
+    /* background-color: red; */
 
 }
 
@@ -50,17 +62,42 @@
 
 }
 
+.switch {
+    border-radius: 0.5px;
+    color: rgba(42, 130, 245, 0.9);
+    background-color: rgba(240, 240, 240, 0.0);
+    border: none;
+    width: 4rem;
+    height: 1rem;
+    padding-top: 1.3rem;
+    padding-right: 1rem;
+    font-weight: 500;
+    font-size: 13px;
+}
+
 .avatar-rec {
     height: 2rem;
     width: 2rem;
     border-radius: 50%;
     margin-right: 1rem;
 }
-
+.avatar-switch {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+}
 .recommended-username {
     font-size: 14.5px;
     font-weight: 500;
     padding-top: 0.3rem;
+    color:rgba(34, 34, 34, 0.9)
+}
+
+.username-switch {
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 1rem;
     color:rgba(34, 34, 34, 0.9)
 }
 
