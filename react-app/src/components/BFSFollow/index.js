@@ -26,12 +26,15 @@ function BFSFollow ({follow}) {
         <div className="recommended-user-card">
             <div className="rec-avatar-username">
                 <img className="avatar-rec" alt="" src={follow?.avatar}></img>
-                <div className="recommended-username">{follow?.username}</div>
+                <div className="user-plus-suggested-cont">
+                    <div className="recommended-username">{follow?.username}</div>
+                    <div className="grey-suggest-text">Suggested for you</div>
+                </div>
             </div>
             <div className="recommended-follow-div">
                 {isFollowed
                 ?
-                <div>check</div>
+                <div>Following</div>
                 :
                 <button onClick={createFollow} className="rec-follow-button">Follow</button>}
             </div>

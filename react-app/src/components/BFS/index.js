@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { getFollows } from '../../store/follow';
 import { createOneFollow } from '../../store/follow';
 import BFSFollow from '../BFSFollow';
+import { Modal } from '../../context/Modal';
 
 import './BFS.css'
 
@@ -13,6 +14,7 @@ function BFS ({ follows, posts }) {
 
 
     const user = useSelector((state) => state.session?.user)
+    const [showModal, setShowModal] = useState(false)
 
     // const follows = useSelector((state) => Object.values(state.allFollows))
     const [users, setUsers] = useState([]);
@@ -102,11 +104,64 @@ function BFS ({ follows, posts }) {
 
 
     return (
+        <>
+        <div className="switch-account-container">
+            <div className="rec-avatar-username">
+                <img className="avatar-switch" alt="" src={user?.avatar}></img>
+                <div className="username-switch">{user?.username}</div>
+            </div>
+            {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+                <div className="switch-modal-container">
+
+                    <div id="switch-accounts-div">Switch Accounts</div>
+
+                    <div>
+
+
+                        <div className="switch-current-user-div">
+
+                            <div className="switch-modal-name-plus-avatar">
+                                <img className="avatar-switch" src={user?.avatar}></img>
+                                <div className="username-switch">{user?.username}</div>
+                            </div>
+                            <div>Check circle</div>
+                        </div>
+
+                        <div className="switch-demo-login-buttons">
+
+
+                                {user?.username !== "marnie" ?
+
+                                        <button>Demo 2</button> : ""
+
+                            }
+                                {user?.username !== "Demo" ?
+
+                                        <button>Demo 1</button> : ""
+
+                            }
+
+                        </div>
+
+
+                    </div>
+
+                    <button id="existing-account-login-button">Login to an Existing Account</button>
+                </div>
+            </Modal>
+          )}
+
+            <button onClick={() => setShowModal(true)} className="switch">Switch</button>
+        </div>
+        <div id="suggestions-heading">Suggestions For You</div>
         <div className="recommended-users-container">
             {finalRecommendedUsers.map(user => (
                 <BFSFollow follow={user}/>
             ))}
         </div>
+
+        </>
     )
 }
 

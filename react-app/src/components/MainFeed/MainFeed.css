@@ -5,7 +5,8 @@
 }
 
 .main-feed-outer-container {
-    background-color: rgb(241, 241, 241);
+    background-color: rgba(240, 240, 240, 0.4);
+    padding-top: 1rem;
 }
 
 
@@ -14,9 +15,9 @@
 .main-feed-posts {
     position: relative;
     background-color: white;
-    margin-left: 24%;
-    margin-top: 2rem;
-    /* margin-bottom: 1rem; */
+    margin-left: 17%;
+    /* padding-top: 2rem; */
+    margin-bottom: 2rem;
     width: 40rem;
     height: 65rem;
     border: 0.5px solid rgba(155, 155, 155, 0.4);
@@ -52,6 +53,11 @@
 .hover-username-main-feed {
     display: none;
 }
+
+.username-div-with-hover {
+    padding-top: 0.2rem;
+}
+
 .main-feed-username-upper:hover + .hover-username-main-feed, .hover-username-main-feed:hover {
     display: inline-block;
 }
@@ -75,6 +81,8 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
 }
 
 .main-feed-username-upper {

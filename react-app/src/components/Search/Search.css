@@ -228,13 +228,15 @@
 
   .search-input {
     border-radius: 2px;
-    border: 0.2px solid rgb(204, 204, 204);
+    border: 0.2px solid rgba(204, 204, 204, 0.5);
+    /* color: rgba(204, 204, 204, 0.4); */
     padding-left: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.6rem;
     margin-left: 1rem;
-    background-color: rgb(238, 238, 238);
-    height: 1.4rem;
+    background-color: rgba(238, 238, 238, 0.7);
+    height: 1.7rem;
     outline: none;
+    width: 13.5rem;
   }
 
 

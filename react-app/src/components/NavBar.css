@@ -20,8 +20,9 @@ nav {
     /* padding-top: 1rem; */
     font-family: 'Cookie';
     text-decoration: none;
-    font-size: 37px;
+    font-size: 33px;
     color: rgb(36, 36, 36);
+    /* margin-top: 1rem; */
 
 }
 
@@ -32,7 +33,7 @@ nav {
 }
 
 .left-side-navbar {
-    padding-left: 20%;
+    padding-left: 17.5%;
 }
 
 .right-side-nav-bar {

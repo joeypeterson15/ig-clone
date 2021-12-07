@@ -1,11 +1,35 @@
 .recommended-users-container {
     /* background-color: red; */
-    position: absolute;
-    width: 13rem;
+    position: fixed;
+    width: 17rem;
     height: 18rem;
-    top: 20rem;
-    right: 13rem;
-    border: 0.1px solid rgba(173, 173, 173, 0.5);
+    top: 14rem;
+    right: 15.5rem;
+    /* border: 0.1px solid rgba(173, 173, 173, 0.5); */
+}
+
+#suggestions-heading {
+    position: fixed;
+    width: 13rem;
+    top: 12rem;
+    height: 2rem;
+    right: 19.2rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(146, 146, 146);
+
+}
+
+.switch-account-container {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 17rem;
+    top: 7rem;
+    height: 5rem;
+    right: 15.5rem;
+    /* background-color: red; */
+
 }
 
 .recommended-user-card {
@@ -20,18 +44,104 @@
     display: flex;
 }
 
+.user-plus-suggested-cont {
+    display: flex;
+    flex-direction: column;
+}
+
 .rec-follow-button {
     border-radius: 0.5px;
-    color: white;
-    background-color: rgba(42, 130, 245, 0.9);
+    color: rgba(42, 130, 245, 0.9);
+    background-color: rgba(240, 240, 240, 0.0);
     border: none;
     width: 4rem;
     height: 1rem;
+    padding-top: 0.4rem;
+    font-weight: 500;
+    font-size: 13px;
 
 }
 
-.avatar-rec {
+.switch {
+    border-radius: 0.5px;
+    color: rgba(42, 130, 245, 0.9);
+    background-color: rgba(240, 240, 240, 0.0);
+    border: none;
+    width: 4rem;
     height: 1rem;
-    width: 1rem;
+    padding-top: 1.3rem;
+    padding-right: 1rem;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.avatar-rec {
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
+    margin-right: 1rem;
+}
+.avatar-switch {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+}
+.recommended-username {
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-top: 0.3rem;
+    color:rgba(34, 34, 34, 0.9)
+}
+
+.username-switch {
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 1rem;
+    color:rgba(34, 34, 34, 0.9)
+}
+
+.grey-suggest-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(146, 146, 146);
+
+}
+
+.switch-modal-container {
+    width: 26rem;
+    height: 15rem;
+}
+
+#switch-accounts-div {
+    text-align: center;
+    border-bottom: 0.1px solid rgba(114, 114, 114, 0.3);
+    height: 2rem;
+    padding-top: 1rem;
+    background-color: rgba(230, 230, 230, 0.3);
+}
+
+.switch-current-user-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.switch-modal-name-plus-avatar {
+    display: flex
+}
+
+#existing-account-login-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 3rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(42, 130, 245, 0.9);
+    background-color: rgba(240, 240, 240, 0.0);
+    border-radius: 2px;
+    border: none;
+    border-top: 0.1px solid rgba(114, 114, 114, 0.3)
+
 }
