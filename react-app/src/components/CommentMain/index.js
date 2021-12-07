@@ -64,12 +64,13 @@ function CommentMain ({ comment, user }) {
 
             </div>
 
-            {comment.userId === user?.id ?
 
             <div className="flex-for-life">
+            {comment.userId === user?.id ?
                 <div className={showCommentMenu === false ?  "three-dot-close-main" : "three-dot-open-main" }>
                     <i class="fas fa-ellipsis-h" onClick={showCommentMenu === false ? openCommentMenu : closeCommentMenu}></i>
                 </div>
+            : ''}
                 {!isLiked()
                             ?
                 <div className="comment-main-heart">
@@ -87,7 +88,6 @@ function CommentMain ({ comment, user }) {
                     </div>
                 )}
             </div>
-                : ''}
         </div>
     )
 }
