@@ -5,6 +5,10 @@ import { getFollows } from '../../store/follow';
 import { createOneFollow } from '../../store/follow';
 import BFSFollow from '../BFSFollow';
 import { Modal } from '../../context/Modal';
+import { logout } from '../../store/session';
+import * as sessionActions from '../../store/session'
+
+
 
 import './BFS.css'
 
@@ -101,6 +105,26 @@ function BFS ({ follows, posts }) {
         fetchData();
       }, []);
 
+      const onLogout = async (e) => {
+        await dispatch(logout());
+      };
+
+      const switchToMarnie = async (e) => {
+          await dispatch(logout())
+          dispatch(
+            sessionActions.login("marnie@aa.io", "password"),
+          )
+      }
+      const switchToDemo = async (e) => {
+          await dispatch(logout())
+          dispatch(
+            sessionActions.login("demo@aa.io", "password"),
+          )
+      }
+
+
+
+
 
 
     return (
@@ -114,7 +138,22 @@ function BFS ({ follows, posts }) {
             <Modal onClose={() => setShowModal(false)}>
                 <div className="switch-modal-container">
 
-                    <div id="switch-accounts-div">Switch Accounts</div>
+                    <div id="switch-accounts-div">
+                        {user?.username !== "Demo" ?
+
+                            <button onClick={switchToDemo} id="demo-1-switch">Demo 1</button> : ""
+
+                        }
+                        <div>
+                            Switch Accounts
+                        </div>
+
+                        {user?.username !== "marnie" ?
+
+                            <button onClick={switchToMarnie} id="demo-2-switch">Demo 2</button> : ""
+
+                        }
+                    </div>
 
                     <div>
 
@@ -125,29 +164,23 @@ function BFS ({ follows, posts }) {
                                 <img className="avatar-switch" src={user?.avatar}></img>
                                 <div className="username-switch">{user?.username}</div>
                             </div>
-                            <div>Check circle</div>
+                            <div className="circle-with-checkmark-switch">
+                                <i class="check-switch fas fa-check"></i>
+                            </div>
                         </div>
 
                         <div className="switch-demo-login-buttons">
 
 
-                                {user?.username !== "marnie" ?
 
-                                        <button>Demo 2</button> : ""
 
-                            }
-                                {user?.username !== "Demo" ?
-
-                                        <button>Demo 1</button> : ""
-
-                            }
 
                         </div>
 
 
                     </div>
 
-                    <button id="existing-account-login-button">Login to an Existing Account</button>
+                    <button onClick={onLogout} id="existing-account-login-button">Login to an Existing Account</button>
                 </div>
             </Modal>
           )}
