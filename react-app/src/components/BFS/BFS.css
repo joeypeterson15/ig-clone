@@ -1,11 +1,23 @@
 .recommended-users-container {
     /* background-color: red; */
-    position: absolute;
-    width: 13rem;
+    position: fixed;
+    width: 17rem;
     height: 18rem;
-    top: 20rem;
-    right: 13rem;
-    border: 0.1px solid rgba(173, 173, 173, 0.5);
+    top: 15rem;
+    right: 16rem;
+    /* border: 0.1px solid rgba(173, 173, 173, 0.5); */
+}
+
+#suggestions-heading {
+    position: fixed;
+    width: 13rem;
+    top: 13rem;
+    height: 2rem;
+    right: 19.5rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(146, 146, 146);
+
 }
 
 .recommended-user-card {
@@ -20,18 +32,41 @@
     display: flex;
 }
 
+.user-plus-suggested-cont {
+    display: flex;
+    flex-direction: column;
+}
+
 .rec-follow-button {
     border-radius: 0.5px;
-    color: white;
-    background-color: rgba(42, 130, 245, 0.9);
+    color: rgba(42, 130, 245, 0.9);
+    background-color: rgba(240, 240, 240, 0.0);
     border: none;
     width: 4rem;
     height: 1rem;
+    padding-top: 0.4rem;
+    font-weight: 500;
+    font-size: 13px;
 
 }
 
 .avatar-rec {
-    height: 1rem;
-    width: 1rem;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.recommended-username {
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-top: 0.3rem;
+    color:rgba(34, 34, 34, 0.9)
+}
+
+.grey-suggest-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(146, 146, 146);
+
 }

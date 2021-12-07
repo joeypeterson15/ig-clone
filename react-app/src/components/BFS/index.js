@@ -102,11 +102,15 @@ function BFS ({ follows, posts }) {
 
 
     return (
+        <>
+        <div id="suggestions-heading">Suggestions for You</div>
         <div className="recommended-users-container">
             {finalRecommendedUsers.map(user => (
                 <BFSFollow follow={user}/>
             ))}
         </div>
+
+        </>
     )
 }
 

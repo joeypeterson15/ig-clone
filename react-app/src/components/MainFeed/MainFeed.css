@@ -5,7 +5,7 @@
 }
 
 .main-feed-outer-container {
-    background-color: rgb(241, 241, 241);
+    background-color: rgba(240, 240, 240, 0.4);
 }
 
 
@@ -14,8 +14,8 @@
 .main-feed-posts {
     position: relative;
     background-color: white;
-    margin-left: 24%;
-    margin-top: 2rem;
+    margin-left: 17%;
+    /* margin-top: 2rem; */
     /* margin-bottom: 1rem; */
     width: 40rem;
     height: 65rem;
