@@ -55,7 +55,7 @@
 }
 
 .username-div-with-hover {
-    padding-top: 0.7rem;
+    padding-top: 0.2rem;
 }
 
 .main-feed-username-upper:hover + .hover-username-main-feed, .hover-username-main-feed:hover {

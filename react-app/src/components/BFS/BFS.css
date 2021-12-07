@@ -107,3 +107,41 @@
     color: rgb(146, 146, 146);
 
 }
+
+.switch-modal-container {
+    width: 26rem;
+    height: 15rem;
+}
+
+#switch-accounts-div {
+    text-align: center;
+    border-bottom: 0.1px solid rgba(114, 114, 114, 0.3);
+    height: 2rem;
+    padding-top: 1rem;
+    background-color: rgba(230, 230, 230, 0.3);
+}
+
+.switch-current-user-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.switch-modal-name-plus-avatar {
+    display: flex
+}
+
+#existing-account-login-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 3rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(42, 130, 245, 0.9);
+    background-color: rgba(240, 240, 240, 0.0);
+    border-radius: 2px;
+    border: none;
+    border-top: 0.1px solid rgba(114, 114, 114, 0.3)
+
+}
