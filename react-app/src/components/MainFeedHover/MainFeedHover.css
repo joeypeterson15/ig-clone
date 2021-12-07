@@ -4,14 +4,15 @@
 
 
 .hover-post-in-container {
-    width: 7rem;
+    width: 6.6rem;
     height: 7rem;
+    padding-right: 0.1rem;
 }
 
 .hover-card {
     background-color: white;
     border-radius: 3px;
-    border: 0.2px solid rgb(197, 197, 197);
+    border: 0.2px solid rgba(197, 197, 197, 0.7);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 20rem;
     height: 20rem;
@@ -21,16 +22,25 @@
 
 .upper-hover-div {
     display: flex;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 .number-category-div {
     display: flex;
     justify-content: space-between;
     /* border-bottom: 0.2px solid rgb(197, 197, 197); */
-    border-top: 0.2px solid rgb(197, 197, 197);
+    border-top: 0.2px solid rgba(197, 197, 197, 0.6);
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.hover-username {
+    padding-top: 1.5rem;
+    font-weight: 600rem;
+    padding-left: 1rem;
+    font-size: 17px;
+    color: rgb(19, 19, 19)
+
 }
 
 
@@ -42,7 +52,8 @@
 }
 
 .number-hover {
-    font-weight: 600
+    font-weight: 600;
+    color: rgba(0,0,0,0.7)
 }
 
 .category-name {

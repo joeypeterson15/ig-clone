@@ -99,7 +99,7 @@ function MainFeedHover ({ post }) {
             <div className="hover-card">
                 <div className="upper-hover-div">
                     <img className="hover-avatar" alt="" src={post?.avatar}></img>
-                    <div>{post?.username}</div>
+                    <div className="hover-username">{post?.username}</div>
                 </div>
                 <div className="number-category-div">
                     <div className="number-category">
