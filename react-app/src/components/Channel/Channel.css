@@ -31,7 +31,7 @@
 
 .messages-bold-username {
     font-weight: 500;
-    padding-left: 5rem;
+    padding-left: 8.5rem;
     font-size: 17px;
 }
 
@@ -70,7 +70,7 @@
 
 .top-left-channel {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 0.2px solid rgb(221, 221, 221);
@@ -140,4 +140,11 @@
 }
 .black-text {
     color: rgba(0, 0, 0, 0.75)
+}
+
+.create-channel-button {
+    font-size: 20px;
+    padding-right: 1rem;
+    color: rgba(0, 0, 0, 0.9)
+
 }

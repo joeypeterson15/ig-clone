@@ -143,8 +143,8 @@ function Message () {
 
                             {message.userId === sessionUser?.id ?
                                 <div className="content-avatar-in-message-div">
-                                    <div className="message-content">{message?.content}</div>
-                                    <img className="messenger-avatar" alt="" src={message?.userAvatar}></img>
+                                    <div className="message-grey-content">{message?.content}</div>
+                                    <img className="messenger-me-avatar" alt="" src={message?.userAvatar}></img>
                                 </div>
 
                                 :

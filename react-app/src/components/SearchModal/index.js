@@ -16,7 +16,11 @@ function SearchModal () {
       }, [dispatch])
     return (
         <>
-            <i className="far fa-edit" onClick={() => setShowModal(true)}></i>
+            <div className="create-channel-button">
+
+                <i className="far fa-edit" onClick={() => setShowModal(true)}></i>
+            </div>
+
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <Search users={users} showModal={showModal} setShowModal={setShowModal} />
