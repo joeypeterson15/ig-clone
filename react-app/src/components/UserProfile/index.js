@@ -87,7 +87,8 @@ function UserProfile () {
                 <div className="profile-picture" style={{backgroundImage: `url(${user?.avatar})`}}></div>
                 <div className="my-profile-content">
                         <div className="top-my-profile-content">
-                            <div>{user?.username}</div>
+                            <div className="user-profile-username">{user?.username}</div>
+                            <button className="message-user-profile-button">Message</button>
                             <div>
                                 {!isFollowed ? <button onClick={createFollow} className="follow-button">Follow</button>
                                 :

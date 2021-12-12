@@ -84,24 +84,7 @@
 
 
 
-/*   user profile stuff    */
 
-.follow-button {
-    color: white;
-    background-color: blue;
-    border: none;
-    width: 5rem;
-    height: 1.5rem;
-    border-radius: 20px;
-
-}
-
-.unfollow-button {
-    border: none;
-    width: 5rem;
-    height: 1.5rem;
-    /* border-radius: 20px; */
-}
 
 .bio-content {
     padding-top: 1.5rem;
