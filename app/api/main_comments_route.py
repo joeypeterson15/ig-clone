@@ -1,28 +1,28 @@
 from flask import Blueprint, jsonify, request
 from app.models import Comment, db, CommentLike, Reply
-from app.forms import addCommentForm
-from app.forms import updateCommentForm
+from app.forms import addMainCommentForm
+from app.forms import updateMainCommentForm
 from sqlalchemy import asc, desc
 
 
-comment_routes = Blueprint('comments', __name__)
-
-
-@comment_routes.route('/<int:id>')
-def get_my_comments(id):
-    comments = Comment.query.filter(Comment.postId == id).order_by(desc(Comment.createdAt))
-    return {'comments': [comment.to_dict() for comment in comments]}
+main_comment_routes = Blueprint('maincomments', __name__)
 
 
 # @comment_routes.route('/<int:id>')
 # def get_my_comments(id):
-#     comments = Comment.query.all()
+#     comments = Comment.query.filter(Comment.postId == id).order_by(desc(Comment.createdAt))
 #     return {'comments': [comment.to_dict() for comment in comments]}
 
-@comment_routes.route('/', methods=['POST'])
+
+@main_comment_routes.route('/<int:id>')
+def get_my_comments(id):
+    comments = Comment.query.all()
+    return {'comments': [comment.to_dict() for comment in comments]}
+
+@main_comment_routes.route('/', methods=['POST'])
 def create_comment():
 
-    form = addCommentForm()
+    form = addMainCommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment = Comment (
@@ -37,7 +37,7 @@ def create_comment():
     db.session.commit()
     return {'comment' : comment.to_dict()}
 
-@comment_routes.route('/delete/<int:id>', methods=['DELETE'])
+@main_comment_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_comment(id):
     commentLikes = CommentLike.query.filter(CommentLike.commentId == id).all()
     replies = Reply.query.filter(Reply.commentId == id).all()
@@ -48,9 +48,9 @@ def delete_comment(id):
     db.session.commit()
     return { 'commentId' : id }
 
-@comment_routes.route('/update/<int:id>', methods=['POST'])
+@main_comment_routes.route('/update/<int:id>', methods=['POST'])
 def update_comment(id):
-    form = updateCommentForm()
+    form = updateMainCommentForm()
     comment = Comment.query.get(id)
     comment.content = form.data['content']
     db.session.commit()

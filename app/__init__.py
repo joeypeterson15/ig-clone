@@ -30,6 +30,7 @@ from .api.comment_like_routes import comment_likes_routes
 from .api.reply_routes import reply_routes
 from .api.your_message import your_messages_routes
 from .api.reply_like_routes import reply_like_route
+from .api.main_comments_route import main_comment_routes
 
 
 from .seeds import seed_commands
@@ -56,6 +57,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(main_comment_routes, url_prefix='/api/maincomments')
 app.register_blueprint(likes_routes, url_prefix='/api/likes')
 app.register_blueprint(all_post_routes, url_prefix='/api/allposts')
 app.register_blueprint(get_user_routes, url_prefix='/api/postuser')

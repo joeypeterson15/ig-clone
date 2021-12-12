@@ -30,7 +30,7 @@ const loadAfterUpdate = (commentId, comment) => ({
 
 
 export const getMainFeedComments = (postId) => async dispatch => {
-    const response = await fetch(`/api/comments/${postId}`)
+    const response = await fetch(`/api/maincomments/${postId}`)
 
     if (response.ok) {
         const comments = await response.json()
@@ -39,7 +39,7 @@ export const getMainFeedComments = (postId) => async dispatch => {
 }
 
 export const createMainFeedComment = (payload) => async dispatch => {
-    const response = await fetch(`/api/comments/`, {
+    const response = await fetch(`/api/maincomments/`, {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
@@ -54,7 +54,7 @@ export const createMainFeedComment = (payload) => async dispatch => {
 }
 
 export const deleteMainFeedComment = (commentId) => async dispatch => {
-    const response = await fetch(`/api/comments/delete/${commentId}`, {
+    const response = await fetch(`/api/maincomments/delete/${commentId}`, {
         method: 'DELETE',
         // headers: {
         //   'Content-Type' : 'application/json',
@@ -69,7 +69,7 @@ export const deleteMainFeedComment = (commentId) => async dispatch => {
 }
 
 export const updateOneMainComment = (payload, commentId) => async dispatch => {
-    const response = await fetch(`/api/comments/update/${commentId}`, {
+    const response = await fetch(`/api/maincomments/update/${commentId}`, {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
