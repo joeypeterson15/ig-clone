@@ -12,14 +12,16 @@ import { useHistory } from 'react-router';
 import { getChannels } from '../../store/channel';
 import MainFeedHover from '../MainFeedHover';
 import CommentMain from '../CommentMain';
+import allFollowsReducer from '../../store/allFollows';
 
 
-const MainFeedPost = ({ post }) => {
+const MainFeedPost = ({ post, allComments, allFollows }) => {
 
     let history = useHistory()
     const [content, setContent] = useState('')
     const sessionUser = useSelector((state) => state.session?.user)
-    const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
+    // const comments = useSelector((state) => Object.values(state.mainFeedComments).filter((comment) => comment.postId === post?.id))
+    const comments = allComments.filter((comment) => comment.postId === post?.id)
     const likes = useSelector((state) => Object.values(state.mainLikes).filter((like) => like.postId === post?.id))
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const [hashtags, setHashtags] = useState([])
@@ -173,7 +175,7 @@ const MainFeedPost = ({ post }) => {
                         <Link to={`/p/${post?.userId}`} className="main-feed-username-upper">
                             {post?.username}
                         </Link>
-                        <MainFeedHover post={post}/>
+                        <MainFeedHover allFollows={allFollows} post={post}/>
 
                     </div>
                 </div>

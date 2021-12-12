@@ -12,3 +12,5 @@ from .add_hash import addHashTagForm
 from .like_comment_form import addCommentLikeForm
 from .add_reply import addReplyForm
 from .likeReplyForm import ReplyLikeForm
+from .add_main_comment import addMainCommentForm
+from .update_main_comment import updateMainCommentForm
