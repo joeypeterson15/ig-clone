@@ -86,13 +86,17 @@ function UserProfile () {
             <div className="my-profile-container">
                 <div className="profile-picture" style={{backgroundImage: `url(${user?.avatar})`}}></div>
                 <div className="my-profile-content">
-                        <div className="top-my-profile-content">
+                        <div className="top-user-profile-content">
                             <div className="user-profile-username">{user?.username}</div>
+                            <div className="flex">
+
                             <button className="message-user-profile-button">Message</button>
                             <div>
                                 {!isFollowed ? <button onClick={createFollow} className="follow-button">Follow</button>
                                 :
                                 <UnfollowModal setIsFollowed={setIsFollowed} showModal={showModal} setShowModal={setShowModal} userId={sessionUser?.id} followId={userId}/>}
+                            </div>
+
                             </div>
                         </div>
                         <div className="middle-my-profile-content">
@@ -115,8 +119,10 @@ function UserProfile () {
                         </div>
                 </div>
             </div>
+            <div id="line"></div>
 
-            { posts ? <div className="my-posts-container">
+            { posts ?
+            <div className="my-posts-container">
                 {posts.map((post) => (
                     <Link to={`/p/${userId}/${post?.id}`}>
                         <div key={post.id}>

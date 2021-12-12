@@ -2,7 +2,13 @@
     background-color: blue;
 }
 
-/*   user profile stuff    */
+.top-user-profile-content {
+    /* background-color: red; */
+    width: 17rem;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
 
 .follow-button {
     color: white;
@@ -14,26 +20,35 @@
 
 }
 
+.unfollow-button {
+    border: 0.2px solid rgba(182, 182, 182, 0.4);
+    width: 5rem;
+    height: 2rem;
+    margin-left: 0.4rem;
+    background-color: rgba(207, 207, 207, 0.1);
+    border-radius: 0.1rem;
+}
 .user-profile-username {
     font-size: 1.55rem;
     font-weight: 400;
 }
 
 .message-user-profile-button {
-    border: none;
+    border: 0.2px solid rgba(182, 182, 182, 0.4);
+    border-radius: 0.1rem;
     font-weight: 500;
     padding: 0.3rem;
     margin-left: 0.3rem;
     width: 5rem;
-    height: 1.5rem;
-    background-color: rgba(207, 207, 207, 0.3);
+    height: 2rem;
+    background-color: rgba(207, 207, 207, 0.1);
 }
 
-.unfollow-button {
-    border: none;
-    width: 5rem;
-    height: 1.5rem;
-    margin-right: 1rem;
-    background-color: rgba(207, 207, 207, 0.3);
-    /* border-radius: 20px; */
+#line {
+    /* background-color: pink; */
+    border-bottom: 0.2px solid rgba(189, 189, 189, 0.5);
+    margin-top: 2rem;
+    margin-left: 15%;
+    width: 71.8%;
+    height: 0.5rem;
 }
