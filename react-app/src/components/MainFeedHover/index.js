@@ -8,7 +8,7 @@ import { createOneChannel } from "../../store/channel";
 import { getEveryPost } from "../../store/everyPost";
 import { deleteOneFollow, getFollows } from "../../store/follow";
 import { getFollowers } from "../../store/followers";
-import { getAllFollows } from '../../store/allFollows';
+
 
 
 import "./MainFeedHover.css"
@@ -18,7 +18,6 @@ function MainFeedHover ({ post, allFollows }) {
     const dispatch = useDispatch()
     const userId = post?.userId
     const [isFollowed, setIsFollowed] = useState(false)
-    const user = useSelector(state => state.user[0])
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const sessionUser = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.allPosts).filter(post => post?.userId == userId))

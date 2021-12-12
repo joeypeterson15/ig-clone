@@ -6,6 +6,7 @@ import { getFollows } from '../../store/follow';
 import { useEffect} from 'react';
 // import { getMainFeedPosts } from '../../store/mainFeedPosts';
 import '../Profile/Profile.css'
+import '../UserProfile/UserProfile.css'
 
 
 function UnfollowModal ({ setIsFollowed, userId, followId, showModal, setShowModal}) {
