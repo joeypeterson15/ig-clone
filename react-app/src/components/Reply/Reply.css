@@ -10,6 +10,11 @@
     font-size: 14px;
     color: rgb(36, 36, 36);
     padding-top: 0.4rem;
+    width: 14.8rem;
+    /* background-color: red; */
+}
+
+.reply-body-content {
 }
 
 .username-reply-bold {
@@ -23,7 +28,7 @@
 
 .left-side-reply-comment {
     /* background-color: red; */
-    width: 90%;
+    width: 20rem;
     display: flex;
     justify-content: space-between;
     padding-left: 7.3rem;

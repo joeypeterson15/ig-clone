@@ -98,7 +98,10 @@ function Reply ({setCommentId, replies, commentId, comment}) {
                                 <Link className="hashtag-link" to={comment?.userId === sessionUser?.id ? `/profile` :`/p/${comment?.userId}`}>
                                     @{comment?.username}
                                 </Link>
-                                {reply?.content}
+                                <div className="reply-body-content">
+
+                                    {reply?.content}
+                                </div>
                             </div>
 
 
