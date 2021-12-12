@@ -14,7 +14,7 @@ import { getAllFollows } from '../../store/allFollows';
 import "./MainFeedHover.css"
 
 
-function MainFeedHover ({ post }) {
+function MainFeedHover ({ post, allFollows }) {
     const dispatch = useDispatch()
     const userId = post?.id
     const [isFollowed, setIsFollowed] = useState(false)
@@ -23,8 +23,12 @@ function MainFeedHover ({ post }) {
     const channel = useSelector(state => Object.values(state.channels).find(channel => channel.friendId == post?.userId))
     const sessionUser = useSelector((state) => state.session?.user)
     const posts = useSelector((state) => Object.values(state.allPosts).filter(post => post?.userId == userId))
-    // const follows = useSelector((state) => Object.values(state.follows))
-    const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === userId))
+
+    // const follows = useSelector((state) => Object.values(state.allFollows).filter(follow => follow.userId === userId))
+    console.log('all folllllllows main feed hover', allFollows)
+    const follows = allFollows.filter(follow => follow?.userId == post?.id)
+    console.log('follows filter all follows hover', follows)
+
     const myFollows = useSelector((state) => Object.values(state.follows))
 
     const followers = useSelector(state => Object.values(state.followers))
@@ -40,7 +44,7 @@ function MainFeedHover ({ post }) {
         dispatch(getAllPosts(post?.userId))
         // dispatch(getFollows(post?.userId))
         dispatch(getFollowers(post?.userId))
-        dispatch(getAllFollows())
+
     }, [dispatch])
 
     useEffect(() => {
