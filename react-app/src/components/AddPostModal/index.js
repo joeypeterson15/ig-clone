@@ -4,6 +4,8 @@ import { createOnePost } from '../../store/post';
 import { useDispatch } from 'react-redux';
 import { useSelector} from 'react-redux';
 import { useHistory } from 'react-router';
+import ImageUploading from 'react-images-uploading';
+
 import './AddPostModal.css'
 
 
@@ -12,6 +14,25 @@ function AddPostModal () {
     const [showCaptionModal, setShowCaptionModal] = useState(false)
     const [imageUrl, setImageUrl] = useState('')
     const [body, setBody] = useState('')
+    // console.log(ImageUploading)
+
+
+    //image upload
+    const [images, setImages] = useState([]);
+  const maxNumber = 69;
+
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+    setImageUrl(imageList[0]['data_url'])
+  };
+
+
+
+
+
+
 
 
     let history = useHistory()
@@ -41,16 +62,17 @@ function AddPostModal () {
             let e = split[i];
             if (e.includes("#")) {
               hashArray.push(e.substring(1))
-                // dispatch(createOneHashtag({name : e.substring(1)}))
-                // split.splice(i,1)
+
             }
         }
 
 
         setShowModal(false)
+        setShowCaptionModal(false)
         dispatch(createOnePost(payload, hashArray))
         setBody('')
         setImageUrl('')
+        setImages([])
 
         if (!window.location.href.includes('profile')) {
             history.push('/profile')
@@ -63,15 +85,16 @@ function AddPostModal () {
             window.alert('please provde an image url')
             return
         }
-        if (imageUrl && !isValidImageURL(imageUrl)) {
-            window.alert('please provide a valid image url')
-            return
-        }
+        // if (imageUrl && !isValidImageURL(imageUrl)) {
+        //     window.alert('please provide a valid image url')
+        //     return
+        // }
 
          else {
 
             setShowModal(false)
             setShowCaptionModal(true)
+            console.log(imageUrl)
         }
     }
 
@@ -92,6 +115,20 @@ function AddPostModal () {
     }
 
 
+    const onCloseFirstModal = () => {
+        setShowModal(false)
+        setImages([])
+        setImageUrl('')
+
+    }
+
+    const onCloseSecondModal = () => {
+        setShowCaptionModal(false)
+        setImages([])
+        setImageUrl('')
+    }
+
+
 
     return (
         <>
@@ -101,7 +138,7 @@ function AddPostModal () {
           </div>
         </div>
         {showModal && (
-        <Modal  onClose={() => setShowModal(false)}>
+        <Modal  onClose={onCloseFirstModal}>
 
             <div className="add-post-first-card">
 
@@ -116,20 +153,77 @@ function AddPostModal () {
 
                 </div>
 
-                {/* {imageUrl ? */}
-                    {/* <img src={imageUrl} className="instagram-image-add"></img> */}
-                    {/* : */}
-                    {/* <a href="https://ibb.co/CwFnmJZ"><img className="instagram-image-add"  src="https://i.ibb.co/8mVjNzp/black-white-instagram-add-post.png" alt="black-white-instagram-add-post" border="0"></img></a> */}
-                    {/* <a href="https://ibb.co/cY04z30"><img className="instagram-image-add"  src="https://i.ibb.co/NT5cwC5/blackkk.png" alt="blackkk" border="0"></img></a> */}
-                        {/* <a href="https://ibb.co/JCpZhhV"><img className="instagram-image-add" src="https://i.ibb.co/XV5Hww1/Popular-Instagram-icon-in-round-black-color-on-transparent-PNG.png" alt="Popular-Instagram-icon-in-round-black-color-on-transparent-PNG" border="0"></img></a> */}
                     <div className="instagram-image-container">
-                    <a href="https://ibb.co/Z84ZmVs"><img className="instagram-image-add" src="https://i.ibb.co/cFfmL15/outline-gray-instagram-icon.jpg" alt="outline-gray-instagram-icon" border="0"></img></a>
-                    </div>
-                {/* <a href="https://ibb.co/T2PT7XP"><img className="instagram-image-add" src="https://i.ibb.co/QQYcTBY/instagram-add-post.jpg" alt="instagram-add-post" border="0"></img></a> */}
+                        <ImageUploading
+                            multiple
+                            value={images}
+                            onChange={onChange}
+                            maxNumber={maxNumber}
+                            dataURLKey="data_url"
+                        >
+                            {({
+                            imageList,
+                            onImageUpload,
+                            onImageRemoveAll,
+                            onImageUpdate,
+                            onImageRemove,
+                            isDragging,
+                            dragProps,
+                            }) => (
+                            // write your building UI
+                            <div className="upload__image-wrapper">
+                                <button id="button-image-upload"
+                                style={isDragging ? { color: 'red' } : undefined}
+                                onClick={onImageUpload}
+                                {...dragProps}
+                                >
+                                Select from computer
+                                </button>
 
-                <textarea id="modal-input" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="Add Image..."></textarea>
-                {/* <textarea className="modal-textarea" rows={15} value={body} onChange={(e) => setBody(e.target.value)}type="text" placeholder="content"></textarea> */}
-                {/* <button className="submit-modal-button" type="submit">Create Post</button> */}
+                                {imageList
+
+                                ?
+
+                                imageList.map((image, index) => (
+                                    <div key={index} className="image-item">
+                                        <img src={image['data_url']} alt="" width="100" />
+                                        {/* <div className="image-item__btn-wrapper">
+                                            <button onClick={() => onImageUpdate(index)}>Update</button>
+                                            <button onClick={() => onImageRemove(index)}>Remove</button>
+                                        </div> */}
+                                    </div>
+                                    ))
+
+                                :
+
+                                <a href="https://ibb.co/Z84ZmVs"><img className="instagram-image-add" src="https://i.ibb.co/cFfmL15/outline-gray-instagram-icon.jpg" alt="outline-gray-instagram-icon" border="0"></img></a>
+                                }
+
+
+                                &nbsp;
+                                {/* <button onClick={onImageRemoveAll}>Remove all images</button> */}
+
+
+                                {/* {imageList.map((image, index) => (
+                                <div key={index} className="image-item">
+                                    <img src={image['data_url']} alt="" width="100" />
+
+                                </div>
+                                ))} */}
+                            </div>
+                            )}
+                        </ImageUploading>
+
+                    </div>
+                    {/* <div className="instagram-image-container">
+                        <a href="https://ibb.co/Z84ZmVs"><img className="instagram-image-add" src="https://i.ibb.co/cFfmL15/outline-gray-instagram-icon.jpg" alt="outline-gray-instagram-icon" border="0"></img></a>
+                    </div> */}
+
+                {/* <textarea id="modal-input" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type="text" placeholder="Add Image..."></textarea> */}
+
+
+
+
 
 
 
@@ -138,7 +232,7 @@ function AddPostModal () {
         </Modal>
       )}
         {showCaptionModal && (
-            <Modal onClose={() => setShowCaptionModal(false)}>
+            <Modal onClose={onCloseSecondModal}>
 
                 <div className="add-post-second-card">
 

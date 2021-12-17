@@ -7,7 +7,7 @@
     /* background-color: hotpink; */
     /* border-radius: 2rem; */
     width: 30rem;
-    height: 20rem
+    height: 30rem
 }
 
 
@@ -106,7 +106,8 @@
 }
 
 .instagram-image-add {
-    width: 200%;
+    width: 30rem;
+    height: 26rem;
     /* height: 80%; */
     /* border-radius: 2rem; */
 }
@@ -139,6 +140,7 @@
 
 .upload-image {
     width: 63%;
+    height: 26rem;
     background-color: hotpink;
 }
 
@@ -167,4 +169,16 @@
     position: absolute;
     top: 0;
     background-color: red;
+}
+
+
+#button-image-upload {
+    position: relative;
+    top: 20rem;
+    left: 10rem;
+    color: white;
+    border: none;
+    background-color: rgba(27, 97, 248, 0.9);
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
