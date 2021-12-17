@@ -6,7 +6,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    imageUrl = db.Column(db.String(2000), nullable=True)
+    imageUrl = db.Column(db.String(10485760), nullable=True)
     createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
     body = db.Column(db.String(1000), nullable=True)
     likes = db.Column(db.Integer, default = 0)
