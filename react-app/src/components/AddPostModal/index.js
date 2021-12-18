@@ -128,6 +128,11 @@ function AddPostModal () {
         setImageUrl('')
     }
 
+    const discardFirstModalImage = () => {
+        setImages([])
+        setImageUrl('')
+    }
+
 
 
     return (
@@ -142,7 +147,17 @@ function AddPostModal () {
 
             <div className="add-post-first-card">
 
+                { imageUrl ?
+
+                    <div className="arrow-left">
+                        <i onClick={discardFirstModalImage} class="fas fa-arrow-left"></i>
+
+                    </div> : ""
+
+                }
+
                 <div className="upper-image-add-div">
+
 
                     <div className="new-post-heading">Create new post</div>
 
@@ -187,9 +202,10 @@ function AddPostModal () {
                                 imageList.map((image, index) => (
                                     <div key={index} className="image-item">
                                         <img id="upload-image-first-modal" src={image['data_url']} alt="" width="100" />
+                                        <button onClick={() => onImageRemove(index)}>Remove</button>
+
                                         {/* <div className="image-item__btn-wrapper">
                                             <button onClick={() => onImageUpdate(index)}>Update</button>
-                                            <button onClick={() => onImageRemove(index)}>Remove</button>
                                         </div> */}
                                     </div>
                                     ))
@@ -240,6 +256,7 @@ function AddPostModal () {
 
                         <div className="arrow-left">
                             <i onClick={prevModal} class="fas fa-arrow-left"></i>
+
                         </div>
                         <div className="new-post-heading">
                             Create new post
