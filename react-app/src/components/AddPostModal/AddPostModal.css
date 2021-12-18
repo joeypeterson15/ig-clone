@@ -182,3 +182,34 @@
     padding: 1rem;
     border-radius: 0.5rem;
 }
+#hidden-button-image-upload {
+    position: relative;
+    top: 20rem;
+    left: 10rem;
+    color: white;
+    border: none;
+    background-color: rgba(27, 97, 248, 0.9);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: none;
+}
+
+.upload__image-wrapper {
+    /* background-color: brown; */
+    width: 30rem;
+    height: 28rem;
+    border-bottom-left-radius: 1%;
+}
+
+.image-item {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 1%;
+
+}
+#upload-image-first-modal {
+    width: 100%;
+    height: 100%;
+
+}

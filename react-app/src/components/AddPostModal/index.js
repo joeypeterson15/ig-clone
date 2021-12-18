@@ -172,7 +172,7 @@ function AddPostModal () {
                             }) => (
                             // write your building UI
                             <div className="upload__image-wrapper">
-                                <button id="button-image-upload"
+                                <button id={imageUrl ? "hidden-button-image-upload" :"button-image-upload"}
                                 style={isDragging ? { color: 'red' } : undefined}
                                 onClick={onImageUpload}
                                 {...dragProps}
@@ -186,7 +186,7 @@ function AddPostModal () {
 
                                 imageList.map((image, index) => (
                                     <div key={index} className="image-item">
-                                        <img src={image['data_url']} alt="" width="100" />
+                                        <img id="upload-image-first-modal" src={image['data_url']} alt="" width="100" />
                                         {/* <div className="image-item__btn-wrapper">
                                             <button onClick={() => onImageUpdate(index)}>Update</button>
                                             <button onClick={() => onImageRemove(index)}>Remove</button>
