@@ -119,3 +119,48 @@
     background-color: rgb(0, 119, 255);
     /* border: 0.1px solid black */
 }
+#signup-button {
+    display: block;
+    position: absolute;
+    margin-left: 1rem;
+    bottom: 6rem;
+    border: none;
+    border-radius: 0.2rem;
+    height: 2rem;
+    font-size: 16px;
+    width: 90%;
+    color: white;
+    background-color: rgb(0, 119, 255);
+    /* border: 0.1px solid black */
+}
+#back-login-button {
+    display: block;
+    position: absolute;
+    margin-left: 1rem;
+    bottom: 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    height: 2rem;
+    font-size: 16px;
+    width: 90%;
+    color: white;
+    background-color: rgb(0, 119, 255);
+    /* border: 0.1px solid black */
+}
+
+.signup {
+    background-color: white;
+    border: 0.2px solid rgba(146, 146, 146, 0.2);
+    width: 20rem;
+    height: 25rem;
+    position: absolute;
+    top: 10rem;
+    right: 35rem;
+    text-align: center;
+}
+
+#mehh {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 5vw;
+}
