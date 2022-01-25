@@ -38,9 +38,9 @@ function UnfollowModal ({ setIsFollowed, userId, followId, showModal, setShowMod
         </button>
         {showModal && (
         <Modal  onClose={() => setShowModal(false)}>
-            <form onSubmit={deleteFollow}>
-                <button type="submit">Unfollow</button>
-                <div>Cancel</div>
+            <form className="delete-comment-modal-form" onSubmit={deleteFollow}>
+                <button className="submit-modal-button" type="submit">Unfollow</button>
+                <button onClick={() => setShowModal(false)} className="cancel-button-modal">Cancel</button>
             </form>
         </Modal>
       )}

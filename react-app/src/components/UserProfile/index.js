@@ -92,7 +92,7 @@ function UserProfile () {
 
                             <button className="message-user-profile-button">Message</button>
                             <div>
-                                {!isFollowed ? <button onClick={createFollow} className="follow-button">Follow</button>
+                                {!isFollowed ? <button onClick={createFollow} className="followme unfollow-button">Follow</button>
                                 :
                                 <UnfollowModal setIsFollowed={setIsFollowed} showModal={showModal} setShowModal={setShowModal} userId={sessionUser?.id} followId={userId}/>}
                             </div>

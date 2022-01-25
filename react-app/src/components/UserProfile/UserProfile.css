@@ -27,6 +27,14 @@
     margin-left: 0.4rem;
     background-color: rgba(207, 207, 207, 0.1);
     border-radius: 0.1rem;
+    margin-left: 1rem;
+}
+
+.followme {
+    background-color: rgba(52, 106, 255, 0.6);
+    color: white;
+    margin-left: 1rem;
+
 }
 .user-profile-username {
     font-size: 1.55rem;
