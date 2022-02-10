@@ -133,8 +133,8 @@ function Message () {
                                 </div>
                                 :
                                 <div className="time-stamp-messages-div">
-                                    {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(message?.createdAt))} {new Date(message?.createdAt).getDate()}, 2021 {convertTime(message?.createdAt)}
-
+                                    {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(message?.createdAt))}
+                                    {new Date(message?.createdAt).getDate()}, 2021 {convertTime(message?.createdAt)}
                                 </div>
                                 }
 

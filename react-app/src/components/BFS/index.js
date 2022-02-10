@@ -34,8 +34,6 @@ function BFS ({ follows, posts }) {
     // }, [dispatch, user])
 
     useEffect(() => {
-
-
         const getRecommendedFollows = async (degrees) => {
             let queue = [[user?.id]];
 
@@ -47,10 +45,6 @@ function BFS ({ follows, posts }) {
                 if (follow.userId === user?.id)
                 currentFollows.add(follow?.followId)
             })
-
-            console.log('currentFollows', currentFollows);
-
-
             let visited = new Set();
 
             while (queue.length > 0) {
@@ -64,16 +58,11 @@ function BFS ({ follows, posts }) {
                     // console.log({ visited });
                     if (path.length > degrees + 1) break;
 
-                    // if (path.length > currentFollows.size + 1) recommended.push(id);
                     if (!currentFollows.has(id) && user?.id !== id && path.length > 1) {
                         recommended.push(id);
                         let newUser =users.find(user => user?.id === id)
                         recommendedUsers.push(newUser)
-                        // setFinalRecommendedUsers(oldArray => [...oldArray, newUser])
                     }
-
-
-                    // console.log('recommended', { recommended });
 
                     for (let follow of follows.filter(follow => follow.userId === id)) {
                         let pathCopy = [...path];
@@ -82,9 +71,7 @@ function BFS ({ follows, posts }) {
                     }
                 }
             }
-            console.log('recommended users', finalRecommendedUsers)
             setFinalRecommendedUsers([...recommendedUsers])
-            // return recommended;
         }
 
 

@@ -104,23 +104,22 @@ export const updateOnePost = (payload, postId, hashArray) => async dispatch => {
         },
         body: JSON.stringify(payload)
     })
-    if (response.ok) {
-        const { postId, post } = await response.json()
+        if (response.ok) {
+            const { postId, post } = await response.json()
 
+            if(!!hashArray) {
 
-        if(!!hashArray) {
-
-            for (let i = 0; i < hashArray.length; i++) {
-                await fetch(`/api/hashtags/${hashArray[i]}/${post.id}`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type' : 'application/json',
-                },
-                // body: JSON.stringify({...name})
-              })
+                for (let i = 0; i < hashArray.length; i++) {
+                    await fetch(`/api/hashtags/${hashArray[i]}/${post.id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json',
+                    },
+                    // body: JSON.stringify({...name})
+                    })
+                }
             }
-        }
-        dispatch(loadAfterUpdate(postId, post))
+            dispatch(loadAfterUpdate(postId, post))
 
     }
 }
