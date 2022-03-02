@@ -105,9 +105,9 @@ const LoginForm = () => {
 
                   </div>
                 </div>
-                <div className="about">
+                {/* <div className="about">
                     <Link className="about-link-login" to="/about">About Creator</Link>
-                </div>
+                </div> */}
 
     </div>
   );

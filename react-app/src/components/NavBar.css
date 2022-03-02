@@ -29,7 +29,8 @@ nav {
 .user-avatar-nav {
     height: 1.5rem;
     width: 1.5rem;
-    border-radius: 50%;;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .left-side-navbar {
