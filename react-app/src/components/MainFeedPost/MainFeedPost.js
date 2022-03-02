@@ -135,14 +135,14 @@ const MainFeedPost = ({ post, allComments, allFollows }) => {
     const hoursAgo = function(createdAt) {
         const now = new Date(Date.now()).getHours()
         const post = createdAt.split(' ')[1].split(':')[0]
-        return (Number(now) - Number(post))
+        return Math.abs(Number(now) - Number(post))
     }
 
     const daysAgo = function(createdAt) {
         let now = new Date().getDate().toString()
         let post = new Date(createdAt).getDate()
         if ((now - post) === 1 ) return "1 DAY AGO"
-        else return (Number(now) - Number(post)) + " DAYS AGO"
+        else return Math.abs(Number(now) - Number(post)) + " DAYS AGO"
     }
 
 
