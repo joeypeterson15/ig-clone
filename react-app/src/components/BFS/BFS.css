@@ -73,6 +73,7 @@
     padding-right: 1rem;
     font-weight: 500;
     font-size: 13px;
+    cursor: pointer;
 }
 
 .avatar-rec {
