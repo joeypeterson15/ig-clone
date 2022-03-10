@@ -46,14 +46,15 @@
     /* position: absolute; */
     /* right: 25vw;
     bottom: 40vh; */
-    padding-top: 5rem;
+    padding-top: 2rem;
     padding-bottom: 2rem;
     /* padding-left: 1rem; */
     /* margin-left: 1rem; */
+    margin-top: 2rem;
     width: 100%;
     height: 1rem;
-    /* background-color: rgb(184, 184, 184); */
-    /* border: 0.2px solid rgba(146, 146, 146, 0.2); */
+    background-color: rgb(255, 255, 255);
+    border: 0.2px solid rgba(146, 146, 146, 0.2);
     font-size: 15px;
 }
 
@@ -83,25 +84,23 @@
 }
 
 .demo-user-button {
+    box-sizing: border-box;
     padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
     padding-top: 0.5rem;
     margin-bottom: 0.5rem;
     border: 0.1px solid rgba(0, 0, 0, 0.2);
     color: white;
     background-color: rgb(0, 63, 136);
     border-radius: 0.2rem;
-    width: 93%;
-    margin-left: 0.5rem;
+    width: 87%;
+    /* margin-left: 0.2rem; */
     font-weight: 500;
     cursor: pointer;
 }
 
-#instagram-font-logo {
-    font-family: 'Cookie';
-    font-size: 3rem;
-    color: rgb(31, 31, 31);
-    /* margin-left: 5rem; */
-    padding: 0.3rem;
+.login-form {
+    width: 100%;
 }
 
 .login-input {
@@ -113,6 +112,31 @@
     padding-left: 1rem;
 
 }
+.login-login-button {
+    display: block;
+    /* position: absolute; */
+    margin-top: 1rem;
+    margin-left: 1.1rem;
+    bottom: 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    height: 2rem;
+    font-size: 16px;
+    width: 87.5%;
+    color: white;
+    background-color: rgb(0, 119, 255);
+    /* border: 0.1px solid black */
+}
+
+#instagram-font-logo {
+    font-family: 'Cookie';
+    font-size: 3rem;
+    color: rgb(31, 31, 31);
+    /* margin-left: 5rem; */
+    padding: 0.3rem;
+}
+
+
 
 .padding-div {
     padding-top: 1rem;
@@ -124,22 +148,14 @@
 
 .login-link {
     text-decoration: none;
+    color: rgb(255, 255, 255)
+}
+.signup-link {
+    text-decoration: none;
+    color: rgb(0, 106, 228)
 }
 
-#login-login-button {
-    display: block;
-    position: absolute;
-    margin-left: 1.5rem;
-    bottom: 1rem;
-    border: none;
-    border-radius: 0.2rem;
-    height: 2rem;
-    font-size: 16px;
-    width: 85%;
-    color: white;
-    background-color: rgb(0, 119, 255);
-    /* border: 0.1px solid black */
-}
+
 #signup-button {
     display: block;
     position: absolute;
