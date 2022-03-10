@@ -3,7 +3,7 @@
  justify-content: left;
  width: 60%;
  color: rgb(36, 36, 36);
- margin-left: 22%;
+ margin-left: 27vw;
  margin-top: 3%;
  padding-bottom: 3%;
 }
@@ -62,23 +62,23 @@
 
 
 .post-image {
-    width: 20rem;
-    height: 20rem;
+    width: 20vw;
+    height: 40vh;
     background-size: contain;
 }
 
 
 .my-posts-container {
     /* position: relavive; */
-    width: 47%;
+    width: 80vw;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin-left: 15%;
+    margin-left: 14vw;
     margin-top: 4%;
     /* margin-right: 20%; */
     grid-row-gap: 50px;
-    grid-column-gap: 4%;
+    /* grid-column-gap: 2vw; */
 }
 
 
