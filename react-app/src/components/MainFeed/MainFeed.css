@@ -15,17 +15,17 @@
 .main-feed-posts {
     position: relative;
     background-color: white;
-    margin-left: 17%;
+    margin-left: 17vw;
     /* padding-top: 2rem; */
     margin-bottom: 2rem;
-    width: 40rem;
-    height: 65rem;
+    width: 45vw;
+    height: 133vh;
     border: 0.5px solid rgba(155, 155, 155, 0.4);
 }
 
 .main-feed-image {
-    width: 40rem;
-    height: 45rem;
+    width: 45vw;
+    height: 90vh;
 }
 
 

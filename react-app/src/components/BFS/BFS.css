@@ -1,19 +1,19 @@
 .recommended-users-container {
     /* background-color: red; */
     position: fixed;
-    width: 17rem;
+    width: 17vw;
     height: 18rem;
     top: 14rem;
-    right: 15.5rem;
+    right: 17vw;
     /* border: 0.1px solid rgba(173, 173, 173, 0.5); */
 }
 
 #suggestions-heading {
     position: fixed;
-    width: 13rem;
+    width: 17vw;
     top: 12rem;
     height: 2rem;
-    right: 19.2rem;
+    right: 17vw;
     font-size: 14px;
     font-weight: 500;
     color: rgb(146, 146, 146);
@@ -24,18 +24,22 @@
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 17rem;
+    width: 17vw;
     top: 7rem;
     height: 5rem;
-    right: 15.5rem;
+    right: 17vw;
     /* background-color: red; */
 
 }
 
 .recommended-user-card {
+    /* position: fixed; */
     display: flex;
     justify-content: space-between;
     padding: 0.3rem;
+    width: 17vw;
+    /* margin-right: 17vw; */
+    /* height: 20vh; */
     margin-bottom: 0.3rem;
 
 }
@@ -69,8 +73,8 @@
     border: none;
     width: 4rem;
     height: 1rem;
-    padding-top: 1.3rem;
-    padding-right: 1rem;
+    padding-top: 1.2rem;
+    /* padding-right: 1rem; */
     font-weight: 500;
     font-size: 13px;
     cursor: pointer;

@@ -48,7 +48,7 @@ const SignUpForm = () => {
 
       <div className="phone-picture-container">
 
-          <a href="https://ibb.co/Tk5dysv"><img src="https://i.ibb.co/f27LJs1/instagram-phone-picture.png" alt="instagram-phone-picture" border="0"></img></a>
+          <a href="https://ibb.co/Tk5dysv"><img id="instagram-phone-picture" src="https://i.ibb.co/f27LJs1/instagram-phone-picture.png" alt="instagram-phone-picture" border="0"></img></a>
       </div>
       <div className="signup">
         <form onSubmit={onSignUp}>

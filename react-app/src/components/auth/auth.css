@@ -17,34 +17,44 @@
     width: 18vw;
     height: 35vh;
 }
+#instagram-phone-picture {
+    width: 28vw;
+    height: 87vh;
+}
+.right-side-login {
+    background-color: rgba(255, 255, 255, 0.0);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    position: absolute;
+    top: 25vh;
+    right: 25vw;
+    height: 50vh;
 
+}
 .login-card {
     box-sizing: border-box;
     background-color: white;
     border: 0.2px solid rgba(146, 146, 146, 0.2);
-    width: 20vw;
-    height: 40vh;
-    position: absolute;
-    top: 10rem;
-    right: 25vw;
+    width: 100%;
     text-align: center;
-    padding-bottom: 1rem;
+
 }
 
 .signup-in-login-card {
     box-sizing: border-box;
-    position: absolute;
     padding-top: 1.5rem;
     padding-bottom: 2rem;
-    margin-top: 2rem;
-    height: 8vh;
-    bottom: 25%;
-    right: 25vw;
-    width: 20vw;
+    margin-top: 1vh;
+    height: 18%;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     border: 0.2px solid rgba(146, 146, 146, 0.2);
     font-size: 15px;
 }
+
+
 
 .signup {
     background-color: white;
