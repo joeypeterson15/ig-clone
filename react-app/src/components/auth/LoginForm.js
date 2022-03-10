@@ -62,45 +62,51 @@ const LoginForm = () => {
             <a href="https://ibb.co/Tk5dysv"><img src="https://i.ibb.co/f27LJs1/instagram-phone-picture.png" alt="instagram-phone-picture" border="0"></img></a>
         </div>
 
-        <div className="login-card">
-          <div id="instagram-font-logo">Outergram</div>
-            <form className="login-form" onSubmit={onLogin}>
-                <div>
-                  {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                  ))}
-                </div>
+        <div className="right-side-login">
+
+            <div className="login-card">
+              <div id="instagram-font-logo">Outergram</div>
+                <form className="login-form" onSubmit={onLogin}>
+                    <div>
+                      {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                      ))}
+                    </div>
 
 
-                  <input className="login-input"
-                    name='email'
-                    type='text'
-                    placeholder='Email'
-                    value={email}
-                    onChange={updateEmail}
-                  />
+                      <input className="login-input"
+                        name='email'
+                        type='text'
+                        placeholder='Email'
+                        value={email}
+                        onChange={updateEmail}
+                      />
 
 
 
-                  <input className="login-input"
-                    name='password'
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={updatePassword}
-                  />
+                      <input className="login-input"
+                        name='password'
+                        type='password'
+                        placeholder='Password'
+                        value={password}
+                        onChange={updatePassword}
+                      />
 
-                    <button className="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
-                    <button className="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
-                    <button className="login-login-button" type='submit'>Login</button>
+                        <button className="login-form-button lil-pad demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
+                        <button className="login-form-button lil-pad demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
+                        <button className="login-form-button login-login-button" type='submit'>Login</button>
 
-            </form>
-                <div className="signup-in-login-card">
+                </form>
+            <div className="signup-in-login-card">
 
-                    Don't have an account? <Link className="signup-link" to="/sign-up">Sign up</Link>
+                Don't have an account? <Link className="signup-link" to="/sign-up">Sign up</Link>
 
-                </div>
+            </div>
+            </div>
+
+
         </div>
+
 
     </div>
   );
