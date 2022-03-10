@@ -70,8 +70,8 @@ const LoginForm = () => {
                     <div key={ind}>{error}</div>
                   ))}
                 </div>
-                <div>
-                  {/* <label htmlFor='email'>Email</label> */}
+
+
                   <input className="login-input"
                     name='email'
                     type='text'
@@ -79,9 +79,9 @@ const LoginForm = () => {
                     value={email}
                     onChange={updateEmail}
                   />
-                </div>
-                <div>
-                  {/* <label htmlFor='password'>Password</label> */}
+
+              
+
                   <input className="login-input"
                     name='password'
                     type='password'
@@ -89,25 +89,21 @@ const LoginForm = () => {
                     value={password}
                     onChange={updatePassword}
                   />
-              <div className="demo-logins-box">
-                      <button className="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
-                      <button className="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
+                    <div className="demo-logins-box">
+                          <button className="demo-user-button" onClick={() => demoLogin()}>Demo 1</button>
+                          <button className="demo-user-button" onClick={() => marnieLogin()}>Demo 2</button>
 
-                </div>
+                    </div>
 
                     <button id="login-login-button" type='submit'>Login</button>
-                </div>
+
             </form>
-        </div>
                 <div className="signup-in-login-card">
-                  <div className="padding-div">
+
                     Don't have an account? <Link className="login-link" to="/sign-up">Sign up</Link>
 
-                  </div>
                 </div>
-                {/* <div className="about">
-                    <Link className="about-link-login" to="/about">About Creator</Link>
-                </div> */}
+        </div>
 
     </div>
   );

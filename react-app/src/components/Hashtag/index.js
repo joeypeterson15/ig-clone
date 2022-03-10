@@ -41,10 +41,7 @@ function Hashtag () {
                                 <div className="bold-numbers">{countPosts()}</div>
                                 <div className='space'>posts</div>
                             </div>
-
-
                         </div>
-
                 </div>
             </div>
             { posts ? <div className="my-posts-container">
