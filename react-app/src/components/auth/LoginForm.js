@@ -97,12 +97,11 @@ const LoginForm = () => {
                         <button className="login-form-button login-login-button" type='submit'>Login</button>
 
                 </form>
-            <div className="signup-in-login-card">
-
-                Don't have an account? <Link className="signup-link" to="/sign-up">Sign up</Link>
 
             </div>
-            </div>
+                <div className="signup-in-login-card">
+                    Don't have an account? <Link className="signup-link" to="/sign-up">Sign up</Link>
+                </div>
 
 
         </div>

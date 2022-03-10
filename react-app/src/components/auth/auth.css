@@ -23,7 +23,7 @@
     background-color: white;
     border: 0.2px solid rgba(146, 146, 146, 0.2);
     width: 20vw;
-    height: 20rem;
+    height: 40vh;
     position: absolute;
     top: 10rem;
     right: 25vw;
@@ -31,11 +31,26 @@
     padding-bottom: 1rem;
 }
 
+.signup-in-login-card {
+    box-sizing: border-box;
+    position: absolute;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+    height: 8vh;
+    bottom: 25%;
+    right: 25vw;
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 0.2px solid rgba(146, 146, 146, 0.2);
+    font-size: 15px;
+}
+
 .signup {
     background-color: white;
     border: 0.2px solid rgba(146, 146, 146, 0.2);
     width: 20vw;
-    height: 25rem;
+    height: 23rem;
     position: absolute;
     top: 10rem;
     right: 25vw;
@@ -44,15 +59,7 @@
     padding-top: 0.5rem;
 }
 
-.signup-in-login-card {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    margin-top: 2rem;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    border: 0.2px solid rgba(146, 146, 146, 0.2);
-    font-size: 15px;
-}
+
 
 .about {
     position: absolute;
@@ -140,6 +147,11 @@
     padding: 0.3rem;
 }
 
+.label {
+   /* font-family: 'Cookie'; */
+   font-size: 13px;
+}
+
 
 
 .padding-div {
@@ -161,10 +173,12 @@
 
 
 #signup-button {
-    display: block;
-    position: absolute;
-    margin-left: 1rem;
-    bottom: 6rem;
+    box-sizing: border-box;
+    /* display: block;
+    position: absolute; */
+    /* margin-left: 1rem; */
+    /* bottom: 6rem; */
+    margin-top: 1rem;
     border: none;
     border-radius: 0.2rem;
     height: 2rem;
@@ -193,7 +207,9 @@
 
 
 #mehh {
-    position: absolute;
+    /* position: absolute;
     bottom: 3.5rem;
-    left: 5vw;
+    left: 5vw; */
+
+    padding-top: 2rem;
 }
