@@ -9,6 +9,7 @@
 .reply-div {
     padding-left: 0.5rem;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .comment-edit-mypost-div:hover .three-dot-close-post {

@@ -187,8 +187,8 @@ function MainFeedOnePost () {
         <div className="post-outer-container">
             <div className="exit-post-icon">
                 <i onClick={() => history.push('/')} class="fas fa-times"></i>
-
             </div>
+            
             <div className="post-modal-container">
                         <div className="left-image">
                             <img className="image-modal" src={post?.imageUrl}></img>
