@@ -159,6 +159,7 @@
     background-color: white;
     color: rgba(92, 188, 226, 0.4);
     font-size: 16px;
+    cursor: pointer;
     /* visibility: hidden; */
 
 }
@@ -211,12 +212,14 @@
     color:rgb(231, 63, 63);
     font-size: 1.5rem;
     margin-right: 1rem;
+    cursor: pointer;
 }
 
 .heart {
     font-size: 1.5rem;
     margin-right: 1rem;
     color: rgb(36, 36, 36);
+    cursor: pointer;
 }
 
 .my-red-heart {
@@ -224,6 +227,7 @@
     color:rgb(172, 46, 46);
     padding-left: 1rem;
     padding-top: 0.5rem;
+    cursor: pointer;
 
 }
 
@@ -232,25 +236,30 @@
     padding-left: 1rem;
     padding-top: 0.5rem;
     color: rgb(36, 36, 36);
+    cursor: pointer;
 }
 
 .comment-main-heart {
     color: rgb(63, 63, 63);
     padding-right: 0.5rem;
+    cursor: pointer;
 }
 
 .red-comment-main-heart {
     color:rgb(231, 63, 63);
     padding-right: 0.5rem;
+    cursor: pointer;
 }
 
 .comment-icon {
     transform: scaleX(-1);
+    cursor: pointer;
 }
 .messages-icon {
     color: rgb(54, 54, 54);
     font-size: 1.4rem;
     padding-top: 0.2rem;
+    cursor: pointer;
 }
 
 .count-likes-main {
@@ -361,7 +370,8 @@
 }
 
 .comment-edit-main-div:hover .three-dot-close-main {
-    display: block
+    display: block;
+    cursor: pointer;
 }
 
 
@@ -369,6 +379,7 @@
     font-size: 15px;
     color: rgb(33, 0, 95);
     padding-right: 1rem;
+    cursor: pointer;
     /* display: none; */
     /* padding-top: 0.5rem; */
 }
@@ -379,6 +390,7 @@
     font-size: 15px;
     color: rgb(153, 153, 153);
     padding-right: 1rem;
+    cursor: pointer;
     /* padding-top: 0.5rem; */
 }
 .three-dot-close-main-visible {
@@ -387,5 +399,6 @@
     font-size: 15px;
     color: rgb(153, 153, 153);
     padding-right: 1rem;
+    cursor: pointer;
     /* padding-top: 0.5rem; */
 }
